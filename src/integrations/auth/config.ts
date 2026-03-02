@@ -10,6 +10,7 @@ import { hashPassword, verifyPassword } from "@/utils/password";
 import { generateId, toUsername } from "@/utils/string";
 import { schema } from "../drizzle";
 import { sendEmail } from "../email/service";
+import { packtech } from "./plugins/packtech";
 
 function isCustomOAuthProviderEnabled() {
 	const hasDiscovery = Boolean(env.OAUTH_DISCOVERY_URL);
@@ -246,6 +247,7 @@ const getAuthConfig = () => {
 			}),
 			twoFactor({ issuer: "Reactive Resume" }),
 			genericOAuth({ config: authConfigs }),
+			packtech(),
 		],
 	});
 };

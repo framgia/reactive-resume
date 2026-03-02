@@ -8,6 +8,6 @@ export type AuthSession = {
 	};
 };
 
-const authProviderSchema = z.enum(["credential", "google", "github", "custom"]);
+const authProviderSchema = z.enum(["credential", "google", "github", "packtech", "custom"]);
 
 export type AuthProvider = z.infer<typeof authProviderSchema>;
