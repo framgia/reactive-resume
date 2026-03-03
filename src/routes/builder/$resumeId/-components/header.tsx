@@ -40,7 +40,7 @@ export function BuilderHeader() {
 
 			<div className="flex items-center gap-x-1">
 				<Button asChild size="icon" variant="ghost">
-					<Link to="/dashboard/resumes" search={{ sort: "lastUpdatedAt", tags: [] }}>
+					<Link to="/dashboard/resumes" search={{ sort: "lastUpdatedAt" }}>
 						<HouseSimpleIcon />
 					</Link>
 				</Button>
@@ -112,7 +112,7 @@ function BuilderHeaderDropdown() {
 			{
 				onSuccess: () => {
 					toast.success(t`Your resume has been deleted successfully.`, { id: toastId });
-					navigate({ to: "/dashboard/resumes", search: { sort: "lastUpdatedAt", tags: [] } });
+					navigate({ to: "/dashboard/resumes", search: { sort: "lastUpdatedAt" } });
 				},
 				onError: (error) => {
 					toast.error(error.message, { id: toastId });

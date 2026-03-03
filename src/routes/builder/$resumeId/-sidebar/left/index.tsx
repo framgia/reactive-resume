@@ -17,6 +17,7 @@ import { EducationSectionBuilder } from "./sections/education";
 import { ExperienceSectionBuilder } from "./sections/experience";
 import { InterestsSectionBuilder } from "./sections/interests";
 import { LanguagesSectionBuilder } from "./sections/languages";
+import { OverallSectionBuilder } from "./sections/overall";
 import { PictureSectionBuilder } from "./sections/picture";
 import { ProfilesSectionBuilder } from "./sections/profiles";
 import { ProjectsSectionBuilder } from "./sections/projects";
@@ -28,6 +29,7 @@ import { VolunteerSectionBuilder } from "./sections/volunteer";
 
 function getSectionComponent(type: LeftSidebarSection) {
 	return match(type)
+		.with("overall", () => <OverallSectionBuilder />)
 		.with("picture", () => <PictureSectionBuilder />)
 		.with("basics", () => <BasicsSectionBuilder />)
 		.with("summary", () => <SummarySectionBuilder />)

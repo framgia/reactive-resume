@@ -1,8 +1,9 @@
 import { ORPCError } from "@orpc/client";
-import { and, arrayContains, asc, desc, eq, isNotNull, sql } from "drizzle-orm";
+import { and, asc, desc, eq, exists, inArray, isNotNull, isNull, like, or, sql } from "drizzle-orm";
 import { get } from "es-toolkit/compat";
 import type { Operation } from "fast-json-patch";
 import { match } from "ts-pattern";
+import type { z } from "zod";
 import { schema } from "@/integrations/drizzle";
 import { db } from "@/integrations/drizzle/client";
 import type { ResumeData } from "@/schema/resume/data";
@@ -12,8 +13,20 @@ import type { Locale } from "@/utils/locale";
 import { hashPassword, verifyPassword } from "@/utils/password";
 import { applyResumePatches, ResumePatchError } from "@/utils/resume/patch";
 import { generateId } from "@/utils/string";
+import type { resumeDto } from "../dto/resume";
 import { grantResumeAccess, hasResumeAccess } from "../helpers/resume-access";
 import { getStorageService } from "./storage";
+
+type GetByIdOutput = z.infer<typeof resumeDto.getById.output>;
+
+async function getSkillsForResume(resumeId: string): Promise<{ id: string; name: string }[]> {
+	const rows = await db
+		.select({ id: schema.skill.id, name: schema.skill.name })
+		.from(schema.resumeSkill)
+		.innerJoin(schema.skill, eq(schema.resumeSkill.skillId, schema.skill.id))
+		.where(eq(schema.resumeSkill.resumeId, resumeId));
+	return rows;
+}
 
 const tags = {
 	list: async (input: { userId: string }) => {
@@ -83,25 +96,83 @@ export const resumeService = {
 	tags,
 	statistics,
 
-	list: async (input: { userId: string; tags: string[]; sort: "lastUpdatedAt" | "createdAt" | "name" }) => {
-		return await db
-			.select({
-				id: schema.resume.id,
-				name: schema.resume.name,
-				slug: schema.resume.slug,
-				tags: schema.resume.tags,
-				isPublic: schema.resume.isPublic,
-				isLocked: schema.resume.isLocked,
-				createdAt: schema.resume.createdAt,
-				updatedAt: schema.resume.updatedAt,
-			})
-			.from(schema.resume)
+	list: async (input: {
+		userId: string;
+		sort: "lastUpdatedAt" | "createdAt" | "name";
+		projectId?: string | null;
+		skillIds?: string[];
+		positionId?: string | null;
+	}) => {
+		const skillIds = input.skillIds?.length ? input.skillIds : undefined;
+		const positionFilter =
+			input.positionId !== undefined
+				? input.positionId === null
+					? isNull(schema.resume.positionId)
+					: eq(schema.resume.positionId, input.positionId)
+				: undefined;
+
+		const projectIdFilter =
+			input.projectId !== undefined
+				? input.projectId === null
+					? isNull(schema.resume.projectId)
+					: eq(schema.resume.projectId, input.projectId)
+				: undefined;
+
+		// When filtering by projectId: INNER JOIN project so only non-deleted projects are included.
+		// Otherwise: LEFT JOIN + project.deleted_at IS NULL so resumes without project or with valid project are included.
+		const hasProjectFilter = input.projectId !== undefined;
+		const baseQuery = hasProjectFilter && input.projectId !== null
+			? db
+					.select({
+						id: schema.resume.id,
+						name: schema.resume.name,
+						slug: schema.resume.slug,
+						tags: schema.resume.tags,
+						isPublic: schema.resume.isPublic,
+						isLocked: schema.resume.isLocked,
+						projectId: schema.resume.projectId,
+						positionId: schema.resume.positionId,
+						createdAt: schema.resume.createdAt,
+						updatedAt: schema.resume.updatedAt,
+					})
+					.from(schema.resume)
+					.innerJoin(schema.project, and(eq(schema.resume.projectId, schema.project.id), isNull(schema.project.deletedAt)))
+			: db
+					.select({
+						id: schema.resume.id,
+						name: schema.resume.name,
+						slug: schema.resume.slug,
+						tags: schema.resume.tags,
+						isPublic: schema.resume.isPublic,
+						isLocked: schema.resume.isLocked,
+						projectId: schema.resume.projectId,
+						positionId: schema.resume.positionId,
+						createdAt: schema.resume.createdAt,
+						updatedAt: schema.resume.updatedAt,
+					})
+					.from(schema.resume)
+					.leftJoin(schema.project, eq(schema.resume.projectId, schema.project.id));
+
+		return await baseQuery
 			.where(
 				and(
 					eq(schema.resume.userId, input.userId),
-					match(input.tags.length)
-						.with(0, () => undefined)
-						.otherwise(() => arrayContains(schema.resume.tags, input.tags)),
+					projectIdFilter ??
+						or(isNull(schema.resume.projectId), isNull(schema.project.deletedAt)),
+					skillIds?.length
+						? exists(
+								db
+									.select()
+									.from(schema.resumeSkill)
+									.where(
+										and(
+											eq(schema.resumeSkill.resumeId, schema.resume.id),
+											inArray(schema.resumeSkill.skillId, skillIds),
+										),
+									),
+							)
+						: undefined,
+					positionFilter,
 				),
 			)
 			.orderBy(
@@ -113,7 +184,7 @@ export const resumeService = {
 			);
 	},
 
-	getById: async (input: { id: string; userId: string }) => {
+	getById: async (input: { id: string; userId: string }): Promise<GetByIdOutput> => {
 		const [resume] = await db
 			.select({
 				id: schema.resume.id,
@@ -123,6 +194,8 @@ export const resumeService = {
 				data: schema.resume.data,
 				isPublic: schema.resume.isPublic,
 				isLocked: schema.resume.isLocked,
+				projectId: schema.resume.projectId,
+				positionId: schema.resume.positionId,
 				hasPassword: sql<boolean>`${schema.resume.password} IS NOT NULL`,
 			})
 			.from(schema.resume)
@@ -130,7 +203,23 @@ export const resumeService = {
 
 		if (!resume) throw new ORPCError("NOT_FOUND");
 
-		return resume;
+		const [skills, positionRow] = await Promise.all([
+			getSkillsForResume(resume.id),
+			resume.positionId
+				? db
+						.select({ name: schema.position.name })
+						.from(schema.position)
+						.where(eq(schema.position.id, resume.positionId))
+						.then(([r]) => r?.name ?? null)
+				: Promise.resolve(null),
+		]);
+
+		return {
+			...resume,
+			positionId: resume.positionId,
+			skills,
+			position: positionRow,
+		} as GetByIdOutput;
 	},
 
 	getByIdForPrinter: async (input: { id: string; userId?: string }) => {
@@ -143,6 +232,7 @@ export const resumeService = {
 				data: schema.resume.data,
 				userId: schema.resume.userId,
 				isLocked: schema.resume.isLocked,
+				projectId: schema.resume.projectId,
 				updatedAt: schema.resume.updatedAt,
 			})
 			.from(schema.resume)
@@ -168,7 +258,12 @@ export const resumeService = {
 			// Ignore errors, as the picture is not always available
 		}
 
-		return resume;
+		return {
+			...resume,
+			skills: [],
+			position: null,
+			positionId: null,
+		};
 	},
 
 	getBySlug: async (input: { username: string; slug: string; currentUserId?: string }) => {
@@ -181,6 +276,7 @@ export const resumeService = {
 				data: schema.resume.data,
 				isPublic: schema.resume.isPublic,
 				isLocked: schema.resume.isLocked,
+				projectId: schema.resume.projectId,
 				passwordHash: schema.resume.password,
 				hasPassword: sql<boolean>`${schema.resume.password} IS NOT NULL`,
 			})
@@ -207,6 +303,10 @@ export const resumeService = {
 				data: resume.data,
 				isPublic: resume.isPublic,
 				isLocked: resume.isLocked,
+				projectId: resume.projectId,
+				skills: [],
+				position: null,
+				positionId: null,
 				hasPassword: false as const,
 			};
 		}
@@ -222,6 +322,10 @@ export const resumeService = {
 				data: resume.data,
 				isPublic: resume.isPublic,
 				isLocked: resume.isLocked,
+				projectId: resume.projectId,
+				skills: [],
+				position: null,
+				positionId: null,
 				hasPassword: true as const,
 			};
 		}
@@ -232,6 +336,23 @@ export const resumeService = {
 		});
 	},
 
+	getNextCopyNumber: async (input: { userId: string; slugPrefix: string }) => {
+		const { userId, slugPrefix } = input;
+		const rows = await db
+			.select({ slug: schema.resume.slug })
+			.from(schema.resume)
+			.where(and(eq(schema.resume.userId, userId), like(schema.resume.slug, `${slugPrefix}%`)));
+		let max = 0;
+		for (const { slug } of rows) {
+			if (slug.startsWith(slugPrefix)) {
+				const suffix = slug.slice(slugPrefix.length);
+				const n = Number.parseInt(suffix, 10);
+				if (Number.isInteger(n) && n >= 1) max = Math.max(max, n);
+			}
+		}
+		return max + 1;
+	},
+
 	create: async (input: {
 		userId: string;
 		name: string;
@@ -239,6 +360,10 @@ export const resumeService = {
 		tags: string[];
 		locale: Locale;
 		data?: ResumeData;
+		sharedCopyFromId?: string;
+		projectId?: string | null;
+		skillIds?: string[];
+		positionId?: string | null;
 	}) => {
 		const id = generateId();
 
@@ -252,8 +377,16 @@ export const resumeService = {
 				slug: input.slug,
 				tags: input.tags,
 				userId: input.userId,
+				projectId: input.projectId ?? null,
+				positionId: input.positionId ?? null,
 				data: input.data,
+				sharedCopyFromId: input.sharedCopyFromId,
 			});
+
+			const skillIds = input.skillIds?.length ? input.skillIds : [];
+			if (skillIds.length > 0) {
+				await db.insert(schema.resumeSkill).values(skillIds.map((skillId) => ({ resumeId: id, skillId })));
+			}
 
 			return id;
 		} catch (error) {
@@ -275,6 +408,9 @@ export const resumeService = {
 		tags?: string[];
 		data?: ResumeData;
 		isPublic?: boolean;
+		projectId?: string | null;
+		skillIds?: string[];
+		positionId?: string | null;
 	}) => {
 		const [resume] = await db
 			.select({ isLocked: schema.resume.isLocked })
@@ -289,10 +425,21 @@ export const resumeService = {
 			tags: input.tags,
 			data: input.data,
 			isPublic: input.isPublic,
+			projectId: input.projectId,
+			positionId: input.positionId,
 		};
 
 		try {
-			const [resume] = await db
+			if (input.skillIds !== undefined) {
+				await db.delete(schema.resumeSkill).where(eq(schema.resumeSkill.resumeId, input.id));
+				if (input.skillIds.length > 0) {
+					await db
+						.insert(schema.resumeSkill)
+						.values(input.skillIds.map((skillId) => ({ resumeId: input.id, skillId })));
+				}
+			}
+
+			const [updated] = await db
 				.update(schema.resume)
 				.set(updateData)
 				.where(
@@ -310,10 +457,14 @@ export const resumeService = {
 					data: schema.resume.data,
 					isPublic: schema.resume.isPublic,
 					isLocked: schema.resume.isLocked,
+					projectId: schema.resume.projectId,
+					positionId: schema.resume.positionId,
 					hasPassword: sql<boolean>`${schema.resume.password} IS NOT NULL`,
 				});
 
-			return resume;
+			if (!updated) throw new ORPCError("NOT_FOUND");
+			const skills = await getSkillsForResume(updated.id);
+			return { ...updated, skills };
 		} catch (error) {
 			if (get(error, "cause.constraint") === "resume_slug_user_id_unique") {
 				throw new ORPCError("RESUME_SLUG_ALREADY_EXISTS", { status: 400 });
@@ -365,10 +516,14 @@ export const resumeService = {
 				data: schema.resume.data,
 				isPublic: schema.resume.isPublic,
 				isLocked: schema.resume.isLocked,
+				projectId: schema.resume.projectId,
+				positionId: schema.resume.positionId,
 				hasPassword: sql<boolean>`${schema.resume.password} IS NOT NULL`,
 			});
 
-		return resume;
+		if (!resume) throw new ORPCError("NOT_FOUND");
+		const skills = await getSkillsForResume(resume.id);
+		return { ...resume, skills };
 	},
 
 	setLocked: async (input: { id: string; userId: string; isLocked: boolean }) => {

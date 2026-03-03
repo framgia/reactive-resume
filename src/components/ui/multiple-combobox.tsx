@@ -32,6 +32,7 @@ type MultipleComboboxProps<TValue extends string | number = string> = BasePopove
 	searchPlaceholder?: string;
 	emptyMessage?: React.ReactNode;
 	clearLabel?: React.ReactNode;
+	onSearchChange?: (query: string) => void;
 	buttonProps?: Omit<React.ComponentProps<typeof Button>, "children"> & {
 		children?: (values: TValue[], options: MultipleComboboxOption<TValue>[]) => React.ReactNode;
 	};
@@ -50,6 +51,7 @@ function MultipleCombobox<TValue extends string | number = string>({
 	searchPlaceholder = t`Search...`,
 	emptyMessage = t`No results found.`,
 	clearLabel = t`Clear selection`,
+	onSearchChange,
 	className,
 	buttonProps,
 	onValueChange,
@@ -58,6 +60,7 @@ function MultipleCombobox<TValue extends string | number = string>({
 	...popoverProps
 }: MultipleComboboxProps<TValue>) {
 	const [open, setOpen] = React.useState(false);
+	const [search, setSearch] = React.useState("");
 
 	const { children: buttonChildren, className: buttonClassName, ...buttonRest } = buttonProps ?? {};
 
@@ -120,9 +123,18 @@ function MultipleCombobox<TValue extends string | number = string>({
 	const handleOpenChange = React.useCallback(
 		(nextOpen: boolean) => {
 			setOpen(nextOpen);
+			if (!nextOpen) setSearch("");
 			onOpenChange?.(nextOpen);
 		},
 		[onOpenChange],
+	);
+
+	const handleSearchChange = React.useCallback(
+		(v: string) => {
+			setSearch(v);
+			onSearchChange?.(v);
+		},
+		[onSearchChange],
 	);
 
 	const buttonContent =
@@ -157,8 +169,12 @@ function MultipleCombobox<TValue extends string | number = string>({
 				aria-multiselectable="true"
 				{...popoverProps}
 			>
-				<Command>
-					<CommandInput placeholder={searchPlaceholder} />
+				<Command shouldFilter={!onSearchChange}>
+					<CommandInput
+						placeholder={searchPlaceholder}
+						value={onSearchChange ? search : undefined}
+						onValueChange={onSearchChange ? handleSearchChange : undefined}
+					/>
 					<CommandList>
 						<CommandEmpty>{emptyMessage}</CommandEmpty>
 

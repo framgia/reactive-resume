@@ -2,6 +2,7 @@ import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { ORPCError } from "@orpc/client";
 import { ClipboardIcon, LockSimpleIcon, LockSimpleOpenIcon } from "@phosphor-icons/react";
+import { ShareIcon } from "@phosphor-icons/react/dist/ssr";
 import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { useParams } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
@@ -11,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { useDialogStore } from "@/dialogs/store";
 import { useConfirm } from "@/hooks/use-confirm";
 import { usePrompt } from "@/hooks/use-prompt";
 import { authClient } from "@/integrations/auth/client";
@@ -20,6 +22,7 @@ import { SectionBase } from "../shared/section-base";
 export function SharingSectionBuilder() {
 	const prompt = usePrompt();
 	const confirm = useConfirm();
+	const openDialog = useDialogStore((state) => state.openDialog);
 	const [_, copyToClipboard] = useCopyToClipboard();
 	const { data: session } = authClient.useSession();
 	const params = useParams({ from: "/builder/$resumeId" });
@@ -160,6 +163,22 @@ export function SharingSectionBuilder() {
 					)}
 				</div>
 			)}
+
+			<Button
+				variant="outline"
+				className="h-auto gap-x-4 whitespace-normal p-4! text-start font-normal active:scale-98"
+				onClick={() => openDialog("resume.shareCopy", { resumeId: resume.id, name: resume.name })}
+			>
+				<ShareIcon className="size-6 shrink-0" />
+				<div className="flex flex-1 flex-col gap-y-1">
+					<h6 className="font-medium">
+						<Trans>Share copy to users</Trans>
+					</h6>
+					<p className="text-muted-foreground text-xs leading-normal">
+						<Trans>Choose users and send a copy of your resume to their dashboard.</Trans>
+					</p>
+				</div>
+			</Button>
 		</SectionBase>
 	);
 }
