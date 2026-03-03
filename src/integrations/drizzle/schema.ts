@@ -178,6 +178,9 @@ export const resume = pg.pgTable(
 			.uuid("user_id")
 			.notNull()
 			.references(() => user.id, { onDelete: "cascade" }),
+		projectId: pg.uuid("project_id").references(() => project.id, { onDelete: "set null" }),
+		positionId: pg.uuid("position_id").references(() => position.id, { onDelete: "set null" }),
+		sharedCopyFromId: pg.uuid("shared_copy_from_id"),
 		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 		updatedAt: pg
 			.timestamp("updated_at", { withTimezone: true })
@@ -188,9 +191,12 @@ export const resume = pg.pgTable(
 	(t) => [
 		pg.unique().on(t.slug, t.userId),
 		pg.index().on(t.userId),
+		pg.index().on(t.projectId),
 		pg.index().on(t.createdAt.asc()),
 		pg.index().on(t.userId, t.updatedAt.desc()),
 		pg.index().on(t.isPublic, t.slug, t.userId),
+		pg.index().on(t.sharedCopyFromId),
+		pg.foreignKey({ columns: [t.sharedCopyFromId], foreignColumns: [t.id] }).onDelete("set null"),
 	],
 );
 
@@ -254,4 +260,136 @@ export const apikey = pg.pgTable(
 		metadata: pg.jsonb("metadata"),
 	},
 	(t) => [pg.index().on(t.userId), pg.index().on(t.key), pg.index().on(t.enabled, t.userId)],
+);
+
+export const skill = pg.pgTable("skill", {
+	id: pg
+		.uuid("id")
+		.notNull()
+		.primaryKey()
+		.$defaultFn(() => generateId()),
+	name: pg.text("name").notNull(),
+	slug: pg.text("slug").notNull().unique(),
+	createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const position = pg.pgTable("position", {
+	id: pg
+		.uuid("id")
+		.notNull()
+		.primaryKey()
+		.$defaultFn(() => generateId()),
+	name: pg.text("name").notNull(),
+	slug: pg.text("slug").notNull().unique(),
+	createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const project = pg.pgTable(
+	"project",
+	{
+		id: pg
+			.uuid("id")
+			.notNull()
+			.primaryKey()
+			.$defaultFn(() => generateId()),
+		name: pg.text("name").notNull(),
+		description: pg.text("description"),
+		customerName: pg.text("customer_name"),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+		updatedAt: pg
+			.timestamp("updated_at", { withTimezone: true })
+			.notNull()
+			.defaultNow()
+			.$onUpdate(() => /* @__PURE__ */ new Date()),
+		deletedAt: pg.timestamp("deleted_at", { withTimezone: true }),
+	},
+	(t) => [pg.index().on(t.createdAt.asc()), pg.index().on(t.deletedAt)],
+);
+
+export const projectSkill = pg.pgTable(
+	"project_skill",
+	{
+		projectId: pg
+			.uuid("project_id")
+			.notNull()
+			.references(() => project.id, { onDelete: "cascade" }),
+		skillId: pg
+			.uuid("skill_id")
+			.notNull()
+			.references(() => skill.id, { onDelete: "cascade" }),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	},
+	(t) => [pg.primaryKey({ columns: [t.projectId, t.skillId] }), pg.index().on(t.projectId), pg.index().on(t.skillId)],
+);
+
+export const projectPosition = pg.pgTable(
+	"project_position",
+	{
+		projectId: pg
+			.uuid("project_id")
+			.notNull()
+			.references(() => project.id, { onDelete: "cascade" }),
+		positionId: pg
+			.uuid("position_id")
+			.notNull()
+			.references(() => position.id, { onDelete: "cascade" }),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	},
+	(t) => [
+		pg.primaryKey({ columns: [t.projectId, t.positionId] }),
+		pg.index().on(t.projectId),
+		pg.index().on(t.positionId),
+	],
+);
+
+/** A resume can have multiple skills (many-to-many). */
+export const resumeSkill = pg.pgTable(
+	"resume_skill",
+	{
+		resumeId: pg
+			.uuid("resume_id")
+			.notNull()
+			.references(() => resume.id, { onDelete: "cascade" }),
+		skillId: pg
+			.uuid("skill_id")
+			.notNull()
+			.references(() => skill.id, { onDelete: "cascade" }),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	},
+	(t) => [pg.primaryKey({ columns: [t.resumeId, t.skillId] }), pg.index().on(t.resumeId), pg.index().on(t.skillId)],
+);
+
+export const domain = pg.pgTable(
+	"domain",
+	{
+		id: pg
+			.uuid("id")
+			.notNull()
+			.primaryKey()
+			.$defaultFn(() => generateId()),
+		name: pg.text("name").notNull(),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+		updatedAt: pg
+			.timestamp("updated_at", { withTimezone: true })
+			.notNull()
+			.defaultNow()
+			.$onUpdate(() => /* @__PURE__ */ new Date()),
+	},
+	(t) => [pg.index().on(t.name)],
+);
+
+export const projectDomain = pg.pgTable(
+	"project_domain",
+	{
+		projectId: pg
+			.uuid("project_id")
+			.notNull()
+			.references(() => project.id, { onDelete: "cascade" }),
+		domainId: pg
+			.uuid("domain_id")
+			.notNull()
+			.references(() => domain.id, { onDelete: "cascade" }),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	},
+	(t) => [pg.primaryKey({ columns: [t.projectId, t.domainId] }), pg.index().on(t.projectId), pg.index().on(t.domainId)],
 );

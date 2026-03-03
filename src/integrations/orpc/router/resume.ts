@@ -4,6 +4,7 @@ import { generateRandomName, slugify } from "@/utils/string";
 import { protectedProcedure, publicProcedure, serverOnlyProcedure } from "../context";
 import { resumeDto } from "../dto/resume";
 import { resumeService } from "../services/resume";
+import { userService } from "../services/user";
 
 const tagsRouter = {
 	list: protectedProcedure
@@ -72,13 +73,21 @@ export const resumeRouter = {
 				"Returns a list of all resumes belonging to the authenticated user. Results can be filtered by tags and sorted by last updated date, creation date, or name. Resume data is not included in the response for performance; use the get endpoint to fetch full resume data. Requires authentication.",
 			successDescription: "A list of resumes with their metadata (without full resume data).",
 		})
-		.input(resumeDto.list.input.optional().default({ tags: [], sort: "lastUpdatedAt" }))
+		.input(
+			resumeDto.list.input.optional().default({
+				sort: "lastUpdatedAt",
+				skillIds: [],
+				positionId: undefined,
+			}),
+		)
 		.output(resumeDto.list.output)
 		.handler(async ({ input, context }) => {
 			return await resumeService.list({
 				userId: context.user.id,
-				tags: input.tags,
 				sort: input.sort,
+				projectId: input.projectId,
+				skillIds: input.skillIds,
+				positionId: input.positionId,
 			});
 		}),
 
@@ -95,9 +104,7 @@ export const resumeRouter = {
 		})
 		.input(resumeDto.getById.input)
 		.output(resumeDto.getById.output)
-		.handler(async ({ context, input }) => {
-			return await resumeService.getById({ id: input.id, userId: context.user.id });
-		}),
+		.handler(async ({ context, input }) => resumeService.getById({ id: input.id, userId: context.user.id })),
 
 	getByIdForPrinter: serverOnlyProcedure
 		.route({ tags: ["Internal"], operationId: "getResumeForPrinter", summary: "Get resume by ID for printer" })
@@ -150,6 +157,9 @@ export const resumeRouter = {
 				locale: context.locale,
 				userId: context.user.id,
 				data: input.withSampleData ? sampleResumeData : undefined,
+				projectId: input.projectId,
+				skillIds: input.skillIds,
+				positionId: input.positionId,
 			});
 		}),
 
@@ -214,6 +224,9 @@ export const resumeRouter = {
 				tags: input.tags,
 				data: input.data,
 				isPublic: input.isPublic,
+				projectId: input.projectId,
+				skillIds: input.skillIds,
+				positionId: input.positionId,
 			});
 		}),
 
@@ -356,7 +369,57 @@ export const resumeRouter = {
 				tags: input.tags ?? original.tags,
 				locale: context.locale,
 				data: original.data,
+				projectId: original.projectId,
+				skillIds: original.skills.map((s) => s.id),
+				positionId: original.positionId,
 			});
+		}),
+
+	shareCopy: protectedProcedure
+		.route({
+			method: "POST",
+			path: "/resumes/{id}/share-copy",
+			tags: ["Resume Sharing"],
+			operationId: "shareCopyResume",
+			summary: "Share a copy of resume to users",
+			description:
+				"Creates a copy of the resume for each selected user. The authenticated user must own the resume. Requires authentication.",
+			successDescription: "Number of users who received a copy.",
+		})
+		.input(resumeDto.shareCopy.input)
+		.output(resumeDto.shareCopy.output)
+		.handler(async ({ context, input }) => {
+			const original = await resumeService.getById({ id: input.resumeId, userId: context.user.id });
+			const sharerName = (await userService.getName(context.user.id)) ?? "unknown";
+			const sharerUsername = (await userService.getUsername(context.user.id)) ?? "unknown";
+			let count = 0;
+			for (const targetUserId of input.userIds) {
+				if (targetUserId === context.user.id) continue;
+				const slugPrefix = `${original.slug}-${sharerUsername}-copy-`;
+				const copyNumber = await resumeService.getNextCopyNumber({
+					userId: targetUserId,
+					slugPrefix,
+				});
+				const slug = `${slugPrefix}${copyNumber}`;
+				const name =
+					copyNumber === 1
+						? `${original.name} (${sharerName} Copy)`
+						: `${original.name} (${sharerName} Copy ${copyNumber})`;
+				await resumeService.create({
+					userId: targetUserId,
+					name,
+					slug,
+					tags: original.tags,
+					locale: context.locale,
+					data: original.data,
+					sharedCopyFromId: original.id,
+					projectId: original.projectId,
+					skillIds: original.skills.map((s) => s.id),
+					positionId: original.positionId,
+				});
+				count += 1;
+			}
+			return { count };
 		}),
 
 	delete: protectedProcedure

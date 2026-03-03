@@ -23,7 +23,22 @@ const dialogTypeSchema = z.discriminatedUnion("type", [
 	z.object({ type: z.literal("auth.two-factor.enable"), data: z.undefined() }),
 	z.object({ type: z.literal("auth.two-factor.disable"), data: z.undefined() }),
 	z.object({ type: z.literal("api-key.create"), data: z.undefined() }),
+	z.object({ type: z.literal("domain.create"), data: z.undefined() }),
+	z.object({
+		type: z.literal("domain.update"),
+		data: z.object({ id: z.string(), name: z.string() }),
+	}),
 	z.object({ type: z.literal("resume.create"), data: z.undefined() }),
+	z.object({ type: z.literal("project.create"), data: z.undefined() }),
+	z.object({
+		type: z.literal("project.update"),
+		data: z.object({
+			id: z.string(),
+			name: z.string(),
+			description: z.string().nullable(),
+			customerName: z.string().nullable(),
+		}),
+	}),
 	z.object({
 		type: z.literal("resume.update"),
 		data: z.object({ id: z.string(), name: z.string(), slug: z.string(), tags: z.array(z.string()) }),
@@ -38,6 +53,10 @@ const dialogTypeSchema = z.discriminatedUnion("type", [
 			tags: z.array(z.string()),
 			shouldRedirect: z.boolean().optional(),
 		}),
+	}),
+	z.object({
+		type: z.literal("resume.shareCopy"),
+		data: z.object({ resumeId: z.string(), name: z.string() }),
 	}),
 	z.object({ type: z.literal("resume.template.gallery"), data: z.undefined() }),
 	z.object({

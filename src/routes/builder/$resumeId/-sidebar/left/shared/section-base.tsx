@@ -9,7 +9,7 @@ import { useSectionStore } from "../../../-store/section";
 import { SectionDropdownMenu } from "./section-menu";
 
 type Props = React.ComponentProps<typeof AccordionContent> & {
-	type: LeftSidebarSection;
+	type: Exclude<LeftSidebarSection, "overall">;
 };
 
 export function SectionBase({ type, className, ...props }: Props) {

@@ -11,6 +11,7 @@ import {
 	DownloadIcon,
 	EnvelopeSimpleIcon,
 	FileCssIcon,
+	FolderIcon,
 	FootballIcon,
 	GraduationCapIcon,
 	HandHeartIcon,
@@ -34,7 +35,7 @@ import { match } from "ts-pattern";
 import type { SectionType } from "@/schema/resume/data";
 import { cn } from "../style";
 
-export type LeftSidebarSection = "picture" | "basics" | "summary" | SectionType | "custom";
+export type LeftSidebarSection = "overall" | "picture" | "basics" | "summary" | SectionType | "custom";
 
 // CustomSectionType values that are not in SectionType (used in custom sections only)
 type CustomOnlyType = "cover-letter";
@@ -55,6 +56,7 @@ export type RightSidebarSection =
 export type SidebarSection = LeftSidebarSection | RightSidebarSection;
 
 export const leftSidebarSections: LeftSidebarSection[] = [
+	"overall",
 	"picture",
 	"basics",
 	"summary",
@@ -91,6 +93,7 @@ export const getSectionTitle = (type: SidebarSection | CustomOnlyType): string =
 	return (
 		match(type)
 			// Left Sidebar Sections
+			.with("overall", () => t`Overall`)
 			.with("picture", () => t`Picture`)
 			.with("basics", () => t`Basics`)
 			.with("summary", () => t`Summary`)
@@ -134,6 +137,7 @@ export const getSectionIcon = (type: SidebarSection | CustomOnlyType, props?: Ic
 	return (
 		match(type)
 			// Left Sidebar Sections
+			.with("overall", () => <FolderIcon {...iconProps} />)
 			.with("picture", () => <ImageIcon {...iconProps} />)
 			.with("basics", () => <UserIcon {...iconProps} />)
 			.with("summary", () => <ArticleIcon {...iconProps} />)

@@ -4,6 +4,11 @@ import { CreateApiKeyDialog } from "./api-key/create";
 import { ChangePasswordDialog } from "./auth/change-password";
 import { DisableTwoFactorDialog } from "./auth/disable-two-factor";
 import { EnableTwoFactorDialog } from "./auth/enable-two-factor";
+import { CreateDomainDialog, UpdateDomainDialog } from "./domain";
+import {
+	CreateProjectDialog as CreateDashboardProjectDialog,
+	UpdateProjectDialog as UpdateDashboardProjectDialog,
+} from "./project";
 import { CreateResumeDialog, DuplicateResumeDialog, UpdateResumeDialog } from "./resume";
 import { ImportResumeDialog } from "./resume/import";
 import { CreateAwardDialog, UpdateAwardDialog } from "./resume/sections/award";
@@ -21,6 +26,7 @@ import { CreateReferenceDialog, UpdateReferenceDialog } from "./resume/sections/
 import { CreateSkillDialog, UpdateSkillDialog } from "./resume/sections/skill";
 import { CreateSummaryItemDialog, UpdateSummaryItemDialog } from "./resume/sections/summary-item";
 import { CreateVolunteerDialog, UpdateVolunteerDialog } from "./resume/sections/volunteer";
+import { ShareCopyDialog } from "./resume/share-copy";
 import { TemplateGalleryDialog } from "./resume/template/gallery";
 import { useDialogStore } from "./store";
 
@@ -32,9 +38,14 @@ export function DialogManager() {
 		.with({ type: "auth.two-factor.enable" }, () => <EnableTwoFactorDialog />)
 		.with({ type: "auth.two-factor.disable" }, () => <DisableTwoFactorDialog />)
 		.with({ type: "api-key.create" }, () => <CreateApiKeyDialog />)
+		.with({ type: "domain.create" }, () => <CreateDomainDialog />)
+		.with({ type: "domain.update" }, ({ data }) => <UpdateDomainDialog data={data} />)
 		.with({ type: "resume.create" }, () => <CreateResumeDialog />)
+		.with({ type: "project.create" }, () => <CreateDashboardProjectDialog />)
+		.with({ type: "project.update" }, ({ data }) => <UpdateDashboardProjectDialog data={data} />)
 		.with({ type: "resume.update" }, ({ data }) => <UpdateResumeDialog data={data} />)
 		.with({ type: "resume.duplicate" }, ({ data }) => <DuplicateResumeDialog data={data} />)
+		.with({ type: "resume.shareCopy" }, ({ data }) => <ShareCopyDialog data={data} />)
 		.with({ type: "resume.import" }, () => <ImportResumeDialog />)
 		.with({ type: "resume.template.gallery" }, () => <TemplateGalleryDialog />)
 		.with({ type: "resume.sections.profiles.create" }, ({ data }) => <CreateProfileDialog data={data} />)

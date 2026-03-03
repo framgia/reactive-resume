@@ -12,7 +12,19 @@ import { useStoreWithEqualityFn } from "zustand/traditional";
 import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 import type { ResumeData } from "@/schema/resume/data";
 
-type Resume = Pick<RouterOutput["resume"]["getByIdForPrinter"], "id" | "name" | "slug" | "tags" | "data" | "isLocked">;
+type Resume = Pick<
+	RouterOutput["resume"]["getById"],
+	| "id"
+	| "name"
+	| "slug"
+	| "tags"
+	| "data"
+	| "isLocked"
+	| "projectId"
+	| "skills"
+	| "positionId"
+	| "position"
+>;
 
 type ResumeStoreState = {
 	resume: Resume;
