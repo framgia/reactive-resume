@@ -22,6 +22,8 @@ export const env = createEnv({
 
 		// Authentication
 		AUTH_SECRET: z.string().min(1),
+		PACKTECH_AUTH_URL: z.url({ protocol: /https?/ }).optional(),
+		PACKTECH_AUTH_TIMEOUT_MS: z.coerce.number().int().min(1000).max(60000).default(8000),
 
 		// Social Auth (Google)
 		GOOGLE_CLIENT_ID: z.string().min(1).optional(),

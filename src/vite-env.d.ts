@@ -15,6 +15,8 @@ declare namespace NodeJS {
 
 		// Authentication
 		AUTH_SECRET: string;
+		PACKTECH_AUTH_URL?: string;
+		PACKTECH_AUTH_TIMEOUT_MS?: string;
 
 		// Printer
 		PRINTER_ENDPOINT?: string;

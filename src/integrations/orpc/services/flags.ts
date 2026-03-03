@@ -3,11 +3,13 @@ import { env } from "@/utils/env";
 export type FeatureFlags = {
 	disableSignups: boolean;
 	disableEmailAuth: boolean;
+	enablePacktechCredentialAuth: boolean;
 };
 
 export const flagsService = {
 	getFlags: (): FeatureFlags => ({
 		disableSignups: env.FLAG_DISABLE_SIGNUPS,
 		disableEmailAuth: env.FLAG_DISABLE_EMAIL_AUTH,
+		enablePacktechCredentialAuth: Boolean(env.PACKTECH_AUTH_URL),
 	}),
 };

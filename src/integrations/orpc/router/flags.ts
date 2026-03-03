@@ -18,6 +18,9 @@ export const flagsRouter = {
 			z.object({
 				disableSignups: z.boolean().describe("Whether new user signups are disabled on this instance."),
 				disableEmailAuth: z.boolean().describe("Whether email-based authentication is disabled on this instance."),
+				enablePacktechCredentialAuth: z
+					.boolean()
+					.describe("Whether Packtech authentication is enabled on this instance."),
 			}),
 		)
 		.handler((): FeatureFlags => flagsService.getFlags()),

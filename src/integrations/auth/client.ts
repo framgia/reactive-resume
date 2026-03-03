@@ -7,12 +7,14 @@ import {
 } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 import type { auth } from "./config";
+import { packtechClient } from "./plugins/packtech/client";
 
 const getAuthClient = () => {
 	return createAuthClient({
 		plugins: [
 			apiKeyClient(),
 			usernameClient(),
+			packtechClient(),
 			twoFactorClient({
 				onTwoFactorRedirect() {
 					// Redirect to 2FA verification page
