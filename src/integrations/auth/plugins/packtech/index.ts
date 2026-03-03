@@ -1,5 +1,4 @@
-import { APIError } from "@better-auth/core/error";
-import { createAuthEndpoint } from "better-auth/api";
+import { APIError, createAuthEndpoint } from "better-auth/api";
 import { setSessionCookie } from "better-auth/cookies";
 import { eq } from "drizzle-orm";
 import z from "zod";
@@ -33,7 +32,7 @@ export const packtech = () => ({
 			},
 			async (ctx) => {
 				if (!isPacktechCredentialAuthEnabled()) {
-					throw APIError.fromStatus(404, { message: "Packtech credential authentication is disabled." });
+					throw new APIError("NOT_FOUND", { message: "Packtech credential authentication is disabled." });
 				}
 
 				const identifier = ctx.body.login.trim();
@@ -41,7 +40,7 @@ export const packtech = () => ({
 
 				const verification = await verifyPacktechCredential({ identifier, password });
 				if (!verification.success) {
-					throw APIError.fromStatus(401, { message: verification.message });
+					throw new APIError("UNAUTHORIZED", { message: verification.message });
 				}
 
 				const account = await syncPacktechUser({
@@ -53,12 +52,12 @@ export const packtech = () => ({
 				const [user] = await db.select().from(schema.user).where(eq(schema.user.username, account.username)).limit(1);
 
 				if (!user) {
-					throw APIError.fromStatus(401, { message: "Invalid credentials." });
+					throw new APIError("UNAUTHORIZED", { message: "Invalid credentials." });
 				}
 
 				const session = await ctx.context.internalAdapter.createSession(user.id, false);
 				if (!session) {
-					throw APIError.fromStatus(500, { message: "Failed to create session." });
+					throw new APIError("INTERNAL_SERVER_ERROR", { message: "Failed to create session." });
 				}
 
 				await setSessionCookie(ctx, { session, user }, false);
