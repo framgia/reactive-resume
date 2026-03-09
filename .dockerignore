@@ -1,6 +1,7 @@
 dist
 docs
 .env*
+!.env
 /data
 .nitro
 .cursor
