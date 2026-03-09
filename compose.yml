@@ -71,7 +71,9 @@ services:
         condition: service_healthy
 
   reactive_resume:
-    image: amruthpillai/reactive-resume:latest
+    # image: amruthpillai/reactive-resume:latest
+    build:
+      context: .
     # image: ghcr.io/amruthpillai/reactive-resume:latest
     environment:
       # Server
