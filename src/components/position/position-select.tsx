@@ -27,9 +27,7 @@ export function PositionSelect({
 	className,
 	getLabelRef,
 }: PositionSelectProps) {
-	const { data: positions = [] } = useQuery(
-		orpc.position.list.queryOptions({ input: { limit: POSITION_LIST_LIMIT } }),
-	);
+	const { data: positions = [] } = useQuery(orpc.position.list.queryOptions({ input: { limit: POSITION_LIST_LIMIT } }));
 
 	const options = positions.map((p) => ({ value: p.id, label: p.name }));
 	const getLabel = (id: string) => options.find((o) => o.value === id)?.label ?? id;
@@ -39,9 +37,7 @@ export function PositionSelect({
 
 	return (
 		<div className={className ? `space-y-2 ${className}` : "space-y-2"}>
-			{label !== undefined && (
-				<Label className="font-medium text-muted-foreground text-xs">{label}</Label>
-			)}
+			{label !== undefined && <Label className="font-medium text-muted-foreground text-xs">{label}</Label>}
 			<Combobox
 				options={options}
 				value={value}

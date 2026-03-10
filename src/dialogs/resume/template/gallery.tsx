@@ -13,6 +13,9 @@ import type { Template } from "@/schema/templates";
 import { cn } from "@/utils/style";
 import { type TemplateMetadata, templates } from "./data";
 
+/** Set to true to enable template selection; false to show Chikorita-only message. */
+const TEMPLATE_SELECTION_ENABLED = false;
+
 export function TemplateGalleryDialog(_: DialogProps<"resume.template.gallery">) {
 	const scrollAreaRef = useRef<HTMLDivElement | null>(null);
 
@@ -26,6 +29,26 @@ export function TemplateGalleryDialog(_: DialogProps<"resume.template.gallery">)
 		});
 
 		closeDialog();
+	}
+
+	if (!TEMPLATE_SELECTION_ENABLED) {
+		return (
+			<DialogContent className="lg:max-w-5xl">
+				<DialogHeader className="gap-2">
+					<DialogTitle className="flex items-center gap-3 text-xl">
+						<SlideshowIcon size={20} />
+						<Trans>Template Gallery</Trans>
+					</DialogTitle>
+					<DialogDescription className="leading-relaxed">
+						<Trans>This resume uses the Chikorita template. Template selection is disabled.</Trans>
+					</DialogDescription>
+				</DialogHeader>
+
+				<div className="p-4 text-muted-foreground">
+					<Trans>Only the Chikorita template is available. Template selection is disabled.</Trans>
+				</div>
+			</DialogContent>
+		);
 	}
 
 	return (
@@ -49,7 +72,7 @@ export function TemplateGalleryDialog(_: DialogProps<"resume.template.gallery">)
 					{Object.entries(templates).map(([template, metadata]) => (
 						<TemplateCard
 							key={template}
-							metadata={metadata}
+							metadata={metadata as TemplateMetadata}
 							id={template as Template}
 							collisionBoundary={scrollAreaRef}
 							isActive={template === selectedTemplate}
@@ -108,7 +131,7 @@ function TemplateCard({ id, metadata, isActive, collisionBoundary, onSelect }: T
 
 					{metadata.tags.length > 0 && (
 						<div className="flex flex-wrap gap-2">
-							{metadata.tags
+							{[...metadata.tags]
 								.sort((a, b) => a.localeCompare(b))
 								.map((tag) => (
 									<Badge key={tag} variant="default">

@@ -19,16 +19,19 @@ msgstr ""
 "X-Crowdin-File-ID: 518\n"
 
 #. js-lingui-explicit-id
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Last Updated"
 msgstr "Cập nhật lần cuối"
 
 #. js-lingui-explicit-id
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Created"
 msgstr "Đã tạo"
 
 #. js-lingui-explicit-id
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Name"
 msgstr "Tên"
@@ -45,7 +48,12 @@ msgstr "{0, plural, other {# mục}}"
 #. placeholder {0}: item.roles.length
 #: src/routes/builder/$resumeId/-sidebar/left/sections/experience.tsx
 msgid "{0, plural, one {# role} other {# roles}}"
-msgstr ""
+msgstr "{0, plural, one {# vai trò} other {# vai trò}}"
+
+#. placeholder {0}: skillIds.length
+#: src/routes/dashboard/resumes/index.tsx
+msgid "{0} selected"
+msgstr "{0} đã chọn"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
@@ -89,6 +97,10 @@ msgstr "6 tháng"
 msgid "A confirmation link has been sent to your current email address. Please check your inbox to confirm the change."
 msgstr "Một liên kết xác nhận đã được gửi đến địa chỉ email hiện tại của bạn. Vui lòng kiểm tra hộp thư đến để xác nhận thay đổi."
 
+#: src/dialogs/resume/share-copy.tsx
+msgid "A copy was shared with {count} user(s)."
+msgstr "Bản sao đã được chia sẻ với {count} người dùng."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Trình tạo sơ yếu lý lịch mã nguồn mở và miễn phí giúp đơn giản hóa quá trình tạo, cập nhật và chia sẻ sơ yếu lý lịch của bạn."
@@ -130,6 +142,10 @@ msgstr "Truy cập sơ yếu lý lịch và dữ liệu của bạn một cách 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
 msgstr "Thêm một trường tuỳ chỉnh"
+
+#: src/dialogs/domain/index.tsx
+msgid "Add a domain name to use when assigning projects."
+msgstr "Thêm tên miền để sử dụng khi gán dự án."
 
 #: src/components/input/url-input.tsx
 msgid "Add a label to the URL"
@@ -192,6 +208,10 @@ msgstr "Thêm kỹ năng mới"
 msgid "Add a new volunteer experience"
 msgstr "Thêm kinh nghiệm tình nguyện mới"
 
+#: src/dialogs/project/index.tsx
+msgid "Add a project with name, description, and customer."
+msgstr "Thêm dự án với tên, mô tả và khách hàng."
+
 #: src/components/input/rich-input.tsx
 msgid "Add Column After"
 msgstr "Thêm cột sau"
@@ -203,6 +223,10 @@ msgstr "Thêm cột trước"
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Add multiple roles to show career progression at the same company."
 msgstr ""
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Add name, description and customer"
+msgstr "Thêm tên, mô tả và khách hàng"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Add Page"
@@ -241,6 +265,22 @@ msgstr ""
 msgid "Albanian"
 msgstr "Tiếng Albania"
 
+#: src/components/domain/domain-combobox.tsx
+msgid "All domains"
+msgstr "Tất cả miền"
+
+#: src/components/position/position-combobox.tsx
+msgid "All positions"
+msgstr "Tất cả vị trí"
+
+#: src/components/project/project-select.tsx
+msgid "All projects"
+msgstr "Tất cả dự án"
+
+#: src/components/skill/skill-combobox.tsx
+msgid "All skills"
+msgstr "Tất cả kỹ năng"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
 msgstr "Cho phép truy cập công khai"
@@ -265,6 +305,15 @@ msgstr "Đã xảy ra lỗi không xác định khi nhập sơ yếu lý lịch 
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "Cùng nhiều nội dung khác nữa..."
+
+#: src/components/position/position-select.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Any level"
+msgstr "Bất kỳ cấp độ nào"
+
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Any skill highlight"
+msgstr "Bất kỳ kỹ năng nổi bật nào"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -305,6 +354,11 @@ msgstr "Ứng dụng"
 msgid "Application Statistics"
 msgstr "Thống kê ứng dụng"
 
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Apply"
+msgstr "Áp dụng"
+
 #: src/utils/locale.ts
 msgid "Arabic"
 msgstr "Tiếng Ả Rập"
@@ -313,9 +367,17 @@ msgstr "Tiếng Ả Rập"
 msgid "Are you sure you want to close this dialog?"
 msgstr ""
 
+#: src/routes/dashboard/domains/index.tsx
+msgid "Are you sure you want to delete \"{name}\"?"
+msgstr "Bạn có chắc muốn xóa \"{name}\"?"
+
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "Are you sure you want to delete this API key?"
 msgstr "Bạn có chắc muốn xoá API key này không?"
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Are you sure you want to delete this project?"
+msgstr "Bạn có chắc muốn xóa dự án này?"
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
@@ -483,8 +545,11 @@ msgstr "Tôi có thể xuất sơ yếu lý lịch của mình ra PDF không?"
 #: src/dialogs/resume/sections/summary-item.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
+#: src/dialogs/resume/share-copy.tsx
 #: src/hooks/use-prompt.tsx
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+#: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
 #: src/routes/dashboard/settings/profile.tsx
@@ -544,13 +609,34 @@ msgstr "Tiếng Trung (Giản thể)"
 msgid "Chinese (Traditional)"
 msgstr "Tiếng Trung (Phồn thể)"
 
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Choose users and send a copy of your resume to their dashboard."
+msgstr "Chọn người dùng và gửi bản sao sơ yếu lý lịch đến bảng điều khiển của họ."
+
+#: src/dialogs/resume/share-copy.tsx
+#: src/dialogs/resume/share-copy.tsx
+msgid "Choose users..."
+msgstr "Chọn người dùng..."
+
 #: src/components/level/combobox.tsx
 msgid "Circle"
 msgstr "Vòng tròn"
 
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Clear"
+msgstr "Xóa"
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Clear all"
+msgstr "Xóa tất cả"
+
 #: src/components/ai/chat.tsx
 msgid "Clear chat history"
-msgstr ""
+msgstr "Xóa lịch sử trò chuyện"
 
 #: src/components/ui/multiple-combobox.tsx
 msgid "Clear selection"
@@ -643,6 +729,8 @@ msgid "Cover Letter"
 msgstr ""
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -687,6 +775,10 @@ msgstr ""
 msgid "Create a new custom section"
 msgstr "Tạo mục tùy chỉnh mới"
 
+#: src/routes/dashboard/domains/index.tsx
+msgid "Create a new domain"
+msgstr "Tạo miền mới"
+
 #: src/dialogs/resume/sections/education.tsx
 msgid "Create a new education"
 msgstr "Tạo mục học vấn mới"
@@ -707,7 +799,9 @@ msgstr "Tạo ngôn ngữ mới"
 msgid "Create a new profile"
 msgstr "Tạo hồ sơ mới"
 
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/sections/project.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Create a new project"
 msgstr "Tạo dự án mới"
 
@@ -746,6 +840,18 @@ msgstr "Tạo sơ yếu lý lịch mẫu"
 msgid "Create as many resumes as you want, without limits."
 msgstr "Tạo bao nhiêu sơ yếu lý lịch tùy thích, không giới hạn."
 
+#: src/dialogs/domain/index.tsx
+msgid "Create domain"
+msgstr "Tạo miền"
+
+#: src/dialogs/domain/index.tsx
+msgid "Creating domain..."
+msgstr "Đang tạo miền..."
+
+#: src/dialogs/project/index.tsx
+msgid "Creating project..."
+msgstr ""
+
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
 msgstr "Đang tạo khóa API của bạn..."
@@ -767,6 +873,16 @@ msgstr "CSS Tùy chỉnh"
 #: src/utils/resume/section.tsx
 msgid "Custom Sections"
 msgstr "Các mục tùy chỉnh"
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/index.tsx
+msgid "Customer"
+msgstr "Khách hàng"
+
+#: src/dialogs/project/index.tsx
+msgid "Customer name"
+msgstr "Tên khách hàng"
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -809,6 +925,9 @@ msgstr "Bằng cấp"
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
@@ -835,6 +954,22 @@ msgstr "Xóa hàng"
 msgid "Delete Table"
 msgstr "Xóa bảng"
 
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Deleted"
+msgstr "Đã xóa"
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Deleted on {deletedAt}"
+msgstr "Đã xóa vào {deletedAt}"
+
+#: src/routes/dashboard/domains/index.tsx
+msgid "Deleting domain..."
+msgstr "Đang xóa miền..."
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Deleting project..."
+msgstr "Đang xóa dự án..."
+
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Deleting your account..."
 msgstr "Đang xóa tài khoản của bạn..."
@@ -849,6 +984,7 @@ msgstr "Đang xoá khoá API của bạn..."
 msgid "Deleting your resume..."
 msgstr "Đang xóa bản lý lịch của bạn..."
 
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
 #: src/dialogs/resume/sections/education.tsx
@@ -894,6 +1030,27 @@ msgstr "Discord"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Documentation"
 msgstr "Tài liệu"
+
+#: src/dialogs/domain/index.tsx
+msgid "Domain created."
+msgstr "Đã tạo miền."
+
+#: src/routes/dashboard/domains/index.tsx
+msgid "Domain deleted."
+msgstr "Đã xóa miền."
+
+#: src/dialogs/domain/index.tsx
+msgid "Domain updated."
+msgstr "Đã cập nhật miền."
+
+#: src/components/domain/domain-combobox.tsx
+#: src/dialogs/project/index.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/projects/index.tsx
+msgid "Domains"
+msgstr "Miền"
 
 #: src/routes/auth/login.tsx
 msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
@@ -965,6 +1122,23 @@ msgstr "Tiếng Hà Lan"
 msgid "e.g. Change my name to..."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+msgid "e.g. Healthcare, Finance"
+msgstr "vd. Y tế, Tài chính"
+
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+#: src/dialogs/project/index.tsx
+msgid "Edit project details."
+msgstr "Chỉnh sửa chi tiết dự án."
+
+#: src/dialogs/domain/index.tsx
+msgid "Edit the domain name."
+msgstr "Chỉnh sửa tên miền."
+
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
 msgid "Education"
@@ -974,6 +1148,7 @@ msgstr "Giáo dục"
 msgid "Email"
 msgstr "Email"
 
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/forgot-password.tsx
 #: src/routes/auth/login.tsx
 #: src/routes/auth/register.tsx
@@ -1033,6 +1208,10 @@ msgstr "Nhập mã xác minh từ ứng dụng xác thực của bạn"
 #: src/dialogs/auth/change-password.tsx
 msgid "Enter your current password and a new password to update your account."
 msgstr "Nhập mật khẩu hiện tại và mật khẩu mới để cập nhật tài khoản của bạn."
+
+#: src/routes/auth/-components/social-auth.tsx
+msgid "Enter your email/username and password to continue."
+msgstr "Nhập email/tên đăng nhập và mật khẩu để tiếp tục."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Enter your password to confirm setting up two-factor authentication. When enabled, you'll need to enter a code from your authenticator app every time you log in."
@@ -1096,9 +1275,18 @@ msgstr ""
 msgid "Features"
 msgstr "Tính năng"
 
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
-msgid "Filter by"
-msgstr "Lọc theo"
+msgid "Filter"
+msgstr "Lọc"
+
+#: src/routes/dashboard/projects/index.tsx
+msgid "Filter by customer"
+msgstr "Lọc theo khách hàng"
+
+#: src/routes/dashboard/projects/index.tsx
+msgid "Filter by name"
+msgstr "Lọc theo tên"
 
 #: src/utils/locale.ts
 msgid "Finnish"
@@ -1429,6 +1617,7 @@ msgstr "Ngôn ngữ"
 msgid "Last downloaded on {0}"
 msgstr "Tải xuống lần cuối vào {0}"
 
+#: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Last updated on {updatedAt}"
@@ -1474,6 +1663,8 @@ msgstr "Chữ cái"
 #: src/dialogs/resume/sections/language.tsx
 #: src/dialogs/resume/sections/skill.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
+#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 msgid "Level"
 msgstr "Cấp độ"
 
@@ -1516,6 +1707,9 @@ msgid "Loading resumes..."
 msgstr "Đang tải sơ yếu lý lịch..."
 
 #: src/components/layout/loading-screen.tsx
+#: src/dialogs/project/index.tsx
+#: src/dialogs/resume/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 msgid "Loading..."
 msgstr "Đang tải..."
 
@@ -1585,6 +1779,9 @@ msgid "Multilingual"
 msgstr "Đa ngôn ngữ"
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/interest.tsx
 #: src/dialogs/resume/sections/project.tsx
@@ -1592,6 +1789,7 @@ msgstr "Đa ngôn ngữ"
 #: src/dialogs/resume/sections/skill.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "Tên"
@@ -1629,10 +1827,48 @@ msgstr "Phần mới"
 msgid "No Advertising, No Tracking"
 msgstr "Không quảng cáo, không theo dõi"
 
+#: src/components/domain/domain-combobox.tsx
+#: src/components/domain/domain-select.tsx
+msgid "No domains found."
+msgstr "Không tìm thấy miền."
+
+#: src/components/input/chip-input-autocomplete.tsx
+msgid "No matches. Type to search or press Enter to add."
+msgstr "Không có kết quả. Gõ để tìm kiếm hoặc nhấn Enter để thêm."
+
+#: src/dialogs/resume/index.tsx
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "No options"
+msgstr "Không có tùy chọn"
+
+#: src/components/position/position-combobox.tsx
+#: src/components/position/position-select.tsx
+msgid "No positions found."
+msgstr "Không tìm thấy vị trí."
+
+#: src/components/project/project-select.tsx
+#: src/components/project/project-select.tsx
+msgid "No project"
+msgstr "Không có dự án"
+
+#: src/components/project/project-select.tsx
+msgid "No projects found."
+msgstr "Không tìm thấy dự án."
+
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "Không tìm thấy kết quả."
+
+#: src/components/skill/skill-combobox.tsx
+msgid "No skills found."
+msgstr "Không tìm thấy kỹ năng."
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "No users found. Type to search."
+msgstr "Không tìm thấy người dùng. Gõ để tìm kiếm."
 
 #: src/utils/locale.ts
 msgid "Norwegian"
@@ -1653,6 +1889,10 @@ msgstr "Đăng nhập một chạm"
 #: src/routes/_home/-sections/donate.tsx
 msgid "Ongoing Maintenance"
 msgstr "Bảo trì liên tục"
+
+#: src/dialogs/resume/template/gallery.tsx
+msgid "Only the Chikorita template is available. Template selection is disabled."
+msgstr "Chỉ có mẫu Chikorita. Lựa chọn mẫu đã bị vô hiệu hóa."
 
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
@@ -1691,6 +1931,10 @@ msgstr "Danh sách có thứ tự"
 msgid "Organization"
 msgstr "Tổ chức"
 
+#: src/utils/resume/section.tsx
+msgid "Overall"
+msgstr "Tổng quan"
+
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Overall Period"
 msgstr ""
@@ -1723,6 +1967,7 @@ msgstr "Passkey & 2FA"
 
 #: src/dialogs/auth/disable-two-factor.tsx
 #: src/dialogs/auth/enable-two-factor.tsx
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/login.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/auth/resume-password.tsx
@@ -1804,10 +2049,18 @@ msgstr "Bồ Đào Nha (Brazil)"
 msgid "Portuguese (Portugal)"
 msgstr "Bồ Đào Nha (Bồ Đào Nha)"
 
+#: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "Position"
+msgstr "Vị trí"
+
+#: src/components/position/position-combobox.tsx
+#: src/dialogs/project/index.tsx
+#: src/routes/dashboard/projects/index.tsx
+msgid "Positions"
 msgstr "Vị trí"
 
 #: src/components/command-palette/pages/navigation.tsx
@@ -1818,6 +2071,7 @@ msgstr "Vị trí"
 msgid "Preferences"
 msgstr "Tùy chọn"
 
+#: src/components/input/chip-input-autocomplete.tsx
 #: src/components/input/chip-input.tsx
 msgid "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the current keyword."
 msgstr "Nhấn <0>{RETURN_KEY}</0> hoặc <1>{COMMA_KEY}</1> để thêm hoặc lưu từ khóa hiện tại."
@@ -1846,7 +2100,37 @@ msgstr "Hồ sơ"
 msgid "Progress Bar"
 msgstr "Thanh tiến trình"
 
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Project"
+msgstr "Dự án"
+
+#: src/dialogs/project/index.tsx
+msgid "Project created successfully."
+msgstr "Đã tạo dự án thành công."
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Project deleted successfully."
+msgstr "Đã xóa dự án thành công."
+
+#: src/routes/dashboard/projects/index.tsx
+msgid "Project name"
+msgstr "Tên dự án"
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Project restored."
+msgstr "Đã khôi phục dự án."
+
+#: src/dialogs/project/index.tsx
+msgid "Project updated successfully."
+msgstr "Đã cập nhật dự án thành công."
+
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/projects/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Projects"
 msgstr "Dự án"
@@ -1986,6 +2270,14 @@ msgstr "Đang đặt lại mật khẩu..."
 msgid "Resources"
 msgstr "Tài nguyên"
 
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Restore project"
+msgstr "Khôi phục dự án"
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Restoring project..."
+msgstr "Đang khôi phục dự án..."
+
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/resumes.tsx
@@ -2017,6 +2309,11 @@ msgstr "Xoay"
 msgid "Russian"
 msgstr "Nga"
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/project/index.tsx
+msgid "Save changes"
+msgstr "Lưu thay đổi"
+
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -2045,6 +2342,18 @@ msgstr "Quét mã QR bên dưới bằng ứng dụng xác thực bạn ưa thí
 msgid "School"
 msgstr "Trường"
 
+#: src/dialogs/resume/share-copy.tsx
+msgid "Search and select users to send a copy. They will receive the resume in their dashboard."
+msgstr "Tìm và chọn người dùng để gửi bản sao. Họ sẽ nhận sơ yếu lý lịch trong bảng điều khiển."
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Search by name or username..."
+msgstr "Tìm theo tên hoặc tên đăng nhập..."
+
+#: src/components/domain/domain-combobox.tsx
+msgid "Search domains..."
+msgstr "Tìm miền..."
+
 #: src/components/input/icon-picker.tsx
 #: src/components/input/icon-picker.tsx
 msgid "Search for an icon"
@@ -2054,10 +2363,23 @@ msgstr "Tìm kiếm biểu tượng"
 msgid "Search for..."
 msgstr "Tìm kiếm..."
 
+#: src/components/position/position-combobox.tsx
+#: src/components/position/position-select.tsx
+msgid "Search positions..."
+msgstr "Tìm vị trí..."
+
+#: src/components/skill/skill-combobox.tsx
+msgid "Search skills..."
+msgstr "Tìm kỹ năng..."
+
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
 msgstr "Tìm kiếm..."
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Searching..."
+msgstr "Đang tìm..."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Secret copied to clipboard."
@@ -2066,6 +2388,33 @@ msgstr "Mã bí mật đã được sao chép vào clipboard."
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Section Type"
 msgstr "Loại phần"
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Select at least one user."
+msgstr "Chọn ít nhất một người dùng."
+
+#: src/components/domain/domain-select.tsx
+#: src/components/domain/domain-select.tsx
+msgid "Select domains"
+msgstr "Chọn miền"
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Select position"
+msgstr "Chọn vị trí"
+
+#: src/components/project/project-select.tsx
+msgid "Select project"
+msgstr "Chọn dự án"
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Select skills"
+msgstr "Chọn kỹ năng"
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Select users"
+msgstr "Chọn người dùng"
 
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
@@ -2113,6 +2462,16 @@ msgstr "Thiết lập ứng dụng xác thực"
 msgid "Shadow Width"
 msgstr "Độ rộng bóng"
 
+#: src/dialogs/resume/share-copy.tsx
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Share copy to users"
+msgstr "Chia sẻ bản sao cho người dùng"
+
+#. placeholder {0}: selectedIds.length
+#: src/dialogs/resume/share-copy.tsx
+msgid "Share to {0} user(s)"
+msgstr "Chia sẻ cho {0} người dùng"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Share your resume with a public URL, and let others view it."
 msgstr "Chia sẻ sơ yếu lý lịch của bạn với một URL công khai và để người khác xem nó."
@@ -2124,6 +2483,10 @@ msgstr "Liên kết chia sẻ"
 #: src/utils/resume/section.tsx
 msgid "Sharing"
 msgstr "Chia sẻ"
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Sharing copy to selected users..."
+msgstr "Đang chia sẻ bản sao cho người dùng đã chọn..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
@@ -2151,6 +2514,7 @@ msgstr "<<<<<<< HEAD"
 msgid "Sidebar Width"
 msgstr "Độ rộng thanh bên"
 
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/login.tsx
 msgid "Sign in"
 msgstr "Đăng nhập"
@@ -2163,9 +2527,17 @@ msgstr "Đăng nhập vào tài khoản của bạn"
 msgid "Sign in with GitHub, Google or a custom OAuth provider."
 msgstr "Đăng nhập bằng GitHub, Google hoặc nhà cung cấp OAuth tùy chỉnh."
 
+#: src/routes/auth/-components/social-auth.tsx
+msgid "Sign in with Packtech"
+msgstr "Đăng nhập bằng Packtech"
+
 #: src/routes/auth/register.tsx
 msgid "Sign up"
 msgstr "Đăng ký"
+
+#: src/routes/auth/-components/social-auth.tsx
+msgid "Signing in with Packtech..."
+msgstr "Đang đăng nhập bằng Packtech..."
 
 #: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/-components/social-auth.tsx
@@ -2201,10 +2573,23 @@ msgstr "Một cột; chỉnh chu và nghiêm túc cho vị trí cấp cao hoặc
 msgid "Size"
 msgstr "Kích thước"
 
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Skill highlight"
+msgstr "Kỹ năng nổi bật"
+
+#: src/components/skill/skill-combobox.tsx
+#: src/dialogs/project/index.tsx
+#: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Skills"
 msgstr "Kỹ năng"
+
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Skills Highlights"
+msgstr "Kỹ năng nổi bật"
 
 #: src/routes/_home/route.tsx
 msgid "Skip to main content"
@@ -2218,12 +2603,17 @@ msgstr "Slovak"
 msgid "Slug"
 msgstr "Slug"
 
+#: src/dialogs/resume/share-copy.tsx
+msgid "Something went wrong."
+msgstr "Đã xảy ra lỗi."
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Something went wrong. Please try again."
 msgstr "Đã xảy ra lỗi. Vui lòng thử lại."
 
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Sort by"
 msgstr "Sắp xếp theo"
@@ -2342,6 +2732,7 @@ msgid "Template"
 msgstr "Mẫu"
 
 #: src/dialogs/resume/template/gallery.tsx
+#: src/dialogs/resume/template/gallery.tsx
 msgid "Template Gallery"
 msgstr "Thư viện mẫu"
 
@@ -2413,6 +2804,7 @@ msgid "Thinking..."
 msgstr ""
 
 #: src/routes/builder/$resumeId/-components/header.tsx
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "This action cannot be undone."
@@ -2444,6 +2836,10 @@ msgstr "Có thể sẽ mất một chút thời gian tuỳ vào tải của máy
 msgid "This resume is locked and cannot be updated."
 msgstr "Hồ sơ này đã bị khóa và không thể cập nhật."
 
+#: src/dialogs/resume/template/gallery.tsx
+msgid "This resume uses the Chikorita template. Template selection is disabled."
+msgstr "Sơ yếu lý lịch này dùng mẫu Chikorita. Lựa chọn mẫu đã bị vô hiệu hóa."
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/notes.tsx
 msgid "This section is reserved for your personal notes specific to this resume. The content here remains private and is not shared with anyone else."
 msgstr "Phần này được dành riêng cho những ghi chú của bạn về hồ sơ này. Nội dung ở đây vẫn ở chế độ riêng tư và không được chia sẻ với bất kỳ ai khác."
@@ -2455,6 +2851,10 @@ msgstr "Bước này là không bắt buộc, nhưng được khuyến nghị."
 #: src/dialogs/api-key/create.tsx
 msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
 msgstr "Điều này sẽ tạo khóa API mới để truy cập API Reactive Resume cho phép máy móc tương tác với dữ liệu hồ sơ của bạn."
+
+#: src/routes/dashboard/domains/index.tsx
+msgid "This will remove the domain from all projects."
+msgstr "Điều này sẽ xóa miền khỏi tất cả dự án."
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with Reactive Resume"
@@ -2662,11 +3062,21 @@ msgstr ""
 msgid "Update an existing volunteer experience"
 msgstr "Cập nhật kinh nghiệm tình nguyện hiện có"
 
+#: src/dialogs/domain/index.tsx
+msgid "Update domain"
+msgstr "Cập nhật miền"
+
 #: src/dialogs/auth/change-password.tsx
 #: src/routes/dashboard/settings/authentication/-components/password.tsx
 msgid "Update Password"
 msgstr "Cập nhật mật khẩu"
 
+#: src/dialogs/project/index.tsx
+#: src/dialogs/project/index.tsx
+msgid "Update project"
+msgstr "Cập nhật dự án"
+
+#: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
 msgid "Update Resume"
 msgstr "Cập nhật resume"
@@ -2676,8 +3086,17 @@ msgid "Update your password"
 msgstr "Cập nhật mật khẩu của bạn"
 
 #: src/components/ai/chat.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Updated"
 msgstr ""
+
+#: src/dialogs/domain/index.tsx
+msgid "Updating domain..."
+msgstr "Đang cập nhật miền..."
+
+#: src/dialogs/project/index.tsx
+msgid "Updating project..."
+msgstr "Đang cập nhật dự án..."
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Updating your password..."
@@ -2746,6 +3165,10 @@ msgstr "Cần xác minh email của bạn khi đặt lại mật khẩu."
 #: src/utils/locale.ts
 msgid "Vietnamese"
 msgstr "Tiếng Việt"
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "View Resumes"
+msgstr "Xem sơ yếu lý lịch"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
@@ -2902,4 +3325,3 @@ msgstr "Thu nhỏ"
 #: src/utils/locale.ts
 msgid "Zulu"
 msgstr "Zulu"
-

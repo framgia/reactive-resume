@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/integrations/auth/client";
+import { emailSchema } from "@/utils/email";
 
 export const Route = createFileRoute("/auth/forgot-password")({
 	component: RouteComponent,
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/auth/forgot-password")({
 });
 
 const formSchema = z.object({
-	email: z.email(),
+	email: emailSchema,
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -84,7 +85,7 @@ function RouteComponent() {
 									<Trans>Email Address</Trans>
 								</FormLabel>
 								<FormControl>
-									<Input type="email" autoComplete="email" placeholder="john.doe@example.com" {...field} />
+									<Input type="email" autoComplete="email" placeholder="john.doe@sun-asterisk.com" {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

@@ -121,44 +121,47 @@ export const resumeService = {
 		// When filtering by projectId: INNER JOIN project so only non-deleted projects are included.
 		// Otherwise: LEFT JOIN + project.deleted_at IS NULL so resumes without project or with valid project are included.
 		const hasProjectFilter = input.projectId !== undefined;
-		const baseQuery = hasProjectFilter && input.projectId !== null
-			? db
-					.select({
-						id: schema.resume.id,
-						name: schema.resume.name,
-						slug: schema.resume.slug,
-						tags: schema.resume.tags,
-						isPublic: schema.resume.isPublic,
-						isLocked: schema.resume.isLocked,
-						projectId: schema.resume.projectId,
-						positionId: schema.resume.positionId,
-						createdAt: schema.resume.createdAt,
-						updatedAt: schema.resume.updatedAt,
-					})
-					.from(schema.resume)
-					.innerJoin(schema.project, and(eq(schema.resume.projectId, schema.project.id), isNull(schema.project.deletedAt)))
-			: db
-					.select({
-						id: schema.resume.id,
-						name: schema.resume.name,
-						slug: schema.resume.slug,
-						tags: schema.resume.tags,
-						isPublic: schema.resume.isPublic,
-						isLocked: schema.resume.isLocked,
-						projectId: schema.resume.projectId,
-						positionId: schema.resume.positionId,
-						createdAt: schema.resume.createdAt,
-						updatedAt: schema.resume.updatedAt,
-					})
-					.from(schema.resume)
-					.leftJoin(schema.project, eq(schema.resume.projectId, schema.project.id));
+		const baseQuery =
+			hasProjectFilter && input.projectId !== null
+				? db
+						.select({
+							id: schema.resume.id,
+							name: schema.resume.name,
+							slug: schema.resume.slug,
+							tags: schema.resume.tags,
+							isPublic: schema.resume.isPublic,
+							isLocked: schema.resume.isLocked,
+							projectId: schema.resume.projectId,
+							positionId: schema.resume.positionId,
+							createdAt: schema.resume.createdAt,
+							updatedAt: schema.resume.updatedAt,
+						})
+						.from(schema.resume)
+						.innerJoin(
+							schema.project,
+							and(eq(schema.resume.projectId, schema.project.id), isNull(schema.project.deletedAt)),
+						)
+				: db
+						.select({
+							id: schema.resume.id,
+							name: schema.resume.name,
+							slug: schema.resume.slug,
+							tags: schema.resume.tags,
+							isPublic: schema.resume.isPublic,
+							isLocked: schema.resume.isLocked,
+							projectId: schema.resume.projectId,
+							positionId: schema.resume.positionId,
+							createdAt: schema.resume.createdAt,
+							updatedAt: schema.resume.updatedAt,
+						})
+						.from(schema.resume)
+						.leftJoin(schema.project, eq(schema.resume.projectId, schema.project.id));
 
 		return await baseQuery
 			.where(
 				and(
 					eq(schema.resume.userId, input.userId),
-					projectIdFilter ??
-						or(isNull(schema.resume.projectId), isNull(schema.project.deletedAt)),
+					projectIdFilter ?? or(isNull(schema.resume.projectId), isNull(schema.project.deletedAt)),
 					skillIds?.length
 						? exists(
 								db

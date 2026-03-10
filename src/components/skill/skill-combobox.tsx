@@ -4,9 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import type { MutableRefObject } from "react";
 import { useEffect } from "react";
 import { useDebounceValue } from "usehooks-ts";
-import { useIdLabelOptions } from "@/hooks/use-id-label-options";
 import { IdLabelMultipleCombobox } from "@/components/ui/id-label-multiple-combobox";
 import { Label } from "@/components/ui/label";
+import { useIdLabelOptions } from "@/hooks/use-id-label-options";
 import { orpc } from "@/integrations/orpc/client";
 
 const SKILL_LIST_LIMIT = 20;

@@ -15,10 +15,7 @@ const resumeSchema = createSelectSchema(schema.resume, {
 	data: resumeDataSchema.loose(),
 	userId: z.string().describe("The ID of the user who owns the resume."),
 	projectId: z.string().nullable().describe("The ID of the project this resume belongs to, if any."),
-	positionId: z
-		.string()
-		.nullable()
-		.describe("The selected position ID from the project's positions, if any."),
+	positionId: z.string().nullable().describe("The selected position ID from the project's positions, if any."),
 	createdAt: z.date().describe("The date and time the resume was created."),
 	updatedAt: z.date().describe("The date and time the resume was last updated."),
 });

@@ -30,10 +30,7 @@ export function useIdLabelOptions(
 		return [...fromApi, ...missing.map((id) => ({ value: id, label: cache.get(id) ?? id }))];
 	}, [items, appliedIds, inputIds]);
 
-	const getLabel = useMemo(
-		() => (id: string) => labelCacheRef.current.get(id) ?? id,
-		[],
-	);
+	const getLabel = useMemo(() => (id: string) => labelCacheRef.current.get(id) ?? id, []);
 
 	return { options, getLabel };
 }

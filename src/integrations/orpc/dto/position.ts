@@ -9,6 +9,8 @@ export const positionDto = {
 			})
 			.optional()
 			.default({ limit: 20 }),
-		output: z.array(z.object({ id: z.string(), name: z.string(), slug: z.string() })).describe("Positions matching the filter."),
+		output: z
+			.array(z.object({ id: z.string(), name: z.string(), slug: z.string() }))
+			.describe("Positions matching the filter."),
 	},
 };

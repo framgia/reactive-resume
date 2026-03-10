@@ -144,7 +144,7 @@ function ColorSectionForm() {
 }
 
 const quickColorOptions = [
-	"rgba(231, 0, 11, 1)", // red-600
+	"rgba(220, 38, 38, 1)", // sun-red
 	"rgba(245, 73, 0, 1)", // orange-600
 	"rgba(225, 113, 0, 1)", // amber-600
 	"rgba(208, 135, 0, 1)", // yellow-600

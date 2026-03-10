@@ -4,9 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import type { MutableRefObject } from "react";
 import { useEffect, useMemo } from "react";
 import { useDebounceValue } from "usehooks-ts";
-import { useIdLabelOptions } from "@/hooks/use-id-label-options";
 import { IdLabelMultipleCombobox } from "@/components/ui/id-label-multiple-combobox";
 import { Label } from "@/components/ui/label";
+import { useIdLabelOptions } from "@/hooks/use-id-label-options";
 import { orpc } from "@/integrations/orpc/client";
 
 type DomainComboboxProps = {
@@ -21,10 +21,7 @@ export function DomainCombobox({ value, onChange, appliedIds = [], getLabelRef }
 	const { data: domains = [] } = useQuery(
 		orpc.domain.list.queryOptions({ input: { query: debouncedSearch.trim() || undefined } }),
 	);
-	const domainItems = useMemo(
-		() => domains.map((d) => ({ id: d.id, name: d.name })),
-		[domains],
-	);
+	const domainItems = useMemo(() => domains.map((d) => ({ id: d.id, name: d.name })), [domains]);
 	const { options, getLabel } = useIdLabelOptions(domainItems, appliedIds, value);
 
 	useEffect(() => {

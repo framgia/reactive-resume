@@ -1,5 +1,6 @@
 import z from "zod";
-import { templateSchema } from "../templates";
+import { optionalEmailSchema } from "@/utils/email";
+import { templateDefaultColors, templateSchema } from "../templates";
 
 export const iconSchema = z
 	.string()
@@ -78,7 +79,7 @@ export const customFieldSchema = z.object({
 export const basicsSchema = z.object({
 	name: z.string().describe("The full name of the author of the resume."),
 	headline: z.string().describe("The headline of the author of the resume."),
-	email: z.string().describe("The email address of the author of the resume."),
+	email: optionalEmailSchema.describe("The email address of the author of the resume (sun-asterisk.com only)."),
 	phone: z.string().describe("The phone number of the author of the resume."),
 	location: z.string().describe("The location of the author of the resume."),
 	website: urlSchema.describe("The website of the author of the resume."),
@@ -489,7 +490,7 @@ export const typographySchema = z.object({
 
 export const metadataSchema = z.object({
 	template: templateSchema
-		.catch("onyx")
+		.catch("chikorita")
 		.describe("The template to use for the resume. Determines the overall design and appearance of the resume."),
 	layout: layoutSchema.describe(
 		"The layout of the resume. Determines the structure and arrangement of the sections on the resume.",
@@ -634,7 +635,7 @@ export const defaultResumeData: ResumeData = {
 	},
 	customSections: [],
 	metadata: {
-		template: "onyx",
+		template: "chikorita",
 		layout: {
 			sidebarWidth: 35,
 			pages: [
@@ -648,7 +649,7 @@ export const defaultResumeData: ResumeData = {
 		css: { enabled: false, value: "" },
 		page: { gapX: 4, gapY: 6, marginX: 14, marginY: 12, format: "a4", locale: "en-US", hideIcons: false },
 		design: {
-			colors: {
+			colors: templateDefaultColors.chikorita ?? {
 				primary: "rgba(220, 38, 38, 1)",
 				text: "rgba(0, 0, 0, 1)",
 				background: "rgba(255, 255, 255, 1)",

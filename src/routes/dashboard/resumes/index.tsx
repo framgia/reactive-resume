@@ -7,7 +7,7 @@ import { createFileRoute, stripSearchParams, useNavigate, useRouter } from "@tan
 import { createServerFn } from "@tanstack/react-start";
 import { getCookie, setCookie } from "@tanstack/react-start/server";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { useRef, useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import z from "zod";
 import { PositionSelect } from "@/components/position/position-select";
 import { PROJECT_ALL, ProjectSelect } from "@/components/project/project-select";
@@ -74,7 +74,7 @@ function RouteComponent() {
 	);
 
 	const isProjectIdValid = projectId && projectId !== PROJECT_ALL;
- 	const { data: project, isPending: isProjectLoading } = useQuery({
+	const { data: project, isPending: isProjectLoading } = useQuery({
 		...orpc.project.getById.queryOptions({ input: { id: projectId ?? "" } }),
 		enabled: Boolean(isProjectIdValid && projectId),
 	});
@@ -97,9 +97,7 @@ function RouteComponent() {
 	};
 
 	const hasActiveFilters =
-		(projectId !== undefined && projectId !== PROJECT_ALL) ||
-		skillIds.length > 0 ||
-		positionId !== undefined;
+		(projectId !== undefined && projectId !== PROJECT_ALL) || skillIds.length > 0 || positionId !== undefined;
 
 	const filterBadges = useMemo(() => {
 		const items: { label: string; value: string }[] = [];
@@ -116,19 +114,11 @@ function RouteComponent() {
 		if (positionId !== undefined) {
 			items.push({
 				label: t`Level`,
-				value: appliedPositionName || t`1 selected`,
+				value: appliedPositionName,
 			});
 		}
 		return items;
-	}, [
-		projectId,
-		isProjectLoading,
-		project?.name,
-		skillIds.length,
-		appliedSkillNames,
-		positionId,
-		appliedPositionName,
-	]);
+	}, [projectId, isProjectLoading, project?.name, skillIds.length, appliedSkillNames, positionId, appliedPositionName]);
 
 	const handleApplyFilter = () => {
 		const resolvedProjectId = projectInput === PROJECT_ALL ? undefined : projectInput;
@@ -138,7 +128,7 @@ function RouteComponent() {
 			positionId: positionInput ?? undefined,
 		});
 		setAppliedSkillNames(skillInput.map((id) => getSkillLabelRef.current?.(id) ?? id));
-		setAppliedPositionName(positionInput ? getPositionLabelRef.current?.(positionInput) ?? positionInput : "");
+		setAppliedPositionName(positionInput ? (getPositionLabelRef.current?.(positionInput) ?? positionInput) : "");
 		setFilterOpen(false);
 	};
 
@@ -159,9 +149,7 @@ function RouteComponent() {
 	const handleFilterOpenChange = (open: boolean) => {
 		setFilterOpen(open);
 		if (open) {
-			setProjectInput(
-				projectId === undefined || projectId === PROJECT_ALL ? PROJECT_ALL : projectId,
-			);
+			setProjectInput(projectId === undefined || projectId === PROJECT_ALL ? PROJECT_ALL : projectId);
 			setSkillInput(skillIds);
 			setPositionInput(positionId ?? null);
 		} else {

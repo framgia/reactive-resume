@@ -138,9 +138,7 @@ export function ChipInputAutocomplete({
 	const filteredSuggestions = React.useMemo(() => {
 		if (!suggestions.length) return [];
 		const lower = input.trim().toLowerCase();
-		const filtered = suggestions.filter(
-			(s) => !chips.includes(s) && (lower === "" || s.toLowerCase().includes(lower)),
-		);
+		const filtered = suggestions.filter((s) => !chips.includes(s) && (lower === "" || s.toLowerCase().includes(lower)));
 		return filtered.slice(0, 10);
 	}, [suggestions, input, chips]);
 

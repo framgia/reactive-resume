@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/integrations/auth/client";
+import { emailSchema } from "@/utils/email";
 import { SocialAuth } from "./-components/social-auth";
 
 export const Route = createFileRoute("/auth/register")({
@@ -35,7 +36,7 @@ const formSchema = z.object({
 		.regex(/^[a-z0-9._-]+$/, {
 			message: "Username can only contain lowercase letters, numbers, dots, hyphens and underscores.",
 		}),
-	email: z.email().toLowerCase(),
+	email: emailSchema,
 	password: z.string().min(6).max(64),
 });
 
@@ -152,7 +153,7 @@ function RouteComponent() {
 										<Input
 											type="email"
 											autoComplete="section-register email"
-											placeholder="john.doe@example.com"
+											placeholder="john.doe@sun-asterisk.com"
 											className="lowercase"
 											{...field}
 										/>
