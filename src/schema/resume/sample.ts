@@ -1,3 +1,4 @@
+import { templateDefaultColors } from "../templates";
 import type { ResumeData } from "./data";
 
 export const sampleResumeData: ResumeData = {
@@ -490,7 +491,7 @@ export const sampleResumeData: ResumeData = {
 		},
 	],
 	metadata: {
-		template: "azurill",
+		template: "chikorita",
 		layout: {
 			sidebarWidth: 30,
 			pages: [
@@ -534,8 +535,8 @@ export const sampleResumeData: ResumeData = {
 				icon: "acorn",
 				type: "circle",
 			},
-			colors: {
-				primary: "rgba(0, 132, 209, 1)",
+			colors: templateDefaultColors.chikorita ?? {
+				primary: "rgba(220, 38, 38, 1)",
 				text: "rgba(0, 0, 0, 1)",
 				background: "rgba(255, 255, 255, 1)",
 			},

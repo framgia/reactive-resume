@@ -19,16 +19,19 @@ msgstr ""
 "X-Crowdin-File-ID: 518\n"
 
 #. js-lingui-explicit-id
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Last Updated"
 msgstr "अन्तिम पटक अद्यावधिक गरिएको"
 
 #. js-lingui-explicit-id
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Created"
 msgstr "बनाइएको मिति"
 
 #. js-lingui-explicit-id
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Name"
 msgstr "नाम"
@@ -45,6 +48,11 @@ msgstr "{0, plural, one {# वस्तु} other {# वस्तुहरू}}"
 #. placeholder {0}: item.roles.length
 #: src/routes/builder/$resumeId/-sidebar/left/sections/experience.tsx
 msgid "{0, plural, one {# role} other {# roles}}"
+msgstr ""
+
+#. placeholder {0}: skillIds.length
+#: src/routes/dashboard/resumes/index.tsx
+msgid "{0} selected"
 msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
@@ -89,6 +97,10 @@ msgstr "६ महिना"
 msgid "A confirmation link has been sent to your current email address. Please check your inbox to confirm the change."
 msgstr "आपको हालको इमेल ठेगानामा एक यकिन (confirmation) लिङ्क पठाइयो। कृपया परिवर्तन यकिन गर्न आफ्नो इनबक्स जाँच गर्नुहोस्।"
 
+#: src/dialogs/resume/share-copy.tsx
+msgid "A copy was shared with {count} user(s)."
+msgstr ""
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "निःशुल्क र खुला-स्रोत बायोडाटा निर्माण गर्ने साधन जसले तपाईंको बायोडाटा बनाउन, अद्यावधिक गर्न र सेयर गर्ने प्रक्रियालाई सरल बनाउँछ।"
@@ -130,6 +142,10 @@ msgstr "API प्रयोग गरेर प्रोग्रामिङम
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
 msgstr "अनुकूल (custom) फाँट थप्नुहोस्"
+
+#: src/dialogs/domain/index.tsx
+msgid "Add a domain name to use when assigning projects."
+msgstr ""
 
 #: src/components/input/url-input.tsx
 msgid "Add a label to the URL"
@@ -192,6 +208,10 @@ msgstr "नयाँ सीप (skill) थप्नुहोस्"
 msgid "Add a new volunteer experience"
 msgstr "नयाँ स्वयंसेवी अनुभव थप्नुहोस्"
 
+#: src/dialogs/project/index.tsx
+msgid "Add a project with name, description, and customer."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Add Column After"
 msgstr "पछि स्तम्भ थप्नुहोस्"
@@ -202,6 +222,10 @@ msgstr "अघिल्लो स्तम्भ थप्नुहोस्"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Add multiple roles to show career progression at the same company."
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Add name, description and customer"
 msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
@@ -241,6 +265,22 @@ msgstr ""
 msgid "Albanian"
 msgstr "अल्बानियन"
 
+#: src/components/domain/domain-combobox.tsx
+msgid "All domains"
+msgstr ""
+
+#: src/components/position/position-combobox.tsx
+msgid "All positions"
+msgstr ""
+
+#: src/components/project/project-select.tsx
+msgid "All projects"
+msgstr ""
+
+#: src/components/skill/skill-combobox.tsx
+msgid "All skills"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
 msgstr "सार्वजनिक पहुँच अनुमति दिनुहोस्"
@@ -265,6 +305,15 @@ msgstr "तपाईंको बायोडाटा आयात गर्द
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "र यस्ता थुप्रै..."
+
+#: src/components/position/position-select.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Any level"
+msgstr ""
+
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Any skill highlight"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -305,6 +354,11 @@ msgstr "एप"
 msgid "Application Statistics"
 msgstr "अनुप्रयोग तथ्याङ्क"
 
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Apply"
+msgstr ""
+
 #: src/utils/locale.ts
 msgid "Arabic"
 msgstr "अरबी"
@@ -313,9 +367,17 @@ msgstr "अरबी"
 msgid "Are you sure you want to close this dialog?"
 msgstr ""
 
+#: src/routes/dashboard/domains/index.tsx
+msgid "Are you sure you want to delete \"{name}\"?"
+msgstr ""
+
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "Are you sure you want to delete this API key?"
 msgstr "के तपाईं यो API key मेटाउन निश्चित हुनुहुन्छ?"
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Are you sure you want to delete this project?"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
@@ -483,8 +545,11 @@ msgstr "के म आफ्नो बायोडाटा PDF मा निर
 #: src/dialogs/resume/sections/summary-item.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
+#: src/dialogs/resume/share-copy.tsx
 #: src/hooks/use-prompt.tsx
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+#: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
 #: src/routes/dashboard/settings/profile.tsx
@@ -544,9 +609,30 @@ msgstr "चिनियाँ (सरल)"
 msgid "Chinese (Traditional)"
 msgstr "चिनियाँ (परम्परागत)"
 
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Choose users and send a copy of your resume to their dashboard."
+msgstr ""
+
+#: src/dialogs/resume/share-copy.tsx
+#: src/dialogs/resume/share-copy.tsx
+msgid "Choose users..."
+msgstr ""
+
 #: src/components/level/combobox.tsx
 msgid "Circle"
 msgstr "वृत्त"
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Clear"
+msgstr ""
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Clear all"
+msgstr ""
 
 #: src/components/ai/chat.tsx
 msgid "Clear chat history"
@@ -643,6 +729,8 @@ msgid "Cover Letter"
 msgstr ""
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -687,6 +775,10 @@ msgstr ""
 msgid "Create a new custom section"
 msgstr "नयाँ अनुकूल (custom) खण्ड बनाउनुहोस्"
 
+#: src/routes/dashboard/domains/index.tsx
+msgid "Create a new domain"
+msgstr ""
+
 #: src/dialogs/resume/sections/education.tsx
 msgid "Create a new education"
 msgstr "नयाँ शैक्षिक विवरण बनाउनुहोस्"
@@ -707,7 +799,9 @@ msgstr "नयाँ भाषा बनाउनुहोस्"
 msgid "Create a new profile"
 msgstr "नयाँ प्रोफाइल बनाउनुहोस्"
 
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/sections/project.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Create a new project"
 msgstr "नयाँ परियोजना बनाउनुहोस्"
 
@@ -746,6 +840,18 @@ msgstr "नमूना बायोडाटा बनाउनुहोस्"
 msgid "Create as many resumes as you want, without limits."
 msgstr "जति नयाँ बायोडाटा बनाउनु छ बनाउनुहोस्, कुनै सीमा छैन।"
 
+#: src/dialogs/domain/index.tsx
+msgid "Create domain"
+msgstr ""
+
+#: src/dialogs/domain/index.tsx
+msgid "Creating domain..."
+msgstr ""
+
+#: src/dialogs/project/index.tsx
+msgid "Creating project..."
+msgstr ""
+
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
 msgstr "तपाईंको API key बनाउँदै..."
@@ -767,6 +873,16 @@ msgstr "अनुकूल (Custom) CSS"
 #: src/utils/resume/section.tsx
 msgid "Custom Sections"
 msgstr "अनुकूल (Custom) खण्डहरू"
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/index.tsx
+msgid "Customer"
+msgstr ""
+
+#: src/dialogs/project/index.tsx
+msgid "Customer name"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -809,6 +925,9 @@ msgstr "डिग्री"
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
@@ -835,6 +954,22 @@ msgstr "पङ्क्ति मेटाउनुहोस्"
 msgid "Delete Table"
 msgstr "टेबल मेटाउनुहोस्"
 
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Deleted"
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Deleted on {deletedAt}"
+msgstr ""
+
+#: src/routes/dashboard/domains/index.tsx
+msgid "Deleting domain..."
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Deleting project..."
+msgstr ""
+
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Deleting your account..."
 msgstr "तपाईंको खाता मेटाउँदै..."
@@ -849,6 +984,7 @@ msgstr "तपाईंको API key मेटाइँदैछ..."
 msgid "Deleting your resume..."
 msgstr "तपाईंको बायोडाटा मेटाउँदै..."
 
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
 #: src/dialogs/resume/sections/education.tsx
@@ -894,6 +1030,27 @@ msgstr "डिस्कोर्ड"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Documentation"
 msgstr "प्रलेखन (Documentation)"
+
+#: src/dialogs/domain/index.tsx
+msgid "Domain created."
+msgstr ""
+
+#: src/routes/dashboard/domains/index.tsx
+msgid "Domain deleted."
+msgstr ""
+
+#: src/dialogs/domain/index.tsx
+msgid "Domain updated."
+msgstr ""
+
+#: src/components/domain/domain-combobox.tsx
+#: src/dialogs/project/index.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/projects/index.tsx
+msgid "Domains"
+msgstr ""
 
 #: src/routes/auth/login.tsx
 msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
@@ -965,6 +1122,23 @@ msgstr "डच"
 msgid "e.g. Change my name to..."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+msgid "e.g. Healthcare, Finance"
+msgstr ""
+
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Edit"
+msgstr ""
+
+#: src/dialogs/project/index.tsx
+msgid "Edit project details."
+msgstr ""
+
+#: src/dialogs/domain/index.tsx
+msgid "Edit the domain name."
+msgstr ""
+
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
 msgid "Education"
@@ -974,6 +1148,7 @@ msgstr "शिक्षा"
 msgid "Email"
 msgstr "इमेल"
 
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/forgot-password.tsx
 #: src/routes/auth/login.tsx
 #: src/routes/auth/register.tsx
@@ -1033,6 +1208,10 @@ msgstr "आफ्नो authenticator एपले दिएको प्रम�
 #: src/dialogs/auth/change-password.tsx
 msgid "Enter your current password and a new password to update your account."
 msgstr "आफ्नो हालको पासवर्ड र नयाँ पासवर्ड प्रविष्ट गरेर खाता अद्यावधिक गर्नुहोस्।"
+
+#: src/routes/auth/-components/social-auth.tsx
+msgid "Enter your email/username and password to continue."
+msgstr ""
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Enter your password to confirm setting up two-factor authentication. When enabled, you'll need to enter a code from your authenticator app every time you log in."
@@ -1096,9 +1275,18 @@ msgstr ""
 msgid "Features"
 msgstr "विशेषताहरू"
 
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
-msgid "Filter by"
-msgstr "यसद्वारा फिल्टर गर्नुहोस्"
+msgid "Filter"
+msgstr ""
+
+#: src/routes/dashboard/projects/index.tsx
+msgid "Filter by customer"
+msgstr ""
+
+#: src/routes/dashboard/projects/index.tsx
+msgid "Filter by name"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Finnish"
@@ -1429,6 +1617,7 @@ msgstr "भाषाहरू"
 msgid "Last downloaded on {0}"
 msgstr "अन्तिम पटक {0} मा डाउनलोड गरिएको"
 
+#: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Last updated on {updatedAt}"
@@ -1474,6 +1663,8 @@ msgstr "पत्र"
 #: src/dialogs/resume/sections/language.tsx
 #: src/dialogs/resume/sections/skill.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
+#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 msgid "Level"
 msgstr "स्तर"
 
@@ -1516,6 +1707,9 @@ msgid "Loading resumes..."
 msgstr "बायोडाटा लोड गर्दै..."
 
 #: src/components/layout/loading-screen.tsx
+#: src/dialogs/project/index.tsx
+#: src/dialogs/resume/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 msgid "Loading..."
 msgstr "लोड हुँदैछ..."
 
@@ -1585,6 +1779,9 @@ msgid "Multilingual"
 msgstr "बहुभाषिक"
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/interest.tsx
 #: src/dialogs/resume/sections/project.tsx
@@ -1592,6 +1789,7 @@ msgstr "बहुभाषिक"
 #: src/dialogs/resume/sections/skill.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "नाम"
@@ -1629,10 +1827,48 @@ msgstr "नयाँ खण्ड"
 msgid "No Advertising, No Tracking"
 msgstr "कुनै विज्ञापन छैन, कुनै ट्र्याकिङ छैन"
 
+#: src/components/domain/domain-combobox.tsx
+#: src/components/domain/domain-select.tsx
+msgid "No domains found."
+msgstr ""
+
+#: src/components/input/chip-input-autocomplete.tsx
+msgid "No matches. Type to search or press Enter to add."
+msgstr ""
+
+#: src/dialogs/resume/index.tsx
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "No options"
+msgstr ""
+
+#: src/components/position/position-combobox.tsx
+#: src/components/position/position-select.tsx
+msgid "No positions found."
+msgstr ""
+
+#: src/components/project/project-select.tsx
+#: src/components/project/project-select.tsx
+msgid "No project"
+msgstr ""
+
+#: src/components/project/project-select.tsx
+msgid "No projects found."
+msgstr ""
+
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "कुनै परिणाम फेला परेन।"
+
+#: src/components/skill/skill-combobox.tsx
+msgid "No skills found."
+msgstr ""
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "No users found. Type to search."
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Norwegian"
@@ -1653,6 +1889,10 @@ msgstr "एक-क्लिक साइन-इन"
 #: src/routes/_home/-sections/donate.tsx
 msgid "Ongoing Maintenance"
 msgstr "निरन्तर मर्मत"
+
+#: src/dialogs/resume/template/gallery.tsx
+msgid "Only the Chikorita template is available. Template selection is disabled."
+msgstr ""
 
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
@@ -1691,6 +1931,10 @@ msgstr "क्रमबद्ध सूची"
 msgid "Organization"
 msgstr "संस्था"
 
+#: src/utils/resume/section.tsx
+msgid "Overall"
+msgstr ""
+
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Overall Period"
 msgstr ""
@@ -1723,6 +1967,7 @@ msgstr "पासकी र २FA"
 
 #: src/dialogs/auth/disable-two-factor.tsx
 #: src/dialogs/auth/enable-two-factor.tsx
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/login.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/auth/resume-password.tsx
@@ -1804,11 +2049,19 @@ msgstr "पोर्चुगाली (ब्राजिल)"
 msgid "Portuguese (Portugal)"
 msgstr "पोर्चुगाली (पोर्चुगल)"
 
+#: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "Position"
 msgstr "पद"
+
+#: src/components/position/position-combobox.tsx
+#: src/dialogs/project/index.tsx
+#: src/routes/dashboard/projects/index.tsx
+msgid "Positions"
+msgstr ""
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
@@ -1818,6 +2071,7 @@ msgstr "पद"
 msgid "Preferences"
 msgstr "प्राथमिकता (Preferences)"
 
+#: src/components/input/chip-input-autocomplete.tsx
 #: src/components/input/chip-input.tsx
 msgid "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the current keyword."
 msgstr "हालको कुञ्जीशब्द थप्न वा बचत गर्न <0>{RETURN_KEY}</0> वा <1>{COMMA_KEY}</1> थिच्नुहोस्।"
@@ -1846,7 +2100,37 @@ msgstr "प्रोफाइलहरू"
 msgid "Progress Bar"
 msgstr "प्रगति बार (Progress Bar)"
 
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Project"
+msgstr ""
+
+#: src/dialogs/project/index.tsx
+msgid "Project created successfully."
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Project deleted successfully."
+msgstr ""
+
+#: src/routes/dashboard/projects/index.tsx
+msgid "Project name"
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Project restored."
+msgstr ""
+
+#: src/dialogs/project/index.tsx
+msgid "Project updated successfully."
+msgstr ""
+
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/projects/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Projects"
 msgstr "परियोजनाहरू"
@@ -1986,6 +2270,14 @@ msgstr "तपाईंको पासवर्ड रिसेट हुँद
 msgid "Resources"
 msgstr "स्रोतहरू"
 
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Restore project"
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Restoring project..."
+msgstr ""
+
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/resumes.tsx
@@ -2017,6 +2309,11 @@ msgstr "घुमाउने कोण (Rotation)"
 msgid "Russian"
 msgstr "रुसियन"
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/project/index.tsx
+msgid "Save changes"
+msgstr ""
+
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -2045,6 +2342,18 @@ msgstr "तलको QR कोड तपाईंको मनपर्ने au
 msgid "School"
 msgstr "विद्यालय/शैक्षिक संस्था"
 
+#: src/dialogs/resume/share-copy.tsx
+msgid "Search and select users to send a copy. They will receive the resume in their dashboard."
+msgstr ""
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Search by name or username..."
+msgstr ""
+
+#: src/components/domain/domain-combobox.tsx
+msgid "Search domains..."
+msgstr ""
+
 #: src/components/input/icon-picker.tsx
 #: src/components/input/icon-picker.tsx
 msgid "Search for an icon"
@@ -2054,10 +2363,23 @@ msgstr "आइकन खोज्नुहोस्"
 msgid "Search for..."
 msgstr "यसको लागि खोज्नुहोस्..."
 
+#: src/components/position/position-combobox.tsx
+#: src/components/position/position-select.tsx
+msgid "Search positions..."
+msgstr ""
+
+#: src/components/skill/skill-combobox.tsx
+msgid "Search skills..."
+msgstr ""
+
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
 msgstr "खोज्नुहोस्..."
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Searching..."
+msgstr ""
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Secret copied to clipboard."
@@ -2066,6 +2388,33 @@ msgstr "गोप्य कोड क्लिपबोर्डमा प्र
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Section Type"
 msgstr "खण्ड प्रकार"
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Select at least one user."
+msgstr ""
+
+#: src/components/domain/domain-select.tsx
+#: src/components/domain/domain-select.tsx
+msgid "Select domains"
+msgstr ""
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Select position"
+msgstr ""
+
+#: src/components/project/project-select.tsx
+msgid "Select project"
+msgstr ""
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Select skills"
+msgstr ""
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Select users"
+msgstr ""
 
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
@@ -2113,6 +2462,16 @@ msgstr "Authenticator एप सेटअप गर्नुहोस्"
 msgid "Shadow Width"
 msgstr "छायाँ चौडाइ"
 
+#: src/dialogs/resume/share-copy.tsx
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Share copy to users"
+msgstr ""
+
+#. placeholder {0}: selectedIds.length
+#: src/dialogs/resume/share-copy.tsx
+msgid "Share to {0} user(s)"
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Share your resume with a public URL, and let others view it."
 msgstr "तपाईंको बायोडाटा सार्वजनिक URL मार्फत सेयर गर्नुहोस्, र अरूलाई हेर्न दिनुहोस्।"
@@ -2124,6 +2483,10 @@ msgstr "सेयर गर्न मिल्ने लिङ्कहरू"
 #: src/utils/resume/section.tsx
 msgid "Sharing"
 msgstr "सेयरिङ"
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Sharing copy to selected users..."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
@@ -2151,6 +2514,7 @@ msgstr "Sidebar"
 msgid "Sidebar Width"
 msgstr "Sidebar चौडाइ"
 
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/login.tsx
 msgid "Sign in"
 msgstr "साइन इन"
@@ -2163,9 +2527,17 @@ msgstr "आफ्नो खातामा साइन इन गर्नु�
 msgid "Sign in with GitHub, Google or a custom OAuth provider."
 msgstr "GitHub, Google वा कुनै अनुकूल OAuth प्रदायकमार्फत साइन इन गर्नुहोस्।"
 
+#: src/routes/auth/-components/social-auth.tsx
+msgid "Sign in with Packtech"
+msgstr ""
+
 #: src/routes/auth/register.tsx
 msgid "Sign up"
 msgstr "साइन अप"
+
+#: src/routes/auth/-components/social-auth.tsx
+msgid "Signing in with Packtech..."
+msgstr ""
 
 #: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/-components/social-auth.tsx
@@ -2201,10 +2573,23 @@ msgstr "एक स्तम्भ; पॉलिस गरिएको र गम
 msgid "Size"
 msgstr "आकार"
 
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Skill highlight"
+msgstr ""
+
+#: src/components/skill/skill-combobox.tsx
+#: src/dialogs/project/index.tsx
+#: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Skills"
 msgstr "सीपहरू"
+
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Skills Highlights"
+msgstr ""
 
 #: src/routes/_home/route.tsx
 msgid "Skip to main content"
@@ -2218,12 +2603,17 @@ msgstr "स्लोभाक"
 msgid "Slug"
 msgstr "स्लग"
 
+#: src/dialogs/resume/share-copy.tsx
+msgid "Something went wrong."
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Something went wrong. Please try again."
 msgstr "केही समस्या भयो। कृपया पुनः प्रयास गर्नुहोस्।"
 
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Sort by"
 msgstr "यसअनुसार क्रमबद्ध गर्नुहोस्"
@@ -2342,6 +2732,7 @@ msgid "Template"
 msgstr "ढाँचा (Template)"
 
 #: src/dialogs/resume/template/gallery.tsx
+#: src/dialogs/resume/template/gallery.tsx
 msgid "Template Gallery"
 msgstr "ढाँचा ग्यालरी"
 
@@ -2413,6 +2804,7 @@ msgid "Thinking..."
 msgstr ""
 
 #: src/routes/builder/$resumeId/-components/header.tsx
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "This action cannot be undone."
@@ -2444,6 +2836,10 @@ msgstr "सर्भर क्षमतामा भर परेर यसक�
 msgid "This resume is locked and cannot be updated."
 msgstr "यो बायोडाटा हाल लक गरिएको छ र अद्यावधिक गर्न मिल्दैन।"
 
+#: src/dialogs/resume/template/gallery.tsx
+msgid "This resume uses the Chikorita template. Template selection is disabled."
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/notes.tsx
 msgid "This section is reserved for your personal notes specific to this resume. The content here remains private and is not shared with anyone else."
 msgstr "यो खण्ड तपाईंको यस बायोडाटासम्बन्धी निजी नोटहरूका लागि हो। यहाँको सामग्री निजी रहन्छ र अरूसँग सेयर गरिँदैन।"
@@ -2455,6 +2851,10 @@ msgstr "यो चरण वैकल्पिक हो, तर सिफार
 #: src/dialogs/api-key/create.tsx
 msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
 msgstr "यसले Reactive Resume API मा पहुँच पाउन नयाँ API key उत्पन्न गर्छ, जसले मेसिनहरूलाई तपाईंको बायोडाटा डाटासँग अन्तरक्रिया गर्न अनुमति दिन्छ।"
+
+#: src/routes/dashboard/domains/index.tsx
+msgid "This will remove the domain from all projects."
+msgstr ""
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with Reactive Resume"
@@ -2662,11 +3062,21 @@ msgstr ""
 msgid "Update an existing volunteer experience"
 msgstr "अवस्थित स्वयंसेवी अनुभव अद्यावधिक गर्नुहोस्"
 
+#: src/dialogs/domain/index.tsx
+msgid "Update domain"
+msgstr ""
+
 #: src/dialogs/auth/change-password.tsx
 #: src/routes/dashboard/settings/authentication/-components/password.tsx
 msgid "Update Password"
 msgstr "पासवर्ड अद्यावधिक गर्नुहोस्"
 
+#: src/dialogs/project/index.tsx
+#: src/dialogs/project/index.tsx
+msgid "Update project"
+msgstr ""
+
+#: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
 msgid "Update Resume"
 msgstr "बायोडाटा अद्यावधिक गर्नुहोस्"
@@ -2676,7 +3086,16 @@ msgid "Update your password"
 msgstr "तपाईंको पासवर्ड अद्यावधिक गर्नुहोस्"
 
 #: src/components/ai/chat.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Updated"
+msgstr ""
+
+#: src/dialogs/domain/index.tsx
+msgid "Updating domain..."
+msgstr ""
+
+#: src/dialogs/project/index.tsx
+msgid "Updating project..."
 msgstr ""
 
 #: src/dialogs/auth/change-password.tsx
@@ -2746,6 +3165,10 @@ msgstr "पासवर्ड रिसेट गर्दा इमेल य�
 #: src/utils/locale.ts
 msgid "Vietnamese"
 msgstr "भियतनामी"
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "View Resumes"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
@@ -2902,4 +3325,3 @@ msgstr "जूम आउट"
 #: src/utils/locale.ts
 msgid "Zulu"
 msgstr "जुलु"
-

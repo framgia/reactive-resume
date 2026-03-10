@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/integrations/auth/client";
+import { emailSchema } from "@/utils/email";
 import { SocialAuth } from "./-components/social-auth";
 
 export const Route = createFileRoute("/auth/login")({
@@ -22,7 +23,14 @@ export const Route = createFileRoute("/auth/login")({
 });
 
 const formSchema = z.object({
-	identifier: z.string().trim().toLowerCase(),
+	identifier: z
+		.string()
+		.trim()
+		.toLowerCase()
+		.refine(
+			(val) => !val.includes("@") || emailSchema.safeParse(val).success,
+			{ message: "Email must use the sun-asterisk.com domain." },
+		),
 	password: z.string().trim().min(6).max(64),
 });
 
@@ -114,7 +122,7 @@ function RouteComponent() {
 									<FormControl>
 										<Input
 											autoComplete="section-login username"
-											placeholder="john.doe@example.com"
+											placeholder="john.doe@sun-asterisk.com"
 											className="lowercase"
 											{...field}
 										/>

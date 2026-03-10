@@ -6,7 +6,7 @@ export type TemplateMetadata = {
 	name: string;
 	description: MessageDescriptor;
 	imageUrl: string;
-	tags: string[];
+	tags: readonly string[];
 	sidebarPosition: "left" | "right" | "none";
 };
 

@@ -18,6 +18,15 @@ export const templateSchema = z.enum([
 
 export type Template = z.infer<typeof templateSchema>;
 
+/** Default design colors per template. Only Chikorita has custom defaults; others use app defaults when creating. */
+export const templateDefaultColors: Partial<Record<Template, { primary: string; text: string; background: string }>> = {
+	chikorita: {
+		primary: "rgba(220, 38, 38, 1)",
+		text: "rgba(0, 0, 0, 1)",
+		background: "rgba(255, 255, 255, 1)",
+	},
+};
+
 /**
  * The templates listed in `printMarginTemplates` require explicit print margin settings.
  *

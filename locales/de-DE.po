@@ -19,16 +19,19 @@ msgstr ""
 "X-Crowdin-File-ID: 518\n"
 
 #. js-lingui-explicit-id
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Last Updated"
 msgstr "Zuletzt aktualisiert"
 
 #. js-lingui-explicit-id
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Created"
 msgstr "Erstellt"
 
 #. js-lingui-explicit-id
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Name"
 msgstr "Name"
@@ -46,6 +49,11 @@ msgstr "{0, plural, one {# Element} other {# Elemente}}"
 #: src/routes/builder/$resumeId/-sidebar/left/sections/experience.tsx
 msgid "{0, plural, one {# role} other {# roles}}"
 msgstr ""
+
+#. placeholder {0}: skillIds.length
+#: src/routes/dashboard/resumes/index.tsx
+msgid "{0} selected"
+msgstr "{0} ausgewählt"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
@@ -89,6 +97,10 @@ msgstr "6 Monate"
 msgid "A confirmation link has been sent to your current email address. Please check your inbox to confirm the change."
 msgstr "Ein Bestätigungslink wurde an Ihre aktuelle E-Mail-Adresse gesendet. Bitte prüfen Sie Ihren Posteingang, um die Änderung zu bestätigen."
 
+#: src/dialogs/resume/share-copy.tsx
+msgid "A copy was shared with {count} user(s)."
+msgstr "Eine Kopie wurde mit {count} Benutzer(n) geteilt."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Ein kostenloser Open-Source-Lebenslauf-Builder, der das Erstellen, Aktualisieren und Teilen deines Lebenslaufs vereinfacht."
@@ -130,6 +142,10 @@ msgstr "Greife mit der API programmgesteuert auf deine Lebensläufe und Daten zu
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
 msgstr "Ein benutzerdefiniertes Feld hinzufügen"
+
+#: src/dialogs/domain/index.tsx
+msgid "Add a domain name to use when assigning projects."
+msgstr "Fügen Sie einen Domänennamen hinzu, der bei der Zuweisung von Projekten verwendet wird."
 
 #: src/components/input/url-input.tsx
 msgid "Add a label to the URL"
@@ -192,6 +208,10 @@ msgstr "Eine neue Fähigkeit hinzufügen"
 msgid "Add a new volunteer experience"
 msgstr "Eine neue Freiwilligenerfahrung hinzufügen"
 
+#: src/dialogs/project/index.tsx
+msgid "Add a project with name, description, and customer."
+msgstr "Fügen Sie ein Projekt mit Name, Beschreibung und Kunde hinzu."
+
 #: src/components/input/rich-input.tsx
 msgid "Add Column After"
 msgstr "Spalte danach einfügen"
@@ -203,6 +223,10 @@ msgstr "Spalte davor einfügen"
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Add multiple roles to show career progression at the same company."
 msgstr ""
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Add name, description and customer"
+msgstr "Name, Beschreibung und Kunde hinzufügen"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Add Page"
@@ -241,6 +265,22 @@ msgstr "KI-Chat"
 msgid "Albanian"
 msgstr "Albanisch"
 
+#: src/components/domain/domain-combobox.tsx
+msgid "All domains"
+msgstr "Alle Domänen"
+
+#: src/components/position/position-combobox.tsx
+msgid "All positions"
+msgstr "Alle Positionen"
+
+#: src/components/project/project-select.tsx
+msgid "All projects"
+msgstr "Alle Projekte"
+
+#: src/components/skill/skill-combobox.tsx
+msgid "All skills"
+msgstr "Alle Fähigkeiten"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
 msgstr "Öffentlichen Zugriff erlauben"
@@ -265,6 +305,15 @@ msgstr "Beim Importieren deines Lebenslaufs ist ein unbekannter Fehler aufgetret
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "Und viele weitere ..."
+
+#: src/components/position/position-select.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Any level"
+msgstr "Beliebiges Niveau"
+
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Any skill highlight"
+msgstr "Beliebige Fähigkeitshervorhebung"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -305,6 +354,11 @@ msgstr "App"
 msgid "Application Statistics"
 msgstr "Anwendungsstatistiken"
 
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Apply"
+msgstr "Anwenden"
+
 #: src/utils/locale.ts
 msgid "Arabic"
 msgstr "Arabisch"
@@ -313,9 +367,17 @@ msgstr "Arabisch"
 msgid "Are you sure you want to close this dialog?"
 msgstr "Sind Sie sicher, dass Sie dieses Dialogfenster schließen wollen?"
 
+#: src/routes/dashboard/domains/index.tsx
+msgid "Are you sure you want to delete \"{name}\"?"
+msgstr "Sind Sie sicher, dass Sie \"{name}\" löschen möchten?"
+
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "Are you sure you want to delete this API key?"
 msgstr "Möchtest du diesen API-Schlüssel wirklich löschen?"
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Are you sure you want to delete this project?"
+msgstr "Sind Sie sicher, dass Sie dieses Projekt löschen möchten?"
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
@@ -483,8 +545,11 @@ msgstr "Kann ich meinen Lebenslauf als PDF exportieren?"
 #: src/dialogs/resume/sections/summary-item.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
+#: src/dialogs/resume/share-copy.tsx
 #: src/hooks/use-prompt.tsx
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+#: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
 #: src/routes/dashboard/settings/profile.tsx
@@ -544,9 +609,30 @@ msgstr "Chinesisch (vereinfacht)"
 msgid "Chinese (Traditional)"
 msgstr "Chinesisch (traditionell)"
 
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Choose users and send a copy of your resume to their dashboard."
+msgstr "Wählen Sie Benutzer aus und senden Sie eine Kopie Ihres Lebenslaufs an ihr Dashboard."
+
+#: src/dialogs/resume/share-copy.tsx
+#: src/dialogs/resume/share-copy.tsx
+msgid "Choose users..."
+msgstr "Benutzer auswählen..."
+
 #: src/components/level/combobox.tsx
 msgid "Circle"
 msgstr "Kreis"
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Clear"
+msgstr "Löschen"
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Clear all"
+msgstr "Alles löschen"
 
 #: src/components/ai/chat.tsx
 msgid "Clear chat history"
@@ -643,6 +729,8 @@ msgid "Cover Letter"
 msgstr "Anschreiben"
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -687,6 +775,10 @@ msgstr "Neues Anschreiben erstellen"
 msgid "Create a new custom section"
 msgstr "Einen neuen benutzerdefinierten Abschnitt erstellen"
 
+#: src/routes/dashboard/domains/index.tsx
+msgid "Create a new domain"
+msgstr "Neue Domäne erstellen"
+
 #: src/dialogs/resume/sections/education.tsx
 msgid "Create a new education"
 msgstr "Eine neue Ausbildung erstellen"
@@ -707,7 +799,9 @@ msgstr "Eine neue Sprache erstellen"
 msgid "Create a new profile"
 msgstr "Ein neues Profil erstellen"
 
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/sections/project.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Create a new project"
 msgstr "Ein neues Projekt erstellen"
 
@@ -746,6 +840,18 @@ msgstr "Beispiel-Lebenslauf erstellen"
 msgid "Create as many resumes as you want, without limits."
 msgstr "Erstelle so viele Lebensläufe, wie du möchtest – ohne Begrenzung."
 
+#: src/dialogs/domain/index.tsx
+msgid "Create domain"
+msgstr "Domäne erstellen"
+
+#: src/dialogs/domain/index.tsx
+msgid "Creating domain..."
+msgstr "Domäne wird erstellt..."
+
+#: src/dialogs/project/index.tsx
+msgid "Creating project..."
+msgstr "Projekt wird erstellt..."
+
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
 msgstr "Dein API-Schlüssel wird erstellt ..."
@@ -767,6 +873,16 @@ msgstr "Benutzerdefiniertes CSS"
 #: src/utils/resume/section.tsx
 msgid "Custom Sections"
 msgstr "Benutzerdefinierte Abschnitte"
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/index.tsx
+msgid "Customer"
+msgstr "Kunde"
+
+#: src/dialogs/project/index.tsx
+msgid "Customer name"
+msgstr "Kundenname"
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -809,6 +925,9 @@ msgstr "Abschluss"
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
@@ -835,6 +954,22 @@ msgstr "Zeile löschen"
 msgid "Delete Table"
 msgstr "Tabelle löschen"
 
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Deleted"
+msgstr "Gelöscht"
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Deleted on {deletedAt}"
+msgstr "Gelöscht am {deletedAt}"
+
+#: src/routes/dashboard/domains/index.tsx
+msgid "Deleting domain..."
+msgstr "Domäne wird gelöscht..."
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Deleting project..."
+msgstr "Projekt wird gelöscht..."
+
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Deleting your account..."
 msgstr "Ihr Konto wird gelöscht..."
@@ -849,6 +984,7 @@ msgstr "Dein API-Schlüssel wird gelöscht ..."
 msgid "Deleting your resume..."
 msgstr "Ihr Lebenslauf wird gelöscht..."
 
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
 #: src/dialogs/resume/sections/education.tsx
@@ -894,6 +1030,27 @@ msgstr "Discord"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Documentation"
 msgstr "Dokumentation"
+
+#: src/dialogs/domain/index.tsx
+msgid "Domain created."
+msgstr "Domäne erstellt."
+
+#: src/routes/dashboard/domains/index.tsx
+msgid "Domain deleted."
+msgstr "Domäne gelöscht."
+
+#: src/dialogs/domain/index.tsx
+msgid "Domain updated."
+msgstr "Domäne aktualisiert."
+
+#: src/components/domain/domain-combobox.tsx
+#: src/dialogs/project/index.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/projects/index.tsx
+msgid "Domains"
+msgstr "Domänen"
 
 #: src/routes/auth/login.tsx
 msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
@@ -965,6 +1122,23 @@ msgstr "Niederländisch"
 msgid "e.g. Change my name to..."
 msgstr "z. B. meinen Namen ändern zu..."
 
+#: src/dialogs/domain/index.tsx
+msgid "e.g. Healthcare, Finance"
+msgstr "z.B. Gesundheitswesen, Finanzen"
+
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: src/dialogs/project/index.tsx
+msgid "Edit project details."
+msgstr "Projektdetails bearbeiten."
+
+#: src/dialogs/domain/index.tsx
+msgid "Edit the domain name."
+msgstr "Domänennamen bearbeiten."
+
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
 msgid "Education"
@@ -974,6 +1148,7 @@ msgstr "Ausbildung"
 msgid "Email"
 msgstr "E-Mail"
 
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/forgot-password.tsx
 #: src/routes/auth/login.tsx
 #: src/routes/auth/register.tsx
@@ -1033,6 +1208,10 @@ msgstr "Geben Sie den Verifizierungscode aus Ihrer Authenticator-App ein"
 #: src/dialogs/auth/change-password.tsx
 msgid "Enter your current password and a new password to update your account."
 msgstr "Geben Sie Ihr aktuelles Passwort und ein neues Passwort ein, um Ihr Konto zu aktualisieren."
+
+#: src/routes/auth/-components/social-auth.tsx
+msgid "Enter your email/username and password to continue."
+msgstr "Geben Sie Ihre E-Mail/Benutzername und Passwort ein, um fortzufahren."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Enter your password to confirm setting up two-factor authentication. When enabled, you'll need to enter a code from your authenticator app every time you log in."
@@ -1096,9 +1275,18 @@ msgstr ""
 msgid "Features"
 msgstr "Funktionen"
 
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
-msgid "Filter by"
-msgstr "Filtern nach"
+msgid "Filter"
+msgstr "Filter"
+
+#: src/routes/dashboard/projects/index.tsx
+msgid "Filter by customer"
+msgstr "Nach Kunde filtern"
+
+#: src/routes/dashboard/projects/index.tsx
+msgid "Filter by name"
+msgstr "Nach Name filtern"
 
 #: src/utils/locale.ts
 msgid "Finnish"
@@ -1429,6 +1617,7 @@ msgstr "Sprachen"
 msgid "Last downloaded on {0}"
 msgstr "Zuletzt heruntergeladen am {0}"
 
+#: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Last updated on {updatedAt}"
@@ -1474,6 +1663,8 @@ msgstr "US Letter"
 #: src/dialogs/resume/sections/language.tsx
 #: src/dialogs/resume/sections/skill.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
+#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 msgid "Level"
 msgstr "Niveau"
 
@@ -1516,6 +1707,9 @@ msgid "Loading resumes..."
 msgstr "Lebensläufe werden geladen..."
 
 #: src/components/layout/loading-screen.tsx
+#: src/dialogs/project/index.tsx
+#: src/dialogs/resume/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 msgid "Loading..."
 msgstr "Wird geladen..."
 
@@ -1585,6 +1779,9 @@ msgid "Multilingual"
 msgstr "Mehrsprachig"
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/interest.tsx
 #: src/dialogs/resume/sections/project.tsx
@@ -1592,6 +1789,7 @@ msgstr "Mehrsprachig"
 #: src/dialogs/resume/sections/skill.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "Name"
@@ -1629,10 +1827,48 @@ msgstr "Neuer Abschnitt"
 msgid "No Advertising, No Tracking"
 msgstr "Keine Werbung, kein Tracking"
 
+#: src/components/domain/domain-combobox.tsx
+#: src/components/domain/domain-select.tsx
+msgid "No domains found."
+msgstr "Keine Domänen gefunden."
+
+#: src/components/input/chip-input-autocomplete.tsx
+msgid "No matches. Type to search or press Enter to add."
+msgstr "Keine Treffer. Tippen Sie zum Suchen oder drücken Sie Enter zum Hinzufügen."
+
+#: src/dialogs/resume/index.tsx
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "No options"
+msgstr "Keine Optionen"
+
+#: src/components/position/position-combobox.tsx
+#: src/components/position/position-select.tsx
+msgid "No positions found."
+msgstr "Keine Positionen gefunden."
+
+#: src/components/project/project-select.tsx
+#: src/components/project/project-select.tsx
+msgid "No project"
+msgstr "Kein Projekt"
+
+#: src/components/project/project-select.tsx
+msgid "No projects found."
+msgstr "Keine Projekte gefunden."
+
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
+
+#: src/components/skill/skill-combobox.tsx
+msgid "No skills found."
+msgstr "Keine Fähigkeiten gefunden."
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "No users found. Type to search."
+msgstr "Keine Benutzer gefunden. Tippen Sie zum Suchen."
 
 #: src/utils/locale.ts
 msgid "Norwegian"
@@ -1653,6 +1889,10 @@ msgstr "Anmeldung mit einem Klick"
 #: src/routes/_home/-sections/donate.tsx
 msgid "Ongoing Maintenance"
 msgstr "Laufende Wartung"
+
+#: src/dialogs/resume/template/gallery.tsx
+msgid "Only the Chikorita template is available. Template selection is disabled."
+msgstr "Nur die Chikorita-Vorlage ist verfügbar. Vorlagenauswahl ist deaktiviert."
 
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
@@ -1691,6 +1931,10 @@ msgstr "Nummerierte Liste"
 msgid "Organization"
 msgstr "Organisation"
 
+#: src/utils/resume/section.tsx
+msgid "Overall"
+msgstr "Gesamt"
+
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Overall Period"
 msgstr ""
@@ -1723,6 +1967,7 @@ msgstr "Passkeys & 2FA"
 
 #: src/dialogs/auth/disable-two-factor.tsx
 #: src/dialogs/auth/enable-two-factor.tsx
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/login.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/auth/resume-password.tsx
@@ -1804,11 +2049,19 @@ msgstr "Portugiesisch (Brasilien)"
 msgid "Portuguese (Portugal)"
 msgstr "Portugiesisch (Portugal)"
 
+#: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "Position"
 msgstr "Position"
+
+#: src/components/position/position-combobox.tsx
+#: src/dialogs/project/index.tsx
+#: src/routes/dashboard/projects/index.tsx
+msgid "Positions"
+msgstr "Positionen"
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
@@ -1818,6 +2071,7 @@ msgstr "Position"
 msgid "Preferences"
 msgstr "Einstellungen"
 
+#: src/components/input/chip-input-autocomplete.tsx
 #: src/components/input/chip-input.tsx
 msgid "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the current keyword."
 msgstr "Drücken Sie <0>{RETURN_KEY}</0> oder <1>{COMMA_KEY}</1>, um das aktuelle Schlüsselwort hinzuzufügen oder zu speichern."
@@ -1846,7 +2100,37 @@ msgstr "Profile"
 msgid "Progress Bar"
 msgstr "Fortschrittsbalken"
 
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Project"
+msgstr "Projekt"
+
+#: src/dialogs/project/index.tsx
+msgid "Project created successfully."
+msgstr "Projekt erfolgreich erstellt."
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "Project deleted successfully."
+msgstr "Projekt erfolgreich gelöscht."
+
+#: src/routes/dashboard/projects/index.tsx
+msgid "Project name"
+msgstr "Projektname"
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Project restored."
+msgstr "Projekt wiederhergestellt."
+
+#: src/dialogs/project/index.tsx
+msgid "Project updated successfully."
+msgstr "Projekt erfolgreich aktualisiert."
+
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/projects/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Projects"
 msgstr "Projekte"
@@ -1986,6 +2270,14 @@ msgstr "Ihr Passwort wird zurückgesetzt..."
 msgid "Resources"
 msgstr "Ressourcen"
 
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Restore project"
+msgstr "Projekt wiederherstellen"
+
+#: src/routes/dashboard/projects/-components/list-view.tsx
+msgid "Restoring project..."
+msgstr "Projekt wird wiederhergestellt..."
+
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/resumes.tsx
@@ -2017,6 +2309,11 @@ msgstr "Drehung"
 msgid "Russian"
 msgstr "Russisch"
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/project/index.tsx
+msgid "Save changes"
+msgstr "Änderungen speichern"
+
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
 #: src/dialogs/resume/sections/certification.tsx
@@ -2045,6 +2342,18 @@ msgstr "Scannen Sie den QR-Code unten mit Ihrer bevorzugten Authenticator-App. S
 msgid "School"
 msgstr "Schule"
 
+#: src/dialogs/resume/share-copy.tsx
+msgid "Search and select users to send a copy. They will receive the resume in their dashboard."
+msgstr "Suchen und wählen Sie Benutzer aus, um eine Kopie zu senden. Sie erhalten den Lebenslauf in ihrem Dashboard."
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Search by name or username..."
+msgstr "Nach Name oder Benutzername suchen..."
+
+#: src/components/domain/domain-combobox.tsx
+msgid "Search domains..."
+msgstr "Domänen suchen..."
+
 #: src/components/input/icon-picker.tsx
 #: src/components/input/icon-picker.tsx
 msgid "Search for an icon"
@@ -2054,10 +2363,23 @@ msgstr "Nach einem Symbol suchen"
 msgid "Search for..."
 msgstr "Suchen nach..."
 
+#: src/components/position/position-combobox.tsx
+#: src/components/position/position-select.tsx
+msgid "Search positions..."
+msgstr "Positionen suchen..."
+
+#: src/components/skill/skill-combobox.tsx
+msgid "Search skills..."
+msgstr "Fähigkeiten suchen..."
+
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
 msgstr "Suchen..."
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Searching..."
+msgstr "Suche..."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Secret copied to clipboard."
@@ -2066,6 +2388,33 @@ msgstr "Geheimnis wurde in die Zwischenablage kopiert."
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Section Type"
 msgstr "Abschnittstyp"
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Select at least one user."
+msgstr "Wählen Sie mindestens einen Benutzer aus."
+
+#: src/components/domain/domain-select.tsx
+#: src/components/domain/domain-select.tsx
+msgid "Select domains"
+msgstr "Domänen auswählen"
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Select position"
+msgstr "Position auswählen"
+
+#: src/components/project/project-select.tsx
+msgid "Select project"
+msgstr "Projekt auswählen"
+
+#: src/dialogs/resume/index.tsx
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Select skills"
+msgstr "Fähigkeiten auswählen"
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Select users"
+msgstr "Benutzer auswählen"
 
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
@@ -2113,6 +2462,16 @@ msgstr "Authenticator-App einrichten"
 msgid "Shadow Width"
 msgstr "Schattenbreite"
 
+#: src/dialogs/resume/share-copy.tsx
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Share copy to users"
+msgstr "Kopie mit Benutzern teilen"
+
+#. placeholder {0}: selectedIds.length
+#: src/dialogs/resume/share-copy.tsx
+msgid "Share to {0} user(s)"
+msgstr "Mit {0} Benutzer(n) teilen"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Share your resume with a public URL, and let others view it."
 msgstr "Teile deinen Lebenslauf über eine öffentliche URL und ermögliche anderen, ihn anzusehen."
@@ -2124,6 +2483,10 @@ msgstr "Teilbare Links"
 #: src/utils/resume/section.tsx
 msgid "Sharing"
 msgstr "Teilen"
+
+#: src/dialogs/resume/share-copy.tsx
+msgid "Sharing copy to selected users..."
+msgstr "Kopie wird mit ausgewählten Benutzern geteilt..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
@@ -2151,6 +2514,7 @@ msgstr "Seitenleiste"
 msgid "Sidebar Width"
 msgstr "Breite der Seitenleiste"
 
+#: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/login.tsx
 msgid "Sign in"
 msgstr "Anmelden"
@@ -2163,9 +2527,17 @@ msgstr "Melden Sie sich bei Ihrem Konto an"
 msgid "Sign in with GitHub, Google or a custom OAuth provider."
 msgstr "Melde dich mit GitHub, Google oder einem benutzerdefinierten OAuth-Anbieter an."
 
+#: src/routes/auth/-components/social-auth.tsx
+msgid "Sign in with Packtech"
+msgstr "Mit Packtech anmelden"
+
 #: src/routes/auth/register.tsx
 msgid "Sign up"
 msgstr "Registrieren"
+
+#: src/routes/auth/-components/social-auth.tsx
+msgid "Signing in with Packtech..."
+msgstr "Anmeldung mit Packtech..."
 
 #: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/-components/social-auth.tsx
@@ -2201,10 +2573,23 @@ msgstr "Einspaltig; seriös und ausgefeilt für Senior- oder Enterprise-Position
 msgid "Size"
 msgstr "Größe"
 
+#: src/routes/dashboard/resumes/index.tsx
+msgid "Skill highlight"
+msgstr "Fähigkeitshervorhebung"
+
+#: src/components/skill/skill-combobox.tsx
+#: src/dialogs/project/index.tsx
+#: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/resumes/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Skills"
 msgstr "Fähigkeiten"
+
+#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+msgid "Skills Highlights"
+msgstr "Fähigkeitshervorhebungen"
 
 #: src/routes/_home/route.tsx
 msgid "Skip to main content"
@@ -2218,12 +2603,17 @@ msgstr "Slowakisch"
 msgid "Slug"
 msgstr "Slug"
 
+#: src/dialogs/resume/share-copy.tsx
+msgid "Something went wrong."
+msgstr "Etwas ist schiefgelaufen."
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
 
+#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Sort by"
 msgstr "Sortieren nach"
@@ -2342,6 +2732,7 @@ msgid "Template"
 msgstr "Vorlage"
 
 #: src/dialogs/resume/template/gallery.tsx
+#: src/dialogs/resume/template/gallery.tsx
 msgid "Template Gallery"
 msgstr "Vorlagen-Galerie"
 
@@ -2413,6 +2804,7 @@ msgid "Thinking..."
 msgstr "Denkt nach..."
 
 #: src/routes/builder/$resumeId/-components/header.tsx
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
 msgid "This action cannot be undone."
@@ -2444,6 +2836,10 @@ msgstr "Dies kann eine Weile dauern, abhängig von der Serverkapazität. Bitte s
 msgid "This resume is locked and cannot be updated."
 msgstr "Dieser Lebenslauf ist gesperrt und kann nicht aktualisiert werden."
 
+#: src/dialogs/resume/template/gallery.tsx
+msgid "This resume uses the Chikorita template. Template selection is disabled."
+msgstr "Dieser Lebenslauf verwendet die Chikorita-Vorlage. Vorlagenauswahl ist deaktiviert."
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/notes.tsx
 msgid "This section is reserved for your personal notes specific to this resume. The content here remains private and is not shared with anyone else."
 msgstr "Dieser Abschnitt ist für Ihre persönlichen Notizen zu diesem Lebenslauf reserviert. Der Inhalt bleibt privat und wird mit niemandem geteilt."
@@ -2455,6 +2851,10 @@ msgstr "Dieser Schritt ist optional, aber empfohlen."
 #: src/dialogs/api-key/create.tsx
 msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
 msgstr "Damit wird ein neuer API-Schlüssel für den Zugriff auf die Reactive-Resume-API erzeugt, sodass Maschinen mit deinen Lebenslaufdaten interagieren können."
+
+#: src/routes/dashboard/domains/index.tsx
+msgid "This will remove the domain from all projects."
+msgstr "Dies entfernt die Domäne aus allen Projekten."
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with Reactive Resume"
@@ -2662,11 +3062,21 @@ msgstr "Ein existierendes Zusammenfassung-Element aktualisieren"
 msgid "Update an existing volunteer experience"
 msgstr "Eine bestehende Freiwilligenerfahrung aktualisieren"
 
+#: src/dialogs/domain/index.tsx
+msgid "Update domain"
+msgstr "Domäne aktualisieren"
+
 #: src/dialogs/auth/change-password.tsx
 #: src/routes/dashboard/settings/authentication/-components/password.tsx
 msgid "Update Password"
 msgstr "Passwort aktualisieren"
 
+#: src/dialogs/project/index.tsx
+#: src/dialogs/project/index.tsx
+msgid "Update project"
+msgstr "Projekt aktualisieren"
+
+#: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
 msgid "Update Resume"
 msgstr "Lebenslauf aktualisieren"
@@ -2676,8 +3086,17 @@ msgid "Update your password"
 msgstr "Aktualisieren Sie Ihr Passwort"
 
 #: src/components/ai/chat.tsx
+#: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Updated"
 msgstr "Aktualisiert"
+
+#: src/dialogs/domain/index.tsx
+msgid "Updating domain..."
+msgstr "Domäne wird aktualisiert..."
+
+#: src/dialogs/project/index.tsx
+msgid "Updating project..."
+msgstr "Projekt wird aktualisiert..."
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Updating your password..."
@@ -2746,6 +3165,10 @@ msgstr "Die Verifizierung Ihrer E-Mail ist beim Zurücksetzen Ihres Passworts er
 #: src/utils/locale.ts
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
+
+#: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
+msgid "View Resumes"
+msgstr "Lebensläufe anzeigen"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
@@ -2902,4 +3325,3 @@ msgstr "Herauszoomen"
 #: src/utils/locale.ts
 msgid "Zulu"
 msgstr "Zulu"
-

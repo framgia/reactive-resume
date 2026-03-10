@@ -14,6 +14,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { authClient } from "@/integrations/auth/client";
+import { emailSchema } from "@/utils/email";
 import { DashboardHeader } from "../-components/header";
 
 export const Route = createFileRoute("/dashboard/settings/profile")({
@@ -30,7 +31,7 @@ const formSchema = z.object({
 		.regex(/^[a-z0-9._-]+$/, {
 			message: "Username can only contain lowercase letters, numbers, dots, hyphens and underscores.",
 		}),
-	email: z.email().trim(),
+	email: emailSchema,
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -176,7 +177,7 @@ function RouteComponent() {
 									<Input
 										type="email"
 										autoComplete="email"
-										placeholder="john.doe@example.com"
+										placeholder="john.doe@sun-asterisk.com"
 										className="lowercase"
 										{...field}
 									/>

@@ -14,16 +14,7 @@ import type { ResumeData } from "@/schema/resume/data";
 
 type Resume = Pick<
 	RouterOutput["resume"]["getById"],
-	| "id"
-	| "name"
-	| "slug"
-	| "tags"
-	| "data"
-	| "isLocked"
-	| "projectId"
-	| "skills"
-	| "positionId"
-	| "position"
+	"id" | "name" | "slug" | "tags" | "data" | "isLocked" | "projectId" | "skills" | "positionId" | "position"
 >;
 
 type ResumeStoreState = {
