@@ -1,6 +1,6 @@
 import z from "zod";
 
-const ALLOWED_EMAIL_DOMAINS = ["sun-asterisk.com", "sun-asterisk.vn"] as const;
+export const ALLOWED_EMAIL_DOMAINS = ["sun-asterisk.com", "sun-asterisk.vn"] as const;
 
 /**
  * Zod schema for email that must use one of the configured allowed domains.

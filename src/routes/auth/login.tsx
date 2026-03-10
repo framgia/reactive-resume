@@ -27,10 +27,9 @@ const formSchema = z.object({
 		.string()
 		.trim()
 		.toLowerCase()
-		.refine(
-			(val) => !val.includes("@") || emailSchema.safeParse(val).success,
-			{ message: "Email must use the sun-asterisk.com domain." },
-		),
+		.refine((val) => !val.includes("@") || emailSchema.safeParse(val).success, {
+			message: "Email must use the sun-asterisk domain.",
+		}),
 	password: z.string().trim().min(6).max(64),
 });
 
