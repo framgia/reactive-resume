@@ -101,6 +101,11 @@ msgstr "តំណ​ផ្ទៀងផ្ទាត់​ត្រូវ​បា
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "ដែនដែលមានឈ្មោះនេះមានរួចហើយ។"
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "កម្មវិធីបង្កើតប្រវត្តិរូបឥតគិតថ្លៃ និងបើកប្រភព ដែលធ្វើឱ្យដំណើរការបង្កើត បច្ចុប្បន្នភាព និងចែករំលែកប្រវត្តិរូបរបស់អ្នកកាន់តែងាយស្រួល។"

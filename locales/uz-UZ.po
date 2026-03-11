@@ -101,6 +101,11 @@ msgstr "Tasdiqlash havolasi joriy elektron pochta manzilingizga yuborildi. O‘z
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "Ushbu nomdagi domen allaqachon mavjud."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Tarjimai holingizni yaratish, yangilash va ulashish jarayonini soddalashtiruvchi bepul va ochiq manbali tarjimai hol yaratuvchisi."

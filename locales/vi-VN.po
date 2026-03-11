@@ -101,6 +101,11 @@ msgstr "Một liên kết xác nhận đã được gửi đến địa chỉ em
 msgid "A copy was shared with {count} user(s)."
 msgstr "Bản sao đã được chia sẻ với {count} người dùng."
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "Đã tồn tại lĩnh vực có tên này."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Trình tạo sơ yếu lý lịch mã nguồn mở và miễn phí giúp đơn giản hóa quá trình tạo, cập nhật và chia sẻ sơ yếu lý lịch của bạn."

@@ -101,6 +101,11 @@ msgstr "Təsdiq linki cari e‑poçt ünvanınıza göndərildi. Zəhmət olmasa
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "Bu adlı domain artıq mövcuddur."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Özgeçmişinizi yaratma, yeniləmə və paylaşma prosesini sadələşdirən, pulsuz və açıq mənbə özgeçmiş qurucusu."

@@ -101,6 +101,11 @@ msgstr "Onaylama bağlantısı mevcut e-posta adresinize gönderildi. Lütfen de
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "Bu isimde bir alan zaten mevcut."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Özgeçmişinizi oluşturma, güncelleme ve paylaşma süreçlerini kolaylaştıran ücretsiz ve açık kaynaklı bir özgeçmiş oluşturucu."

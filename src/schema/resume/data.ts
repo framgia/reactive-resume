@@ -1,5 +1,5 @@
 import z from "zod";
-import { optionalEmailSchema } from "@/utils/email";
+import { optionalEmailSchema } from "../../utils/email";
 import { templateDefaultColors, templateSchema } from "../templates";
 
 export const iconSchema = z

@@ -101,6 +101,11 @@ msgstr "Potvrdzujúci odkaz bol odoslaný na tvoju aktuálnu e‑mailovú adresu
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "Oblasť s týmto názvom už existuje."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Bezplatný a open‑source nástroj na tvorbu životopisov, ktorý zjednodušuje vytváranie, aktualizáciu a zdieľanie tvojho životopisu."

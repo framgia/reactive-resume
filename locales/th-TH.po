@@ -101,6 +101,11 @@ msgstr "ลิงก์ยืนยันได้ถูกส่งไปยั
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "มีโดเมนชื่อนี้อยู่แล้ว"
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "เครื่องมือสร้างเรซูเม่ฟรีและโอเพนซอร์สที่ทำให้กระบวนการสร้าง การปรับปรุง และการแชร์เรซูเม่ของคุณง่ายขึ้น"

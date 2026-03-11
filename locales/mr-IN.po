@@ -101,6 +101,11 @@ msgstr "तुमच्या सध्याच्या ईमेल पत्
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "या नावाचे डोमेन आधीच अस्तित्वात आहे."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "मोफत आणि मुक्त-स्रोत रेझ्युमे बिल्डर, जो तुमचा रेझ्युमे तयार करणे, अपडेट करणे आणि शेअर करणे हा संपूर्ण प्रोसेस सोपा करतो."

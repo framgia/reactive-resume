@@ -101,6 +101,11 @@ msgstr "確認用リンクを現在のメールアドレスに送信しました
 msgid "A copy was shared with {count} user(s)."
 msgstr "{count} 人のユーザーとコピーを共有しました。"
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "この名前のドメインは既に存在します。"
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "履歴書の作成、更新、共有のプロセスを簡素化する、無料でオープンソースの履歴書ビルダーです。"

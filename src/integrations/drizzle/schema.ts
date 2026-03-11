@@ -368,7 +368,7 @@ export const domain = pg.pgTable(
 			.notNull()
 			.primaryKey()
 			.$defaultFn(() => generateId()),
-		name: pg.text("name").notNull(),
+		name: pg.text("name").notNull().unique(),
 		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 		updatedAt: pg
 			.timestamp("updated_at", { withTimezone: true })
@@ -376,7 +376,6 @@ export const domain = pg.pgTable(
 			.defaultNow()
 			.$onUpdate(() => /* @__PURE__ */ new Date()),
 	},
-	(t) => [pg.index().on(t.name)],
 );
 
 export const projectDomain = pg.pgTable(
