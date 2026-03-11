@@ -101,6 +101,11 @@ msgstr "Tautan konfirmasi telah dikirim ke alamat email Anda saat ini. Silakan p
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "Domain dengan nama ini sudah ada."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Pembuat resume gratis dan sumber terbuka yang menyederhanakan proses membuat, memperbarui, dan membagikan resume Anda."

@@ -44,7 +44,11 @@ export function CreateDomainDialog(_: DialogProps<"domain.create">) {
 					closeDialog();
 				},
 				onError: (error) => {
-					toast.error(error.message, { id: toastId });
+					const message =
+						error.message === "DOMAIN_NAME_ALREADY_EXISTS"
+							? t`A domain with this name already exists.`
+							: error.message;
+					toast.error(message, { id: toastId });
 				},
 			},
 		);
@@ -113,7 +117,11 @@ export function UpdateDomainDialog({ data }: DialogProps<"domain.update">) {
 					closeDialog();
 				},
 				onError: (error) => {
-					toast.error(error.message, { id: toastId });
+					const message =
+						error.message === "DOMAIN_NAME_ALREADY_EXISTS"
+							? t`A domain with this name already exists.`
+							: error.message;
+					toast.error(message, { id: toastId });
 				},
 			},
 		);

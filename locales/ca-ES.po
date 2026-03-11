@@ -101,6 +101,11 @@ msgstr "S’ha enviat un enllaç de confirmació a l’adreça de correu electr�
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "Ja existeix un domini amb aquest nom."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Un creador de currículums gratuït i de codi obert que simplifica el procés de crear, actualitzar i compartir el teu currículum."

@@ -101,6 +101,11 @@ msgstr "確認連結已傳送至您目前的電子郵件地址。請檢查收件
 msgid "A copy was shared with {count} user(s)."
 msgstr "已與 {count} 位使用者共用副本。"
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "已存在同名領域。"
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "一個免費且開放原始碼的履歷建立工具，可簡化建立、更新及分享履歷的程序。"

@@ -101,6 +101,11 @@ msgstr "En bekräftelselänk har skickats till din nuvarande e-postadress. Kontr
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "En domän med detta namn finns redan."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "En gratis CV-byggare med öppen källkod som förenklar processen med att skapa, uppdatera och dela ditt CV."

@@ -41,6 +41,12 @@ export const domainRouter = {
 		})
 		.input(domainDto.create.input)
 		.output(domainDto.create.output)
+		.errors({
+			DOMAIN_NAME_ALREADY_EXISTS: {
+				message: "A domain with this name already exists.",
+				status: 400,
+			},
+		})
 		.handler(async ({ input }) => domainService.create(input)),
 
 	update: protectedProcedure
@@ -54,6 +60,12 @@ export const domainRouter = {
 		})
 		.input(domainDto.update.input)
 		.output(domainDto.update.output)
+		.errors({
+			DOMAIN_NAME_ALREADY_EXISTS: {
+				message: "A domain with this name already exists.",
+				status: 400,
+			},
+		})
 		.handler(async ({ input }) => domainService.update(input)),
 
 	delete: protectedProcedure

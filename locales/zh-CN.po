@@ -101,6 +101,11 @@ msgstr "确认链接已发送到你当前的电子邮箱地址。请检查收件
 msgid "A copy was shared with {count} user(s)."
 msgstr "已与 {count} 位用户共享副本。"
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "已存在同名领域。"
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "一款免费开源的简历生成器，可简化创建、更新和分享简历的过程。"

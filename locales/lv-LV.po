@@ -101,6 +101,11 @@ msgstr "Uz jūsu pašreizējo e-pasta adresi ir nosūtīta apstiprinājuma saite
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "Jau pastāv domēns ar šo nosaukumu."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Bezmaksas un atvērtā pirmkoda CV veidotājs, kas vienkāršo jūsu CV izveidi, atjaunināšanu un kopīgošanu."

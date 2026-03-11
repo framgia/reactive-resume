@@ -101,6 +101,11 @@ msgstr "Një link konfirmimi është dërguar në adresën tuaj aktuale të emai
 msgid "A copy was shared with {count} user(s)."
 msgstr ""
 
+#: src/dialogs/domain/index.tsx
+#: src/dialogs/domain/index.tsx
+msgid "A domain with this name already exists."
+msgstr "Një domen me këtë emër ekziston tashmë."
+
 #: src/routes/_home/-sections/footer.tsx
 msgid "A free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Një ndërtues i CV-së, falas dhe me burim të hapur që thjeshton procesin e krijimit, përditësimit dhe shpërndarjes së CV-së tuaj."
