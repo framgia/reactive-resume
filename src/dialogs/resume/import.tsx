@@ -3,7 +3,7 @@ import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { DownloadSimpleIcon, FileIcon, UploadSimpleIcon } from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
@@ -67,7 +67,6 @@ export function ImportResumeDialog(_: DialogProps<"resume.import">) {
 	const { enabled: isAIEnabled, provider, model, apiKey, baseURL } = useAIStore();
 	const closeDialog = useDialogStore((state) => state.closeDialog);
 
-	const prevTypeRef = useRef<string>("");
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -81,12 +80,6 @@ export function ImportResumeDialog(_: DialogProps<"resume.import">) {
 	});
 
 	const type = useWatch({ control: form.control, name: "type" });
-
-	useEffect(() => {
-		if (prevTypeRef.current === type) return;
-		prevTypeRef.current = type;
-		form.resetField("file");
-	}, [form.resetField, type]);
 
 	const onSelectFile = () => {
 		if (!inputRef.current) return;
