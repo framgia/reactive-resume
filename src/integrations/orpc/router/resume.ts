@@ -126,8 +126,8 @@ export const resumeRouter = {
 		})
 		.input(resumeDto.getBySlug.input)
 		.output(resumeDto.getBySlug.output)
-		.handler(async ({ input, context }) => {
-			return await resumeService.getBySlug({ ...input, currentUserId: context.user?.id });
+		.handler(async ({ input }) => {
+			return await resumeService.getBySlug({ ...input });
 		}),
 
 	create: protectedProcedure

@@ -269,7 +269,7 @@ export const resumeService = {
 		};
 	},
 
-	getBySlug: async (input: { username: string; slug: string; currentUserId?: string }) => {
+	getBySlug: async (input: { username: string; slug: string }) => {
 		const [resume] = await db
 			.select({
 				id: schema.resume.id,
@@ -289,7 +289,7 @@ export const resumeService = {
 				and(
 					eq(schema.resume.slug, input.slug),
 					eq(schema.user.username, input.username),
-					input.currentUserId ? eq(schema.resume.userId, input.currentUserId) : eq(schema.resume.isPublic, true),
+					eq(schema.resume.isPublic, true)
 				),
 			);
 

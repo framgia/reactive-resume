@@ -78,6 +78,13 @@ function PictureSectionForm() {
 			return;
 		}
 
+		const maxFileSizeInBytes = 5 * 1024 * 1024;
+		if (file.size > maxFileSizeInBytes) {
+			toast.error(t`File size must be less than 5MB`);
+			if (fileInputRef.current) fileInputRef.current.value = "";
+			return;
+		}
+
 		const toastId = toast.loading(t`Uploading picture...`);
 
 		uploadFile(file, {
