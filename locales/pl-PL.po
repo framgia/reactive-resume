@@ -2033,6 +2033,10 @@ msgstr "Wprowadź hasło udostępnione Ci przez właściciela CV, aby kontynuowa
 msgid "Please enter the URL you want to link to:"
 msgstr "Wpisz adres URL, do którego chcesz utworzyć link:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "Prześlij plik obrazu (np. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

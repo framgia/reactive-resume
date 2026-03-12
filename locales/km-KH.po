@@ -2033,6 +2033,10 @@ msgstr "សូម​បញ្ចូល​ពាក្យសម្ងាត់ �
 msgid "Please enter the URL you want to link to:"
 msgstr "សូម​បញ្ចូល URL ដែល​អ្នក​ចង់​តភ្ជាប់​ទៅ៖"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "សូមផ្ទុកឯកសាររូបភាព (ឧ. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

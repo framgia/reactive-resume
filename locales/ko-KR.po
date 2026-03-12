@@ -2033,6 +2033,10 @@ msgstr "이력서 소유자가 공유한 비밀번호를 입력해 계속 진행
 msgid "Please enter the URL you want to link to:"
 msgstr "링크할 URL을 입력하세요:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "이미지 파일을 업로드해 주세요 (예: JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

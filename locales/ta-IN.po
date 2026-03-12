@@ -2033,6 +2033,10 @@ msgstr "தொடர்ந்து செல்ல, ரெஸ்யூமிய
 msgid "Please enter the URL you want to link to:"
 msgstr "நீங்கள் இணைக்க விரும்பும் URL-ஐ உள்ளிடவும்:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "படக் கோப்பைப் பதிவேற்றவும் (எ.கா. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

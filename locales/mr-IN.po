@@ -2033,6 +2033,10 @@ msgstr "कृपया पुढे जाण्यासाठी रेझ्
 msgid "Please enter the URL you want to link to:"
 msgstr "कृपया तुम्हाला ज्या URL ला लिंक करायचे आहे ती URL टाका:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "कृपया प्रतिमा फाइल अपलोड करा (उदा. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

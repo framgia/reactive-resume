@@ -72,6 +72,12 @@ function PictureSectionForm() {
 		const file = e.target.files?.[0];
 		if (!file) return;
 
+		if (!file.type.startsWith("image/")) {
+			toast.error(t`Please upload an image file (e.g. JPEG, PNG, GIF, WebP)`);
+			if (fileInputRef.current) fileInputRef.current.value = "";
+			return;
+		}
+
 		const toastId = toast.loading(t`Uploading picture...`);
 
 		uploadFile(file, {

@@ -2033,6 +2033,10 @@ msgstr "履歴書の所有者から共有されたパスワードを入力して
 msgid "Please enter the URL you want to link to:"
 msgstr "リンク先の URL を入力してください:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "画像ファイルをアップロードしてください（例：JPEG、PNG、GIF、WebP）"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

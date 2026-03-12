@@ -2033,6 +2033,10 @@ msgstr "يُرجى إدخال كلمة المرور التي تمت مشاركت
 msgid "Please enter the URL you want to link to:"
 msgstr "يُرجى إدخال عنوان URL الذي تريد الربط به:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "يرجى تحميل ملف صورة (مثل JPEG أو PNG أو GIF أو WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

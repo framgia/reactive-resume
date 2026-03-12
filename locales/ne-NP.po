@@ -2033,6 +2033,10 @@ msgstr "कृपया अगाडि बढ्न बायोडाटाक
 msgid "Please enter the URL you want to link to:"
 msgstr "कृपया तपाईंले लिङ्क गर्न चाहनुभएको URL प्रविष्ट गर्नुहोस्:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "कृपया छवि फाइल अपलोड गर्नुहोस् (जस्तै JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

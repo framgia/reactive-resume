@@ -2033,6 +2033,10 @@ msgstr "请输入简历所有者与你共享的密码以继续。"
 msgid "Please enter the URL you want to link to:"
 msgstr "请输入你想要链接到的 URL："
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "请上传图片文件（如 JPEG、PNG、GIF、WebP）"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

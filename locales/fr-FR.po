@@ -2033,6 +2033,10 @@ msgstr "Veuillez saisir le mot de passe qui vous a été communiqué par le prop
 msgid "Please enter the URL you want to link to:"
 msgstr "Veuillez saisir l'URL vers laquelle vous souhaitez rediriger :"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "Veuillez télécharger un fichier image (ex. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

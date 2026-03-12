@@ -2033,6 +2033,10 @@ msgstr "Bitte geben Sie das Passwort ein, das Ihnen vom Besitzer des Lebenslaufs
 msgid "Please enter the URL you want to link to:"
 msgstr "Bitte geben Sie die URL ein, zu der Sie verlinken möchten:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "Bitte laden Sie eine Bilddatei hoch (z. B. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

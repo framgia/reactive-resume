@@ -1,6 +1,6 @@
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import { ArrowRightIcon, BookIcon, SparkleIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon, SparkleIcon } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { CometCard } from "@/components/animation/comet-card";
@@ -65,9 +65,7 @@ export function Hero() {
 				>
 					<Trans>
 						<p className="font-medium text-muted-foreground tracking-tight md:text-lg">Finally,</p>
-						<h1 className="mt-1 font-bold text-4xl tracking-tight md:text-5xl lg:text-6xl">
-							A free and open-source resume builder
-						</h1>
+						<h1 className="mt-1 font-bold text-4xl tracking-tight md:text-5xl lg:text-6xl">A resume builder</h1>
 					</Trans>
 				</motion.div>
 
@@ -78,10 +76,7 @@ export function Hero() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 1.2 }}
 				>
-					<Trans>
-						Reactive Resume is a free and open-source resume builder that simplifies the process of creating, updating,
-						and sharing your resume.
-					</Trans>
+					<Trans>Resume builder that simplifies the process of creating, updating, and sharing your resume.</Trans>
 				</motion.p>
 
 				{/* CTA Buttons */}
@@ -103,7 +98,7 @@ export function Hero() {
 						</Link>
 					</Button>
 
-					<Button asChild size="lg" variant="ghost" className="gap-2 px-4">
+					{/* <Button asChild size="lg" variant="ghost" className="gap-2 px-4">
 						<a href="https://docs.rxresu.me" target="_blank" rel="noopener">
 							<BookIcon aria-hidden="true" className="size-4" />
 							<Trans>Learn More</Trans>
@@ -111,12 +106,12 @@ export function Hero() {
 								<Trans>(opens in new tab)</Trans>
 							</span>
 						</a>
-					</Button>
+					</Button> */}
 				</motion.div>
 			</div>
 
 			{/* Scroll indicator - decorative */}
-			<motion.div
+			{/* <motion.div
 				aria-hidden="true"
 				role="presentation"
 				className="absolute inset-s-1/2 bottom-8 -translate-x-1/2"
@@ -131,7 +126,7 @@ export function Hero() {
 				>
 					<motion.div className="h-1.5 w-1 rounded-full bg-muted-foreground/50" />
 				</motion.div>
-			</motion.div>
+			</motion.div> */}
 		</section>
 	);
 }

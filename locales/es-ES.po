@@ -2033,6 +2033,10 @@ msgstr "Introduce la contraseña que el propietario del currículum compartió c
 msgid "Please enter the URL you want to link to:"
 msgstr "Introduce la URL a la que quieres enlazar:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "Por favor, sube un archivo de imagen (p. ej. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

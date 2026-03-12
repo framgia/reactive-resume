@@ -2033,6 +2033,10 @@ msgstr "Indtast adgangskoden, som ejeren af CV'et har delt med dig, for at forts
 msgid "Please enter the URL you want to link to:"
 msgstr "Angiv den URL, du vil oprette et link til:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "Upload venligst en billedfil (f.eks. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."
