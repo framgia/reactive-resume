@@ -2033,6 +2033,10 @@ msgstr "Моля, въведете паролата, която ви е спод
 msgid "Please enter the URL you want to link to:"
 msgstr "Моля, въведете URL адреса, към който искате да създадете връзка:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "Моля, качете файл с изображение (напр. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

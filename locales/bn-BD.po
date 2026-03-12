@@ -2033,6 +2033,10 @@ msgstr "অবিরত থাকতে জীবনবৃত্তান্ত�
 msgid "Please enter the URL you want to link to:"
 msgstr "যে URL‑এ লিংক করতে চান অনুগ্রহ করে সেটি লিখুন:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "অনুগ্রহ করে একটি ছবির ফাইল আপলোড করুন (যেমন JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

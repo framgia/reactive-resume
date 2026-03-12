@@ -2033,6 +2033,10 @@ msgstr "נא להזין את הסיסמה ששיתף איתך בעל קורות 
 msgid "Please enter the URL you want to link to:"
 msgstr "נא להזין את כתובת ה־URL שאליה ברצונך לקשר:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "אנא העלה קובץ תמונה (למשל JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

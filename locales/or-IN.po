@@ -2033,6 +2033,10 @@ msgstr "ଦୟାକରି ରେଜ୍ୟୁମେ ମାଲିକଙ୍କ ଦ
 msgid "Please enter the URL you want to link to:"
 msgstr "ଦୟାକରି ଯେଉଁ URL କୁ ଲିଙ୍କ କରିବାକୁ ଚାହାଁନ୍ତି ସେଥିରେ ପ୍ରବେଶ କରନ୍ତୁ:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "ଦୟାକରି ଏକ ପ୍ରତିଛବି ଫାଇଲ୍ ଅପଲୋଡ୍ କରନ୍ତୁ (ଯେପରିକି JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

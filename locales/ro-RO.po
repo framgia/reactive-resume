@@ -2033,6 +2033,10 @@ msgstr "Introduceți parola primită de la proprietarul CV-ului pentru a continu
 msgid "Please enter the URL you want to link to:"
 msgstr "Introduceți URL-ul la care doriți să faceți link:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "Vă rugăm să încărcați un fișier imagine (ex. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

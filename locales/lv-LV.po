@@ -2033,6 +2033,10 @@ msgstr "Lūdzu, ievadiet paroli, ko ar jums kopīgoja CV īpašnieks, lai turpin
 msgid "Please enter the URL you want to link to:"
 msgstr "Lūdzu, ievadiet URL, uz kuru vēlaties izveidot saiti:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "Lūdzu, augšupielādējiet attēla failu (piem., JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."

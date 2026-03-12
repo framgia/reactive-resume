@@ -123,10 +123,13 @@ function MultipleCombobox<TValue extends string | number = string>({
 	const handleOpenChange = React.useCallback(
 		(nextOpen: boolean) => {
 			setOpen(nextOpen);
-			if (!nextOpen) setSearch("");
+			if (!nextOpen) {
+				setSearch("");
+				onSearchChange?.("");
+			}
 			onOpenChange?.(nextOpen);
 		},
-		[onOpenChange],
+		[onOpenChange, onSearchChange],
 	);
 
 	const handleSearchChange = React.useCallback(

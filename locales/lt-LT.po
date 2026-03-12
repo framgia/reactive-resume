@@ -2033,6 +2033,10 @@ msgstr "Norėdami tęsti, įveskite gyvenimo aprašymo savininko su jumis pasida
 msgid "Please enter the URL you want to link to:"
 msgstr "Įveskite URL, su kuriuo norite susieti:"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "Please upload an image file (e.g. JPEG, PNG, GIF, WebP)"
+msgstr "Prašome įkelti vaizdo failą (pvz. JPEG, PNG, GIF, WebP)"
+
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Please wait while your PDF is being generated..."
