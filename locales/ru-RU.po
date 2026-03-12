@@ -36,10 +36,6 @@ msgstr "Создано"
 msgid "Name"
 msgstr "Название"
 
-#: src/routes/_home/-sections/hero.tsx
-msgid "(opens in new tab)"
-msgstr "(открывается в новой вкладке)"
-
 #. placeholder {0}: section.items.length
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 msgid "{0, plural, one {# item} other {# items}}"
@@ -61,8 +57,8 @@ msgid "{column, plural, one {# Column} other {# Columns}}"
 msgstr "{column, plural, one {# столбец} few {# столбца} many {# столбцов} other {# столбцов}}"
 
 #: src/routes/_home/-sections/hero.tsx
-msgid "<0>Finally,</0><1>A free and open-source resume builder</1>"
-msgstr "<0>Наконец-то</0><1>Бесплатный конструктор резюме с открытым исходным кодом</1>"
+msgid "<0>Finally,</0><1>A resume builder</1>"
+msgstr ""
 
 #: src/routes/_home/-sections/faq.tsx
 msgctxt "Every word needs to be wrapped in a tag"
@@ -127,10 +123,20 @@ msgstr "Новая ссылка для подтверждения отправл
 msgid "A passion project by <0>Amruth Pillai</0>."
 msgstr "Проект <0>Амрута Пиллая</0>."
 
+#: src/dialogs/position/index.tsx
+#: src/dialogs/position/index.tsx
+msgid "A position with this name already exists."
+msgstr ""
+
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
 msgid "A resume with this slug already exists."
 msgstr "Резюме с таким URL уже существует."
+
+#: src/dialogs/skill/index.tsx
+#: src/dialogs/skill/index.tsx
+msgid "A skill with this name already exists."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/page.tsx
 msgid "A4"
@@ -213,8 +219,16 @@ msgstr "Добавить новый навык"
 msgid "Add a new volunteer experience"
 msgstr "Добавить новый волонтерский опыт"
 
+#: src/dialogs/position/index.tsx
+msgid "Add a position/level (e.g. Senior Engineer, Manager) for use in resumes and projects."
+msgstr ""
+
 #: src/dialogs/project/index.tsx
 msgid "Add a project with name, description, and customer."
+msgstr ""
+
+#: src/dialogs/skill/index.tsx
+msgid "Add a skill highlight for use in resumes and projects."
 msgstr ""
 
 #: src/components/input/rich-input.tsx
@@ -359,6 +373,8 @@ msgstr "Приложение"
 msgid "Application Statistics"
 msgstr "Статистика приложения"
 
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Apply"
@@ -373,6 +389,8 @@ msgid "Are you sure you want to close this dialog?"
 msgstr ""
 
 #: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 msgid "Are you sure you want to delete \"{name}\"?"
 msgstr ""
 
@@ -429,6 +447,11 @@ msgstr "Соотношение сторон"
 #: src/routes/dashboard/settings/authentication/index.tsx
 msgid "Authentication"
 msgstr "Аутентификация"
+
+#: src/dialogs/position/index.tsx
+#: src/dialogs/skill/index.tsx
+msgid "Auto-generated from name"
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Available in multiple languages. If you would like to contribute, check out Crowdin."
@@ -555,6 +578,8 @@ msgstr "Могу ли я экспортировать свое резюме в P
 #: src/routes/auth/-components/social-auth.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
 #: src/routes/dashboard/settings/profile.tsx
@@ -629,6 +654,8 @@ msgstr "Круг"
 
 #: src/dialogs/resume/index.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Clear"
@@ -735,6 +762,7 @@ msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 #: src/dialogs/domain/index.tsx
+#: src/dialogs/position/index.tsx
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
@@ -752,6 +780,7 @@ msgstr ""
 #: src/dialogs/resume/sections/skill.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
+#: src/dialogs/skill/index.tsx
 msgid "Create"
 msgstr "Создать"
 
@@ -800,6 +829,10 @@ msgstr "Создать новый интерес"
 msgid "Create a new language"
 msgstr "Создать новый язык"
 
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Create a new position"
+msgstr ""
+
 #: src/dialogs/resume/sections/profile.tsx
 msgid "Create a new profile"
 msgstr "Создать новый профиль"
@@ -826,6 +859,7 @@ msgid "Create a new resume"
 msgstr "Создать новое резюме"
 
 #: src/dialogs/resume/sections/skill.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 msgid "Create a new skill"
 msgstr "Создать новый навык"
 
@@ -849,12 +883,34 @@ msgstr "Создавайте столько резюме, сколько зах�
 msgid "Create domain"
 msgstr ""
 
+#: src/dialogs/position/index.tsx
+msgid "Create position"
+msgstr ""
+
+#: src/dialogs/skill/index.tsx
+msgid "Create skill"
+msgstr ""
+
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Created"
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 msgid "Creating domain..."
 msgstr ""
 
+#: src/dialogs/position/index.tsx
+msgid "Creating position..."
+msgstr ""
+
 #: src/dialogs/project/index.tsx
 msgid "Creating project..."
+msgstr ""
+
+#: src/dialogs/skill/index.tsx
+msgid "Creating skill..."
 msgstr ""
 
 #: src/dialogs/api-key/create.tsx
@@ -932,6 +988,10 @@ msgstr "Степень"
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
@@ -971,8 +1031,16 @@ msgstr ""
 msgid "Deleting domain..."
 msgstr ""
 
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Deleting position..."
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 msgid "Deleting project..."
+msgstr ""
+
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Deleting skill..."
 msgstr ""
 
 #: src/routes/dashboard/settings/danger-zone.tsx
@@ -1131,7 +1199,17 @@ msgstr ""
 msgid "e.g. Healthcare, Finance"
 msgstr ""
 
+#: src/dialogs/skill/index.tsx
+msgid "e.g. React, TypeScript"
+msgstr ""
+
+#: src/dialogs/position/index.tsx
+msgid "e.g. Senior Engineer, Manager"
+msgstr ""
+
 #: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 msgid "Edit"
 msgstr ""
@@ -1142,6 +1220,14 @@ msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Edit the domain name."
+msgstr ""
+
+#: src/dialogs/position/index.tsx
+msgid "Edit the position name. Slug will be auto-generated from the new name."
+msgstr ""
+
+#: src/dialogs/skill/index.tsx
+msgid "Edit the skill name. Slug will be auto-generated from the new name."
 msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
@@ -1280,6 +1366,8 @@ msgstr ""
 msgid "Features"
 msgstr "Возможности"
 
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Filter"
@@ -1289,6 +1377,8 @@ msgstr ""
 msgid "Filter by customer"
 msgstr ""
 
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
 msgid "Filter by name"
 msgstr ""
@@ -1534,10 +1624,6 @@ msgstr "Импорт..."
 msgid "Indonesian"
 msgstr "Индонезийский"
 
-#: src/utils/resume/section.tsx
-msgid "Information"
-msgstr "Информация"
-
 #: src/components/input/rich-input.tsx
 msgid "Inline Code"
 msgstr "Встроенный код"
@@ -1640,10 +1726,6 @@ msgstr "Латышский"
 #: src/utils/resume/section.tsx
 msgid "Layout"
 msgstr "Макет"
-
-#: src/routes/_home/-sections/hero.tsx
-msgid "Learn More"
-msgstr "Подробнее"
 
 #: src/components/resume/preview.tsx
 msgid "Learn more about how to fit content on a page"
@@ -1786,14 +1868,23 @@ msgstr "Многоязычность"
 #: src/dialogs/api-key/create.tsx
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/domain/index.tsx
+#: src/dialogs/position/index.tsx
+#: src/dialogs/position/index.tsx
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/interest.tsx
 #: src/dialogs/resume/sections/project.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/dialogs/resume/sections/skill.tsx
+#: src/dialogs/skill/index.tsx
+#: src/dialogs/skill/index.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
@@ -2066,10 +2157,32 @@ msgstr "Португальский (Португалия)"
 msgid "Position"
 msgstr "Должность"
 
+#: src/dialogs/position/index.tsx
+msgid "Position created."
+msgstr ""
+
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Position deleted."
+msgstr ""
+
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Position name"
+msgstr ""
+
+#: src/dialogs/position/index.tsx
+msgid "Position updated."
+msgstr ""
+
 #: src/components/position/position-combobox.tsx
 #: src/dialogs/project/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
 msgid "Positions"
+msgstr ""
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Positions & Skills"
 msgstr ""
 
 #: src/components/command-palette/pages/navigation.tsx
@@ -2177,10 +2290,6 @@ msgstr "Reactive Resume продолжает расти благодаря ак�
 msgid "Reactive Resume is a free and open-source project, built with love and maintained by me and a community of contributors. Your donations help keep the lights on and the code flowing."
 msgstr "Reactive Resume — это бесплатный проект с открытым исходным кодом, созданный с любовью и поддерживаемый мной и сообществом участников. Ваши пожертвования помогают поддерживать его работу и дальнейшую разработку."
 
-#: src/routes/_home/-sections/hero.tsx
-msgid "Reactive Resume is a free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume."
-msgstr "Reactive Resume — бесплатный конструктор резюме с открытым исходным кодом, который упрощает процесс создания, обновления и публикации вашего резюме."
-
 #: src/routes/_home/-sections/product-hunt-banner.tsx
 msgid "Reactive Resume is launching on Product Hunt today, head over to show some love!"
 msgstr "Сегодня Reactive Resume запускается на Product Hunt — заходите и поддержите нас!"
@@ -2287,6 +2396,10 @@ msgstr ""
 msgid "Restoring project..."
 msgstr ""
 
+#: src/routes/_home/-sections/hero.tsx
+msgid "Resume builder that simplifies the process of creating, updating, and sharing your resume."
+msgstr ""
+
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/resumes.tsx
@@ -2319,7 +2432,9 @@ msgid "Russian"
 msgstr "Русский"
 
 #: src/dialogs/domain/index.tsx
+#: src/dialogs/position/index.tsx
 #: src/dialogs/project/index.tsx
+#: src/dialogs/skill/index.tsx
 msgid "Save changes"
 msgstr ""
 
@@ -2582,14 +2697,31 @@ msgstr "Одноколоночный макет; строгий и солидн�
 msgid "Size"
 msgstr "Размер"
 
+#: src/dialogs/skill/index.tsx
+msgid "Skill created."
+msgstr ""
+
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Skill deleted."
+msgstr ""
+
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Skill highlight"
+msgstr ""
+
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Skill name"
+msgstr ""
+
+#: src/dialogs/skill/index.tsx
+msgid "Skill updated."
 msgstr ""
 
 #: src/components/skill/skill-combobox.tsx
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 #: src/utils/resume/section.tsx
@@ -2608,9 +2740,25 @@ msgstr "Перейти к основному содержимому"
 msgid "Slovak"
 msgstr "Словацкий"
 
+#: src/dialogs/position/index.tsx
+#: src/dialogs/position/index.tsx
 #: src/dialogs/resume/index.tsx
+#: src/dialogs/skill/index.tsx
+#: src/dialogs/skill/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 msgid "Slug"
 msgstr "URL"
+
+#: src/dialogs/position/index.tsx
+#: src/dialogs/skill/index.tsx
+msgid "Slug is auto-generated and cannot be edited."
+msgstr ""
+
+#: src/dialogs/position/index.tsx
+#: src/dialogs/skill/index.tsx
+msgid "Slug is auto-generated from the name and cannot be edited."
+msgstr ""
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Something went wrong."
@@ -2622,6 +2770,8 @@ msgstr ""
 msgid "Something went wrong. Please try again."
 msgstr "Что-то пошло не так. Пожалуйста, попробуйте еще раз."
 
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Sort by"
@@ -2865,6 +3015,14 @@ msgstr "Будет сгенерирован новый API-ключ для до�
 msgid "This will remove the domain from all projects."
 msgstr ""
 
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "This will remove the position from all resumes and projects."
+msgstr ""
+
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "This will remove the skill from all resumes and projects."
+msgstr ""
+
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with Reactive Resume"
 msgstr "Ускоренная демонстрация создания резюме в Reactive Resume"
@@ -3080,6 +3238,10 @@ msgstr ""
 msgid "Update Password"
 msgstr "Изменить пароль"
 
+#: src/dialogs/position/index.tsx
+msgid "Update position"
+msgstr ""
+
 #: src/dialogs/project/index.tsx
 #: src/dialogs/project/index.tsx
 msgid "Update project"
@@ -3089,6 +3251,10 @@ msgstr ""
 #: src/dialogs/resume/index.tsx
 msgid "Update Resume"
 msgstr "Обновить резюме"
+
+#: src/dialogs/skill/index.tsx
+msgid "Update skill"
+msgstr ""
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Update your password"
@@ -3103,8 +3269,16 @@ msgstr ""
 msgid "Updating domain..."
 msgstr ""
 
+#: src/dialogs/position/index.tsx
+msgid "Updating position..."
+msgstr ""
+
 #: src/dialogs/project/index.tsx
 msgid "Updating project..."
+msgstr ""
+
+#: src/dialogs/skill/index.tsx
+msgid "Updating skill..."
 msgstr ""
 
 #: src/dialogs/auth/change-password.tsx
