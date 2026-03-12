@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/client";
-import { asc, ilike, inArray } from "drizzle-orm";
+import { and, asc, desc, eq, ilike, inArray, ne } from "drizzle-orm";
 import { schema } from "@/integrations/drizzle";
 import { db } from "@/integrations/drizzle/client";
 import { slugify } from "@/utils/string";
@@ -43,17 +43,63 @@ export const positionService = {
 		return result;
 	},
 
-	list: async (input?: { query?: string; limit?: number }) => {
+	list: async (input?: { query?: string; sort?: "createdAt" | "name"; limit?: number }) => {
 		const query = input?.query?.trim();
-		const limit = input?.limit ?? 20;
+		const sort = input?.sort ?? "name";
+		const limit = input?.limit;
 		let q = db
-			.select({ id: schema.position.id, name: schema.position.name, slug: schema.position.slug })
-			.from(schema.position)
-			.orderBy(asc(schema.position.slug));
+			.select({
+				id: schema.position.id,
+				name: schema.position.name,
+				slug: schema.position.slug,
+				createdAt: schema.position.createdAt,
+			})
+			.from(schema.position);
 		if (query) {
 			const slugLike = `%${slugify(query)}%`;
 			q = q.where(ilike(schema.position.slug, slugLike)) as typeof q;
 		}
-		return await q.limit(limit);
+		q = q.orderBy(sort === "createdAt" ? desc(schema.position.createdAt) : asc(schema.position.name)) as typeof q;
+		if (limit !== undefined) {
+			q = q.limit(limit) as typeof q;
+		}
+		return await q;
+	},
+
+	create: async (input: { name: string }) => {
+		const name = input.name.trim();
+		const slug = slugify(name);
+		const [existing] = await db.select().from(schema.position).where(eq(schema.position.slug, slug));
+		if (existing) throw new ORPCError("POSITION_SLUG_ALREADY_EXISTS", { status: 400 });
+		const [inserted] = await db.insert(schema.position).values({ name, slug }).returning();
+		if (!inserted) throw new ORPCError("INTERNAL_SERVER_ERROR");
+		return inserted.id;
+	},
+
+	update: async (input: { id: string; name: string }) => {
+		const name = input.name.trim();
+		const slug = slugify(name);
+		const [conflict] = await db
+			.select()
+			.from(schema.position)
+			.where(and(eq(schema.position.slug, slug), ne(schema.position.id, input.id)));
+		if (conflict) {
+			throw new ORPCError("POSITION_SLUG_ALREADY_EXISTS", { status: 400 });
+		}
+		const [updated] = await db
+			.update(schema.position)
+			.set({ name, slug })
+			.where(eq(schema.position.id, input.id))
+			.returning();
+		if (!updated) throw new ORPCError("NOT_FOUND");
+		return updated;
+	},
+
+	delete: async (input: { id: string }) => {
+		const [row] = await db
+			.delete(schema.position)
+			.where(eq(schema.position.id, input.id))
+			.returning({ id: schema.position.id });
+		if (!row) throw new ORPCError("NOT_FOUND");
 	},
 };

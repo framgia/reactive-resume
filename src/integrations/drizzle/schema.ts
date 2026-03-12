@@ -360,23 +360,20 @@ export const resumeSkill = pg.pgTable(
 	(t) => [pg.primaryKey({ columns: [t.resumeId, t.skillId] }), pg.index().on(t.resumeId), pg.index().on(t.skillId)],
 );
 
-export const domain = pg.pgTable(
-	"domain",
-	{
-		id: pg
-			.uuid("id")
-			.notNull()
-			.primaryKey()
-			.$defaultFn(() => generateId()),
-		name: pg.text("name").notNull().unique(),
-		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-		updatedAt: pg
-			.timestamp("updated_at", { withTimezone: true })
-			.notNull()
-			.defaultNow()
-			.$onUpdate(() => /* @__PURE__ */ new Date()),
-	},
-);
+export const domain = pg.pgTable("domain", {
+	id: pg
+		.uuid("id")
+		.notNull()
+		.primaryKey()
+		.$defaultFn(() => generateId()),
+	name: pg.text("name").notNull().unique(),
+	createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	updatedAt: pg
+		.timestamp("updated_at", { withTimezone: true })
+		.notNull()
+		.defaultNow()
+		.$onUpdate(() => /* @__PURE__ */ new Date()),
+});
 
 export const projectDomain = pg.pgTable(
 	"project_domain",

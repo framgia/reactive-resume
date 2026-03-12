@@ -5,6 +5,7 @@ import { ChangePasswordDialog } from "./auth/change-password";
 import { DisableTwoFactorDialog } from "./auth/disable-two-factor";
 import { EnableTwoFactorDialog } from "./auth/enable-two-factor";
 import { CreateDomainDialog, UpdateDomainDialog } from "./domain";
+import { CreatePositionDialog, UpdatePositionDialog } from "./position";
 import {
 	CreateProjectDialog as CreateDashboardProjectDialog,
 	UpdateProjectDialog as UpdateDashboardProjectDialog,
@@ -28,6 +29,10 @@ import { CreateSummaryItemDialog, UpdateSummaryItemDialog } from "./resume/secti
 import { CreateVolunteerDialog, UpdateVolunteerDialog } from "./resume/sections/volunteer";
 import { ShareCopyDialog } from "./resume/share-copy";
 import { TemplateGalleryDialog } from "./resume/template/gallery";
+import {
+	CreateSkillDialog as CreateSkillDictionaryDialog,
+	UpdateSkillDialog as UpdateSkillDictionaryDialog,
+} from "./skill";
 import { useDialogStore } from "./store";
 
 export function DialogManager() {
@@ -40,6 +45,10 @@ export function DialogManager() {
 		.with({ type: "api-key.create" }, () => <CreateApiKeyDialog />)
 		.with({ type: "domain.create" }, () => <CreateDomainDialog />)
 		.with({ type: "domain.update" }, ({ data }) => <UpdateDomainDialog data={data} />)
+		.with({ type: "position.create" }, () => <CreatePositionDialog />)
+		.with({ type: "position.update" }, ({ data }) => <UpdatePositionDialog data={data} />)
+		.with({ type: "skill.create" }, () => <CreateSkillDictionaryDialog />)
+		.with({ type: "skill.update" }, ({ data }) => <UpdateSkillDictionaryDialog data={data} />)
 		.with({ type: "resume.create" }, () => <CreateResumeDialog />)
 		.with({ type: "project.create" }, () => <CreateDashboardProjectDialog />)
 		.with({ type: "project.update" }, ({ data }) => <UpdateDashboardProjectDialog data={data} />)

@@ -28,6 +28,16 @@ const dialogTypeSchema = z.discriminatedUnion("type", [
 		type: z.literal("domain.update"),
 		data: z.object({ id: z.string(), name: z.string() }),
 	}),
+	z.object({ type: z.literal("position.create"), data: z.undefined() }),
+	z.object({
+		type: z.literal("position.update"),
+		data: z.object({ id: z.string(), name: z.string(), slug: z.string() }),
+	}),
+	z.object({ type: z.literal("skill.create"), data: z.undefined() }),
+	z.object({
+		type: z.literal("skill.update"),
+		data: z.object({ id: z.string(), name: z.string(), slug: z.string() }),
+	}),
 	z.object({ type: z.literal("resume.create"), data: z.undefined() }),
 	z.object({ type: z.literal("project.create"), data: z.undefined() }),
 	z.object({

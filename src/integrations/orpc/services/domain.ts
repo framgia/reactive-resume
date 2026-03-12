@@ -42,11 +42,7 @@ export const domainService = {
 			.from(schema.domain)
 			.where(and(eq(schema.domain.name, name), ne(schema.domain.id, input.id)));
 		if (existing) throw new ORPCError("DOMAIN_NAME_ALREADY_EXISTS", { status: 400 });
-		const [updated] = await db
-			.update(schema.domain)
-			.set({ name })
-			.where(eq(schema.domain.id, input.id))
-			.returning();
+		const [updated] = await db.update(schema.domain).set({ name }).where(eq(schema.domain.id, input.id)).returning();
 		if (!updated) throw new ORPCError("NOT_FOUND");
 		return updated;
 	},

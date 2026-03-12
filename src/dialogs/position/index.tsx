@@ -12,19 +12,20 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { useFormBlocker } from "@/hooks/use-form-blocker";
 import { orpc } from "@/integrations/orpc/client";
+import { slugify } from "@/utils/string";
 import { type DialogProps, useDialogStore } from "../store";
 
 const formSchema = z.object({
-	name: z.string().min(1, "Domain name is required"),
+	name: z.string().min(1, "Position name is required"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-export function CreateDomainDialog(_: DialogProps<"domain.create">) {
+export function CreatePositionDialog(_: DialogProps<"position.create">) {
 	const closeDialog = useDialogStore((state) => state.closeDialog);
 	const queryClient = useQueryClient();
 
-	const { mutate: createDomain, isPending } = useMutation(orpc.domain.create.mutationOptions());
+	const { mutate: createPosition, isPending } = useMutation(orpc.position.create.mutationOptions());
 
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
@@ -32,20 +33,24 @@ export function CreateDomainDialog(_: DialogProps<"domain.create">) {
 	});
 
 	const { blockEvents } = useFormBlocker(form);
+	const nameWatch = form.watch("name");
+	const slugPreview = nameWatch?.trim() ? slugify(nameWatch) : "";
 
 	const onSubmit = (data: FormValues) => {
-		const toastId = toast.loading(t`Creating domain...`);
-		createDomain(
+		const toastId = toast.loading(t`Creating position...`);
+		createPosition(
 			{ name: data.name },
 			{
 				onSuccess: () => {
-					toast.success(t`Domain created.`, { id: toastId });
-					queryClient.invalidateQueries({ queryKey: orpc.domain.list.queryOptions({ input: {} }).queryKey });
+					toast.success(t`Position created.`, { id: toastId });
+					queryClient.invalidateQueries({ queryKey: orpc.position.list.queryOptions({ input: {} }).queryKey });
 					closeDialog();
 				},
 				onError: (error) => {
 					const message =
-						error.message === "DOMAIN_NAME_ALREADY_EXISTS" ? t`A domain with this name already exists.` : error.message;
+						error.message === "POSITION_SLUG_ALREADY_EXISTS"
+							? t`A position with this name already exists.`
+							: error.message;
 					toast.error(message, { id: toastId });
 				},
 			},
@@ -57,10 +62,10 @@ export function CreateDomainDialog(_: DialogProps<"domain.create">) {
 			<DialogHeader>
 				<DialogTitle className="flex items-center gap-x-2">
 					<PlusIcon />
-					<Trans>Create domain</Trans>
+					<Trans>Create position</Trans>
 				</DialogTitle>
 				<DialogDescription>
-					<Trans>Add a domain name to use when assigning projects.</Trans>
+					<Trans>Add a position/level (e.g. Senior Engineer, Manager) for use in resumes and projects.</Trans>
 				</DialogDescription>
 			</DialogHeader>
 			<Form {...form}>
@@ -74,12 +79,28 @@ export function CreateDomainDialog(_: DialogProps<"domain.create">) {
 									<Trans>Name</Trans>
 								</FormLabel>
 								<FormControl>
-									<Input {...field} placeholder={t`e.g. Healthcare, Finance`} />
+									<Input {...field} placeholder={t`e.g. Senior Engineer, Manager`} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
+					<FormItem>
+						<FormLabel>
+							<Trans>Slug</Trans>
+						</FormLabel>
+						<FormControl>
+							<Input
+								value={slugPreview}
+								disabled
+								className="bg-muted text-muted-foreground"
+								placeholder={t`Auto-generated from name`}
+							/>
+						</FormControl>
+						<p className="text-muted-foreground text-xs">
+							<Trans>Slug is auto-generated from the name and cannot be edited.</Trans>
+						</p>
+					</FormItem>
 					<DialogFooter>
 						<Button type="submit" disabled={isPending}>
 							<Trans>Create</Trans>
@@ -91,11 +112,11 @@ export function CreateDomainDialog(_: DialogProps<"domain.create">) {
 	);
 }
 
-export function UpdateDomainDialog({ data }: DialogProps<"domain.update">) {
+export function UpdatePositionDialog({ data }: DialogProps<"position.update">) {
 	const closeDialog = useDialogStore((state) => state.closeDialog);
 	const queryClient = useQueryClient();
 
-	const { mutate: updateDomain, isPending } = useMutation(orpc.domain.update.mutationOptions());
+	const { mutate: updatePosition, isPending } = useMutation(orpc.position.update.mutationOptions());
 
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
@@ -105,18 +126,20 @@ export function UpdateDomainDialog({ data }: DialogProps<"domain.update">) {
 	const { blockEvents } = useFormBlocker(form);
 
 	const onSubmit = (values: FormValues) => {
-		const toastId = toast.loading(t`Updating domain...`);
-		updateDomain(
+		const toastId = toast.loading(t`Updating position...`);
+		updatePosition(
 			{ id: data.id, name: values.name },
 			{
 				onSuccess: () => {
-					toast.success(t`Domain updated.`, { id: toastId });
-					queryClient.invalidateQueries({ queryKey: orpc.domain.list.queryOptions({ input: {} }).queryKey });
+					toast.success(t`Position updated.`, { id: toastId });
+					queryClient.invalidateQueries({ queryKey: orpc.position.list.queryOptions({ input: {} }).queryKey });
 					closeDialog();
 				},
 				onError: (error) => {
 					const message =
-						error.message === "DOMAIN_NAME_ALREADY_EXISTS" ? t`A domain with this name already exists.` : error.message;
+						error.message === "POSITION_SLUG_ALREADY_EXISTS"
+							? t`A position with this name already exists.`
+							: error.message;
 					toast.error(message, { id: toastId });
 				},
 			},
@@ -128,10 +151,10 @@ export function UpdateDomainDialog({ data }: DialogProps<"domain.update">) {
 			<DialogHeader>
 				<DialogTitle className="flex items-center gap-x-2">
 					<PencilSimpleLineIcon />
-					<Trans>Update domain</Trans>
+					<Trans>Update position</Trans>
 				</DialogTitle>
 				<DialogDescription>
-					<Trans>Edit the domain name.</Trans>
+					<Trans>Edit the position name. Slug will be auto-generated from the new name.</Trans>
 				</DialogDescription>
 			</DialogHeader>
 			<Form {...form}>
@@ -151,6 +174,17 @@ export function UpdateDomainDialog({ data }: DialogProps<"domain.update">) {
 							</FormItem>
 						)}
 					/>
+					<FormItem>
+						<FormLabel>
+							<Trans>Slug</Trans>
+						</FormLabel>
+						<FormControl>
+							<Input value={data.slug} disabled className="bg-muted text-muted-foreground" />
+						</FormControl>
+						<p className="text-muted-foreground text-xs">
+							<Trans>Slug is auto-generated and cannot be edited.</Trans>
+						</p>
+					</FormItem>
 					<DialogFooter>
 						<Button type="submit" disabled={isPending}>
 							<Trans>Save changes</Trans>

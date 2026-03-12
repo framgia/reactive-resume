@@ -10,12 +10,9 @@ export const emailSchema = z.email().pipe(
 		.string()
 		.trim()
 		.toLowerCase()
-		.refine(
-			(val) => ALLOWED_EMAIL_DOMAINS.some((d) => val.endsWith(`@${d}`)),
-			{
-				message: `Email must use one of these domains: ${ALLOWED_EMAIL_DOMAINS.join(", ")}.`,
-			},
-		),
+		.refine((val) => ALLOWED_EMAIL_DOMAINS.some((d) => val.endsWith(`@${d}`)), {
+			message: `Email must use one of these domains: ${ALLOWED_EMAIL_DOMAINS.join(", ")}.`,
+		}),
 );
 
 /**

@@ -30,6 +30,7 @@ import { Route as UsernameSlugRouteImport } from "./routes/$username/$slug";
 import { Route as BuilderResumeIdRouteRouteImport } from "./routes/builder/$resumeId/route";
 import { Route as DashboardResumesIndexRouteImport } from "./routes/dashboard/resumes/index";
 import { Route as DashboardProjectsIndexRouteImport } from "./routes/dashboard/projects/index";
+import { Route as DashboardPositionsSkillsIndexRouteImport } from "./routes/dashboard/positions-skills/index";
 import { Route as DashboardDomainsIndexRouteImport } from "./routes/dashboard/domains/index";
 import { Route as BuilderResumeIdIndexRouteImport } from "./routes/builder/$resumeId/index";
 import { Route as UploadsUserIdSplatRouteImport } from "./routes/uploads/$userId.$";
@@ -147,6 +148,12 @@ const DashboardProjectsIndexRoute = DashboardProjectsIndexRouteImport.update({
   path: "/projects/",
   getParentRoute: () => DashboardRouteRoute,
 } as any);
+const DashboardPositionsSkillsIndexRoute =
+  DashboardPositionsSkillsIndexRouteImport.update({
+    id: "/positions-skills/",
+    path: "/positions-skills/",
+    getParentRoute: () => DashboardRouteRoute,
+  } as any);
 const DashboardDomainsIndexRoute = DashboardDomainsIndexRouteImport.update({
   id: "/domains/",
   path: "/domains/",
@@ -243,6 +250,7 @@ export interface FileRoutesByFullPath {
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/dashboard/domains/": typeof DashboardDomainsIndexRoute;
+  "/dashboard/positions-skills/": typeof DashboardPositionsSkillsIndexRoute;
   "/dashboard/projects/": typeof DashboardProjectsIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
@@ -274,6 +282,7 @@ export interface FileRoutesByTo {
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
   "/builder/$resumeId": typeof BuilderResumeIdIndexRoute;
   "/dashboard/domains": typeof DashboardDomainsIndexRoute;
+  "/dashboard/positions-skills": typeof DashboardPositionsSkillsIndexRoute;
   "/dashboard/projects": typeof DashboardProjectsIndexRoute;
   "/dashboard/resumes": typeof DashboardResumesIndexRoute;
   "/dashboard/settings/authentication": typeof DashboardSettingsAuthenticationIndexRoute;
@@ -310,6 +319,7 @@ export interface FileRoutesById {
   "/uploads/$userId/$": typeof UploadsUserIdSplatRoute;
   "/builder/$resumeId/": typeof BuilderResumeIdIndexRoute;
   "/dashboard/domains/": typeof DashboardDomainsIndexRoute;
+  "/dashboard/positions-skills/": typeof DashboardPositionsSkillsIndexRoute;
   "/dashboard/projects/": typeof DashboardProjectsIndexRoute;
   "/dashboard/resumes/": typeof DashboardResumesIndexRoute;
   "/dashboard/settings/authentication/": typeof DashboardSettingsAuthenticationIndexRoute;
@@ -346,6 +356,7 @@ export interface FileRouteTypes {
     | "/uploads/$userId/$"
     | "/builder/$resumeId/"
     | "/dashboard/domains/"
+    | "/dashboard/positions-skills/"
     | "/dashboard/projects/"
     | "/dashboard/resumes/"
     | "/dashboard/settings/authentication/";
@@ -377,6 +388,7 @@ export interface FileRouteTypes {
     | "/uploads/$userId/$"
     | "/builder/$resumeId"
     | "/dashboard/domains"
+    | "/dashboard/positions-skills"
     | "/dashboard/projects"
     | "/dashboard/resumes"
     | "/dashboard/settings/authentication";
@@ -412,6 +424,7 @@ export interface FileRouteTypes {
     | "/uploads/$userId/$"
     | "/builder/$resumeId/"
     | "/dashboard/domains/"
+    | "/dashboard/positions-skills/"
     | "/dashboard/projects/"
     | "/dashboard/resumes/"
     | "/dashboard/settings/authentication/";
@@ -582,6 +595,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof DashboardProjectsIndexRouteImport;
       parentRoute: typeof DashboardRouteRoute;
     };
+    "/dashboard/positions-skills/": {
+      id: "/dashboard/positions-skills/";
+      path: "/positions-skills";
+      fullPath: "/dashboard/positions-skills/";
+      preLoaderRoute: typeof DashboardPositionsSkillsIndexRouteImport;
+      parentRoute: typeof DashboardRouteRoute;
+    };
     "/dashboard/domains/": {
       id: "/dashboard/domains/";
       path: "/domains";
@@ -715,6 +735,7 @@ interface DashboardRouteRouteChildren {
   DashboardSettingsPreferencesRoute: typeof DashboardSettingsPreferencesRoute;
   DashboardSettingsProfileRoute: typeof DashboardSettingsProfileRoute;
   DashboardDomainsIndexRoute: typeof DashboardDomainsIndexRoute;
+  DashboardPositionsSkillsIndexRoute: typeof DashboardPositionsSkillsIndexRoute;
   DashboardProjectsIndexRoute: typeof DashboardProjectsIndexRoute;
   DashboardResumesIndexRoute: typeof DashboardResumesIndexRoute;
   DashboardSettingsAuthenticationIndexRoute: typeof DashboardSettingsAuthenticationIndexRoute;
@@ -728,6 +749,7 @@ const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardSettingsPreferencesRoute: DashboardSettingsPreferencesRoute,
   DashboardSettingsProfileRoute: DashboardSettingsProfileRoute,
   DashboardDomainsIndexRoute: DashboardDomainsIndexRoute,
+  DashboardPositionsSkillsIndexRoute: DashboardPositionsSkillsIndexRoute,
   DashboardProjectsIndexRoute: DashboardProjectsIndexRoute,
   DashboardResumesIndexRoute: DashboardResumesIndexRoute,
   DashboardSettingsAuthenticationIndexRoute:
