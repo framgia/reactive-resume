@@ -51,9 +51,9 @@ const config = defineConfig({
 				navigateFallback: null, // Disable navigation fallback for SSR
 			},
 			manifest: {
-				name: "Reactive Resume",
-				short_name: "Reactive Resume",
-				description: "A free and open-source resume builder.",
+				name: "Sun Asterisk Global CV",
+				short_name: "CV Builder",
+				description: "Sun Asterisk Global CV Builder",
 				id: "/?source=pwa",
 				start_url: "/?source=pwa",
 				display: "standalone",

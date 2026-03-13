@@ -61,6 +61,7 @@
 		"@tanstack/react-router": "^1.166.2",
 		"@tanstack/react-router-ssr-query": "^1.166.2",
 		"@tanstack/react-start": "^1.166.2",
+		"@tanstack/react-table": "^8.21.3",
 		"@tanstack/zod-adapter": "^1.166.2",
 		"@tiptap/extension-highlight": "^3.20.0",
 		"@tiptap/extension-table": "^3.20.0",

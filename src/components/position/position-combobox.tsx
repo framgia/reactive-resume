@@ -20,11 +20,12 @@ type PositionComboboxProps = {
 
 export function PositionCombobox({ value, onChange, appliedIds = [], getLabelRef }: PositionComboboxProps) {
 	const [debouncedSearch, setSearchInput] = useDebounceValue("", 300);
-	const { data: positions = [] } = useQuery(
+	const { data } = useQuery(
 		orpc.position.list.queryOptions({
 			input: { query: debouncedSearch.trim() || undefined, limit: POSITION_LIST_LIMIT },
 		}),
 	);
+	const positions = data?.items ?? [];
 	const { options, getLabel } = useIdLabelOptions(positions, appliedIds, value);
 
 	useEffect(() => {

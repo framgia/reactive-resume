@@ -18,9 +18,8 @@ type DomainComboboxProps = {
 
 export function DomainCombobox({ value, onChange, appliedIds = [], getLabelRef }: DomainComboboxProps) {
 	const [debouncedSearch, setSearchInput] = useDebounceValue("", 300);
-	const { data: domains = [] } = useQuery(
-		orpc.domain.list.queryOptions({ input: { query: debouncedSearch.trim() || undefined } }),
-	);
+	const { data } = useQuery(orpc.domain.list.queryOptions({ input: { query: debouncedSearch.trim() || undefined } }));
+	const domains = data?.items ?? [];
 	const domainItems = useMemo(() => domains.map((d) => ({ id: d.id, name: d.name })), [domains]);
 	const { options, getLabel } = useIdLabelOptions(domainItems, appliedIds, value);
 

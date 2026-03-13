@@ -13,7 +13,7 @@ export const projectRouter = {
 			description: "Returns a list of all projects, including soft-deleted ones. Deleted projects have deletedAt set.",
 			successDescription: "A list of projects.",
 		})
-		.input(projectDto.list.input.optional().default({ sort: "lastUpdatedAt" }))
+		.input(projectDto.list.input.optional().default({ sort: "lastUpdatedAt", page: 1, pageSize: 10 }))
 		.output(projectDto.list.output)
 		.handler(async ({ input }) => {
 			return await projectService.list({
@@ -25,6 +25,8 @@ export const projectRouter = {
 				positionIds: input.positionIds,
 				query: input.query,
 				limit: input.limit,
+				page: input.page,
+				pageSize: input.pageSize ?? input.limit,
 			});
 		}),
 

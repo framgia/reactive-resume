@@ -51,16 +51,18 @@ export function ProjectSelect({
 	const [search, setSearch] = React.useState("");
 	const [debouncedSearch] = useDebounceValue(search, SEARCH_DEBOUNCE_MS);
 
-	const { data: projects = [] } = useQuery({
+	const { data } = useQuery({
 		...orpc.project.list.queryOptions({
 			input: {
 				query: debouncedSearch.trim() || undefined,
-				limit: LIST_LIMIT,
+				pageSize: LIST_LIMIT,
+				page: 1,
 				sort: "name",
 			},
 		}),
 		enabled: open,
 	});
+	const projects = data?.items ?? [];
 	const activeProjects = projects.filter((p) => !p.deletedAt);
 
 	const selectedId = value && isProjectId(value) ? value : undefined;

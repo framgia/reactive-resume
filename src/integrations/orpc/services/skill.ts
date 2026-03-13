@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/client";
-import { and, asc, desc, eq, ilike, inArray, ne } from "drizzle-orm";
+import { and, asc, desc, eq, ilike, inArray, ne, sql } from "drizzle-orm";
 import { schema } from "@/integrations/drizzle";
 import { db } from "@/integrations/drizzle/client";
 import { slugify } from "@/utils/string";
@@ -43,27 +43,59 @@ export const skillService = {
 		return result;
 	},
 
-	list: async (input?: { query?: string; sort?: "createdAt" | "name"; limit?: number }) => {
-		const query = input?.query?.trim();
+	list: async (input?: {
+		query?: string;
+		sort?: "createdAt" | "name";
+		limit?: number;
+		page?: number;
+		pageSize?: number;
+	}) => {
+		const queryTrimmed = input?.query?.trim();
 		const sort = input?.sort ?? "name";
 		const limit = input?.limit;
-		let q = db
+
+		const whereClause = queryTrimmed
+			? ilike(schema.skill.slug, `%${slugify(queryTrimmed)}%`)
+			: undefined;
+
+		const baseQuery = db
 			.select({
 				id: schema.skill.id,
 				name: schema.skill.name,
 				slug: schema.skill.slug,
 				createdAt: schema.skill.createdAt,
 			})
-			.from(schema.skill);
-		if (query) {
-			const slugLike = `%${slugify(query)}%`;
-			q = q.where(ilike(schema.skill.slug, slugLike)) as typeof q;
+			.from(schema.skill)
+			.where(whereClause)
+			.orderBy(sort === "createdAt" ? desc(schema.skill.createdAt) : asc(schema.skill.name));
+
+		// Non-paginated usage (e.g. combobox) – respect limit, still return total for convenience.
+		if (limit !== undefined && input?.page === undefined && input?.pageSize === undefined) {
+			const [countRows, rows] = await Promise.all([
+				db
+					.select({ count: sql<number>`count(*)::int` })
+					.from(schema.skill)
+					.where(whereClause),
+				baseQuery.limit(limit),
+			]);
+			const total = countRows[0]?.count ?? 0;
+			return { items: rows, total };
 		}
-		q = q.orderBy(sort === "createdAt" ? desc(schema.skill.createdAt) : asc(schema.skill.name)) as typeof q;
-		if (limit !== undefined) {
-			q = q.limit(limit) as typeof q;
-		}
-		return await q;
+
+		// Paginated usage.
+		const page = input?.page ?? 1;
+		const pageSize = input?.pageSize ?? 10;
+		const offset = (page - 1) * pageSize;
+
+		const [countRows, rows] = await Promise.all([
+			db
+				.select({ count: sql<number>`count(*)::int` })
+				.from(schema.skill)
+				.where(whereClause),
+			baseQuery.limit(pageSize).offset(offset),
+		]);
+		const total = countRows[0]?.count ?? 0;
+		return { items: rows, total };
 	},
 
 	create: async (input: { name: string }) => {

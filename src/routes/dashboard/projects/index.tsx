@@ -3,7 +3,8 @@ import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { FolderIcon, FunnelSimpleIcon, SortAscendingIcon } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
-import { createFileRoute, stripSearchParams, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, stripSearchParams, useNavigate, useRouter } from "@tanstack/react-router";
+import { type ColumnDef, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { useMemo, useRef, useState } from "react";
 import z from "zod";
@@ -15,8 +16,10 @@ import { Button } from "@/components/ui/button";
 import { Combobox } from "@/components/ui/combobox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PaginationBar } from "@/components/ui/pagination";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
+import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from "@/constants";
 import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 import { DashboardHeader } from "../-components/header";
 import { ListView } from "./-components/list-view";
@@ -25,20 +28,31 @@ type SortOption = "lastUpdatedAt" | "createdAt" | "name";
 
 const searchSchema = z.object({
 	sort: z.enum(["lastUpdatedAt", "createdAt", "name"]).default("lastUpdatedAt"),
+	page: z.coerce.number().int().min(1).default(1),
+	pageSize: z.coerce
+		.number()
+		.int()
+		.min(1)
+		.max(100)
+		.default(DEFAULT_PAGE_SIZE)
+		.transform((n) => (PAGE_SIZE_OPTIONS.includes(n as (typeof PAGE_SIZE_OPTIONS)[number]) ? n : DEFAULT_PAGE_SIZE)),
 });
 
 export const Route = createFileRoute("/dashboard/projects/")({
 	component: RouteComponent,
 	validateSearch: zodValidator(searchSchema),
 	search: {
-		middlewares: [stripSearchParams({ sort: "lastUpdatedAt" })],
+		middlewares: [stripSearchParams({ sort: "lastUpdatedAt", page: 1, pageSize: DEFAULT_PAGE_SIZE })],
 	},
 });
 
 function RouteComponent() {
 	const { i18n } = useLingui();
-	const { sort } = Route.useSearch();
+	const router = useRouter();
+	const { sort, page, pageSize } = Route.useSearch();
 	const navigate = useNavigate({ from: Route.fullPath });
+	const pathname = router.state.location.pathname;
+	const makePageHref = (p: number) => `${pathname}?sort=${encodeURIComponent(sort)}&page=${p}&pageSize=${pageSize}`;
 
 	const [filterOpen, setFilterOpen] = useState(false);
 	const [filterComboboxKey, setFilterComboboxKey] = useState(0);
@@ -61,10 +75,12 @@ function RouteComponent() {
 	const [appliedSkillNames, setAppliedSkillNames] = useState<string[]>([]);
 	const [appliedPositionNames, setAppliedPositionNames] = useState<string[]>([]);
 
-	const { data: projects } = useQuery(
+	const { data: listData } = useQuery<RouterOutput["project"]["list"]>(
 		orpc.project.list.queryOptions({
 			input: {
 				sort,
+				page,
+				pageSize,
 				name: appliedName?.trim() || undefined,
 				customerName: appliedCustomerName?.trim() || undefined,
 				domainIds: appliedDomainIds.length > 0 ? appliedDomainIds : undefined,
@@ -73,6 +89,31 @@ function RouteComponent() {
 			},
 		}),
 	);
+	const projects = listData?.items ?? [];
+	const total = listData?.total ?? 0;
+	const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
+	type ProjectRow = RouterOutput["project"]["list"]["items"][number];
+
+	const paginationTable = useReactTable({
+		data: projects,
+		columns: useMemo<ColumnDef<ProjectRow>[]>(() => [{ id: "id", accessorKey: "id" }], []),
+		getCoreRowModel: getCoreRowModel(),
+		manualPagination: true,
+		pageCount: totalPages,
+		state: {
+			pagination: { pageIndex: page - 1, pageSize },
+		},
+		onPaginationChange: (updaterOrValue) => {
+			const prev = { pageIndex: page - 1, pageSize };
+			const next =
+				typeof updaterOrValue === "function"
+					? updaterOrValue(prev)
+					: (updaterOrValue as typeof prev);
+			const nextPage = next.pageSize !== pageSize ? 1 : next.pageIndex + 1;
+			navigate({ search: { sort, page: nextPage, pageSize: next.pageSize } });
+		},
+	});
 
 	const sortOptions = useMemo(() => {
 		return [
@@ -244,7 +285,7 @@ function RouteComponent() {
 					options={sortOptions}
 					onValueChange={(value) => {
 						if (!value) return;
-						navigate({ search: { sort: value as SortOption } });
+						navigate({ search: { sort: value as SortOption, page: 1, pageSize } });
 					}}
 					buttonProps={{
 						title: t`Sort by`,
@@ -259,7 +300,18 @@ function RouteComponent() {
 				/>
 			</div>
 
-			<ListView projects={(projects ?? []) as RouterOutput["project"]["list"]} />
+			<ListView projects={projects as RouterOutput["project"]["list"]["items"]} />
+
+			<PaginationBar
+				page={page}
+				totalPages={totalPages}
+				pageSize={pageSize}
+				onPageSizeChange={(size) => paginationTable.setPageSize(size)}
+				getPageHref={makePageHref}
+				canPreviousPage={paginationTable.getCanPreviousPage()}
+				canNextPage={paginationTable.getCanNextPage()}
+				onPageSelect={(pageNum) => paginationTable.setPageIndex(pageNum - 1)}
+			/>
 		</div>
 	);
 }
