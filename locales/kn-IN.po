@@ -1366,6 +1366,10 @@ msgstr ""
 msgid "Features"
 msgstr "ವೈಶಿಷ್ಟ್ಯಗಳು"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "File size must be less than 5MB"
+msgstr ""
+
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx

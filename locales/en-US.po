@@ -1361,6 +1361,10 @@ msgstr "Failed to sign in. Please try again."
 msgid "Features"
 msgstr "Features"
 
+#: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
+msgid "File size must be less than 5MB"
+msgstr "File size must be less than 5MB"
+
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
