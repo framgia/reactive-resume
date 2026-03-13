@@ -15,7 +15,7 @@ import { useConfirm } from "@/hooks/use-confirm";
 import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 
 type Props = Omit<React.ComponentProps<typeof DropdownMenuContent>, "children"> & {
-	project: RouterOutput["project"]["list"][number];
+	project: RouterOutput["project"]["list"]["items"][number];
 	children: React.ReactNode;
 };
 

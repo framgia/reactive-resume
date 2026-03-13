@@ -1,23 +1,48 @@
 import { ORPCError } from "@orpc/client";
-import { and, eq, ilike, ne } from "drizzle-orm";
+import { and, eq, ilike, ne, sql } from "drizzle-orm";
 import { schema } from "@/integrations/drizzle";
 import { db } from "@/integrations/drizzle/client";
 import { generateId } from "@/utils/string";
 
 export const domainService = {
-	list: async (input: { query?: string; limit?: number }) => {
-		const conditions = input.query?.trim() ? [ilike(schema.domain.name, `%${input.query.trim()}%`)] : undefined;
+	list: async (input: { query?: string; limit?: number; page?: number; pageSize?: number }) => {
+		const queryTrimmed = input.query?.trim();
+		const conditions = queryTrimmed ? [ilike(schema.domain.name, `%${queryTrimmed}%`)] : undefined;
+		const whereClause = conditions?.length ? and(...conditions) : undefined;
 
-		let query = db
+		const baseQuery = db
 			.select()
 			.from(schema.domain)
-			.where(conditions?.length ? and(...conditions) : undefined)
+			.where(whereClause)
 			.orderBy(schema.domain.name);
 
-		if (input.limit !== undefined) {
-			query = query.limit(input.limit) as typeof query;
+		// Non-paginated usage (e.g. combobox / selects) – respect limit, still return total.
+		if (input.limit !== undefined && input.page === undefined && input.pageSize === undefined) {
+			const [countRows, rows] = await Promise.all([
+				db
+					.select({ count: sql<number>`count(*)::int` })
+					.from(schema.domain)
+					.where(whereClause),
+				baseQuery.limit(input.limit),
+			]);
+			const total = countRows[0]?.count ?? 0;
+			return { items: rows, total };
 		}
-		return await query;
+
+		// Paginated usage.
+		const page = input.page ?? 1;
+		const pageSize = input.pageSize ?? 10;
+		const offset = (page - 1) * pageSize;
+
+		const [countRows, rows] = await Promise.all([
+			db
+				.select({ count: sql<number>`count(*)::int` })
+				.from(schema.domain)
+				.where(whereClause),
+			baseQuery.limit(pageSize).offset(offset),
+		]);
+		const total = countRows[0]?.count ?? 0;
+		return { items: rows, total };
 	},
 
 	getById: async (input: { id: string }) => {

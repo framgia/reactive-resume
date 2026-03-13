@@ -11,9 +11,10 @@ import {
 	TrashSimpleIcon,
 } from "@phosphor-icons/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { type ColumnDef, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { createFileRoute, stripSearchParams, useNavigate } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import z from "zod";
 import { Badge } from "@/components/ui/badge";
@@ -27,12 +28,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PaginationBar } from "@/components/ui/pagination";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Spinner } from "@/components/ui/spinner";
 import { useDialogStore } from "@/dialogs/store";
 import { useConfirm } from "@/hooks/use-confirm";
-import { orpc } from "@/integrations/orpc/client";
+import { orpc, type RouterOutput } from "@/integrations/orpc/client";
+import { DEFAULT_PAGE_SIZE } from "@/constants";
 import { DashboardHeader } from "../-components/header";
 
 type TabValue = "positions" | "skills";
@@ -312,25 +316,69 @@ function SkillsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOptio
 	);
 }
 
+type PositionListItem = RouterOutput["position"]["list"]["items"][number];
+type SkillListItem = RouterOutput["skill"]["list"]["items"][number];
+
 function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 	const { i18n } = useLingui();
 	const queryClient = useQueryClient();
 	const openDialog = useDialogStore((state) => state.openDialog);
 	const confirm = useConfirm();
 
-	const { data: positions = [] } = useQuery(
+	const [page, setPage] = useState(1);
+	const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
+
+	useEffect(() => {
+		setPage(1);
+	}, [sort, query]);
+
+	const { data, isLoading, isFetching } = useQuery<RouterOutput["position"]["list"]>(
 		orpc.position.list.queryOptions({
 			input: {
 				query: query?.trim() || undefined,
 				sort,
+				page,
+				pageSize,
 			},
 		}),
 	);
 
-	const { mutate: deletePosition, isPending: isDeleting } = useMutation(
+	const positions = (data?.items ?? []) as PositionListItem[];
+	const total = data?.total ?? positions.length;
+	const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
+	type PositionRow = PositionListItem;
+
+	const paginationTable = useReactTable({
+		data: positions as PositionRow[],
+		columns: useMemo<ColumnDef<PositionRow>[]>(() => [{ id: "id", accessorKey: "id" }], []),
+		getCoreRowModel: getCoreRowModel(),
+		manualPagination: true,
+		pageCount: totalPages,
+		state: {
+			pagination: { pageIndex: page - 1, pageSize },
+		},
+		onPaginationChange: (updaterOrValue) => {
+			const prev = { pageIndex: page - 1, pageSize };
+			const next =
+				typeof updaterOrValue === "function"
+					? updaterOrValue(prev)
+					: (updaterOrValue as typeof prev);
+			const nextPage = next.pageSize !== pageSize ? 1 : next.pageIndex + 1;
+			setPage(nextPage);
+			setPageSize(next.pageSize);
+		},
+	});
+	const { mutate: deletePosition, isPending: isDeleting } = useMutation<
+		void,
+		Error,
+		{ id: string }
+	>(
 		orpc.position.delete.mutationOptions({
 			onSuccess: () => {
-				queryClient.invalidateQueries({ queryKey: orpc.position.list.queryOptions({ input: {} }).queryKey });
+				queryClient.invalidateQueries({
+					queryKey: orpc.position.list.queryOptions({ input: {} }).queryKey,
+				});
 			},
 		}),
 	);
@@ -355,15 +403,25 @@ function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 
 	return (
 		<div className="flex flex-col gap-y-2">
-			<Button
-				variant="ghost"
-				size="lg"
-				className="h-12 w-full justify-start gap-x-4 text-start"
-				onClick={() => openDialog("position.create", undefined)}
-			>
-				<PlusIcon />
-				<Trans>Create a new position</Trans>
-			</Button>
+			<div className="flex items-center gap-x-2">
+				<Button
+					variant="ghost"
+					size="lg"
+					className="h-12 flex-1 justify-start gap-x-4 text-start"
+					onClick={() => openDialog("position.create", undefined)}
+				>
+					<PlusIcon />
+					<Trans>Create a new position</Trans>
+				</Button>
+				{(isLoading || isFetching) && (
+					<div className="flex items-center gap-x-2 px-1 text-muted-foreground text-xs">
+						<Spinner className="size-4" />
+						<span>
+							<Trans>Loading...</Trans>
+						</span>
+					</div>
+				)}
+			</div>
 
 			<div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-x-4 gap-y-1">
 				<div className="px-1 font-medium text-muted-foreground text-xs">
@@ -377,7 +435,7 @@ function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 				</div>
 				<div className="w-12" />
 
-				{positions.map((position) => (
+				{positions.map((position: PositionListItem) => (
 					<div key={position.id} className="contents">
 						<div className="flex h-12 items-center rounded-md px-1">
 							<span className="truncate font-medium">{position.name}</span>
@@ -420,6 +478,17 @@ function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 					</div>
 				))}
 			</div>
+
+			<PaginationBar
+				page={page}
+				totalPages={totalPages}
+				pageSize={pageSize}
+				onPageSizeChange={(size) => paginationTable.setPageSize(size)}
+				getPageHref={() => "#"}
+				canPreviousPage={paginationTable.getCanPreviousPage()}
+				canNextPage={paginationTable.getCanNextPage()}
+				onPageSelect={(pageNum) => paginationTable.setPageIndex(pageNum - 1)}
+			/>
 		</div>
 	);
 }
@@ -430,19 +499,56 @@ function SkillsTab({ sort, query }: { sort: SortOption; query?: string }) {
 	const openDialog = useDialogStore((state) => state.openDialog);
 	const confirm = useConfirm();
 
-	const { data: skills = [] } = useQuery(
+	const [page, setPage] = useState(1);
+	const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
+
+	useEffect(() => {
+		setPage(1);
+	}, [sort, query]);
+
+	const { data, isLoading, isFetching } = useQuery<RouterOutput["skill"]["list"]>(
 		orpc.skill.list.queryOptions({
 			input: {
 				query: query?.trim() || undefined,
 				sort,
+				page,
+				pageSize,
 			},
 		}),
 	);
 
-	const { mutate: deleteSkill, isPending: isDeleting } = useMutation(
+	const skills = (data?.items ?? []) as SkillListItem[];
+	const total = data?.total ?? skills.length;
+	const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
+	type SkillRow = SkillListItem;
+
+	const paginationTable = useReactTable({
+		data: skills as SkillRow[],
+		columns: useMemo<ColumnDef<SkillRow>[]>(() => [{ id: "id", accessorKey: "id" }], []),
+		getCoreRowModel: getCoreRowModel(),
+		manualPagination: true,
+		pageCount: totalPages,
+		state: {
+			pagination: { pageIndex: page - 1, pageSize },
+		},
+		onPaginationChange: (updaterOrValue) => {
+			const prev = { pageIndex: page - 1, pageSize };
+			const next =
+				typeof updaterOrValue === "function"
+					? updaterOrValue(prev)
+					: (updaterOrValue as typeof prev);
+			const nextPage = next.pageSize !== pageSize ? 1 : next.pageIndex + 1;
+			setPage(nextPage);
+			setPageSize(next.pageSize);
+		},
+	});
+	const { mutate: deleteSkill, isPending: isDeleting } = useMutation<void, Error, { id: string }>(
 		orpc.skill.delete.mutationOptions({
 			onSuccess: () => {
-				queryClient.invalidateQueries({ queryKey: orpc.skill.list.queryOptions({ input: {} }).queryKey });
+				queryClient.invalidateQueries({
+					queryKey: orpc.skill.list.queryOptions({ input: {} }).queryKey,
+				});
 			},
 		}),
 	);
@@ -467,15 +573,25 @@ function SkillsTab({ sort, query }: { sort: SortOption; query?: string }) {
 
 	return (
 		<div className="flex flex-col gap-y-2">
-			<Button
-				variant="ghost"
-				size="lg"
-				className="h-12 w-full justify-start gap-x-4 text-start"
-				onClick={() => openDialog("skill.create", undefined)}
-			>
-				<PlusIcon />
-				<Trans>Create a new skill</Trans>
-			</Button>
+			<div className="flex items-center gap-x-2">
+				<Button
+					variant="ghost"
+					size="lg"
+					className="h-12 flex-1 justify-start gap-x-4 text-start"
+					onClick={() => openDialog("skill.create", undefined)}
+				>
+					<PlusIcon />
+					<Trans>Create a new skill</Trans>
+				</Button>
+				{(isLoading || isFetching) && (
+					<div className="flex items-center gap-x-2 px-1 text-muted-foreground text-xs">
+						<Spinner className="size-4" />
+						<span>
+							<Trans>Loading...</Trans>
+						</span>
+					</div>
+				)}
+			</div>
 
 			<div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-x-4 gap-y-1">
 				<div className="px-1 font-medium text-muted-foreground text-xs">
@@ -489,7 +605,7 @@ function SkillsTab({ sort, query }: { sort: SortOption; query?: string }) {
 				</div>
 				<div className="w-12" />
 
-				{skills.map((skill) => (
+				{skills.map((skill: SkillListItem) => (
 					<div key={skill.id} className="contents">
 						<div className="flex h-12 items-center rounded-md px-1">
 							<span className="truncate font-medium">{skill.name}</span>
@@ -532,6 +648,17 @@ function SkillsTab({ sort, query }: { sort: SortOption; query?: string }) {
 					</div>
 				))}
 			</div>
+
+			<PaginationBar
+				page={page}
+				totalPages={totalPages}
+				pageSize={pageSize}
+				onPageSizeChange={(size) => paginationTable.setPageSize(size)}
+				getPageHref={() => "#"}
+				canPreviousPage={paginationTable.getCanPreviousPage()}
+				canNextPage={paginationTable.getCanNextPage()}
+				onPageSelect={(pageNum) => paginationTable.setPageIndex(pageNum - 1)}
+			/>
 		</div>
 	);
 }

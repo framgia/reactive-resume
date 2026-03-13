@@ -27,7 +27,8 @@ export function PositionSelect({
 	className,
 	getLabelRef,
 }: PositionSelectProps) {
-	const { data: positions = [] } = useQuery(orpc.position.list.queryOptions({ input: { limit: POSITION_LIST_LIMIT } }));
+	const { data } = useQuery(orpc.position.list.queryOptions({ input: { limit: POSITION_LIST_LIMIT } }));
+	const positions = data?.items ?? [];
 
 	const options = positions.map((p) => ({ value: p.id, label: p.name }));
 	const getLabel = (id: string) => options.find((o) => o.value === id)?.label ?? id;

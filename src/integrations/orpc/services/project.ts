@@ -17,6 +17,8 @@ export const projectService = {
 		positionIds?: string[];
 		query?: string;
 		limit?: number;
+		page?: number;
+		pageSize?: number;
 	}) => {
 		const conditions: ReturnType<typeof eq>[] = [];
 		const nameTrimmed = input.name?.trim();
@@ -79,7 +81,11 @@ export const projectService = {
 
 		const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
 
-		let query = db
+		const page = input.page ?? 1;
+		const pageSize = input.pageSize ?? input.limit ?? 10;
+		const offset = (page - 1) * pageSize;
+
+		const baseQuery = db
 			.select({
 				id: schema.project.id,
 				name: schema.project.name,
@@ -114,51 +120,12 @@ export const projectService = {
 					.exhaustive(),
 			);
 
-		if (input.limit !== undefined) {
-			query = query.limit(input.limit) as typeof query;
-		}
-
-		const rows = await query;
-		if (rows.length === 0) return [];
-
-		const projectIds = rows.map((r) => r.id);
-		const [skillRows, positionRows] = await Promise.all([
-			db
-				.select({
-					projectId: schema.projectSkill.projectId,
-					name: schema.skill.name,
-				})
-				.from(schema.projectSkill)
-				.innerJoin(schema.skill, eq(schema.projectSkill.skillId, schema.skill.id))
-				.where(inArray(schema.projectSkill.projectId, projectIds)),
-			db
-				.select({
-					projectId: schema.projectPosition.projectId,
-					name: schema.position.name,
-				})
-				.from(schema.projectPosition)
-				.innerJoin(schema.position, eq(schema.projectPosition.positionId, schema.position.id))
-				.where(inArray(schema.projectPosition.projectId, projectIds)),
+		const [countRows, rows] = await Promise.all([
+			db.select({ count: sql<number>`count(*)::int` }).from(schema.project).where(whereClause),
+			baseQuery.limit(pageSize).offset(offset),
 		]);
-
-		const skillsByProject = new Map<string, string[]>();
-		const positionByProject = new Map<string, string[]>();
-		for (const r of skillRows) {
-			const arr = skillsByProject.get(r.projectId) ?? [];
-			arr.push(r.name);
-			skillsByProject.set(r.projectId, arr);
-		}
-		for (const r of positionRows) {
-			const arr = positionByProject.get(r.projectId) ?? [];
-			arr.push(r.name);
-			positionByProject.set(r.projectId, arr);
-		}
-
-		return rows.map((row) => ({
-			...row,
-			skills: skillsByProject.get(row.id) ?? [],
-			position: positionByProject.get(row.id) ?? [],
-		}));
+		const total = countRows[0]?.count ?? 0;
+		return { items: rows, total };
 	},
 
 	getById: async (input: { id: string }) => {

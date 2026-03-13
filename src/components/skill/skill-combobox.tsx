@@ -7,7 +7,7 @@ import { useDebounceValue } from "usehooks-ts";
 import { IdLabelMultipleCombobox } from "@/components/ui/id-label-multiple-combobox";
 import { Label } from "@/components/ui/label";
 import { useIdLabelOptions } from "@/hooks/use-id-label-options";
-import { orpc } from "@/integrations/orpc/client";
+import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 
 const SKILL_LIST_LIMIT = 20;
 
@@ -29,11 +29,12 @@ export function SkillCombobox({
 	placeholder = t`All skills`,
 }: SkillComboboxProps) {
 	const [debouncedSearch, setSearchInput] = useDebounceValue("", 300);
-	const { data: skills = [] } = useQuery(
+	const { data } = useQuery<RouterOutput["skill"]["list"]>(
 		orpc.skill.list.queryOptions({
 			input: { query: debouncedSearch.trim() || undefined, limit: SKILL_LIST_LIMIT },
 		}),
 	);
+	const skills = data?.items ?? [];
 	const { options, getLabel } = useIdLabelOptions(skills, appliedIds, value);
 
 	useEffect(() => {
