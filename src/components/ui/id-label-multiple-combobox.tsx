@@ -13,6 +13,9 @@ type IdLabelMultipleComboboxProps = {
 	searchPlaceholder?: string;
 	emptyMessage?: ReactNode;
 	className?: string;
+	onLoadMore?: () => void;
+	hasNextPage?: boolean;
+	isFetchingNextPage?: boolean;
 };
 
 function buttonChildren(placeholder: ReactNode) {
@@ -32,6 +35,9 @@ export function IdLabelMultipleCombobox({
 	searchPlaceholder,
 	emptyMessage,
 	className,
+	onLoadMore,
+	hasNextPage,
+	isFetchingNextPage,
 }: IdLabelMultipleComboboxProps) {
 	return (
 		<MultipleCombobox
@@ -43,6 +49,9 @@ export function IdLabelMultipleCombobox({
 			searchPlaceholder={searchPlaceholder}
 			emptyMessage={emptyMessage}
 			className={cn("w-full", className)}
+			onLoadMore={onLoadMore}
+			hasNextPage={hasNextPage}
+			isFetchingNextPage={isFetchingNextPage}
 			buttonProps={{
 				className: "h-9 w-full justify-between font-normal",
 				children: buttonChildren(placeholder),

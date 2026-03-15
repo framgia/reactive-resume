@@ -81,7 +81,7 @@ function PaginationEllipsis({ className, ...props }: React.ComponentProps<"span"
 
 export type PaginationBarProps = {
 	page: number;
-	totalPages: number;
+	totalPage: number;
 	pageSize: number;
 	onPageSizeChange: (size: number) => void;
 	getPageHref: (pageNum: number) => string;
@@ -96,7 +96,7 @@ export type PaginationBarProps = {
 
 function PaginationBar({
 	page,
-	totalPages,
+	totalPage,
 	pageSize,
 	onPageSizeChange,
 	getPageHref,
@@ -109,9 +109,9 @@ function PaginationBar({
 		() => PAGE_SIZE_OPTIONS.map((n) => ({ value: n, label: String(n) })),
 		[],
 	);
-	const range = getPaginationRange(page, totalPages);
+	const range = getPaginationRange(page, totalPage);
 	const canPrev = canPreviousPage ?? page > 1;
-	const canNext = canNextPage ?? page < totalPages;
+	const canNext = canNextPage ?? page < totalPage;
 	const prevHref = canPrev ? getPageHref(page - 1) : undefined;
 	const nextHref = canNext ? getPageHref(page + 1) : undefined;
 

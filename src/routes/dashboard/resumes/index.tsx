@@ -9,8 +9,8 @@ import { getCookie, setCookie } from "@tanstack/react-start/server";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { useMemo, useRef, useState } from "react";
 import z from "zod";
-import { PositionSelect } from "@/components/position/position-select";
-import { PROJECT_ALL, ProjectSelect } from "@/components/project/project-select";
+import { PositionCombobox } from "@/components/position/position-combobox";
+import { ProjectCombobox } from "@/components/project/project-combobox";
 import { SkillCombobox } from "@/components/skill/skill-combobox";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,9 +28,9 @@ type SortOption = "lastUpdatedAt" | "createdAt" | "name";
 
 const searchSchema = z.object({
 	sort: z.enum(["lastUpdatedAt", "createdAt", "name"]).default("lastUpdatedAt"),
-	projectId: z.union([z.string().uuid(), z.literal(PROJECT_ALL)]).optional(),
-	skillIds: z.array(z.string().uuid()).default([]),
-	positionId: z.string().uuid().optional(),
+	projectId: z.uuid().optional(),
+	skillIds: z.array(z.uuid()).default([]),
+	positionId: z.uuid().optional(),
 });
 
 export const Route = createFileRoute("/dashboard/resumes/")({
@@ -54,7 +54,7 @@ function RouteComponent() {
 
 	const [filterOpen, setFilterOpen] = useState(false);
 	const [filterComboboxKey, setFilterComboboxKey] = useState(0);
-	const [projectInput, setProjectInput] = useState<string>(PROJECT_ALL);
+	const [projectInput, setProjectInput] = useState<string | undefined>(undefined);
 	const [skillInput, setSkillInput] = useState<string[]>([]);
 	const [positionInput, setPositionInput] = useState<string | null>(null);
 
@@ -64,16 +64,21 @@ function RouteComponent() {
 	const [appliedSkillNames, setAppliedSkillNames] = useState<string[]>([]);
 	const [appliedPositionName, setAppliedPositionName] = useState("");
 
-	const listProjectId = projectId === undefined || projectId === PROJECT_ALL ? undefined : projectId;
+	const listProjectId = projectId;
 	const listPositionId = positionId;
 
 	const { data: resumes } = useQuery(
 		orpc.resume.list.queryOptions({
-			input: { sort, projectId: listProjectId, skillIds, positionId: listPositionId },
+			input: {
+				sort,
+				projectId: listProjectId,
+				skillIds,
+				positionId: listPositionId,
+			},
 		}),
 	);
 
-	const isProjectIdValid = projectId && projectId !== PROJECT_ALL;
+	const isProjectIdValid = Boolean(projectId);
 	const { data: project, isPending: isProjectLoading } = useQuery({
 		...orpc.project.getById.queryOptions({ input: { id: projectId ?? "" } }),
 		enabled: Boolean(isProjectIdValid && projectId),
@@ -96,12 +101,11 @@ function RouteComponent() {
 		navigate({ search: { sort, projectId, skillIds, positionId, ...updates } });
 	};
 
-	const hasActiveFilters =
-		(projectId !== undefined && projectId !== PROJECT_ALL) || skillIds.length > 0 || positionId !== undefined;
+	const hasActiveFilters = projectId !== undefined || skillIds.length > 0 || positionId !== undefined;
 
 	const filterBadges = useMemo(() => {
 		const items: { label: string; value: string }[] = [];
-		if (projectId !== undefined && projectId !== PROJECT_ALL) {
+		if (projectId !== undefined) {
 			const projectLabel = isProjectLoading ? t`Loading...` : (project?.name ?? projectId);
 			items.push({ label: t`Project`, value: projectLabel });
 		}
@@ -121,7 +125,7 @@ function RouteComponent() {
 	}, [projectId, isProjectLoading, project?.name, skillIds.length, appliedSkillNames, positionId, appliedPositionName]);
 
 	const handleApplyFilter = () => {
-		const resolvedProjectId = projectInput === PROJECT_ALL ? undefined : projectInput;
+		const resolvedProjectId = projectInput;
 		updateSearch({
 			projectId: resolvedProjectId,
 			skillIds: skillInput,
@@ -138,7 +142,7 @@ function RouteComponent() {
 			skillIds: [],
 			positionId: undefined,
 		});
-		setProjectInput(PROJECT_ALL);
+		setProjectInput(undefined);
 		setSkillInput([]);
 		setPositionInput(null);
 		setAppliedSkillNames([]);
@@ -149,7 +153,7 @@ function RouteComponent() {
 	const handleFilterOpenChange = (open: boolean) => {
 		setFilterOpen(open);
 		if (open) {
-			setProjectInput(projectId === undefined || projectId === PROJECT_ALL ? PROJECT_ALL : projectId);
+			setProjectInput(projectId);
 			setSkillInput(skillIds);
 			setPositionInput(positionId ?? null);
 		} else {
@@ -182,43 +186,26 @@ function RouteComponent() {
 					</PopoverTrigger>
 					<PopoverContent align="start" className="w-72">
 						<div className="flex flex-col gap-y-3">
-							<div className="space-y-2">
-								<Label className="font-medium text-muted-foreground text-xs">
+							<div key={`project-${filterComboboxKey}`} className="flex flex-col gap-y-2">
+								<Label>
 									<Trans>Project</Trans>
 								</Label>
-								<ProjectSelect
-									value={projectInput}
-									onValueChange={(next) => setProjectInput(next ?? PROJECT_ALL)}
-									includeAll
-									clearable={false}
-									buttonProps={{ variant: "outline", className: "h-9 w-full justify-start" }}
-								/>
+								<ProjectCombobox value={projectInput} onValueChange={(next) => setProjectInput(next ?? undefined)} />
 							</div>
-							<div key={`skill-${filterComboboxKey}`}>
-								<SkillCombobox
-									value={skillInput}
-									onChange={setSkillInput}
-									appliedIds={skillIds}
-									getLabelRef={getSkillLabelRef}
-									label={
-										<span className="font-medium text-muted-foreground text-xs">
-											<Trans>Skill highlight</Trans>
-										</span>
-									}
-									placeholder={t`Any skill highlight`}
-								/>
+							<div key={`skill-${filterComboboxKey}`} className="flex flex-col gap-y-2">
+								<Label>
+									<Trans>Skills</Trans>
+								</Label>
+								<SkillCombobox value={skillInput} onChange={setSkillInput} projectId={projectId} />
 							</div>
-							<div key={`position-${filterComboboxKey}`}>
-								<PositionSelect
+							<div key={`position-${filterComboboxKey}`} className="flex flex-col gap-y-2">
+								<Label>
+									<Trans>Position</Trans>
+								</Label>
+								<PositionCombobox
 									value={positionInput}
-									onChange={setPositionInput}
-									getLabelRef={getPositionLabelRef}
-									label={
-										<span className="font-medium text-muted-foreground text-xs">
-											<Trans>Level</Trans>
-										</span>
-									}
-									placeholder={t`Any level`}
+									onChange={(value) => setPositionInput(value)}
+									projectId={projectId}
 								/>
 							</div>
 							<div className="flex gap-x-2">

@@ -22,7 +22,7 @@ export const projectRouter = {
 				customerName: input.customerName,
 				domainIds: input.domainIds,
 				skillIds: input.skillIds,
-				positionIds: input.positionIds,
+				positionId: input.positionId,
 				query: input.query,
 				limit: input.limit,
 				page: input.page,

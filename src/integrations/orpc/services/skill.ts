@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/client";
-import { and, asc, desc, eq, ilike, inArray, ne, sql } from "drizzle-orm";
+import { and, asc, desc, eq, exists, ilike, inArray, ne, sql } from "drizzle-orm";
 import { schema } from "@/integrations/drizzle";
 import { db } from "@/integrations/drizzle/client";
 import { slugify } from "@/utils/string";
@@ -49,14 +49,35 @@ export const skillService = {
 		limit?: number;
 		page?: number;
 		pageSize?: number;
+		projectId?: string;
 	}) => {
 		const queryTrimmed = input?.query?.trim();
 		const sort = input?.sort ?? "name";
 		const limit = input?.limit;
+		const projectId = input?.projectId;
+		const hasProjectFilter = Boolean(projectId);
 
-		const whereClause = queryTrimmed
-			? ilike(schema.skill.slug, `%${slugify(queryTrimmed)}%`)
-			: undefined;
+		const whereClause =
+			queryTrimmed || hasProjectFilter
+				? and(
+						...(queryTrimmed ? [ilike(schema.skill.slug, `%${slugify(queryTrimmed)}%`)] : []),
+						...(hasProjectFilter
+							? [
+									exists(
+										db
+											.select()
+											.from(schema.projectSkill)
+											.where(
+												and(
+													eq(schema.projectSkill.skillId, schema.skill.id),
+													eq(schema.projectSkill.projectId, projectId!),
+												),
+											),
+									),
+								]
+							: []),
+					)
+				: undefined;
 
 		const baseQuery = db
 			.select({
@@ -69,15 +90,14 @@ export const skillService = {
 			.where(whereClause)
 			.orderBy(sort === "createdAt" ? desc(schema.skill.createdAt) : asc(schema.skill.name));
 
+		const countQuery = db
+			.select({ count: sql<number>`count(*)::int` })
+			.from(schema.skill)
+			.where(whereClause);
+
 		// Non-paginated usage (e.g. combobox) – respect limit, still return total for convenience.
 		if (limit !== undefined && input?.page === undefined && input?.pageSize === undefined) {
-			const [countRows, rows] = await Promise.all([
-				db
-					.select({ count: sql<number>`count(*)::int` })
-					.from(schema.skill)
-					.where(whereClause),
-				baseQuery.limit(limit),
-			]);
+			const [countRows, rows] = await Promise.all([countQuery, baseQuery.limit(limit)]);
 			const total = countRows[0]?.count ?? 0;
 			return { items: rows, total };
 		}
@@ -88,10 +108,7 @@ export const skillService = {
 		const offset = (page - 1) * pageSize;
 
 		const [countRows, rows] = await Promise.all([
-			db
-				.select({ count: sql<number>`count(*)::int` })
-				.from(schema.skill)
-				.where(whereClause),
+			countQuery,
 			baseQuery.limit(pageSize).offset(offset),
 		]);
 		const total = countRows[0]?.count ?? 0;

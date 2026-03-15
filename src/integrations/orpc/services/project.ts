@@ -14,7 +14,7 @@ export const projectService = {
 		customerName?: string;
 		domainIds?: string[];
 		skillIds?: string[];
-		positionIds?: string[];
+		positionId?: string | null;
 		query?: string;
 		limit?: number;
 		page?: number;
@@ -65,16 +65,16 @@ export const projectService = {
 			);
 		}
 
-		const positionIdsFilter = input.positionIds?.map((id) => id.trim()).filter(Boolean);
-		const hasPositionFilter = (positionIdsFilter?.length ?? 0) > 0;
-		if (hasPositionFilter && positionIdsFilter) {
+		const positionIdFilter = input.positionId?.trim();
+		const hasPositionFilter = Boolean(positionIdFilter);
+		if (hasPositionFilter && positionIdFilter) {
 			conditions.push(
 				inArray(
 					schema.project.id,
 					db
 						.select({ id: schema.projectPosition.projectId })
 						.from(schema.projectPosition)
-						.where(inArray(schema.projectPosition.positionId, positionIdsFilter)),
+						.where(eq(schema.projectPosition.positionId, positionIdFilter)),
 				),
 			);
 		}

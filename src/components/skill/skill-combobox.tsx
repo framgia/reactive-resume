@@ -1,58 +1,45 @@
-import { t } from "@lingui/core/macro";
-import { Trans } from "@lingui/react/macro";
-import { useQuery } from "@tanstack/react-query";
-import type { MutableRefObject } from "react";
-import { useEffect } from "react";
-import { useDebounceValue } from "usehooks-ts";
-import { IdLabelMultipleCombobox } from "@/components/ui/id-label-multiple-combobox";
-import { Label } from "@/components/ui/label";
-import { useIdLabelOptions } from "@/hooks/use-id-label-options";
-import { orpc, type RouterOutput } from "@/integrations/orpc/client";
-
-const SKILL_LIST_LIMIT = 20;
+import { t } from '@lingui/core/macro';
+import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
+import { useDebounceValue } from 'usehooks-ts';
+import { orpc } from '@/integrations/orpc/client';
+import { MultipleCombobox } from '../ui/multiple-combobox';
+import { cn } from '@/utils/style';
 
 type SkillComboboxProps = {
-	value: string[];
-	onChange: (value: string[]) => void;
-	appliedIds?: string[];
-	getLabelRef?: MutableRefObject<((id: string) => string) | undefined>;
-	label?: React.ReactNode;
-	placeholder?: React.ReactNode;
+  value: string[];
+  onChange: (value: string[]) => void;
+  projectId?: string;
 };
 
 export function SkillCombobox({
-	value,
-	onChange,
-	appliedIds = [],
-	getLabelRef,
-	label = <Trans>Skills</Trans>,
-	placeholder = t`All skills`,
+  value,
+  onChange,
+  projectId,
 }: SkillComboboxProps) {
-	const [debouncedSearch, setSearchInput] = useDebounceValue("", 300);
-	const { data } = useQuery<RouterOutput["skill"]["list"]>(
-		orpc.skill.list.queryOptions({
-			input: { query: debouncedSearch.trim() || undefined, limit: SKILL_LIST_LIMIT },
-		}),
-	);
-	const skills = data?.items ?? [];
-	const { options, getLabel } = useIdLabelOptions(skills, appliedIds, value);
+  const [debouncedSearch, setSearchInput] = useDebounceValue('', 300);
+  const { data } = useQuery(
+    orpc.skill.list.queryOptions({
+      input: { query: debouncedSearch.trim() || undefined, projectId }
+    })
+  );
 
-	useEffect(() => {
-		if (getLabelRef) getLabelRef.current = getLabel;
-	}, [getLabel, getLabelRef]);
+  const skills = useMemo(() => data?.items ?? [], [data]);
+  const skillOptions = useMemo(
+    () => skills.map((s) => ({ value: s.id, label: s.name })),
+    [skills]
+  );
 
-	return (
-		<div className="space-y-2">
-			<Label>{label}</Label>
-			<IdLabelMultipleCombobox
-				options={options}
-				value={value}
-				onValueChange={onChange}
-				onSearchChange={setSearchInput}
-				placeholder={placeholder}
-				searchPlaceholder={t`Search skills...`}
-				emptyMessage={t`No skills found.`}
-			/>
-		</div>
-	);
+  return (
+    <MultipleCombobox
+      options={skillOptions}
+      value={value}
+      onValueChange={onChange}
+      onSearchChange={setSearchInput}
+      placeholder={t`Select skills`}
+      searchPlaceholder={t`Search skills...`}
+      emptyMessage={t`No skills found.`}
+      className={cn('w-full')}
+    />
+  );
 }
