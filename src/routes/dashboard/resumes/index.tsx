@@ -145,7 +145,7 @@ function RouteComponent() {
 								<Label>
 									<Trans>Skills</Trans>
 								</Label>
-								<SkillCombobox value={skillInput} onChange={setSkillInput} projectId={projectId} />
+								<SkillCombobox multiple value={skillInput} onChange={setSkillInput} projectId={projectId} />
 							</div>
 							<div key={`position-${filterComboboxKey}`} className="flex flex-col gap-y-2">
 								<Label>

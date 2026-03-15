@@ -143,6 +143,7 @@ export function OverallSectionBuilder() {
                         <Trans>Skills Highlights</Trans>
                       </Label>
                       <SkillCombobox
+                        multiple
                         value={resumeSkills?.map((s) => s.id) ?? []}
                         onChange={handleSkillsChange}
                         projectId={projectId}

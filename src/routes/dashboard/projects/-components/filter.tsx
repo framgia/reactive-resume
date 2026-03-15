@@ -162,7 +162,7 @@ export function ProjectFilterPopover({
             <Label>
               <Trans>Skills</Trans>
             </Label>
-            <SkillCombobox value={skillInput} onChange={setSkillInput} />
+            <SkillCombobox multiple value={skillInput} onChange={setSkillInput} />
           </div>
           <div
             key={`position-${filterComboboxKey}`}

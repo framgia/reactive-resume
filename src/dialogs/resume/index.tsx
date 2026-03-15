@@ -1,29 +1,20 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import {
-	BriefcaseIcon,
-	CaretDownIcon,
-	CaretUpDownIcon,
-	ChartBarIcon,
-	FolderIcon,
-	MagicWandIcon,
-	PencilSimpleLineIcon,
-	PlusIcon,
-	TestTubeIcon,
-} from "@phosphor-icons/react";
+import { CaretDownIcon, MagicWandIcon, PencilSimpleLineIcon, PlusIcon, TestTubeIcon } from "@phosphor-icons/react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
-import * as React from "react";
 import { useEffect, useMemo } from "react";
 import type { Resolver } from "react-hook-form";
 import { useForm, useFormContext, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 import { ChipInput } from "@/components/input/chip-input";
+import { PositionCombobox } from "@/components/position/position-combobox";
+import { ProjectCombobox } from "@/components/project/project-combobox";
+import { SkillCombobox } from "@/components/skill/skill-combobox";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { Command, CommandEmpty, CommandGroup, CommandItem, CommandList } from "@/components/ui/command";
 import { DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import {
 	DropdownMenu,
@@ -34,16 +25,11 @@ import {
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from "@/components/ui/input-group";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useFormBlocker } from "@/hooks/use-form-blocker";
 import { authClient } from "@/integrations/auth/client";
 import { orpc, type RouterInput } from "@/integrations/orpc/client";
 import { generateId, generateRandomName, slugify } from "@/utils/string";
-import { cn } from "@/utils/style";
 import { type DialogProps, useDialogStore } from "../store";
-import { ProjectCombobox } from "@/components/project/project-combobox";
-import { SkillCombobox } from "@/components/skill/skill-combobox";
-import { PositionCombobox } from "@/components/position/position-combobox";
 
 const formSchema = z.object({
 	id: z.string(),
@@ -409,11 +395,7 @@ function CreateResumeOverallFields() {
 									<Trans>Skills</Trans>
 								</FormLabel>
 								<FormControl>
-									<SkillCombobox
-										value={field.value ?? []}
-										onChange={field.onChange}
-										projectId={projectId}
-									/>
+									<SkillCombobox multiple value={field.value ?? []} onChange={field.onChange} projectId={projectId} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
