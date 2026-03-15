@@ -17,7 +17,6 @@ import { zodValidator } from "@tanstack/zod-adapter";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import z from "zod";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Combobox } from "@/components/ui/combobox";
 import {
@@ -135,12 +134,6 @@ function PositionsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOp
 
 	const hasActiveFilters = Boolean(appliedQuery.trim());
 
-	const filterBadges = useMemo(() => {
-		const items: { label: string; value: string }[] = [];
-		if (appliedQuery.trim()) items.push({ label: t`Name`, value: appliedQuery.trim() });
-		return items;
-	}, [appliedQuery]);
-
 	const handleApplyFilter = () => {
 		onQueryChange(nameInput.trim());
 		setFilterOpen(false);
@@ -162,17 +155,8 @@ function PositionsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOp
 			<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
 				<PopoverTrigger asChild>
 					<Button variant="ghost" size="sm" className="gap-x-2">
-						<FunnelSimpleIcon className="size-4" />
+						<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
 						<Trans>Filter</Trans>
-						{filterBadges.map((badge) => (
-							<Badge
-								key={badge.label}
-								variant="secondary"
-								className="max-w-32 shrink-0 truncate px-1.5 py-0 font-normal text-[10px]"
-							>
-								{badge.label}: {badge.value}
-							</Badge>
-						))}
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent align="start" className="w-72">
@@ -229,12 +213,6 @@ function SkillsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOptio
 
 	const hasActiveFilters = Boolean(appliedQuery.trim());
 
-	const filterBadges = useMemo(() => {
-		const items: { label: string; value: string }[] = [];
-		if (appliedQuery.trim()) items.push({ label: t`Name`, value: appliedQuery.trim() });
-		return items;
-	}, [appliedQuery]);
-
 	const handleApplyFilter = () => {
 		onQueryChange(nameInput.trim());
 		setFilterOpen(false);
@@ -256,17 +234,8 @@ function SkillsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOptio
 			<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
 				<PopoverTrigger asChild>
 					<Button variant="ghost" size="sm" className="gap-x-2">
-						<FunnelSimpleIcon className="size-4" />
+						<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
 						<Trans>Filter</Trans>
-						{filterBadges.map((badge) => (
-							<Badge
-								key={badge.label}
-								variant="secondary"
-								className="max-w-32 shrink-0 truncate px-1.5 py-0 font-normal text-[10px]"
-							>
-								{badge.label}: {badge.value}
-							</Badge>
-						))}
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent align="start" className="w-72">

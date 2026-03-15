@@ -5,7 +5,6 @@ import { useRef, useState } from 'react';
 import { DomainCombobox } from '@/components/domain/domain-combobox';
 import { PositionCombobox } from '@/components/position/position-combobox';
 import { SkillCombobox } from '@/components/skill/skill-combobox';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -50,7 +49,7 @@ export function ProjectFilterPopover({
   const [filterComboboxKey, setFilterComboboxKey] = useState(0);
   const [nameInput, setNameInput] = useState('');
   const [customerInput, setCustomerInput] = useState('');
-  const [domainInput, setDomainInput] = useState<string[]>([]);
+  const [domainInput, setDomainInput] = useState<string | null>(null);
   const [skillInput, setSkillInput] = useState<string[]>([]);
   const [positionInput, setPositionInput] = useState<string | null>(null);
   const [positionNameInput, setPositionNameInput] = useState('');
@@ -70,40 +69,19 @@ export function ProjectFilterPopover({
     appliedFilters.positionId != null
   );
 
-  const filterBadges = [
-    ...(appliedFilters.name.trim()
-      ? [{ label: t`Name`, value: appliedFilters.name.trim() }]
-      : []),
-    ...(appliedFilters.customerName.trim()
-      ? [{ label: t`Customer`, value: appliedFilters.customerName.trim() }]
-      : []),
-    ...(appliedFilters.domainIds.length > 0
-      ? [{ label: t`Domains`, value: appliedFilters.domainNames.join(', ') }]
-      : []),
-    ...(appliedFilters.skillIds.length > 0
-      ? [{ label: t`Skills`, value: appliedFilters.skillNames.join(', ') }]
-      : []),
-    ...(appliedFilters.positionId != null && appliedFilters.positionName.trim()
-      ? [
-          {
-            label: t`Position`,
-            value: appliedFilters.positionName.trim()
-          }
-        ]
-      : [])
-  ];
-
   const handleApplyFilter = () => {
+    const domainIds = domainInput ? [domainInput] : [];
+    const domainNames = domainInput
+      ? [getDomainLabelRef.current?.(domainInput) ?? domainInput]
+      : [];
     onFiltersChange({
       name: nameInput,
       customerName: customerInput,
-      domainIds: domainInput,
+      domainIds,
       skillIds: skillInput,
       positionId: positionInput,
       positionName: positionNameInput.trim(),
-      domainNames: domainInput.map(
-        (id) => getDomainLabelRef.current?.(id) ?? id
-      ),
+      domainNames,
       skillNames: skillInput.map((id) => getSkillLabelRef.current?.(id) ?? id)
     });
     setFilterOpen(false);
@@ -112,7 +90,7 @@ export function ProjectFilterPopover({
   const handleClearFilter = () => {
     setNameInput('');
     setCustomerInput('');
-    setDomainInput([]);
+    setDomainInput(null);
     setSkillInput([]);
     setPositionInput(null);
     setPositionNameInput('');
@@ -125,7 +103,7 @@ export function ProjectFilterPopover({
     if (open) {
       setNameInput(appliedFilters.name);
       setCustomerInput(appliedFilters.customerName);
-      setDomainInput(appliedFilters.domainIds);
+      setDomainInput(appliedFilters.domainIds[0] ?? null);
       setSkillInput(appliedFilters.skillIds);
       setPositionInput(appliedFilters.positionId);
       setPositionNameInput(appliedFilters.positionName);
@@ -138,16 +116,8 @@ export function ProjectFilterPopover({
     <Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
       <PopoverTrigger asChild>
         <Button variant="ghost" size="sm" className="gap-x-2">
-          <FunnelSimpleIcon className="size-4" />
+          <FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? 'fill' : 'regular'} />
           <Trans>Filter</Trans>
-          {filterBadges.map((badge) => (
-            <Badge
-              key={badge.label}
-              variant="secondary"
-              className="max-w-32 shrink-0 truncate px-1.5 py-0 font-normal text-[10px]">
-              {badge.label}: {badge.value}
-            </Badge>
-          ))}
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-72">
@@ -184,7 +154,7 @@ export function ProjectFilterPopover({
             <Label>
               <Trans>Domains</Trans>
             </Label>
-            <DomainCombobox value={domainInput} onChange={setDomainInput} />
+            <DomainCombobox value={domainInput} onValueChange={setDomainInput} />
           </div>
           <div
             key={`skill-${filterComboboxKey}`}
