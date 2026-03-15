@@ -31,10 +31,11 @@ export const projectDto = {
 					.array(z.string())
 					.optional()
 					.describe("Filter by skill IDs; only projects linked to at least one of these skills."),
-				positionIds: z
-					.array(z.string())
+				positionId: z
+					.string()
+					.nullable()
 					.optional()
-					.describe("Filter by position IDs; only projects linked to at least one of these positions."),
+					.describe("Filter by position ID; only projects linked to this position."),
 				query: z.string().optional().describe("Search by project name or customer name (partial match)."),
 				limit: z
 					.number()

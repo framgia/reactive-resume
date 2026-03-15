@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/client";
-import { and, asc, desc, eq, ilike, inArray, ne, sql } from "drizzle-orm";
+import { and, asc, desc, eq, exists, ilike, inArray, ne, sql } from "drizzle-orm";
 import { schema } from "@/integrations/drizzle";
 import { db } from "@/integrations/drizzle/client";
 import { slugify } from "@/utils/string";
@@ -49,14 +49,37 @@ export const positionService = {
 		limit?: number;
 		page?: number;
 		pageSize?: number;
+		projectId?: string;
 	}) => {
 		const queryTrimmed = input?.query?.trim();
 		const sort = input?.sort ?? "name";
 		const limit = input?.limit;
+		const projectId = input?.projectId;
+		const hasProjectFilter = Boolean(projectId);
 
-		const whereClause = queryTrimmed
-			? ilike(schema.position.slug, `%${slugify(queryTrimmed)}%`)
-			: undefined;
+		const whereClause =
+			queryTrimmed || hasProjectFilter
+				? and(
+						...(queryTrimmed
+							? [ilike(schema.position.slug, `%${slugify(queryTrimmed)}%`)]
+							: []),
+						...(hasProjectFilter
+							? [
+									exists(
+										db
+											.select()
+											.from(schema.projectPosition)
+											.where(
+												and(
+													eq(schema.projectPosition.positionId, schema.position.id),
+													eq(schema.projectPosition.projectId, projectId!),
+												),
+											),
+									),
+								]
+							: []),
+					)
+				: undefined;
 
 		const baseQuery = db
 			.select({
@@ -67,15 +90,21 @@ export const positionService = {
 			})
 			.from(schema.position)
 			.where(whereClause)
-			.orderBy(sort === "createdAt" ? desc(schema.position.createdAt) : asc(schema.position.name));
+			.orderBy(
+				sort === "createdAt"
+					? desc(schema.position.createdAt)
+					: asc(schema.position.name),
+			);
+
+		const countQuery = db
+			.select({ count: sql<number>`count(*)::int` })
+			.from(schema.position)
+			.where(whereClause);
 
 		// Non-paginated usage (e.g. combobox) – respect limit, still return total for convenience.
 		if (limit !== undefined && input?.page === undefined && input?.pageSize === undefined) {
 			const [countRows, rows] = await Promise.all([
-				db
-					.select({ count: sql<number>`count(*)::int` })
-					.from(schema.position)
-					.where(whereClause),
+				countQuery,
 				baseQuery.limit(limit),
 			]);
 			const total = countRows[0]?.count ?? 0;
@@ -88,10 +117,7 @@ export const positionService = {
 		const offset = (page - 1) * pageSize;
 
 		const [countRows, rows] = await Promise.all([
-			db
-				.select({ count: sql<number>`count(*)::int` })
-				.from(schema.position)
-				.where(whereClause),
+			countQuery,
 			baseQuery.limit(pageSize).offset(offset),
 		]);
 		const total = countRows[0]?.count ?? 0;

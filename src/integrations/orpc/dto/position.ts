@@ -22,6 +22,7 @@ export const positionDto = {
 					.optional()
 					.default(10)
 					.describe("Number of items per page. Ignored when limit is provided without page/pageSize."),
+				projectId: z.string().optional().describe("Filter by project ID; omit for all."),
 			})
 			.optional()
 			.default({ sort: "name", page: 1, pageSize: 10 }),
