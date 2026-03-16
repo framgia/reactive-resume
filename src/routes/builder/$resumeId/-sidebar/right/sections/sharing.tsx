@@ -16,7 +16,7 @@ import { useDialogStore } from "@/dialogs/store";
 import { useConfirm } from "@/hooks/use-confirm";
 import { usePrompt } from "@/hooks/use-prompt";
 import { authClient } from "@/integrations/auth/client";
-import { orpc } from "@/integrations/orpc/client";
+import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 import { SectionBase } from "../shared/section-base";
 
 export function SharingSectionBuilder() {
@@ -30,7 +30,9 @@ export function SharingSectionBuilder() {
 	const { mutateAsync: updateResume } = useMutation(orpc.resume.update.mutationOptions());
 	const { mutateAsync: setPassword } = useMutation(orpc.resume.setPassword.mutationOptions());
 	const { mutateAsync: removePassword } = useMutation(orpc.resume.removePassword.mutationOptions());
-	const { data: resume } = useSuspenseQuery(orpc.resume.getById.queryOptions({ input: { id: params.resumeId } }));
+	const { data: resume } = useSuspenseQuery<RouterOutput["resume"]["getById"]>(
+		orpc.resume.getById.queryOptions({ input: { id: params.resumeId } }),
+	);
 
 	const publicUrl = useMemo(() => {
 		if (!session) return "";
@@ -45,7 +47,19 @@ export function SharingSectionBuilder() {
 	const onTogglePublic = useCallback(
 		async (checked: boolean) => {
 			try {
-				await updateResume({ id: resume.id, isPublic: checked });
+				await updateResume({ id: resume.id, isPublic: checked } as unknown as Parameters<typeof updateResume>[0]);
+			} catch (error) {
+				const message = error instanceof ORPCError ? error.message : t`Something went wrong. Please try again.`;
+				toast.error(message);
+			}
+		},
+		[resume.id, updateResume],
+	);
+
+	const onToggleDownload = useCallback(
+		async (checked: boolean) => {
+			try {
+				await updateResume({ id: resume.id, allowDownload: checked } as unknown as Parameters<typeof updateResume>[0]);
 			} catch (error) {
 				const message = error instanceof ORPCError ? error.message : t`Something went wrong. Please try again.`;
 				toast.error(message);
@@ -72,7 +86,7 @@ export function SharingSectionBuilder() {
 		const toastId = toast.loading(t`Enabling password protection...`);
 
 		try {
-			await setPassword({ id: resume.id, password });
+			await setPassword({ id: resume.id, password } as unknown as Parameters<typeof setPassword>[0]);
 			toast.success(t`Password protection has been enabled.`, { id: toastId });
 		} catch (error) {
 			const message = error instanceof ORPCError ? error.message : t`Something went wrong. Please try again.`;
@@ -93,7 +107,7 @@ export function SharingSectionBuilder() {
 		const toastId = toast.loading(t`Removing password protection...`);
 
 		try {
-			await removePassword({ id: resume.id });
+			await removePassword({ id: resume.id } as unknown as Parameters<typeof removePassword>[0]);
 			toast.success(t`Password protection has been disabled.`, { id: toastId });
 		} catch (error) {
 			const message = error instanceof ORPCError ? error.message : t`Something went wrong. Please try again.`;
@@ -105,22 +119,24 @@ export function SharingSectionBuilder() {
 
 	return (
 		<SectionBase type="sharing" className="space-y-4">
-			<div className="flex items-center gap-x-4">
-				<Switch
-					id="sharing-switch"
-					checked={resume.isPublic}
-					onCheckedChange={(checked) => void onTogglePublic(checked)}
-				/>
+			<div className="flex flex-col gap-y-4">
+				<div className="flex items-center gap-x-4">
+					<Switch
+						id="sharing-switch"
+						checked={resume.isPublic}
+						onCheckedChange={(checked) => void onTogglePublic(checked)}
+					/>
 
-				<Label htmlFor="sharing-switch" className="my-2 flex flex-col items-start gap-y-1 font-normal">
-					<p className="font-medium">
-						<Trans>Allow Public Access</Trans>
-					</p>
+					<Label htmlFor="sharing-switch" className="my-2 flex flex-col items-start gap-y-1 font-normal">
+						<p className="font-medium">
+							<Trans>Allow Public Access</Trans>
+						</p>
 
-					<span className="text-muted-foreground text-xs">
-						<Trans>Anyone with the link can view and download the resume.</Trans>
-					</span>
-				</Label>
+						<span className="text-muted-foreground text-xs">
+							<Trans>Anyone with the link can view the resume.</Trans>
+						</span>
+					</Label>
+				</div>
 			</div>
 
 			{resume.isPublic && (
@@ -161,6 +177,24 @@ export function SharingSectionBuilder() {
 							<Trans>Set Password</Trans>
 						</Button>
 					)}
+
+					<div className="flex items-center gap-x-4">
+						<Switch
+							id="download-switch"
+							checked={resume.allowDownload}
+							onCheckedChange={(checked) => void onToggleDownload(checked)}
+						/>
+
+						<Label htmlFor="download-switch" className="my-2 flex flex-col items-start gap-y-1 font-normal">
+							<p className="font-medium">
+								<Trans>Allow Download</Trans>
+							</p>
+
+							<span className="text-muted-foreground text-xs">
+								<Trans>Control whether visitors can download the resume as PDF.</Trans>
+							</span>
+						</Label>
+					</div>
 				</div>
 			)}
 

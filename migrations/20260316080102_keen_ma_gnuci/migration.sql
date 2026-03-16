@@ -1,0 +1,1 @@
+ALTER TABLE "resume" ADD COLUMN "allow_download" boolean DEFAULT true NOT NULL;

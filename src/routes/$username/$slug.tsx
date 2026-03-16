@@ -54,7 +54,9 @@ function RouteComponent() {
 	const isReady = useResumeStore((state) => state.isReady);
 	const initialize = useResumeStore((state) => state.initialize);
 
-	const { data: resume } = useQuery(orpc.resume.getBySlug.queryOptions({ input: { username, slug } }));
+	const { data: resume } = useQuery<RouterOutput["resume"]["getBySlug"]>(
+		orpc.resume.getBySlug.queryOptions({ input: { username, slug } }),
+	);
 	const { mutateAsync: printResumeAsPDF, isPending: isPrinting } = useMutation(
 		orpc.printer.printResumeAsPDF.mutationOptions(),
 	);
@@ -67,7 +69,9 @@ function RouteComponent() {
 
 	const handleDownload = useCallback(async () => {
 		if (!resume) return;
-		const { url } = await printResumeAsPDF({ id: resume.id });
+		const { url } = (await printResumeAsPDF(
+			{ id: resume.id } as unknown as Parameters<typeof printResumeAsPDF>[0],
+		)) as { url: string };
 		downloadFromUrl(url, `${resume.name}.pdf`);
 	}, [resume, printResumeAsPDF]);
 
@@ -81,16 +85,18 @@ function RouteComponent() {
 				<ResumePreview className="space-y-4" pageClassName="print:w-full! w-full max-w-full" />
 			</div>
 
-			<Button
-				size="lg"
-				variant="secondary"
-				disabled={isPrinting}
-				className="fixed inset-e-4 bottom-4 z-50 hidden rounded-full px-4 md:inline-flex print:hidden"
-				onClick={handleDownload}
-			>
-				{isPrinting ? <Spinner /> : <DownloadSimpleIcon />}
-				{isPrinting ? <Trans>Downloading...</Trans> : <Trans>Download</Trans>}
-			</Button>
+			{resume?.allowDownload && (
+				<Button
+					size="lg"
+					variant="secondary"
+					disabled={isPrinting}
+					className="fixed inset-e-4 bottom-4 z-50 hidden rounded-full px-4 md:inline-flex print:hidden"
+					onClick={handleDownload}
+				>
+					{isPrinting ? <Spinner /> : <DownloadSimpleIcon />}
+					{isPrinting ? <Trans>Downloading...</Trans> : <Trans>Download</Trans>}
+				</Button>
+			)}
 		</>
 	);
 }

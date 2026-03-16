@@ -130,6 +130,7 @@ export const resumeService = {
 							slug: schema.resume.slug,
 							tags: schema.resume.tags,
 							isPublic: schema.resume.isPublic,
+							allowDownload: schema.resume.allowDownload,
 							isLocked: schema.resume.isLocked,
 							projectId: schema.resume.projectId,
 							positionId: schema.resume.positionId,
@@ -151,6 +152,7 @@ export const resumeService = {
 							slug: schema.resume.slug,
 							tags: schema.resume.tags,
 							isPublic: schema.resume.isPublic,
+							allowDownload: schema.resume.allowDownload,
 							isLocked: schema.resume.isLocked,
 							projectId: schema.resume.projectId,
 							positionId: schema.resume.positionId,
@@ -202,6 +204,7 @@ export const resumeService = {
 				tags: schema.resume.tags,
 				data: schema.resume.data,
 				isPublic: schema.resume.isPublic,
+				allowDownload: schema.resume.allowDownload,
 				isLocked: schema.resume.isLocked,
 				projectId: schema.resume.projectId,
 				positionId: schema.resume.positionId,
@@ -284,6 +287,7 @@ export const resumeService = {
 				tags: schema.resume.tags,
 				data: schema.resume.data,
 				isPublic: schema.resume.isPublic,
+				allowDownload: schema.resume.allowDownload,
 				isLocked: schema.resume.isLocked,
 				projectId: schema.resume.projectId,
 				passwordHash: schema.resume.password,
@@ -311,6 +315,7 @@ export const resumeService = {
 				tags: resume.tags,
 				data: resume.data,
 				isPublic: resume.isPublic,
+				allowDownload: resume.allowDownload,
 				isLocked: resume.isLocked,
 				projectId: resume.projectId,
 				skills: [],
@@ -330,6 +335,7 @@ export const resumeService = {
 				tags: resume.tags,
 				data: resume.data,
 				isPublic: resume.isPublic,
+				allowDownload: resume.allowDownload,
 				isLocked: resume.isLocked,
 				projectId: resume.projectId,
 				skills: [],
@@ -417,6 +423,7 @@ export const resumeService = {
 		tags?: string[];
 		data?: ResumeData;
 		isPublic?: boolean;
+		allowDownload?: boolean;
 		projectId?: string | null;
 		skillIds?: string[];
 		positionId?: string | null;
@@ -434,6 +441,7 @@ export const resumeService = {
 		if (input.tags !== undefined) updateData.tags = input.tags;
 		if (input.data !== undefined) updateData.data = input.data;
 		if (input.isPublic !== undefined) updateData.isPublic = input.isPublic;
+		if (input.allowDownload !== undefined) updateData.allowDownload = input.allowDownload;
 		if (input.projectId !== undefined) updateData.projectId = input.projectId;
 		if (input.positionId !== undefined) updateData.positionId = input.positionId;
 
@@ -449,6 +457,7 @@ export const resumeService = {
 			tags: schema.resume.tags,
 			data: schema.resume.data,
 			isPublic: schema.resume.isPublic,
+			allowDownload: schema.resume.allowDownload,
 			isLocked: schema.resume.isLocked,
 			projectId: schema.resume.projectId,
 			positionId: schema.resume.positionId,
@@ -544,6 +553,7 @@ export const resumeService = {
 				tags: schema.resume.tags,
 				data: schema.resume.data,
 				isPublic: schema.resume.isPublic,
+				allowDownload: schema.resume.allowDownload,
 				isLocked: schema.resume.isLocked,
 				projectId: schema.resume.projectId,
 				positionId: schema.resume.positionId,

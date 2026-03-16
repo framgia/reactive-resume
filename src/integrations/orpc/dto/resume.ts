@@ -10,6 +10,7 @@ const resumeSchema = createSelectSchema(schema.resume, {
 	slug: z.string().min(1).describe("The slug of the resume."),
 	tags: z.array(z.string()).describe("The tags of the resume."),
 	isPublic: z.boolean().describe("Whether the resume is public."),
+	allowDownload: z.boolean().describe("Whether downloading the resume is allowed."),
 	isLocked: z.boolean().describe("Whether the resume is locked."),
 	password: z.string().min(6).nullable().describe("The password of the resume, if any."),
 	data: resumeDataSchema.loose(),
@@ -109,6 +110,7 @@ export const resumeDto = {
 				tags: true,
 				data: true,
 				isPublic: true,
+				allowDownload: true,
 				projectId: true,
 				positionId: true,
 			})

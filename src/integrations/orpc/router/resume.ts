@@ -227,6 +227,7 @@ export const resumeRouter = {
 				tags: input.tags,
 				data: input.data,
 				isPublic: input.isPublic,
+				allowDownload: input.allowDownload,
 				projectId: input.projectId,
 				skillIds: input.skillIds,
 				positionId: input.positionId,
