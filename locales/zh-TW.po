@@ -46,11 +46,6 @@ msgstr "{0, plural, other {# 個項目}}"
 msgid "{0, plural, one {# role} other {# roles}}"
 msgstr ""
 
-#. placeholder {0}: skillIds.length
-#: src/routes/dashboard/resumes/index.tsx
-msgid "{0} selected"
-msgstr "已選擇 {0} 項"
-
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "{column, plural, one {# Column} other {# Columns}}"
@@ -284,22 +279,6 @@ msgstr ""
 msgid "Albanian"
 msgstr "阿爾巴尼亞語"
 
-#: src/components/domain/domain-combobox.tsx
-msgid "All domains"
-msgstr "所有網域"
-
-#: src/components/position/position-combobox.tsx
-msgid "All positions"
-msgstr "所有職位"
-
-#: src/components/project/project-select.tsx
-msgid "All projects"
-msgstr "所有專案"
-
-#: src/components/skill/skill-combobox.tsx
-msgid "All skills"
-msgstr "所有技能"
-
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
 msgstr "允許公開存取"
@@ -324,15 +303,6 @@ msgstr "匯入履歷時發生未知錯誤。"
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "還有很多……"
-
-#: src/components/position/position-select.tsx
-#: src/routes/dashboard/resumes/index.tsx
-msgid "Any level"
-msgstr "任意級別"
-
-#: src/routes/dashboard/resumes/index.tsx
-msgid "Any skill highlight"
-msgstr "任意技能標示"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -375,7 +345,7 @@ msgstr "應用程式統計資料"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Apply"
 msgstr "套用"
@@ -652,19 +622,13 @@ msgstr "選擇使用者..."
 msgid "Circle"
 msgstr "圓形"
 
-#: src/dialogs/resume/index.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Clear"
 msgstr "清除"
-
-#: src/dialogs/resume/index.tsx
-#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
-msgid "Clear all"
-msgstr "全部清除"
 
 #: src/components/ai/chat.tsx
 msgid "Clear chat history"
@@ -935,9 +899,8 @@ msgstr "自訂 CSS"
 msgid "Custom Sections"
 msgstr "自訂段落"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
-#: src/routes/dashboard/projects/index.tsx
-#: src/routes/dashboard/projects/index.tsx
 msgid "Customer"
 msgstr "客戶"
 
@@ -1116,12 +1079,11 @@ msgstr "網域已刪除。"
 msgid "Domain updated."
 msgstr "網域已更新。"
 
-#: src/components/domain/domain-combobox.tsx
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
-#: src/routes/dashboard/projects/index.tsx
 msgid "Domains"
 msgstr "網域"
 
@@ -1372,18 +1334,18 @@ msgstr ""
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Filter"
 msgstr "篩選"
 
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Filter by customer"
 msgstr "依客戶篩選"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Filter by name"
 msgstr "依名稱篩選"
 
@@ -1754,8 +1716,6 @@ msgstr "信件"
 #: src/dialogs/resume/sections/language.tsx
 #: src/dialogs/resume/sections/skill.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
-#: src/routes/dashboard/resumes/index.tsx
-#: src/routes/dashboard/resumes/index.tsx
 msgid "Level"
 msgstr "等級"
 
@@ -1800,7 +1760,10 @@ msgstr "正在載入履歷…"
 #: src/components/layout/loading-screen.tsx
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/projects/index.tsx
 msgid "Loading..."
 msgstr "載入中…"
 
@@ -1884,12 +1847,10 @@ msgstr "多語系"
 #: src/dialogs/skill/index.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "名稱"
@@ -1928,6 +1889,7 @@ msgid "No Advertising, No Tracking"
 msgstr "無廣告、無追蹤"
 
 #: src/components/domain/domain-combobox.tsx
+#: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-select.tsx
 msgid "No domains found."
 msgstr "找不到網域。"
@@ -1936,24 +1898,16 @@ msgstr "找不到網域。"
 msgid "No matches. Type to search or press Enter to add."
 msgstr "無符合項目。輸入以搜尋或按 Enter 新增。"
 
-#: src/dialogs/resume/index.tsx
-#: src/dialogs/resume/index.tsx
-#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "No options"
 msgstr "無選項"
 
 #: src/components/position/position-combobox.tsx
-#: src/components/position/position-select.tsx
+#: src/components/position/position-combobox.tsx
 msgid "No positions found."
 msgstr "找不到職位。"
 
-#: src/components/project/project-select.tsx
-#: src/components/project/project-select.tsx
-msgid "No project"
-msgstr "無專案"
-
-#: src/components/project/project-select.tsx
+#: src/components/project/project-combobox.tsx
 msgid "No projects found."
 msgstr "找不到專案。"
 
@@ -1962,6 +1916,7 @@ msgstr "找不到專案。"
 msgid "No results found."
 msgstr "找不到相符的結果。"
 
+#: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "No skills found."
 msgstr "找不到技能。"
@@ -2158,6 +2113,8 @@ msgstr "葡萄牙語（葡萄牙）"
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/index.tsx
 msgid "Position"
 msgstr "職位"
 
@@ -2177,10 +2134,8 @@ msgstr ""
 msgid "Position updated."
 msgstr ""
 
-#: src/components/position/position-combobox.tsx
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
 msgid "Positions"
 msgstr "職位"
 
@@ -2230,7 +2185,6 @@ msgstr "進度條"
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/index.tsx
-#: src/routes/dashboard/resumes/index.tsx
 msgid "Project"
 msgstr "專案"
 
@@ -2242,7 +2196,7 @@ msgstr "專案建立成功。"
 msgid "Project deleted successfully."
 msgstr "專案刪除成功。"
 
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Project name"
 msgstr "專案名稱"
 
@@ -2479,6 +2433,7 @@ msgid "Search by name or username..."
 msgstr "依名稱或使用者名稱搜尋..."
 
 #: src/components/domain/domain-combobox.tsx
+#: src/components/domain/domain-combobox.tsx
 msgid "Search domains..."
 msgstr "搜尋網域..."
 
@@ -2492,10 +2447,11 @@ msgid "Search for..."
 msgstr "搜尋履歷…"
 
 #: src/components/position/position-combobox.tsx
-#: src/components/position/position-select.tsx
+#: src/components/position/position-combobox.tsx
 msgid "Search positions..."
 msgstr "搜尋職位..."
 
+#: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "Search skills..."
 msgstr "搜尋技能..."
@@ -2521,22 +2477,34 @@ msgstr "段落類型"
 msgid "Select at least one user."
 msgstr "請至少選擇一位使用者。"
 
+#: src/components/domain/domain-combobox.tsx
+msgid "Select domain"
+msgstr ""
+
+#: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-select.tsx
 #: src/components/domain/domain-select.tsx
 msgid "Select domains"
 msgstr "選擇網域"
 
-#: src/dialogs/resume/index.tsx
+#: src/components/position/position-combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "Select position"
 msgstr "選擇職位"
 
-#: src/components/project/project-select.tsx
+#: src/components/position/position-combobox.tsx
+msgid "Select positions"
+msgstr ""
+
+#: src/components/project/project-combobox.tsx
 msgid "Select project"
 msgstr "選擇專案"
 
-#: src/dialogs/resume/index.tsx
-#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/components/skill/skill-combobox.tsx
+msgid "Select skill"
+msgstr ""
+
+#: src/components/skill/skill-combobox.tsx
 msgid "Select skills"
 msgstr "選擇技能"
 
@@ -2709,10 +2677,6 @@ msgstr ""
 msgid "Skill deleted."
 msgstr ""
 
-#: src/routes/dashboard/resumes/index.tsx
-msgid "Skill highlight"
-msgstr "技能標示"
-
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Skill name"
 msgstr ""
@@ -2721,12 +2685,11 @@ msgstr ""
 msgid "Skill updated."
 msgstr ""
 
-#: src/components/skill/skill-combobox.tsx
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Skills"
@@ -3292,6 +3255,10 @@ msgstr "正在更新您的密碼…"
 #: src/dialogs/resume/index.tsx
 msgid "Updating your resume..."
 msgstr "正在更新您的履歷…"
+
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Updating..."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Uploading picture..."

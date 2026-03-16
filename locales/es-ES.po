@@ -46,11 +46,6 @@ msgstr "{0, plural, one {# elemento} other {# elementos}}"
 msgid "{0, plural, one {# role} other {# roles}}"
 msgstr ""
 
-#. placeholder {0}: skillIds.length
-#: src/routes/dashboard/resumes/index.tsx
-msgid "{0} selected"
-msgstr "{0} seleccionado(s)"
-
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "{column, plural, one {# Column} other {# Columns}}"
@@ -284,22 +279,6 @@ msgstr "Chat con IA"
 msgid "Albanian"
 msgstr "Albanés"
 
-#: src/components/domain/domain-combobox.tsx
-msgid "All domains"
-msgstr "Todos los dominios"
-
-#: src/components/position/position-combobox.tsx
-msgid "All positions"
-msgstr "Todas las posiciones"
-
-#: src/components/project/project-select.tsx
-msgid "All projects"
-msgstr "Todos los proyectos"
-
-#: src/components/skill/skill-combobox.tsx
-msgid "All skills"
-msgstr "Todas las habilidades"
-
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
 msgstr "Permitir acceso público"
@@ -324,15 +303,6 @@ msgstr "Se ha producido un error desconocido al importar tu currículum."
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "Y mucho más..."
-
-#: src/components/position/position-select.tsx
-#: src/routes/dashboard/resumes/index.tsx
-msgid "Any level"
-msgstr "Cualquier nivel"
-
-#: src/routes/dashboard/resumes/index.tsx
-msgid "Any skill highlight"
-msgstr "Cualquier destacado de habilidad"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -375,7 +345,7 @@ msgstr "Estadísticas de la aplicación"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Apply"
 msgstr "Aplicar"
@@ -652,19 +622,13 @@ msgstr "Seleccionar usuarios..."
 msgid "Circle"
 msgstr "Círculo"
 
-#: src/dialogs/resume/index.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Clear"
 msgstr "Borrar"
-
-#: src/dialogs/resume/index.tsx
-#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
-msgid "Clear all"
-msgstr "Borrar todo"
 
 #: src/components/ai/chat.tsx
 msgid "Clear chat history"
@@ -935,9 +899,8 @@ msgstr "CSS personalizado"
 msgid "Custom Sections"
 msgstr "Secciones personalizadas"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
-#: src/routes/dashboard/projects/index.tsx
-#: src/routes/dashboard/projects/index.tsx
 msgid "Customer"
 msgstr "Cliente"
 
@@ -1116,12 +1079,11 @@ msgstr "Dominio eliminado."
 msgid "Domain updated."
 msgstr "Dominio actualizado."
 
-#: src/components/domain/domain-combobox.tsx
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
-#: src/routes/dashboard/projects/index.tsx
 msgid "Domains"
 msgstr "Dominios"
 
@@ -1372,18 +1334,18 @@ msgstr ""
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Filter"
 msgstr "Filtrar"
 
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Filter by customer"
 msgstr "Filtrar por cliente"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Filter by name"
 msgstr "Filtrar por nombre"
 
@@ -1754,8 +1716,6 @@ msgstr "Carta"
 #: src/dialogs/resume/sections/language.tsx
 #: src/dialogs/resume/sections/skill.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
-#: src/routes/dashboard/resumes/index.tsx
-#: src/routes/dashboard/resumes/index.tsx
 msgid "Level"
 msgstr "Nivel"
 
@@ -1800,7 +1760,10 @@ msgstr "Cargando currículums..."
 #: src/components/layout/loading-screen.tsx
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/projects/index.tsx
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -1884,12 +1847,10 @@ msgstr "Multilingüe"
 #: src/dialogs/skill/index.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "Nombre"
@@ -1928,6 +1889,7 @@ msgid "No Advertising, No Tracking"
 msgstr "Sin publicidad, sin rastreo"
 
 #: src/components/domain/domain-combobox.tsx
+#: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-select.tsx
 msgid "No domains found."
 msgstr "No se encontraron dominios."
@@ -1936,24 +1898,16 @@ msgstr "No se encontraron dominios."
 msgid "No matches. Type to search or press Enter to add."
 msgstr "Sin coincidencias. Escriba para buscar o pulse Enter para añadir."
 
-#: src/dialogs/resume/index.tsx
-#: src/dialogs/resume/index.tsx
-#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "No options"
 msgstr "Sin opciones"
 
 #: src/components/position/position-combobox.tsx
-#: src/components/position/position-select.tsx
+#: src/components/position/position-combobox.tsx
 msgid "No positions found."
 msgstr "No se encontraron posiciones."
 
-#: src/components/project/project-select.tsx
-#: src/components/project/project-select.tsx
-msgid "No project"
-msgstr "Sin proyecto"
-
-#: src/components/project/project-select.tsx
+#: src/components/project/project-combobox.tsx
 msgid "No projects found."
 msgstr "No se encontraron proyectos."
 
@@ -1962,6 +1916,7 @@ msgstr "No se encontraron proyectos."
 msgid "No results found."
 msgstr "No se han encontrado resultados."
 
+#: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "No skills found."
 msgstr "No se encontraron habilidades."
@@ -2158,6 +2113,8 @@ msgstr "Portugués (Portugal)"
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/index.tsx
 msgid "Position"
 msgstr "Puesto"
 
@@ -2177,10 +2134,8 @@ msgstr "Nombre del puesto"
 msgid "Position updated."
 msgstr "Puesto actualizado."
 
-#: src/components/position/position-combobox.tsx
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
 msgid "Positions"
 msgstr "Posiciones"
 
@@ -2230,7 +2185,6 @@ msgstr "Barra de progreso"
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/index.tsx
-#: src/routes/dashboard/resumes/index.tsx
 msgid "Project"
 msgstr "Proyecto"
 
@@ -2242,7 +2196,7 @@ msgstr "Proyecto creado correctamente."
 msgid "Project deleted successfully."
 msgstr "Proyecto eliminado correctamente."
 
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Project name"
 msgstr "Nombre del proyecto"
 
@@ -2479,6 +2433,7 @@ msgid "Search by name or username..."
 msgstr "Buscar por nombre o usuario..."
 
 #: src/components/domain/domain-combobox.tsx
+#: src/components/domain/domain-combobox.tsx
 msgid "Search domains..."
 msgstr "Buscar dominios..."
 
@@ -2492,10 +2447,11 @@ msgid "Search for..."
 msgstr "Buscar..."
 
 #: src/components/position/position-combobox.tsx
-#: src/components/position/position-select.tsx
+#: src/components/position/position-combobox.tsx
 msgid "Search positions..."
 msgstr "Buscar posiciones..."
 
+#: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "Search skills..."
 msgstr "Buscar habilidades..."
@@ -2521,22 +2477,34 @@ msgstr "Tipo de sección"
 msgid "Select at least one user."
 msgstr "Seleccione al menos un usuario."
 
+#: src/components/domain/domain-combobox.tsx
+msgid "Select domain"
+msgstr ""
+
+#: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-select.tsx
 #: src/components/domain/domain-select.tsx
 msgid "Select domains"
 msgstr "Seleccionar dominios"
 
-#: src/dialogs/resume/index.tsx
+#: src/components/position/position-combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "Select position"
 msgstr "Seleccionar posición"
 
-#: src/components/project/project-select.tsx
+#: src/components/position/position-combobox.tsx
+msgid "Select positions"
+msgstr ""
+
+#: src/components/project/project-combobox.tsx
 msgid "Select project"
 msgstr "Seleccionar proyecto"
 
-#: src/dialogs/resume/index.tsx
-#: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
+#: src/components/skill/skill-combobox.tsx
+msgid "Select skill"
+msgstr ""
+
+#: src/components/skill/skill-combobox.tsx
 msgid "Select skills"
 msgstr "Seleccionar habilidades"
 
@@ -2709,10 +2677,6 @@ msgstr "Competencia creada."
 msgid "Skill deleted."
 msgstr "Competencia eliminada."
 
-#: src/routes/dashboard/resumes/index.tsx
-msgid "Skill highlight"
-msgstr "Destacado de habilidad"
-
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Skill name"
 msgstr "Nombre de la competencia"
@@ -2721,12 +2685,11 @@ msgstr "Nombre de la competencia"
 msgid "Skill updated."
 msgstr "Competencia actualizada."
 
-#: src/components/skill/skill-combobox.tsx
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
-#: src/routes/dashboard/projects/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/index.tsx
 #: src/utils/resume/section.tsx
 msgid "Skills"
@@ -3292,6 +3255,10 @@ msgstr "Actualizando tu contraseña..."
 #: src/dialogs/resume/index.tsx
 msgid "Updating your resume..."
 msgstr "Actualizando tu currículum..."
+
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Updating..."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Uploading picture..."
