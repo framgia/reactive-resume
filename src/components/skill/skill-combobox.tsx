@@ -1,57 +1,73 @@
-import { t } from "@lingui/core/macro";
-import { Trans } from "@lingui/react/macro";
-import { useQuery } from "@tanstack/react-query";
-import type { MutableRefObject } from "react";
-import { useEffect } from "react";
-import { useDebounceValue } from "usehooks-ts";
-import { IdLabelMultipleCombobox } from "@/components/ui/id-label-multiple-combobox";
-import { Label } from "@/components/ui/label";
-import { useIdLabelOptions } from "@/hooks/use-id-label-options";
-import { orpc } from "@/integrations/orpc/client";
+import { t } from '@lingui/core/macro';
+import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
+import { useDebounceValue } from 'usehooks-ts';
+import { orpc } from '@/integrations/orpc/client';
+import { cn } from '@/utils/style';
+import { Combobox } from '../ui/combobox';
+import { MultipleCombobox } from '../ui/multiple-combobox';
 
-const SKILL_LIST_LIMIT = 20;
-
-type SkillComboboxProps = {
-	value: string[];
-	onChange: (value: string[]) => void;
-	appliedIds?: string[];
-	getLabelRef?: MutableRefObject<((id: string) => string) | undefined>;
-	label?: React.ReactNode;
-	placeholder?: React.ReactNode;
+type SkillComboboxPropsBase = {
+  projectId?: string;
+  multiple?: boolean;
 };
 
-export function SkillCombobox({
-	value,
-	onChange,
-	appliedIds = [],
-	getLabelRef,
-	label = <Trans>Skills</Trans>,
-	placeholder = t`All skills`,
-}: SkillComboboxProps) {
-	const [debouncedSearch, setSearchInput] = useDebounceValue("", 300);
-	const { data: skills = [] } = useQuery(
-		orpc.skill.list.queryOptions({
-			input: { query: debouncedSearch.trim() || undefined, limit: SKILL_LIST_LIMIT },
-		}),
-	);
-	const { options, getLabel } = useIdLabelOptions(skills, appliedIds, value);
+type SkillComboboxPropsSingle = SkillComboboxPropsBase & {
+  multiple?: false;
+  value: string | null;
+  onChange: (value: string | null) => void;
+};
 
-	useEffect(() => {
-		if (getLabelRef) getLabelRef.current = getLabel;
-	}, [getLabel, getLabelRef]);
+type SkillComboboxPropsMultiple = SkillComboboxPropsBase & {
+  multiple: true;
+  value: string[];
+  onChange: (value: string[]) => void;
+};
 
-	return (
-		<div className="space-y-2">
-			<Label>{label}</Label>
-			<IdLabelMultipleCombobox
-				options={options}
-				value={value}
-				onValueChange={onChange}
-				onSearchChange={setSearchInput}
-				placeholder={placeholder}
-				searchPlaceholder={t`Search skills...`}
-				emptyMessage={t`No skills found.`}
-			/>
-		</div>
-	);
+type SkillComboboxProps = SkillComboboxPropsSingle | SkillComboboxPropsMultiple;
+
+export function SkillCombobox(props: SkillComboboxProps) {
+  const { projectId, multiple = false } = props;
+  const [debouncedSearch, setSearchInput] = useDebounceValue('', 300);
+  const { data } = useQuery(
+    orpc.skill.list.queryOptions({
+      input: { query: debouncedSearch.trim() || undefined, projectId }
+    })
+  );
+
+  const skills = useMemo(() => (data as { items?: { id: string; name: string }[] } | undefined)?.items ?? [], [data]);
+  const skillOptions = useMemo(
+    () => skills.map((s: { id: string; name: string }) => ({ value: s.id, label: s.name })),
+    [skills]
+  );
+
+  if (multiple) {
+    const { value: multiValue, onChange: multiOnChange } = props as SkillComboboxPropsMultiple;
+    return (
+      <MultipleCombobox
+        options={skillOptions}
+        value={multiValue}
+        onValueChange={multiOnChange}
+        onSearchChange={setSearchInput}
+        placeholder={t`Select skills`}
+        searchPlaceholder={t`Search skills...`}
+        emptyMessage={t`No skills found.`}
+        className={cn('w-full')}
+      />
+    );
+  }
+
+  const { value: singleValue, onChange: singleOnChange } = props as SkillComboboxPropsSingle;
+  return (
+    <Combobox
+      options={skillOptions}
+      value={singleValue}
+      onValueChange={(v) => singleOnChange(v)}
+      onSearchChange={setSearchInput}
+      placeholder={t`Select skill`}
+      searchPlaceholder={t`Search skills...`}
+      emptyMessage={t`No skills found.`}
+      className={cn('w-full')}
+    />
+  );
 }

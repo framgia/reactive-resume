@@ -26,6 +26,9 @@ type ComboboxProps<TValue extends string | number = string> = Omit<
 	placeholder?: React.ReactNode;
 	searchPlaceholder?: string;
 	emptyMessage?: React.ReactNode;
+	/** When set, search is controlled and Command uses shouldFilter=false (e.g. for server-side search). */
+	onSearchChange?: (query: string) => void;
+	onOpenChange?: (open: boolean) => void;
 	buttonProps?: Omit<React.ComponentProps<typeof Button>, "children"> & {
 		children?: (value: TValue | null, option: ComboboxOption<TValue> | null) => React.ReactNode;
 	};
@@ -41,6 +44,8 @@ function Combobox<TValue extends string | number = string>({
 	placeholder = t`Select...`,
 	searchPlaceholder = t`Search...`,
 	emptyMessage = t`No results found.`,
+	onSearchChange,
+	onOpenChange,
 	className,
 	buttonProps,
 	onValueChange,
@@ -48,6 +53,7 @@ function Combobox<TValue extends string | number = string>({
 }: ComboboxProps<TValue>) {
 	const { className: buttonClassName, children: buttonChildren, ...buttonRestProps } = buttonProps ?? {};
 	const [open, setOpen] = React.useState(false);
+	const [search, setSearch] = React.useState("");
 
 	const [selectedValue, setSelectedValue] = useControlledState<TValue | null>({
 		value,
@@ -82,8 +88,21 @@ function Combobox<TValue extends string | number = string>({
 		(nextOpen: boolean) => {
 			if (disabled) return;
 			setOpen(nextOpen);
+			onOpenChange?.(nextOpen);
+			if (!nextOpen) {
+				setSearch("");
+				onSearchChange?.("");
+			}
 		},
-		[disabled],
+		[disabled, onOpenChange, onSearchChange],
+	);
+
+	const handleSearchChange = React.useCallback(
+		(v: string) => {
+			setSearch(v);
+			onSearchChange?.(v);
+		},
+		[onSearchChange],
 	);
 
 	return (
@@ -122,8 +141,13 @@ function Combobox<TValue extends string | number = string>({
 				className={cn("min-w-[200px] p-0", className, disabled && "pointer-events-none select-none opacity-60")}
 				{...props}
 			>
-				<Command>
-					<CommandInput placeholder={searchPlaceholder} disabled={disabled} />
+				<Command shouldFilter={!onSearchChange}>
+					<CommandInput
+						placeholder={searchPlaceholder}
+						disabled={disabled}
+						value={onSearchChange ? search : undefined}
+						onValueChange={onSearchChange ? handleSearchChange : undefined}
+					/>
 					<CommandList>
 						<CommandEmpty>{emptyMessage}</CommandEmpty>
 						<CommandGroup>

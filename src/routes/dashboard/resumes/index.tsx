@@ -7,19 +7,18 @@ import { createFileRoute, stripSearchParams, useNavigate, useRouter } from "@tan
 import { createServerFn } from "@tanstack/react-start";
 import { getCookie, setCookie } from "@tanstack/react-start/server";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import z from "zod";
-import { PositionSelect } from "@/components/position/position-select";
-import { PROJECT_ALL, ProjectSelect } from "@/components/project/project-select";
+import { PositionCombobox } from "@/components/position/position-combobox";
+import { ProjectCombobox } from "@/components/project/project-combobox";
 import { SkillCombobox } from "@/components/skill/skill-combobox";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Combobox } from "@/components/ui/combobox";
 import { Label } from "@/components/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { orpc } from "@/integrations/orpc/client";
+import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 import { DashboardHeader } from "../-components/header";
 import { GridView } from "./-components/grid-view";
 import { ListView } from "./-components/list-view";
@@ -28,9 +27,9 @@ type SortOption = "lastUpdatedAt" | "createdAt" | "name";
 
 const searchSchema = z.object({
 	sort: z.enum(["lastUpdatedAt", "createdAt", "name"]).default("lastUpdatedAt"),
-	projectId: z.union([z.string().uuid(), z.literal(PROJECT_ALL)]).optional(),
-	skillIds: z.array(z.string().uuid()).default([]),
-	positionId: z.string().uuid().optional(),
+	projectId: z.uuid().optional(),
+	skillIds: z.array(z.uuid()).default([]),
+	positionId: z.uuid().optional(),
 });
 
 export const Route = createFileRoute("/dashboard/resumes/")({
@@ -54,30 +53,20 @@ function RouteComponent() {
 
 	const [filterOpen, setFilterOpen] = useState(false);
 	const [filterComboboxKey, setFilterComboboxKey] = useState(0);
-	const [projectInput, setProjectInput] = useState<string>(PROJECT_ALL);
+	const [projectInput, setProjectInput] = useState<string | undefined>(undefined);
 	const [skillInput, setSkillInput] = useState<string[]>([]);
 	const [positionInput, setPositionInput] = useState<string | null>(null);
 
-	const getSkillLabelRef = useRef<((id: string) => string) | undefined>(undefined);
-	const getPositionLabelRef = useRef<((id: string) => string) | undefined>(undefined);
-
-	const [appliedSkillNames, setAppliedSkillNames] = useState<string[]>([]);
-	const [appliedPositionName, setAppliedPositionName] = useState("");
-
-	const listProjectId = projectId === undefined || projectId === PROJECT_ALL ? undefined : projectId;
-	const listPositionId = positionId;
-
 	const { data: resumes } = useQuery(
 		orpc.resume.list.queryOptions({
-			input: { sort, projectId: listProjectId, skillIds, positionId: listPositionId },
+			input: {
+				sort,
+				projectId,
+				skillIds,
+				positionId,
+			},
 		}),
 	);
-
-	const isProjectIdValid = projectId && projectId !== PROJECT_ALL;
-	const { data: project, isPending: isProjectLoading } = useQuery({
-		...orpc.project.getById.queryOptions({ input: { id: projectId ?? "" } }),
-		enabled: Boolean(isProjectIdValid && projectId),
-	});
 
 	const sortOptions = useMemo(() => {
 		return [
@@ -96,39 +85,14 @@ function RouteComponent() {
 		navigate({ search: { sort, projectId, skillIds, positionId, ...updates } });
 	};
 
-	const hasActiveFilters =
-		(projectId !== undefined && projectId !== PROJECT_ALL) || skillIds.length > 0 || positionId !== undefined;
-
-	const filterBadges = useMemo(() => {
-		const items: { label: string; value: string }[] = [];
-		if (projectId !== undefined && projectId !== PROJECT_ALL) {
-			const projectLabel = isProjectLoading ? t`Loading...` : (project?.name ?? projectId);
-			items.push({ label: t`Project`, value: projectLabel });
-		}
-		if (skillIds.length > 0) {
-			items.push({
-				label: t`Skills`,
-				value: appliedSkillNames.length > 0 ? appliedSkillNames.join(", ") : t`${skillIds.length} selected`,
-			});
-		}
-		if (positionId !== undefined) {
-			items.push({
-				label: t`Level`,
-				value: appliedPositionName,
-			});
-		}
-		return items;
-	}, [projectId, isProjectLoading, project?.name, skillIds.length, appliedSkillNames, positionId, appliedPositionName]);
+	const hasActiveFilters = projectId !== undefined || skillIds.length > 0 || positionId !== undefined;
 
 	const handleApplyFilter = () => {
-		const resolvedProjectId = projectInput === PROJECT_ALL ? undefined : projectInput;
 		updateSearch({
-			projectId: resolvedProjectId,
+			projectId: projectInput,
 			skillIds: skillInput,
 			positionId: positionInput ?? undefined,
 		});
-		setAppliedSkillNames(skillInput.map((id) => getSkillLabelRef.current?.(id) ?? id));
-		setAppliedPositionName(positionInput ? (getPositionLabelRef.current?.(positionInput) ?? positionInput) : "");
 		setFilterOpen(false);
 	};
 
@@ -138,18 +102,16 @@ function RouteComponent() {
 			skillIds: [],
 			positionId: undefined,
 		});
-		setProjectInput(PROJECT_ALL);
+		setProjectInput(undefined);
 		setSkillInput([]);
 		setPositionInput(null);
-		setAppliedSkillNames([]);
-		setAppliedPositionName("");
 		setFilterOpen(false);
 	};
 
 	const handleFilterOpenChange = (open: boolean) => {
 		setFilterOpen(open);
 		if (open) {
-			setProjectInput(projectId === undefined || projectId === PROJECT_ALL ? PROJECT_ALL : projectId);
+			setProjectInput(projectId);
 			setSkillInput(skillIds);
 			setPositionInput(positionId ?? null);
 		} else {
@@ -167,58 +129,32 @@ function RouteComponent() {
 				<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
 					<PopoverTrigger asChild>
 						<Button variant="ghost" size="sm" className="gap-x-2">
-							<FunnelSimpleIcon className="size-4" />
+							<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
 							<Trans>Filter</Trans>
-							{filterBadges.map((badge) => (
-								<Badge
-									key={badge.label}
-									variant="secondary"
-									className="max-w-32 shrink-0 truncate px-1.5 py-0 font-normal text-[10px]"
-								>
-									{badge.label}: {badge.value}
-								</Badge>
-							))}
 						</Button>
 					</PopoverTrigger>
 					<PopoverContent align="start" className="w-72">
 						<div className="flex flex-col gap-y-3">
-							<div className="space-y-2">
-								<Label className="font-medium text-muted-foreground text-xs">
+							<div key={`project-${filterComboboxKey}`} className="flex flex-col gap-y-2">
+								<Label>
 									<Trans>Project</Trans>
 								</Label>
-								<ProjectSelect
-									value={projectInput}
-									onValueChange={(next) => setProjectInput(next ?? PROJECT_ALL)}
-									includeAll
-									clearable={false}
-									buttonProps={{ variant: "outline", className: "h-9 w-full justify-start" }}
-								/>
+								<ProjectCombobox value={projectInput} onValueChange={(next) => setProjectInput(next ?? undefined)} />
 							</div>
-							<div key={`skill-${filterComboboxKey}`}>
-								<SkillCombobox
-									value={skillInput}
-									onChange={setSkillInput}
-									appliedIds={skillIds}
-									getLabelRef={getSkillLabelRef}
-									label={
-										<span className="font-medium text-muted-foreground text-xs">
-											<Trans>Skill highlight</Trans>
-										</span>
-									}
-									placeholder={t`Any skill highlight`}
-								/>
+							<div key={`skill-${filterComboboxKey}`} className="flex flex-col gap-y-2">
+								<Label>
+									<Trans>Skills</Trans>
+								</Label>
+								<SkillCombobox multiple value={skillInput} onChange={setSkillInput} projectId={projectId} />
 							</div>
-							<div key={`position-${filterComboboxKey}`}>
-								<PositionSelect
+							<div key={`position-${filterComboboxKey}`} className="flex flex-col gap-y-2">
+								<Label>
+									<Trans>Position</Trans>
+								</Label>
+								<PositionCombobox
 									value={positionInput}
-									onChange={setPositionInput}
-									getLabelRef={getPositionLabelRef}
-									label={
-										<span className="font-medium text-muted-foreground text-xs">
-											<Trans>Level</Trans>
-										</span>
-									}
-									placeholder={t`Any level`}
+									onChange={(value) => setPositionInput(value)}
+									projectId={projectId}
 								/>
 							</div>
 							<div className="flex gap-x-2">
@@ -268,7 +204,11 @@ function RouteComponent() {
 				</Tabs>
 			</div>
 
-			{view === "list" ? <ListView resumes={resumes ?? []} /> : <GridView resumes={resumes ?? []} />}
+			{view === "list" ? (
+				<ListView resumes={(resumes ?? []) as RouterOutput["resume"]["list"]} />
+			) : (
+				<GridView resumes={(resumes ?? []) as RouterOutput["resume"]["list"]} />
+			)}
 		</div>
 	);
 }

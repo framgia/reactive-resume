@@ -19,9 +19,8 @@ export function DomainSelect({ value, onChange, disabled = false, placeholder = 
 	const [search, setSearch] = useState("");
 	const [debouncedSearch] = useDebounceValue(search, SEARCH_DEBOUNCE_MS);
 
-	const { data: domains = [] } = useQuery(
-		orpc.domain.list.queryOptions({ input: { query: debouncedSearch.trim() || undefined } }),
-	);
+	const { data } = useQuery(orpc.domain.list.queryOptions({ input: { query: debouncedSearch.trim() || undefined } }));
+	const domains = data?.items ?? [];
 
 	const options = domains.map((d) => ({
 		value: d.id,

@@ -11,12 +11,12 @@ import {
 	TrashSimpleIcon,
 } from "@phosphor-icons/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { type ColumnDef, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { createFileRoute, stripSearchParams, useNavigate } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import z from "zod";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Combobox } from "@/components/ui/combobox";
 import {
@@ -27,12 +27,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PaginationBar } from "@/components/ui/pagination";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Spinner } from "@/components/ui/spinner";
 import { useDialogStore } from "@/dialogs/store";
 import { useConfirm } from "@/hooks/use-confirm";
-import { orpc } from "@/integrations/orpc/client";
+import { orpc, type RouterOutput } from "@/integrations/orpc/client";
+import { DEFAULT_PAGE_SIZE } from "@/constants";
 import { DashboardHeader } from "../-components/header";
 
 type TabValue = "positions" | "skills";
@@ -131,12 +134,6 @@ function PositionsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOp
 
 	const hasActiveFilters = Boolean(appliedQuery.trim());
 
-	const filterBadges = useMemo(() => {
-		const items: { label: string; value: string }[] = [];
-		if (appliedQuery.trim()) items.push({ label: t`Name`, value: appliedQuery.trim() });
-		return items;
-	}, [appliedQuery]);
-
 	const handleApplyFilter = () => {
 		onQueryChange(nameInput.trim());
 		setFilterOpen(false);
@@ -158,17 +155,8 @@ function PositionsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOp
 			<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
 				<PopoverTrigger asChild>
 					<Button variant="ghost" size="sm" className="gap-x-2">
-						<FunnelSimpleIcon className="size-4" />
+						<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
 						<Trans>Filter</Trans>
-						{filterBadges.map((badge) => (
-							<Badge
-								key={badge.label}
-								variant="secondary"
-								className="max-w-32 shrink-0 truncate px-1.5 py-0 font-normal text-[10px]"
-							>
-								{badge.label}: {badge.value}
-							</Badge>
-						))}
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent align="start" className="w-72">
@@ -225,12 +213,6 @@ function SkillsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOptio
 
 	const hasActiveFilters = Boolean(appliedQuery.trim());
 
-	const filterBadges = useMemo(() => {
-		const items: { label: string; value: string }[] = [];
-		if (appliedQuery.trim()) items.push({ label: t`Name`, value: appliedQuery.trim() });
-		return items;
-	}, [appliedQuery]);
-
 	const handleApplyFilter = () => {
 		onQueryChange(nameInput.trim());
 		setFilterOpen(false);
@@ -252,17 +234,8 @@ function SkillsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOptio
 			<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
 				<PopoverTrigger asChild>
 					<Button variant="ghost" size="sm" className="gap-x-2">
-						<FunnelSimpleIcon className="size-4" />
+						<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
 						<Trans>Filter</Trans>
-						{filterBadges.map((badge) => (
-							<Badge
-								key={badge.label}
-								variant="secondary"
-								className="max-w-32 shrink-0 truncate px-1.5 py-0 font-normal text-[10px]"
-							>
-								{badge.label}: {badge.value}
-							</Badge>
-						))}
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent align="start" className="w-72">
@@ -312,25 +285,61 @@ function SkillsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOptio
 	);
 }
 
+type PositionListItem = RouterOutput["position"]["list"]["items"][number];
+type SkillListItem = RouterOutput["skill"]["list"]["items"][number];
+
 function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 	const { i18n } = useLingui();
 	const queryClient = useQueryClient();
 	const openDialog = useDialogStore((state) => state.openDialog);
 	const confirm = useConfirm();
 
-	const { data: positions = [] } = useQuery(
+	const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: DEFAULT_PAGE_SIZE });
+
+	useEffect(() => {
+		setPagination((prev) => ({ ...prev, pageIndex: 0 }));
+	}, [sort, query]);
+
+	const { data, isLoading } = useQuery<RouterOutput["position"]["list"]>(
 		orpc.position.list.queryOptions({
 			input: {
 				query: query?.trim() || undefined,
 				sort,
+				page: pagination.pageIndex + 1,
+				pageSize: pagination.pageSize,
 			},
 		}),
 	);
 
-	const { mutate: deletePosition, isPending: isDeleting } = useMutation(
+	const positions = (data?.items ?? []) as PositionListItem[];
+	const total = data?.total ?? 0;
+
+	type PositionRow = PositionListItem;
+
+	const table = useReactTable({
+		data: positions as PositionRow[],
+		columns: useMemo<ColumnDef<PositionRow>[]>(() => [{ id: "id", accessorKey: "id" }], []),
+		getCoreRowModel: getCoreRowModel(),
+		manualPagination: true,
+		rowCount: total,
+		state: { pagination },
+		onPaginationChange: (updater) => {
+			setPagination((prev) => {
+				const next = typeof updater === "function" ? updater(prev) : updater;
+				return next.pageSize !== prev.pageSize ? { ...next, pageIndex: 0 } : next;
+			});
+		},
+	});
+	const { mutate: deletePosition, isPending: isDeleting } = useMutation<
+		void,
+		Error,
+		{ id: string }
+	>(
 		orpc.position.delete.mutationOptions({
 			onSuccess: () => {
-				queryClient.invalidateQueries({ queryKey: orpc.position.list.queryOptions({ input: {} }).queryKey });
+				queryClient.invalidateQueries({
+					queryKey: orpc.position.list.queryOptions({ input: {} }).queryKey,
+				});
 			},
 		}),
 	);
@@ -355,16 +364,27 @@ function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 
 	return (
 		<div className="flex flex-col gap-y-2">
-			<Button
-				variant="ghost"
-				size="lg"
-				className="h-12 w-full justify-start gap-x-4 text-start"
-				onClick={() => openDialog("position.create", undefined)}
-			>
-				<PlusIcon />
-				<Trans>Create a new position</Trans>
-			</Button>
+			<div className="flex items-center gap-x-2">
+				<Button
+					variant="ghost"
+					size="lg"
+					className="h-12 flex-1 justify-start gap-x-4 text-start"
+					onClick={() => openDialog("position.create", undefined)}
+				>
+					<PlusIcon />
+					<Trans>Create a new position</Trans>
+				</Button>
+			</div>
 
+			{isLoading && !data ? (
+				<div className="flex items-center justify-center gap-x-2 px-1 text-muted-foreground text-xs">
+					<Spinner className="size-10" />
+					<span>
+						<Trans>Loading...</Trans>
+					</span>
+				</div>
+			) : (
+				<>
 			<div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-x-4 gap-y-1">
 				<div className="px-1 font-medium text-muted-foreground text-xs">
 					<Trans>Name</Trans>
@@ -377,7 +397,7 @@ function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 				</div>
 				<div className="w-12" />
 
-				{positions.map((position) => (
+				{positions.map((position: PositionListItem) => (
 					<div key={position.id} className="contents">
 						<div className="flex h-12 items-center rounded-md px-1">
 							<span className="truncate font-medium">{position.name}</span>
@@ -420,6 +440,19 @@ function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 					</div>
 				))}
 			</div>
+
+			<PaginationBar
+				page={table.getState().pagination.pageIndex + 1}
+				totalPage={table.getPageCount()}
+				pageSize={table.getState().pagination.pageSize}
+				onPageSizeChange={(size) => table.setPageSize(size)}
+				getPageHref={() => "#"}
+				canPreviousPage={table.getCanPreviousPage()}
+				canNextPage={table.getCanNextPage()}
+				onPageSelect={(pageNum) => table.setPageIndex(pageNum - 1)}
+			/>
+				</>
+			)}
 		</div>
 	);
 }
@@ -430,19 +463,48 @@ function SkillsTab({ sort, query }: { sort: SortOption; query?: string }) {
 	const openDialog = useDialogStore((state) => state.openDialog);
 	const confirm = useConfirm();
 
-	const { data: skills = [] } = useQuery(
+	const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: DEFAULT_PAGE_SIZE });
+
+	useEffect(() => {
+		setPagination((prev) => ({ ...prev, pageIndex: 0 }));
+	}, [sort, query]);
+
+	const { data, isLoading, isFetching } = useQuery<RouterOutput["skill"]["list"]>(
 		orpc.skill.list.queryOptions({
 			input: {
 				query: query?.trim() || undefined,
 				sort,
+				page: pagination.pageIndex + 1,
+				pageSize: pagination.pageSize,
 			},
 		}),
 	);
 
-	const { mutate: deleteSkill, isPending: isDeleting } = useMutation(
+	const skills = (data?.items ?? []) as SkillListItem[];
+	const total = data?.total ?? skills.length;
+
+	type SkillRow = SkillListItem;
+
+	const table = useReactTable({
+		data: skills as SkillRow[],
+		columns: useMemo<ColumnDef<SkillRow>[]>(() => [{ id: "id", accessorKey: "id" }], []),
+		getCoreRowModel: getCoreRowModel(),
+		manualPagination: true,
+		rowCount: total,
+		state: { pagination },
+		onPaginationChange: (updater) => {
+			setPagination((prev) => {
+				const next = typeof updater === "function" ? updater(prev) : updater;
+				return next.pageSize !== prev.pageSize ? { ...next, pageIndex: 0 } : next;
+			});
+		},
+	});
+	const { mutate: deleteSkill, isPending: isDeleting } = useMutation<void, Error, { id: string }>(
 		orpc.skill.delete.mutationOptions({
 			onSuccess: () => {
-				queryClient.invalidateQueries({ queryKey: orpc.skill.list.queryOptions({ input: {} }).queryKey });
+				queryClient.invalidateQueries({
+					queryKey: orpc.skill.list.queryOptions({ input: {} }).queryKey,
+				});
 			},
 		}),
 	);
@@ -467,16 +529,35 @@ function SkillsTab({ sort, query }: { sort: SortOption; query?: string }) {
 
 	return (
 		<div className="flex flex-col gap-y-2">
-			<Button
-				variant="ghost"
-				size="lg"
-				className="h-12 w-full justify-start gap-x-4 text-start"
-				onClick={() => openDialog("skill.create", undefined)}
-			>
-				<PlusIcon />
-				<Trans>Create a new skill</Trans>
-			</Button>
+			<div className="flex items-center gap-x-2">
+				<Button
+					variant="ghost"
+					size="lg"
+					className="h-12 flex-1 justify-start gap-x-4 text-start"
+					onClick={() => openDialog("skill.create", undefined)}
+				>
+					<PlusIcon />
+					<Trans>Create a new skill</Trans>
+				</Button>
+				{isFetching && data && (
+					<div className="flex items-center gap-x-2 px-1 text-muted-foreground text-xs">
+						<Spinner className="size-4" />
+						<span>
+							<Trans>Updating...</Trans>
+						</span>
+					</div>
+				)}
+			</div>
 
+			{isLoading && !data ? (
+				<div className="flex items-center justify-center gap-x-2 px-1 text-muted-foreground text-xs">
+					<Spinner className="size-4" />
+					<span>
+						<Trans>Loading...</Trans>
+					</span>
+				</div>
+			) : (
+				<>
 			<div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-x-4 gap-y-1">
 				<div className="px-1 font-medium text-muted-foreground text-xs">
 					<Trans>Name</Trans>
@@ -489,7 +570,7 @@ function SkillsTab({ sort, query }: { sort: SortOption; query?: string }) {
 				</div>
 				<div className="w-12" />
 
-				{skills.map((skill) => (
+				{skills.map((skill: SkillListItem) => (
 					<div key={skill.id} className="contents">
 						<div className="flex h-12 items-center rounded-md px-1">
 							<span className="truncate font-medium">{skill.name}</span>
@@ -532,6 +613,19 @@ function SkillsTab({ sort, query }: { sort: SortOption; query?: string }) {
 					</div>
 				))}
 			</div>
+
+			<PaginationBar
+				page={table.getState().pagination.pageIndex + 1}
+				totalPage={table.getPageCount()}
+				pageSize={table.getState().pagination.pageSize}
+				onPageSizeChange={(size) => table.setPageSize(size)}
+				getPageHref={() => "#"}
+				canPreviousPage={table.getCanPreviousPage()}
+				canNextPage={table.getCanNextPage()}
+				onPageSelect={(pageNum) => table.setPageIndex(pageNum - 1)}
+			/>
+				</>
+			)}
 		</div>
 	);
 }

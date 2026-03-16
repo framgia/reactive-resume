@@ -39,12 +39,15 @@ function ProjectForm() {
 	const [debouncedSkillInput] = useDebounceValue(skillInput, SUGGESTION_DEBOUNCE_MS);
 	const [debouncedPositionInput] = useDebounceValue(positionInput, SUGGESTION_DEBOUNCE_MS);
 
-	const { data: skillOptions = [] } = useQuery(
+	const { data: skillResponse } = useQuery(
 		orpc.skill.list.queryOptions({ input: { query: debouncedSkillInput.trim() || undefined, limit: 15 } }),
 	);
-	const { data: positionOptions = [] } = useQuery(
+	const { data: positionResponse } = useQuery(
 		orpc.position.list.queryOptions({ input: { query: debouncedPositionInput.trim() || undefined, limit: 15 } }),
 	);
+
+	const skillOptions = skillResponse?.items ?? [];
+	const positionOptions = positionResponse?.items ?? [];
 
 	return (
 		<>

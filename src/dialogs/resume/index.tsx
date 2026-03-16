@@ -1,30 +1,20 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
-import {
-	BriefcaseIcon,
-	CaretDownIcon,
-	CaretUpDownIcon,
-	ChartBarIcon,
-	FolderIcon,
-	MagicWandIcon,
-	PencilSimpleLineIcon,
-	PlusIcon,
-	TestTubeIcon,
-} from "@phosphor-icons/react";
+import { CaretDownIcon, MagicWandIcon, PencilSimpleLineIcon, PlusIcon, TestTubeIcon } from "@phosphor-icons/react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
-import * as React from "react";
 import { useEffect, useMemo } from "react";
 import type { Resolver } from "react-hook-form";
 import { useForm, useFormContext, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 import { ChipInput } from "@/components/input/chip-input";
-import { ProjectSelect } from "@/components/project/project-select";
+import { PositionCombobox } from "@/components/position/position-combobox";
+import { ProjectCombobox } from "@/components/project/project-combobox";
+import { SkillCombobox } from "@/components/skill/skill-combobox";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
-import { Command, CommandEmpty, CommandGroup, CommandItem, CommandList } from "@/components/ui/command";
 import { DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import {
 	DropdownMenu,
@@ -35,12 +25,10 @@ import {
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from "@/components/ui/input-group";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useFormBlocker } from "@/hooks/use-form-blocker";
 import { authClient } from "@/integrations/auth/client";
 import { orpc, type RouterInput } from "@/integrations/orpc/client";
 import { generateId, generateRandomName, slugify } from "@/utils/string";
-import { cn } from "@/utils/style";
 import { type DialogProps, useDialogStore } from "../store";
 
 const formSchema = z.object({
@@ -375,9 +363,6 @@ function CreateResumeOverallFields() {
 		enabled: Boolean(projectId),
 	});
 
-	const skills = project?.skills ?? [];
-	const positions = project?.position ?? [];
-
 	return (
 		<>
 			<FormField
@@ -385,22 +370,14 @@ function CreateResumeOverallFields() {
 				name="projectId"
 				render={({ field }) => (
 					<FormItem>
-						<FormLabel className="flex items-center gap-2 text-muted-foreground">
-							<FolderIcon className="size-4" weight="duotone" />
+						<FormLabel>
 							<Trans>Project</Trans>
 						</FormLabel>
 						<FormControl>
-							<ProjectSelect
-								value={field.value ?? null}
-								onValueChange={(v) => {
-									field.onChange(v);
-									form.setValue("skillIds", []);
-									form.setValue("positionId", null);
-								}}
-								includeAll={false}
-								includeNone
-								clearable
-								buttonProps={{ className: "w-full justify-between font-normal" }}
+							<ProjectCombobox
+								value={field.value ?? undefined}
+								onValueChange={field.onChange}
+								className="w-full justify-between font-normal"
 							/>
 						</FormControl>
 						<FormMessage />
@@ -414,18 +391,11 @@ function CreateResumeOverallFields() {
 						name="skillIds"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className="flex items-center gap-2 text-muted-foreground">
-									<ChartBarIcon className="size-4" weight="duotone" />
+								<FormLabel>
 									<Trans>Skills</Trans>
 								</FormLabel>
 								<FormControl>
-									<OptionMultiSelect
-										value={field.value ?? []}
-										onValueChange={field.onChange}
-										options={skills}
-										placeholder={t`Select skills`}
-										className="w-full justify-between font-normal"
-									/>
+									<SkillCombobox multiple value={field.value ?? []} onChange={field.onChange} projectId={projectId} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -436,17 +406,14 @@ function CreateResumeOverallFields() {
 						name="positionId"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className="flex items-center gap-2 text-muted-foreground">
-									<BriefcaseIcon className="size-4" weight="duotone" />
+								<FormLabel>
 									<Trans>Position</Trans>
 								</FormLabel>
 								<FormControl>
-									<OptionSelect
+									<PositionCombobox
 										value={field.value ?? null}
-										onValueChange={field.onChange}
-										options={positions}
-										placeholder={t`Select position`}
-										className="w-full justify-between font-normal"
+										onChange={(value) => field.onChange(value)}
+										projectId={projectId}
 									/>
 								</FormControl>
 								<FormMessage />
@@ -456,150 +423,6 @@ function CreateResumeOverallFields() {
 				</>
 			)}
 		</>
-	);
-}
-
-function OptionMultiSelect({
-	value,
-	onValueChange,
-	options,
-	placeholder,
-	className,
-}: {
-	value: string[];
-	onValueChange: (value: string[]) => void;
-	options: { id: string; name: string }[];
-	placeholder: string;
-	className?: string;
-}) {
-	const [open, setOpen] = React.useState(false);
-
-	const handleToggle = (selectedId: string) => {
-		const next = value.includes(selectedId) ? value.filter((id) => id !== selectedId) : [...value, selectedId];
-		onValueChange(next);
-	};
-
-	const display =
-		value.length > 0
-			? value
-					.map((id) => options.find((o) => o.id === id)?.name)
-					.filter((n): n is string => n != null)
-					.join(", ")
-			: placeholder;
-
-	return (
-		<Popover open={open} onOpenChange={setOpen}>
-			<PopoverTrigger asChild>
-				<Button role="combobox" variant="outline" aria-expanded={open} className={cn("font-normal", className)}>
-					<span className="truncate">{display}</span>
-					<CaretUpDownIcon className="ms-2 shrink-0 opacity-50" />
-				</Button>
-			</PopoverTrigger>
-			<PopoverContent align="start" className="min-w-[200px] p-0">
-				<Command>
-					<CommandList>
-						{options.length === 0 ? (
-							<CommandEmpty>
-								<Trans>No options</Trans>
-							</CommandEmpty>
-						) : (
-							<CommandGroup>
-								{value.length > 0 && (
-									<CommandItem
-										onSelect={() => {
-											onValueChange([]);
-											setOpen(false);
-										}}
-										className="cursor-pointer"
-									>
-										<Trans>Clear all</Trans>
-									</CommandItem>
-								)}
-								{options.map((opt) => (
-									<CommandItem
-										key={opt.id}
-										value={opt.id}
-										onSelect={() => handleToggle(opt.id)}
-										className="cursor-pointer"
-									>
-										{value.includes(opt.id) ? "✓ " : ""}
-										{opt.name}
-									</CommandItem>
-								))}
-							</CommandGroup>
-						)}
-					</CommandList>
-				</Command>
-			</PopoverContent>
-		</Popover>
-	);
-}
-
-function OptionSelect({
-	value,
-	onValueChange,
-	options,
-	placeholder,
-	className,
-}: {
-	value: string | null;
-	onValueChange: (value: string | null) => void;
-	options: { id: string; name: string }[];
-	placeholder: string;
-	className?: string;
-}) {
-	const [open, setOpen] = React.useState(false);
-
-	const handleSelect = (selectedId: string) => {
-		onValueChange(selectedId === value ? null : selectedId);
-		setOpen(false);
-	};
-
-	const clear = () => {
-		onValueChange(null);
-		setOpen(false);
-	};
-
-	const display = options.find((o) => o.id === value)?.name ?? placeholder;
-
-	return (
-		<Popover open={open} onOpenChange={setOpen}>
-			<PopoverTrigger asChild>
-				<Button role="combobox" variant="outline" aria-expanded={open} className={cn("font-normal", className)}>
-					<span className="truncate">{display}</span>
-					<CaretUpDownIcon className="ms-2 shrink-0 opacity-50" />
-				</Button>
-			</PopoverTrigger>
-			<PopoverContent align="start" className="min-w-[200px] p-0">
-				<Command>
-					<CommandList>
-						{options.length === 0 ? (
-							<CommandEmpty>
-								<Trans>No options</Trans>
-							</CommandEmpty>
-						) : (
-							<CommandGroup>
-								{value && (
-									<CommandItem onSelect={clear} className="cursor-pointer">
-										<Trans>Clear</Trans>
-									</CommandItem>
-								)}
-								{options.map((opt) => (
-									<CommandItem
-										key={opt.id}
-										value={opt.id}
-										onSelect={() => handleSelect(opt.id)}
-										className="cursor-pointer"
-									>
-										{opt.name}
-									</CommandItem>
-								))}
-							</CommandGroup>
-						)}
-					</CommandList>
-				</Command>
-			</PopoverContent>
-		</Popover>
 	);
 }
 

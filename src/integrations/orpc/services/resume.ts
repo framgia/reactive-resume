@@ -422,52 +422,72 @@ export const resumeService = {
 
 		if (resume?.isLocked) throw new ORPCError("RESUME_LOCKED");
 
-		const updateData: Partial<typeof schema.resume.$inferSelect> = {
-			name: input.name,
-			slug: input.slug,
-			tags: input.tags,
-			data: input.data,
-			isPublic: input.isPublic,
-			projectId: input.projectId,
-			positionId: input.positionId,
+		const updateData: Partial<typeof schema.resume.$inferSelect> = {};
+		if (input.name !== undefined) updateData.name = input.name;
+		if (input.slug !== undefined) updateData.slug = input.slug;
+		if (input.tags !== undefined) updateData.tags = input.tags;
+		if (input.data !== undefined) updateData.data = input.data;
+		if (input.isPublic !== undefined) updateData.isPublic = input.isPublic;
+		if (input.projectId !== undefined) updateData.projectId = input.projectId;
+		if (input.positionId !== undefined) updateData.positionId = input.positionId;
+
+		const resumeWhere = and(
+			eq(schema.resume.id, input.id),
+			eq(schema.resume.isLocked, false),
+			eq(schema.resume.userId, input.userId),
+		);
+		const returning = {
+			id: schema.resume.id,
+			name: schema.resume.name,
+			slug: schema.resume.slug,
+			tags: schema.resume.tags,
+			data: schema.resume.data,
+			isPublic: schema.resume.isPublic,
+			isLocked: schema.resume.isLocked,
+			projectId: schema.resume.projectId,
+			positionId: schema.resume.positionId,
+			hasPassword: sql<boolean>`${schema.resume.password} IS NOT NULL`,
 		};
 
 		try {
-			if (input.skillIds !== undefined) {
-				await db.delete(schema.resumeSkill).where(eq(schema.resumeSkill.resumeId, input.id));
-				if (input.skillIds.length > 0) {
-					await db
-						.insert(schema.resumeSkill)
-						.values(input.skillIds.map((skillId) => ({ resumeId: input.id, skillId })));
+			const updated = await db.transaction(async (tx) => {
+				if (input.skillIds !== undefined) {
+					await tx.delete(schema.resumeSkill).where(eq(schema.resumeSkill.resumeId, input.id));
+					if (input.skillIds.length > 0) {
+						await tx
+							.insert(schema.resumeSkill)
+							.values(input.skillIds.map((skillId) => ({ resumeId: input.id, skillId })));
+					}
 				}
-			}
 
-			const [updated] = await db
-				.update(schema.resume)
-				.set(updateData)
-				.where(
-					and(
-						eq(schema.resume.id, input.id),
-						eq(schema.resume.isLocked, false),
-						eq(schema.resume.userId, input.userId),
-					),
-				)
-				.returning({
-					id: schema.resume.id,
-					name: schema.resume.name,
-					slug: schema.resume.slug,
-					tags: schema.resume.tags,
-					data: schema.resume.data,
-					isPublic: schema.resume.isPublic,
-					isLocked: schema.resume.isLocked,
-					projectId: schema.resume.projectId,
-					positionId: schema.resume.positionId,
-					hasPassword: sql<boolean>`${schema.resume.password} IS NOT NULL`,
-				});
+				const [row] =
+					Object.keys(updateData).length > 0
+						? await tx
+								.update(schema.resume)
+								.set(updateData)
+								.where(resumeWhere)
+								.returning(returning)
+						: await tx.select(returning).from(schema.resume).where(resumeWhere);
+				if (!row) throw new ORPCError("NOT_FOUND");
+				return row;
+			});
 
-			if (!updated) throw new ORPCError("NOT_FOUND");
-			const skills = await getSkillsForResume(updated.id);
-			return { ...updated, skills };
+			const [skills, positionName] = await Promise.all([
+				getSkillsForResume(updated.id),
+				updated.positionId
+					? db
+							.select({ name: schema.position.name })
+							.from(schema.position)
+							.where(eq(schema.position.id, updated.positionId))
+							.then(([r]) => r?.name ?? null)
+					: Promise.resolve(null),
+			]);
+
+			return {
+				...updated,
+				skills,
+				position: positionName,
+			};
 		} catch (error) {
 			if (get(error, "cause.constraint") === "resume_slug_user_id_unique") {
 				throw new ORPCError("RESUME_SLUG_ALREADY_EXISTS", { status: 400 });

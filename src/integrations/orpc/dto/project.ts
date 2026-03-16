@@ -12,6 +12,10 @@ const projectSchema = createSelectSchema(schema.project, {
 	deletedAt: z.date().nullable().describe("When the project was soft-deleted."),
 });
 
+const projectListItemSchema = projectSchema.extend({
+	domainNames: z.string().describe("Comma-separated domain names linked to the project."),
+});
+
 export const projectDto = {
 	list: {
 		input: z
@@ -27,10 +31,11 @@ export const projectDto = {
 					.array(z.string())
 					.optional()
 					.describe("Filter by skill IDs; only projects linked to at least one of these skills."),
-				positionIds: z
-					.array(z.string())
+				positionId: z
+					.string()
+					.nullable()
 					.optional()
-					.describe("Filter by position IDs; only projects linked to at least one of these positions."),
+					.describe("Filter by position ID; only projects linked to this position."),
 				query: z.string().optional().describe("Search by project name or customer name (partial match)."),
 				limit: z
 					.number()
@@ -39,17 +44,16 @@ export const projectDto = {
 					.max(100)
 					.optional()
 					.describe("Max number of projects to return (for select/search UX)."),
+				page: z.number().int().min(1).optional().default(1).describe("Page number for pagination (1-based)."),
+				pageSize: z.number().int().min(1).max(100).optional().default(10).describe("Number of items per page."),
 			})
 			.optional()
-			.default({ sort: "lastUpdatedAt" }),
+			.default({ sort: "lastUpdatedAt", page: 1, pageSize: 10 }),
 
-		output: z.array(
-			projectSchema.extend({
-				skills: z.array(z.string()).describe("Skill names associated with the project."),
-				position: z.array(z.string()).describe("Position names associated with the project."),
-				domainNames: z.string().describe("Comma-separated domain names linked to the project."),
-			}),
-		),
+		output: z.object({
+			items: z.array(projectListItemSchema).describe("Projects for the current page."),
+			total: z.number().int().min(0).describe("Total number of projects matching the filter."),
+		}),
 	},
 
 	getById: {

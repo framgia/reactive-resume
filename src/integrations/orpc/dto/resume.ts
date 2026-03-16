@@ -104,7 +104,7 @@ export const resumeDto = {
 			.partial()
 			.extend({
 				id: z.string(),
-				skillIds: z.array(z.string().uuid()).optional(),
+				skillIds: z.array(z.uuid()).optional(),
 			}),
 		output: resumeSchema
 			.omit({
@@ -115,7 +115,11 @@ export const resumeDto = {
 				sharedCopyFromId: true,
 			})
 			.extend({
-				skills: z.array(z.object({ id: z.string(), name: z.string() })),
+				hasPassword: z.boolean(),
+				skills: z
+					.array(z.object({ id: z.string(), name: z.string() }))
+					.describe("Selected skills from the project (id and display name)."),
+				position: z.string().nullable().describe("Display name of the selected position."),
 			}),
 	},
 

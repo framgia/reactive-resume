@@ -13,7 +13,7 @@ import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 import { cn } from "@/utils/style";
 import { ProjectDropdownMenu } from "./menus/dropdown-menu";
 
-type Project = RouterOutput["project"]["list"][number];
+type Project = RouterOutput["project"]["list"]["items"][number];
 
 type Props = {
 	projects: Project[];

@@ -180,7 +180,6 @@ function MultipleCombobox<TValue extends string | number = string>({
 					/>
 					<CommandList>
 						<CommandEmpty>{emptyMessage}</CommandEmpty>
-
 						<CommandGroup>
 							{options.map((option) => {
 								const stringValue = String(option.value);
