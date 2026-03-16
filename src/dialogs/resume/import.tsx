@@ -2,11 +2,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { DownloadSimpleIcon, FileIcon, UploadSimpleIcon } from "@phosphor-icons/react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm, useFormContext, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
+import { PositionCombobox } from "@/components/position/position-combobox";
+import { ProjectCombobox } from "@/components/project/project-combobox";
+import { SkillCombobox } from "@/components/skill/skill-combobox";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Combobox } from "@/components/ui/combobox";
@@ -24,11 +27,18 @@ import type { ResumeData } from "@/schema/resume/data";
 import { cn } from "@/utils/style";
 import { type DialogProps, useDialogStore } from "../store";
 
+const optionalProjectFields = {
+	projectId: z.string().nullable().optional(),
+	skillIds: z.array(z.string()).optional(),
+	positionId: z.string().nullable().optional(),
+};
+
 const formSchema = z.discriminatedUnion("type", [
-	z.object({ type: z.literal("") }),
+	z.object({ type: z.literal(""), ...optionalProjectFields }),
 	z.object({
 		type: z.literal("pdf"),
 		file: z.instanceof(File).refine((file) => file.type === "application/pdf", { message: "File must be a PDF" }),
+		...optionalProjectFields,
 	}),
 	z.object({
 		type: z.literal("docx"),
@@ -40,28 +50,104 @@ const formSchema = z.discriminatedUnion("type", [
 					file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 				{ message: "File must be a Microsoft Word document" },
 			),
+		...optionalProjectFields,
 	}),
 	z.object({
 		type: z.literal("reactive-resume-json"),
 		file: z
 			.instanceof(File)
 			.refine((file) => file.type === "application/json", { message: "File must be a JSON file" }),
+		...optionalProjectFields,
 	}),
 	z.object({
 		type: z.literal("reactive-resume-v4-json"),
 		file: z
 			.instanceof(File)
 			.refine((file) => file.type === "application/json", { message: "File must be a JSON file" }),
+		...optionalProjectFields,
 	}),
 	z.object({
 		type: z.literal("json-resume-json"),
 		file: z
 			.instanceof(File)
 			.refine((file) => file.type === "application/json", { message: "File must be a JSON file" }),
+		...optionalProjectFields,
 	}),
 ]);
 
 type FormValues = z.infer<typeof formSchema>;
+
+function ImportProjectFields() {
+	const form = useFormContext<FormValues>();
+	const projectId = useWatch({ control: form.control, name: "projectId" });
+
+	const { data: project } = useQuery({
+		...orpc.project.getById.queryOptions({ input: { id: projectId ?? "" } }),
+		enabled: Boolean(projectId),
+	});
+
+	return (
+		<>
+			<FormField
+				control={form.control}
+				name="projectId"
+				render={({ field }) => (
+					<FormItem>
+						<FormLabel>
+							<Trans>Project</Trans>
+						</FormLabel>
+						<FormControl>
+							<ProjectCombobox
+								value={field.value ?? undefined}
+								onValueChange={field.onChange}
+								className="w-full justify-between font-normal"
+							/>
+						</FormControl>
+						<FormMessage />
+					</FormItem>
+				)}
+			/>
+			{projectId && project && (
+				<>
+					<FormField
+						control={form.control}
+						name="skillIds"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>
+									<Trans>Skills</Trans>
+								</FormLabel>
+								<FormControl>
+									<SkillCombobox multiple value={field.value ?? []} onChange={field.onChange} projectId={projectId} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="positionId"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>
+									<Trans>Position</Trans>
+								</FormLabel>
+								<FormControl>
+									<PositionCombobox
+										value={field.value ?? null}
+										onChange={(value) => field.onChange(value)}
+										projectId={projectId}
+									/>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</>
+			)}
+		</>
+	);
+}
 
 export function ImportResumeDialog(_: DialogProps<"resume.import">) {
 	const { enabled: isAIEnabled, provider, model, apiKey, baseURL } = useAIStore();
@@ -163,7 +249,12 @@ export function ImportResumeDialog(_: DialogProps<"resume.import">) {
 
 			if (!data) throw new Error("No data was returned from the AI provider.");
 
-			await importResume({ data });
+			await importResume({
+				data,
+				projectId: values.projectId,
+				skillIds: values.skillIds,
+				positionId: values.positionId,
+			});
 			toast.success(t`Your resume has been imported successfully.`, { id: toastId, description: null });
 			closeDialog();
 		} catch (error: unknown) {
@@ -268,6 +359,8 @@ export function ImportResumeDialog(_: DialogProps<"resume.import">) {
 							</FormItem>
 						)}
 					/>
+
+					{type ? <ImportProjectFields /> : null}
 
 					<DialogFooter>
 						<Button type="submit" disabled={!type || isLoading}>

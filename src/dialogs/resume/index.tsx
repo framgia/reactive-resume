@@ -297,6 +297,9 @@ export function DuplicateResumeDialog({ data }: DialogProps<"resume.duplicate">)
 			name: `${data.name} (Copy)`,
 			slug: `${data.slug}-copy`,
 			tags: data.tags,
+			projectId: null,
+			skillIds: [],
+			positionId: null,
 		},
 	});
 
@@ -342,6 +345,7 @@ export function DuplicateResumeDialog({ data }: DialogProps<"resume.duplicate">)
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
 					<ResumeForm />
+					<CreateResumeOverallFields />
 
 					<DialogFooter>
 						<Button type="submit" disabled={isPending}>

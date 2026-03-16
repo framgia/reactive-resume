@@ -157,9 +157,9 @@ export const resumeRouter = {
 				locale: context.locale,
 				userId: context.user.id,
 				data: input.withSampleData ? sampleResumeData : undefined,
-				projectId: input.projectId,
+				projectId: input.projectId ?? undefined,
 				skillIds: input.skillIds,
-				positionId: input.positionId,
+				positionId: input.positionId ?? undefined,
 			});
 		}),
 
@@ -193,6 +193,9 @@ export const resumeRouter = {
 				data: input.data,
 				locale: context.locale,
 				userId: context.user.id,
+				projectId: input.projectId,
+				skillIds: input.skillIds,
+				positionId: input.positionId,
 			});
 		}),
 
@@ -369,9 +372,9 @@ export const resumeRouter = {
 				tags: input.tags ?? original.tags,
 				locale: context.locale,
 				data: original.data,
-				projectId: original.projectId,
-				skillIds: original.skills.map((s) => s.id),
-				positionId: original.positionId,
+				projectId: input.projectId ?? undefined,
+				skillIds: input.skillIds,
+				positionId: input.positionId ?? undefined,
 			});
 		}),
 
@@ -413,9 +416,9 @@ export const resumeRouter = {
 					locale: context.locale,
 					data: original.data,
 					sharedCopyFromId: original.id,
-					projectId: original.projectId,
+					projectId: original.projectId ?? undefined,
 					skillIds: original.skills.map((s) => s.id),
-					positionId: original.positionId,
+					positionId: original.positionId ?? undefined,
 				});
 				count += 1;
 			}

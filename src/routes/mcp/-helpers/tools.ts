@@ -202,6 +202,16 @@ export function registerTools(server: McpServer) {
 				name: z.string().min(1).max(64).describe("Name for the duplicate"),
 				slug: z.string().min(1).max(64).describe("URL-friendly slug for the duplicate (must be unique)"),
 				tags: z.array(z.string()).optional().default([]).describe("Tags for the duplicate"),
+				projectId: z.uuid().optional().describe("Project ID for the duplicate, or null for none"),
+				skillIds: z
+					.array(z.uuid())
+					.optional()
+					.default([])
+					.describe("Skill IDs to associate with the duplicate (overrides original if provided)"),
+				positionId: z
+					.uuid()
+					.optional()
+					.describe("Position ID for the duplicate, or null for none"),
 			}),
 			annotations: {
 				readOnlyHint: false,
@@ -212,8 +222,32 @@ export function registerTools(server: McpServer) {
 		},
 		withErrorHandling(
 			"duplicating resume",
-			async ({ id, name, slug, tags }: { id: string; name: string; slug: string; tags: string[] }) => {
-				const newId = await client.resume.duplicate({ id, name, slug, tags });
+			async ({
+				id,
+				name,
+				slug,
+				tags,
+				projectId,
+				skillIds,
+				positionId,
+			}: {
+				id: string;
+				name: string;
+				slug: string;
+				tags: string[];
+				projectId?: string;
+				skillIds?: string[];
+				positionId?: string;
+			}) => {
+				const newId = await client.resume.duplicate({
+					id,
+					name,
+					slug,
+					tags,
+					projectId: projectId,
+					skillIds,
+					positionId: positionId,
+				});
 
 				return text(
 					`Duplicated resume as "${name}" (ID: ${newId}) with slug "${slug}".\n\nNext steps: Use \`get_resume\` to view it, or \`patch_resume\` to customize.`,

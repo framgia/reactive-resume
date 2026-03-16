@@ -364,9 +364,9 @@ export const resumeService = {
 		locale: Locale;
 		data?: ResumeData;
 		sharedCopyFromId?: string;
-		projectId?: string | null;
+		projectId?: string;
 		skillIds?: string[];
-		positionId?: string | null;
+		positionId?: string;
 	}) => {
 		const id = generateId();
 

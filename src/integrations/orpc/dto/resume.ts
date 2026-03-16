@@ -86,7 +86,11 @@ export const resumeDto = {
 	},
 
 	import: {
-		input: resumeSchema.pick({ data: true }),
+		input: resumeSchema.pick({ data: true }).extend({
+			projectId: z.string().optional(),
+			skillIds: z.array(z.uuid()).optional(),
+			positionId: z.uuid().optional(),
+		}),
 		output: z.string().describe("The ID of the imported resume."),
 	},
 
@@ -161,7 +165,11 @@ export const resumeDto = {
 	},
 
 	duplicate: {
-		input: resumeSchema.pick({ id: true, name: true, slug: true, tags: true }),
+		input: resumeSchema.pick({ id: true, name: true, slug: true, tags: true }).extend({
+			projectId: z.string().optional(),
+			skillIds: z.array(z.uuid()).optional(),
+			positionId: z.string().optional(),
+		}),
 		output: z.string().describe("The ID of the duplicated resume."),
 	},
 
