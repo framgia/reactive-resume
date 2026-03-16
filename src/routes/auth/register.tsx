@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { ArrowRightIcon, EyeIcon, EyeSlashIcon } from "@phosphor-icons/react";
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -13,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/integrations/auth/client";
+import { orpc } from "@/integrations/orpc/client";
 import { emailSchema } from "@/utils/email";
 import { SocialAuth } from "./-components/social-auth";
 
@@ -46,6 +48,11 @@ function RouteComponent() {
 	const [submitted, setSubmitted] = useState(false);
 	const [showPassword, toggleShowPassword] = useToggle(false);
 	const { flags } = Route.useRouteContext();
+	const { data: authProviders = {} } = useQuery(orpc.auth.providers.list.queryOptions());
+	const hasSocialProviders =
+		typeof authProviders === "object" &&
+		authProviders !== null &&
+		Object.keys(authProviders).filter((key) => key !== "credential").length > 0;
 
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
@@ -198,7 +205,7 @@ function RouteComponent() {
 				</Form>
 			)}
 
-			<SocialAuth />
+			{hasSocialProviders && <SocialAuth />}
 		</>
 	);
 }
