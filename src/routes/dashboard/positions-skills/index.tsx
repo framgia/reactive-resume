@@ -11,8 +11,8 @@ import {
 	TrashSimpleIcon,
 } from "@phosphor-icons/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { type ColumnDef, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { createFileRoute, stripSearchParams, useNavigate } from "@tanstack/react-router";
+import { type ColumnDef, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
@@ -30,16 +30,16 @@ import { Label } from "@/components/ui/label";
 import { PaginationBar } from "@/components/ui/pagination";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Spinner } from "@/components/ui/spinner";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DEFAULT_PAGE_SIZE } from "@/constants";
 import { useDialogStore } from "@/dialogs/store";
 import { useConfirm } from "@/hooks/use-confirm";
 import { orpc, type RouterOutput } from "@/integrations/orpc/client";
-import { DEFAULT_PAGE_SIZE } from "@/constants";
 import { DashboardHeader } from "../-components/header";
 
 type TabValue = "positions" | "skills";
-type SortOption = "createdAt" | "name";
+type SortOption = "lastUpdatedAt" | "createdAt" | "name";
 
 const searchSchema = z.object({
 	tab: z.enum(["positions", "skills"]).default("positions"),
@@ -57,11 +57,12 @@ function RouteComponent() {
 	const { tab } = Route.useSearch();
 	const navigate = useNavigate({ from: Route.fullPath });
 
-	const [sort, setSort] = useState<SortOption>("name");
+	const [sort, setSort] = useState<SortOption>("lastUpdatedAt");
 	const [query, setQuery] = useState("");
 
 	const sortOptions = useMemo(
 		() => [
+			{ value: "lastUpdatedAt", label: t`Last Updated` },
 			{ value: "name", label: t`Name` },
 			{ value: "createdAt", label: t`Created` },
 		],
@@ -71,7 +72,7 @@ function RouteComponent() {
 	const setTab = (v: TabValue) => {
 		navigate({ search: { tab: v } });
 		setQuery("");
-		setSort("name");
+		setSort("lastUpdatedAt");
 	};
 
 	return (
@@ -330,11 +331,7 @@ function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 			});
 		},
 	});
-	const { mutate: deletePosition, isPending: isDeleting } = useMutation<
-		void,
-		Error,
-		{ id: string }
-	>(
+	const { mutate: deletePosition, isPending: isDeleting } = useMutation<void, Error, { id: string }>(
 		orpc.position.delete.mutationOptions({
 			onSuccess: () => {
 				queryClient.invalidateQueries({
@@ -385,72 +382,74 @@ function PositionsTab({ sort, query }: { sort: SortOption; query?: string }) {
 				</div>
 			) : (
 				<>
-			<div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-x-4 gap-y-1">
-				<div className="px-1 font-medium text-muted-foreground text-xs">
-					<Trans>Name</Trans>
-				</div>
-				<div className="px-1 font-medium text-muted-foreground text-xs">
-					<Trans>Slug</Trans>
-				</div>
-				<div className="min-w-32 px-1 font-medium text-muted-foreground text-xs">
-					<Trans>Created</Trans>
-				</div>
-				<div className="w-12" />
+					<div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-x-4 gap-y-1">
+						<div className="px-1 font-medium text-muted-foreground text-xs">
+							<Trans>Name</Trans>
+						</div>
+						<div className="px-1 font-medium text-muted-foreground text-xs">
+							<Trans>Slug</Trans>
+						</div>
+						<div className="min-w-32 px-1 font-medium text-muted-foreground text-xs">
+							<Trans>Created</Trans>
+						</div>
+						<div className="w-12" />
 
-				{positions.map((position: PositionListItem) => (
-					<div key={position.id} className="contents">
-						<div className="flex h-12 items-center rounded-md px-1">
-							<span className="truncate font-medium">{position.name}</span>
-						</div>
-						<div className="flex h-12 min-w-0 items-center truncate px-1 text-muted-foreground text-sm">
-							{position.slug}
-						</div>
-						<p className="flex h-12 min-w-32 shrink-0 items-center px-1 text-xs opacity-60">
-							{Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(position.createdAt)}
-						</p>
-						<DropdownMenu>
-							<DropdownMenuTrigger asChild>
-								<Button size="icon" variant="ghost" className="size-12 shrink-0">
-									<DotsThreeIcon />
-								</Button>
-							</DropdownMenuTrigger>
-							<DropdownMenuContent align="end">
-								<DropdownMenuItem
-									onClick={() =>
-										openDialog("position.update", {
-											id: position.id,
-											name: position.name,
-											slug: position.slug,
-										})
-									}
-								>
-									<PencilSimpleLineIcon />
-									<Trans>Edit</Trans>
-								</DropdownMenuItem>
-								<DropdownMenuItem
-									className="text-destructive focus:text-destructive"
-									onClick={() => handleDelete(position.id, position.name)}
-									disabled={isDeleting}
-								>
-									<TrashSimpleIcon />
-									<Trans>Delete</Trans>
-								</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
+						{positions.map((position: PositionListItem) => (
+							<div key={position.id} className="contents">
+								<div className="flex h-12 items-center rounded-md px-1">
+									<span className="truncate font-medium">{position.name}</span>
+								</div>
+								<div className="flex h-12 min-w-0 items-center truncate px-1 text-muted-foreground text-sm">
+									{position.slug}
+								</div>
+								<p className="flex h-12 min-w-32 shrink-0 items-center px-1 text-xs opacity-60">
+									{Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(
+										position.createdAt,
+									)}
+								</p>
+								<DropdownMenu>
+									<DropdownMenuTrigger asChild>
+										<Button size="icon" variant="ghost" className="size-12 shrink-0">
+											<DotsThreeIcon />
+										</Button>
+									</DropdownMenuTrigger>
+									<DropdownMenuContent align="end">
+										<DropdownMenuItem
+											onClick={() =>
+												openDialog("position.update", {
+													id: position.id,
+													name: position.name,
+													slug: position.slug,
+												})
+											}
+										>
+											<PencilSimpleLineIcon />
+											<Trans>Edit</Trans>
+										</DropdownMenuItem>
+										<DropdownMenuItem
+											className="text-destructive focus:text-destructive"
+											onClick={() => handleDelete(position.id, position.name)}
+											disabled={isDeleting}
+										>
+											<TrashSimpleIcon />
+											<Trans>Delete</Trans>
+										</DropdownMenuItem>
+									</DropdownMenuContent>
+								</DropdownMenu>
+							</div>
+						))}
 					</div>
-				))}
-			</div>
 
-			<PaginationBar
-				page={table.getState().pagination.pageIndex + 1}
-				totalPage={table.getPageCount()}
-				pageSize={table.getState().pagination.pageSize}
-				onPageSizeChange={(size) => table.setPageSize(size)}
-				getPageHref={() => "#"}
-				canPreviousPage={table.getCanPreviousPage()}
-				canNextPage={table.getCanNextPage()}
-				onPageSelect={(pageNum) => table.setPageIndex(pageNum - 1)}
-			/>
+					<PaginationBar
+						page={table.getState().pagination.pageIndex + 1}
+						totalPage={table.getPageCount()}
+						pageSize={table.getState().pagination.pageSize}
+						onPageSizeChange={(size) => table.setPageSize(size)}
+						getPageHref={() => "#"}
+						canPreviousPage={table.getCanPreviousPage()}
+						canNextPage={table.getCanNextPage()}
+						onPageSelect={(pageNum) => table.setPageIndex(pageNum - 1)}
+					/>
 				</>
 			)}
 		</div>
@@ -558,72 +557,72 @@ function SkillsTab({ sort, query }: { sort: SortOption; query?: string }) {
 				</div>
 			) : (
 				<>
-			<div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-x-4 gap-y-1">
-				<div className="px-1 font-medium text-muted-foreground text-xs">
-					<Trans>Name</Trans>
-				</div>
-				<div className="px-1 font-medium text-muted-foreground text-xs">
-					<Trans>Slug</Trans>
-				</div>
-				<div className="min-w-32 px-1 font-medium text-muted-foreground text-xs">
-					<Trans>Created</Trans>
-				</div>
-				<div className="w-12" />
+					<div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto_auto] items-center gap-x-4 gap-y-1">
+						<div className="px-1 font-medium text-muted-foreground text-xs">
+							<Trans>Name</Trans>
+						</div>
+						<div className="px-1 font-medium text-muted-foreground text-xs">
+							<Trans>Slug</Trans>
+						</div>
+						<div className="min-w-32 px-1 font-medium text-muted-foreground text-xs">
+							<Trans>Created</Trans>
+						</div>
+						<div className="w-12" />
 
-				{skills.map((skill: SkillListItem) => (
-					<div key={skill.id} className="contents">
-						<div className="flex h-12 items-center rounded-md px-1">
-							<span className="truncate font-medium">{skill.name}</span>
-						</div>
-						<div className="flex h-12 min-w-0 items-center truncate px-1 text-muted-foreground text-sm">
-							{skill.slug}
-						</div>
-						<p className="flex h-12 min-w-32 shrink-0 items-center px-1 text-xs opacity-60">
-							{Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(skill.createdAt)}
-						</p>
-						<DropdownMenu>
-							<DropdownMenuTrigger asChild>
-								<Button size="icon" variant="ghost" className="size-12 shrink-0">
-									<DotsThreeIcon />
-								</Button>
-							</DropdownMenuTrigger>
-							<DropdownMenuContent align="end">
-								<DropdownMenuItem
-									onClick={() =>
-										openDialog("skill.update", {
-											id: skill.id,
-											name: skill.name,
-											slug: skill.slug,
-										})
-									}
-								>
-									<PencilSimpleLineIcon />
-									<Trans>Edit</Trans>
-								</DropdownMenuItem>
-								<DropdownMenuItem
-									className="text-destructive focus:text-destructive"
-									onClick={() => handleDelete(skill.id, skill.name)}
-									disabled={isDeleting}
-								>
-									<TrashSimpleIcon />
-									<Trans>Delete</Trans>
-								</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
+						{skills.map((skill: SkillListItem) => (
+							<div key={skill.id} className="contents">
+								<div className="flex h-12 items-center rounded-md px-1">
+									<span className="truncate font-medium">{skill.name}</span>
+								</div>
+								<div className="flex h-12 min-w-0 items-center truncate px-1 text-muted-foreground text-sm">
+									{skill.slug}
+								</div>
+								<p className="flex h-12 min-w-32 shrink-0 items-center px-1 text-xs opacity-60">
+									{Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(skill.createdAt)}
+								</p>
+								<DropdownMenu>
+									<DropdownMenuTrigger asChild>
+										<Button size="icon" variant="ghost" className="size-12 shrink-0">
+											<DotsThreeIcon />
+										</Button>
+									</DropdownMenuTrigger>
+									<DropdownMenuContent align="end">
+										<DropdownMenuItem
+											onClick={() =>
+												openDialog("skill.update", {
+													id: skill.id,
+													name: skill.name,
+													slug: skill.slug,
+												})
+											}
+										>
+											<PencilSimpleLineIcon />
+											<Trans>Edit</Trans>
+										</DropdownMenuItem>
+										<DropdownMenuItem
+											className="text-destructive focus:text-destructive"
+											onClick={() => handleDelete(skill.id, skill.name)}
+											disabled={isDeleting}
+										>
+											<TrashSimpleIcon />
+											<Trans>Delete</Trans>
+										</DropdownMenuItem>
+									</DropdownMenuContent>
+								</DropdownMenu>
+							</div>
+						))}
 					</div>
-				))}
-			</div>
 
-			<PaginationBar
-				page={table.getState().pagination.pageIndex + 1}
-				totalPage={table.getPageCount()}
-				pageSize={table.getState().pagination.pageSize}
-				onPageSizeChange={(size) => table.setPageSize(size)}
-				getPageHref={() => "#"}
-				canPreviousPage={table.getCanPreviousPage()}
-				canNextPage={table.getCanNextPage()}
-				onPageSelect={(pageNum) => table.setPageIndex(pageNum - 1)}
-			/>
+					<PaginationBar
+						page={table.getState().pagination.pageIndex + 1}
+						totalPage={table.getPageCount()}
+						pageSize={table.getState().pagination.pageSize}
+						onPageSizeChange={(size) => table.setPageSize(size)}
+						getPageHref={() => "#"}
+						canPreviousPage={table.getCanPreviousPage()}
+						canNextPage={table.getCanNextPage()}
+						onPageSelect={(pageNum) => table.setPageIndex(pageNum - 1)}
+					/>
 				</>
 			)}
 		</div>

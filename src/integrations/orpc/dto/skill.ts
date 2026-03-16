@@ -5,7 +5,7 @@ export const skillDto = {
 		input: z
 			.object({
 				query: z.string().optional().describe("Filter skill highlights by name (partial, case-insensitive)."),
-				sort: z.enum(["createdAt", "name"]).optional().default("name"),
+				sort: z.enum(["lastUpdatedAt", "createdAt", "name"]).optional().default("name"),
 				limit: z.number().int().min(1).max(200).optional().describe("Max results (non-paginated select/search)."),
 				page: z
 					.number()

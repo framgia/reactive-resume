@@ -13,7 +13,7 @@ export const positionRouter = {
 			description: "Returns positions, optionally filtered by name.",
 			successDescription: "List of positions.",
 		})
-		.input(positionDto.list.input.optional().default({ sort: "name" }))
+		.input(positionDto.list.input.optional().default({ sort: "lastUpdatedAt" }))
 		.output(positionDto.list.output)
 		.handler(async ({ input }) => positionService.list(input)),
 

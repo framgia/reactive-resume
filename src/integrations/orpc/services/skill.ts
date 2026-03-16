@@ -1,4 +1,5 @@
 import { ORPCError } from "@orpc/client";
+import { match } from "ts-pattern";
 import { and, asc, desc, eq, exists, ilike, inArray, ne, sql } from "drizzle-orm";
 import { schema } from "@/integrations/drizzle";
 import { db } from "@/integrations/drizzle/client";
@@ -45,7 +46,7 @@ export const skillService = {
 
 	list: async (input?: {
 		query?: string;
-		sort?: "createdAt" | "name";
+		sort?: "lastUpdatedAt" | "createdAt" | "name";
 		limit?: number;
 		page?: number;
 		pageSize?: number;
@@ -85,10 +86,17 @@ export const skillService = {
 				name: schema.skill.name,
 				slug: schema.skill.slug,
 				createdAt: schema.skill.createdAt,
+				updatedAt: schema.skill.updatedAt,
 			})
 			.from(schema.skill)
 			.where(whereClause)
-			.orderBy(sort === "createdAt" ? desc(schema.skill.createdAt) : asc(schema.skill.name));
+			.orderBy(
+				match(sort)
+					.with("lastUpdatedAt", () => desc(schema.skill.updatedAt))
+					.with("createdAt", () => asc(schema.skill.createdAt))
+					.with("name", () => asc(schema.skill.name))
+					.exhaustive(),
+			);
 
 		const countQuery = db
 			.select({ count: sql<number>`count(*)::int` })

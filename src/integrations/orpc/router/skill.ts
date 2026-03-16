@@ -13,7 +13,7 @@ export const skillRouter = {
 			description: "Returns skills, optionally filtered by name.",
 			successDescription: "List of skills.",
 		})
-		.input(skillDto.list.input.optional().default({ sort: "name" }))
+		.input(skillDto.list.input.optional().default({ sort: "lastUpdatedAt" }))
 		.output(skillDto.list.output)
 		.handler(async ({ input }) => skillService.list(input)),
 

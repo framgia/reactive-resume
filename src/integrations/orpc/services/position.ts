@@ -1,4 +1,5 @@
 import { ORPCError } from "@orpc/client";
+import { match } from "ts-pattern";
 import { and, asc, desc, eq, exists, ilike, inArray, ne, sql } from "drizzle-orm";
 import { schema } from "@/integrations/drizzle";
 import { db } from "@/integrations/drizzle/client";
@@ -45,7 +46,7 @@ export const positionService = {
 
 	list: async (input?: {
 		query?: string;
-		sort?: "createdAt" | "name";
+		sort?: "lastUpdatedAt" | "createdAt" | "name";
 		limit?: number;
 		page?: number;
 		pageSize?: number;
@@ -87,13 +88,16 @@ export const positionService = {
 				name: schema.position.name,
 				slug: schema.position.slug,
 				createdAt: schema.position.createdAt,
+				updatedAt: schema.position.updatedAt,
 			})
 			.from(schema.position)
 			.where(whereClause)
 			.orderBy(
-				sort === "createdAt"
-					? desc(schema.position.createdAt)
-					: asc(schema.position.name),
+				match(sort)
+					.with("lastUpdatedAt", () => desc(schema.position.updatedAt))
+					.with("createdAt", () => asc(schema.position.createdAt))
+					.with("name", () => asc(schema.position.name))
+					.exhaustive(),
 			);
 
 		const countQuery = db

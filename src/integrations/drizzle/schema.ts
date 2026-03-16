@@ -273,6 +273,10 @@ export const skill = pg.pgTable("skill", {
 	name: pg.text("name").notNull(),
 	slug: pg.text("slug").notNull().unique(),
 	createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	updatedAt: pg
+		.timestamp("updated_at", { withTimezone: true })
+		.defaultNow()
+		.$onUpdate(() => /* @__PURE__ */ new Date()),
 });
 
 export const position = pg.pgTable("position", {
@@ -284,6 +288,10 @@ export const position = pg.pgTable("position", {
 	name: pg.text("name").notNull(),
 	slug: pg.text("slug").notNull().unique(),
 	createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	updatedAt: pg
+		.timestamp("updated_at", { withTimezone: true })
+		.defaultNow()
+		.$onUpdate(() => /* @__PURE__ */ new Date()),
 });
 
 export const project = pg.pgTable(
