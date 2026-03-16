@@ -20,17 +20,30 @@ export function ResumeCard({ resume }: ResumeCardProps) {
 
 	const { data: screenshotData, isLoading } = useQuery(
 		orpc.printer.getResumeScreenshot.queryOptions({ input: { id: resume.id } }),
-	);
+	) as { data: { url: string | null } | undefined; isLoading: boolean };
 
 	const updatedAt = useMemo(() => {
 		return Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(resume.updatedAt);
 	}, [i18n.locale, resume.updatedAt]);
 
+	const description = useMemo(() => {
+		return t`Last updated on ${updatedAt}`;
+	}, [updatedAt]);
+
 	return (
 		<ResumeContextMenu resume={resume}>
 			<Link to="/builder/$resumeId" params={{ resumeId: resume.id }} className="cursor-default">
-				<BaseCard title={resume.name} description={t`Last updated on ${updatedAt}`} tags={resume.tags}>
-					{match({ isLoading, imageSrc: screenshotData?.url })
+				<BaseCard
+					title={resume.name}
+					description={description}
+					projectName={resume.projectName ? t`Project: ${resume.projectName}` : null}
+					positionName={resume.position ? t`Position: ${resume.position}` : null}
+					tags={resume.tags}
+				>
+					{match<{ isLoading: boolean; imageSrc: string | null | undefined }>({
+						isLoading,
+						imageSrc: screenshotData?.url ?? null,
+					})
 						.with({ isLoading: true }, () => (
 							<div className="flex size-full items-center justify-center">
 								<CircleNotchIcon weight="thin" className="size-12 animate-spin" />

@@ -72,20 +72,37 @@ export function ListView({ resumes }: Props) {
 				</Button>
 			</motion.div>
 
-			<AnimatePresence>
-				{resumes?.map((resume, index) => (
-					<motion.div
-						layout
-						key={resume.id}
-						initial={{ opacity: 0, y: -50 }}
-						animate={{ opacity: 1, y: 0 }}
-						exit={{ opacity: 0, x: -50, filter: "blur(12px)" }}
-						transition={{ delay: (index + 2) * 0.05 }}
-					>
-						<ResumeListItem resume={resume} />
-					</motion.div>
-				))}
-			</AnimatePresence>
+			<div className="grid grid-cols-[minmax(0,2fr)_minmax(0,1.5fr)_minmax(0,1.5fr)_minmax(0,1.5fr)_auto] items-center gap-x-2 gap-y-1 px-1">
+				<div className="px-1 font-medium text-muted-foreground text-xs">
+					<Trans>Resume</Trans>
+				</div>
+				<div className="px-1 font-medium text-muted-foreground text-xs">
+					<Trans>Project</Trans>
+				</div>
+				<div className="px-1 font-medium text-muted-foreground text-xs">
+					<Trans>Position</Trans>
+				</div>
+				<div className="px-1 font-medium text-muted-foreground text-xs">
+					<Trans>Updated</Trans>
+				</div>
+				<div className="w-10" />
+
+				<AnimatePresence>
+					{resumes?.map((resume, index) => (
+						<motion.div
+							key={resume.id}
+							layout
+							initial={{ opacity: 0, y: -50 }}
+							animate={{ opacity: 1, y: 0 }}
+							exit={{ opacity: 0, x: -50, filter: "blur(12px)" }}
+							transition={{ delay: (index + 1) * 0.05 }}
+							className="contents"
+						>
+							<ResumeListItem resume={resume} />
+						</motion.div>
+					))}
+				</AnimatePresence>
+			</div>
 		</div>
 	);
 }
@@ -98,29 +115,41 @@ function ResumeListItem({ resume }: { resume: Resume }) {
 	}, [i18n.locale, resume.updatedAt]);
 
 	return (
-		<div className="flex items-center gap-x-2">
-			<Button
-				asChild
-				size="lg"
-				variant="ghost"
-				tapScale={0.99}
-				className="h-12 w-full flex-1 justify-start gap-x-4 text-start"
-			>
-				<Link to="/builder/$resumeId" params={{ resumeId: resume.id }}>
-					<div className="size-3" />
-					<div className="min-w-80 truncate">{resume.name}</div>
-
-					<p className="text-xs opacity-60">
-						<Trans>Last updated on {updatedAt}</Trans>
-					</p>
-				</Link>
-			</Button>
-
-			<ResumeDropdownMenu resume={resume} align="end">
-				<Button size="icon" variant="ghost" className="size-12">
-					<DotsThreeIcon />
+		<>
+			<div className="flex items-center">
+				<Button
+					asChild
+					size="lg"
+					variant="ghost"
+					tapScale={0.99}
+					className="h-12 w-full justify-start gap-x-4 text-start"
+				>
+					<Link to="/builder/$resumeId" params={{ resumeId: resume.id }}>
+						<div className="size-3" />
+						<div className="truncate">{resume.name}</div>
+					</Link>
 				</Button>
-			</ResumeDropdownMenu>
-		</div>
+			</div>
+
+			<div className="flex h-12 items-center px-1 text-muted-foreground text-xs">
+				{resume.projectName ?? "—"}
+			</div>
+
+			<div className="flex h-12 items-center px-1 text-muted-foreground text-xs">
+				{resume.position ?? "—"}
+			</div>
+
+			<div className="flex h-12 items-center px-1 text-muted-foreground text-xs">
+				<Trans>Last updated on {updatedAt}</Trans>
+			</div>
+
+			<div className="flex h-12 items-center justify-end">
+				<ResumeDropdownMenu resume={resume} align="end">
+					<Button size="icon" variant="ghost" className="size-10">
+						<DotsThreeIcon />
+					</Button>
+				</ResumeDropdownMenu>
+			</div>
+		</>
 	);
 }

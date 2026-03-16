@@ -135,12 +135,15 @@ export const resumeService = {
 							positionId: schema.resume.positionId,
 							createdAt: schema.resume.createdAt,
 							updatedAt: schema.resume.updatedAt,
+							projectName: schema.project.name,
+							position: schema.position.name,
 						})
 						.from(schema.resume)
 						.innerJoin(
 							schema.project,
 							and(eq(schema.resume.projectId, schema.project.id), isNull(schema.project.deletedAt)),
 						)
+						.leftJoin(schema.position, eq(schema.resume.positionId, schema.position.id))
 				: db
 						.select({
 							id: schema.resume.id,
@@ -153,9 +156,12 @@ export const resumeService = {
 							positionId: schema.resume.positionId,
 							createdAt: schema.resume.createdAt,
 							updatedAt: schema.resume.updatedAt,
+							projectName: schema.project.name,
+							position: schema.position.name,
 						})
 						.from(schema.resume)
-						.leftJoin(schema.project, eq(schema.resume.projectId, schema.project.id));
+						.leftJoin(schema.project, eq(schema.resume.projectId, schema.project.id))
+						.leftJoin(schema.position, eq(schema.resume.positionId, schema.position.id));
 
 		return await baseQuery
 			.where(

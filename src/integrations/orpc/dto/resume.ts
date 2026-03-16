@@ -20,6 +20,13 @@ const resumeSchema = createSelectSchema(schema.resume, {
 	updatedAt: z.date().describe("The date and time the resume was last updated."),
 });
 
+const resumeListItemSchema = resumeSchema
+	.omit({ data: true, password: true, userId: true, sharedCopyFromId: true })
+	.extend({
+		projectName: z.string().nullable().describe("The name of the linked project, if any."),
+		position: z.string().nullable().describe("Display name of the selected position, if any."),
+	});
+
 export const resumeDto = {
 	list: {
 		input: z
@@ -37,7 +44,7 @@ export const resumeDto = {
 			.optional()
 			.default({ sort: "lastUpdatedAt", skillIds: [], positionId: undefined }),
 
-		output: z.array(resumeSchema.omit({ data: true, password: true, userId: true, sharedCopyFromId: true })),
+		output: z.array(resumeListItemSchema),
 	},
 
 	getById: {
