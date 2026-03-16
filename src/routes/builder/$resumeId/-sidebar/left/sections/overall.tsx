@@ -56,11 +56,17 @@ export function OverallSectionBuilder() {
     orpc.resume.update.mutationOptions()
   );
 
-  const invalidateResume = () =>
-    queryClient.invalidateQueries({
-      queryKey: orpc.resume.getById.queryOptions({ input: { id: resumeId } })
-        .queryKey
-    });
+  const invalidateResume = () => {
+    return Promise.all([
+      queryClient.invalidateQueries({
+        queryKey: orpc.resume.getById.queryOptions({ input: { id: resumeId } })
+          .queryKey
+      }),
+      queryClient.invalidateQueries({
+        queryKey: orpc.resume.list.queryOptions({}).queryKey
+      })
+    ]);
+  };
 
   const handleProjectChange = async (next: string | undefined) => {
     const nextProjectId = next ?? null;

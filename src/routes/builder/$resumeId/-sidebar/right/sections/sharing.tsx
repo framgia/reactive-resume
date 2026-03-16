@@ -3,7 +3,7 @@ import { Trans } from "@lingui/react/macro";
 import { ORPCError } from "@orpc/client";
 import { ClipboardIcon, LockSimpleIcon, LockSimpleOpenIcon } from "@phosphor-icons/react";
 import { ShareIcon } from "@phosphor-icons/react/dist/ssr";
-import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
+import { useMutation, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import { useParams } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 import { toast } from "sonner";
@@ -26,6 +26,7 @@ export function SharingSectionBuilder() {
 	const [_, copyToClipboard] = useCopyToClipboard();
 	const { data: session } = authClient.useSession();
 	const params = useParams({ from: "/builder/$resumeId" });
+	const queryClient = useQueryClient();
 
 	const { mutateAsync: updateResume } = useMutation(orpc.resume.update.mutationOptions());
 	const { mutateAsync: setPassword } = useMutation(orpc.resume.setPassword.mutationOptions());
@@ -48,24 +49,26 @@ export function SharingSectionBuilder() {
 		async (checked: boolean) => {
 			try {
 				await updateResume({ id: resume.id, isPublic: checked } as unknown as Parameters<typeof updateResume>[0]);
+				await queryClient.invalidateQueries({ queryKey: orpc.resume.list.queryOptions({}).queryKey });
 			} catch (error) {
 				const message = error instanceof ORPCError ? error.message : t`Something went wrong. Please try again.`;
 				toast.error(message);
 			}
 		},
-		[resume.id, updateResume],
+		[resume.id, updateResume, queryClient],
 	);
 
 	const onToggleDownload = useCallback(
 		async (checked: boolean) => {
 			try {
 				await updateResume({ id: resume.id, allowDownload: checked } as unknown as Parameters<typeof updateResume>[0]);
+				await queryClient.invalidateQueries({ queryKey: orpc.resume.list.queryOptions({}).queryKey });
 			} catch (error) {
 				const message = error instanceof ORPCError ? error.message : t`Something went wrong. Please try again.`;
 				toast.error(message);
 			}
 		},
-		[resume.id, updateResume],
+		[resume.id, updateResume, queryClient],
 	);
 
 	const onSetPassword = useCallback(async () => {

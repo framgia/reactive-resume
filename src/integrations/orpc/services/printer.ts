@@ -306,18 +306,16 @@ export const printerService = {
 				const latest = sortedFiles[0];
 				const age = now - latest.timestamp;
 
-				// Return existing screenshot if it's still fresh (within TTL)
-				if (age < SCREENSHOT_TTL) return new URL(latest.path, env.APP_URL).toString();
-
-				// Screenshot is stale (past TTL), but only regenerate if the resume
-				// was updated after the screenshot was taken. If the resume hasn't
-				// changed, keep using the existing screenshot to avoid unnecessary work.
-				if (resumeUpdatedAt <= latest.timestamp) {
+				// If the resume was updated after the latest screenshot, always regenerate
+				if (resumeUpdatedAt > latest.timestamp) {
+					await Promise.all(sortedFiles.map((file) => storageService.delete(file.path)));
+				} else if (age < SCREENSHOT_TTL) {
+					// Resume not changed and screenshot still within TTL -> reuse
+					return new URL(latest.path, env.APP_URL).toString();
+				} else {
+					// Screenshot is stale (past TTL) and resume hasn't changed -> reuse
 					return new URL(latest.path, env.APP_URL).toString();
 				}
-
-				// Resume was updated after the screenshot - delete old ones and regenerate
-				await Promise.all(sortedFiles.map((file) => storageService.delete(file.path)));
 			}
 		}
 
