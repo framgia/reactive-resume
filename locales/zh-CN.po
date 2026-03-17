@@ -18,6 +18,7 @@ msgstr ""
 "X-Crowdin-File: /main/locales/en-US.po\n"
 "X-Crowdin-File-ID: 518\n"
 
+
 #. js-lingui-explicit-id
 #: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
@@ -44,7 +45,7 @@ msgstr "{0, plural, other {# 项}}"
 #. placeholder {0}: item.roles.length
 #: src/routes/builder/$resumeId/-sidebar/left/sections/experience.tsx
 msgid "{0, plural, one {# role} other {# roles}}"
-msgstr ""
+msgstr "{0, plural, one {# role} other {# roles}}"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
@@ -53,7 +54,7 @@ msgstr "{column, plural, other {# 栏}}"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "<0>Finally,</0><1>A resume builder</1>"
-msgstr ""
+msgstr "<0>Finally,</0><1>A resume builder</1>"
 
 #: src/routes/_home/-sections/faq.tsx
 msgctxt "Every word needs to be wrapped in a tag"
@@ -121,7 +122,7 @@ msgstr "由 <0>Amruth Pillai</0> 倾情打造的热忱项目。"
 #: src/dialogs/position/index.tsx
 #: src/dialogs/position/index.tsx
 msgid "A position with this name already exists."
-msgstr ""
+msgstr "A position with this name already exists."
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
@@ -131,7 +132,7 @@ msgstr "已存在使用此短链接的简历。"
 #: src/dialogs/skill/index.tsx
 #: src/dialogs/skill/index.tsx
 msgid "A skill with this name already exists."
-msgstr ""
+msgstr "A skill with this name already exists."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/page.tsx
 msgid "A4"
@@ -216,7 +217,7 @@ msgstr "添加新的志愿者经历"
 
 #: src/dialogs/position/index.tsx
 msgid "Add a position/level (e.g. Senior Engineer, Manager) for use in resumes and projects."
-msgstr ""
+msgstr "Add a position/level (e.g. Senior Engineer, Manager) for use in resumes and projects."
 
 #: src/dialogs/project/index.tsx
 msgid "Add a project with name, description, and customer."
@@ -224,7 +225,7 @@ msgstr "添加包含名称、描述和客户的项目。"
 
 #: src/dialogs/skill/index.tsx
 msgid "Add a skill highlight for use in resumes and projects."
-msgstr ""
+msgstr "Add a skill highlight for use in resumes and projects."
 
 #: src/components/input/rich-input.tsx
 msgid "Add Column After"
@@ -236,7 +237,7 @@ msgstr "在前面添加列"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Add multiple roles to show career progression at the same company."
-msgstr ""
+msgstr "Add multiple roles to show career progression at the same company."
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Add name, description and customer"
@@ -248,7 +249,7 @@ msgstr "添加页面"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Add Role"
-msgstr ""
+msgstr "Add Role"
 
 #: src/components/input/rich-input.tsx
 msgid "Add Row After"
@@ -260,7 +261,7 @@ msgstr "在前面添加行"
 
 #: src/components/ai/chat.tsx
 msgid "Added"
-msgstr ""
+msgstr "Added"
 
 #: src/utils/locale.ts
 msgid "Afrikaans"
@@ -273,7 +274,7 @@ msgstr "AI（人工智能）"
 
 #: src/components/ai/chat.tsx
 msgid "AI Chat"
-msgstr ""
+msgstr "AI Chat"
 
 #: src/utils/locale.ts
 msgid "Albanian"
@@ -281,7 +282,7 @@ msgstr "阿尔巴尼亚语"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Download"
-msgstr ""
+msgstr "Allow Download"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
@@ -318,7 +319,7 @@ msgstr "任何获取了该简历公共 URL 的人，都可以在无需输入密�
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone with the link can view the resume."
-msgstr ""
+msgstr "Anyone with the link can view the resume."
 
 #: src/routes/_home/-sections/features.tsx
 msgid "API Access"
@@ -360,7 +361,7 @@ msgstr "阿拉伯语"
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Are you sure you want to close this dialog?"
-msgstr ""
+msgstr "Are you sure you want to close this dialog?"
 
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -409,7 +410,7 @@ msgstr "人工智能"
 
 #: src/components/ai/chat.tsx
 msgid "Ask me to update your resume..."
-msgstr ""
+msgstr "Ask me to update your resume..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Aspect Ratio"
@@ -425,7 +426,7 @@ msgstr "身份验证"
 #: src/dialogs/position/index.tsx
 #: src/dialogs/skill/index.tsx
 msgid "Auto-generated from name"
-msgstr ""
+msgstr "Auto-generated from name"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Available in multiple languages. If you would like to contribute, check out Crowdin."
@@ -636,7 +637,7 @@ msgstr "清除"
 
 #: src/components/ai/chat.tsx
 msgid "Clear chat history"
-msgstr ""
+msgstr "Clear chat history"
 
 #: src/components/ui/multiple-combobox.tsx
 msgid "Clear selection"
@@ -681,7 +682,7 @@ msgstr "连接"
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
 msgid "Content"
-msgstr ""
+msgstr "Content"
 
 #: src/dialogs/auth/enable-two-factor.tsx
 #: src/dialogs/auth/enable-two-factor.tsx
@@ -705,7 +706,7 @@ msgstr "捐款将用于修复错误、安全更新和持续改进，以确保应
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Control whether visitors can download the resume as PDF."
-msgstr ""
+msgstr "Control whether visitors can download the resume as PDF."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Copy"
@@ -730,7 +731,7 @@ msgstr "复制 URL"
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
 msgid "Cover Letter"
-msgstr ""
+msgstr "Cover Letter"
 
 #: src/dialogs/api-key/create.tsx
 #: src/dialogs/domain/index.tsx
@@ -775,7 +776,7 @@ msgstr "创建新证书"
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Create a new cover letter"
-msgstr ""
+msgstr "Create a new cover letter"
 
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Create a new custom section"
@@ -803,7 +804,7 @@ msgstr "创建新语言"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Create a new position"
-msgstr ""
+msgstr "Create a new position"
 
 #: src/dialogs/resume/sections/profile.tsx
 msgid "Create a new profile"
@@ -837,7 +838,7 @@ msgstr "创建新技能"
 
 #: src/dialogs/resume/sections/summary-item.tsx
 msgid "Create a new summary item"
-msgstr ""
+msgstr "Create a new summary item"
 
 #: src/dialogs/resume/sections/volunteer.tsx
 msgid "Create a new volunteer experience"
@@ -857,17 +858,17 @@ msgstr "创建域名"
 
 #: src/dialogs/position/index.tsx
 msgid "Create position"
-msgstr ""
+msgstr "Create position"
 
 #: src/dialogs/skill/index.tsx
 msgid "Create skill"
-msgstr ""
+msgstr "Create skill"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Created"
-msgstr ""
+msgstr "Created"
 
 #: src/dialogs/domain/index.tsx
 msgid "Creating domain..."
@@ -875,7 +876,7 @@ msgstr "正在创建域名..."
 
 #: src/dialogs/position/index.tsx
 msgid "Creating position..."
-msgstr ""
+msgstr "Creating position..."
 
 #: src/dialogs/project/index.tsx
 msgid "Creating project..."
@@ -883,7 +884,7 @@ msgstr "正在创建项目..."
 
 #: src/dialogs/skill/index.tsx
 msgid "Creating skill..."
-msgstr ""
+msgstr "Creating skill..."
 
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
@@ -920,7 +921,7 @@ msgstr "客户名称"
 #. placeholder {0}: appliedFilters.customerName
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Customer: {0}"
-msgstr ""
+msgstr "Customer: {0}"
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -1010,7 +1011,7 @@ msgstr "正在删除域名..."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Deleting position..."
-msgstr ""
+msgstr "Deleting position..."
 
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 msgid "Deleting project..."
@@ -1018,7 +1019,7 @@ msgstr "正在删除项目..."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Deleting skill..."
-msgstr ""
+msgstr "Deleting skill..."
 
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Deleting your account..."
@@ -1083,7 +1084,7 @@ msgstr "文档"
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Domain"
-msgstr ""
+msgstr "Domain"
 
 #: src/dialogs/domain/index.tsx
 msgid "Domain created."
@@ -1099,7 +1100,7 @@ msgstr "域名已更新。"
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Domain: {label}"
-msgstr ""
+msgstr "Domain: {label}"
 
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -1177,7 +1178,7 @@ msgstr "荷兰语"
 
 #: src/components/ai/chat.tsx
 msgid "e.g. Change my name to..."
-msgstr ""
+msgstr "e.g. Change my name to..."
 
 #: src/dialogs/domain/index.tsx
 msgid "e.g. Healthcare, Finance"
@@ -1185,11 +1186,11 @@ msgstr "例如：医疗、金融"
 
 #: src/dialogs/skill/index.tsx
 msgid "e.g. React, TypeScript"
-msgstr ""
+msgstr "e.g. React, TypeScript"
 
 #: src/dialogs/position/index.tsx
 msgid "e.g. Senior Engineer, Manager"
-msgstr ""
+msgstr "e.g. Senior Engineer, Manager"
 
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1208,11 +1209,11 @@ msgstr "编辑域名。"
 
 #: src/dialogs/position/index.tsx
 msgid "Edit the position name. Slug will be auto-generated from the new name."
-msgstr ""
+msgstr "Edit the position name. Slug will be auto-generated from the new name."
 
 #: src/dialogs/skill/index.tsx
 msgid "Edit the skill name. Slug will be auto-generated from the new name."
-msgstr ""
+msgstr "Edit the skill name. Slug will be auto-generated from the new name."
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
@@ -1310,7 +1311,7 @@ msgstr "你创建、定制和分享专业简历所需的一切。以隐私为核
 
 #: src/components/input/rich-input.tsx
 msgid "Exit Fullscreen"
-msgstr ""
+msgstr "Exit Fullscreen"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
@@ -1344,7 +1345,7 @@ msgstr "设置双重身份验证失败。"
 
 #: src/routes/auth/login.tsx
 msgid "Failed to sign in. Please try again."
-msgstr ""
+msgstr "Failed to sign in. Please try again."
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Features"
@@ -1352,7 +1353,7 @@ msgstr "功能"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "File size must be less than 5MB"
-msgstr ""
+msgstr "File size must be less than 5MB"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1444,7 +1445,7 @@ msgstr "全宽"
 
 #: src/components/input/rich-input.tsx
 msgid "Fullscreen"
-msgstr ""
+msgstr "Fullscreen"
 
 #: src/dialogs/resume/index.tsx
 msgid "Generate a random name"
@@ -1698,7 +1699,7 @@ msgstr "上次下载于 {0}"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Last Updated"
-msgstr ""
+msgstr "Last Updated"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
@@ -1725,7 +1726,7 @@ msgstr "了解更多关于如何让内容适应页面的信息"
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Leave"
-msgstr ""
+msgstr "Leave"
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "Leave empty to reset the title to the original."
@@ -1887,7 +1888,7 @@ msgstr "姓名"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Name: {appliedQuery}"
-msgstr ""
+msgstr "Name: {appliedQuery}"
 
 #: src/utils/locale.ts
 msgid "Nepali"
@@ -2026,11 +2027,11 @@ msgstr "总体"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Overall Period"
-msgstr ""
+msgstr "Overall Period"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Overall Title (optional)"
-msgstr ""
+msgstr "Overall Title (optional)"
 
 #: src/utils/resume/section.tsx
 msgid "Page"
@@ -2158,19 +2159,19 @@ msgstr "职位"
 
 #: src/dialogs/position/index.tsx
 msgid "Position created."
-msgstr ""
+msgstr "Position created."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Position deleted."
-msgstr ""
+msgstr "Position deleted."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Position name"
-msgstr ""
+msgstr "Position name"
 
 #: src/dialogs/position/index.tsx
 msgid "Position updated."
-msgstr ""
+msgstr "Position updated."
 
 #. placeholder {0}: appliedFilters.positionName
 #. placeholder {0}: appliedFilters.positionName || appliedFilters.positionId
@@ -2179,7 +2180,7 @@ msgstr ""
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Position: {0}"
-msgstr ""
+msgstr "Position: {0}"
 
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -2189,7 +2190,7 @@ msgstr "职位"
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Positions & Skills"
-msgstr ""
+msgstr "Positions & Skills"
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
@@ -2253,7 +2254,7 @@ msgstr "项目名称"
 #. placeholder {0}: appliedFilters.name
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Project name: {0}"
-msgstr ""
+msgstr "Project name: {0}"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Project restored."
@@ -2268,7 +2269,7 @@ msgstr "项目更新成功。"
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Project: {0}"
-msgstr ""
+msgstr "Project: {0}"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -2320,7 +2321,7 @@ msgstr "Reactive Resume 是开源、注重隐私且完全免费的。与其他�
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Recipient"
-msgstr ""
+msgstr "Recipient"
 
 #: src/components/level/combobox.tsx
 msgid "Rectangle"
@@ -2350,7 +2351,7 @@ msgstr "想起你的密码了？<0><1>立即登录 <2/></1></0>"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Remove Password"
@@ -2358,7 +2359,7 @@ msgstr "移除密码"
 
 #: src/components/ai/chat.tsx
 msgid "Removed"
-msgstr ""
+msgstr "Removed"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Removing password protection..."
@@ -2370,7 +2371,7 @@ msgstr "重命名"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Reorder"
-msgstr ""
+msgstr "Reorder"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Report a Bug"
@@ -2418,11 +2419,11 @@ msgstr "正在恢复项目..."
 
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Resume"
-msgstr ""
+msgstr "Resume"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Resume builder that simplifies the process of creating, updating, and sharing your resume."
-msgstr ""
+msgstr "Resume builder that simplifies the process of creating, updating, and sharing your resume."
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
@@ -2441,7 +2442,7 @@ msgstr "右对齐"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Role Progression"
-msgstr ""
+msgstr "Role Progression"
 
 #: src/utils/locale.ts
 msgid "Romanian"
@@ -2545,7 +2546,7 @@ msgstr "请至少选择一位用户。"
 
 #: src/components/domain/domain-combobox.tsx
 msgid "Select domain"
-msgstr ""
+msgstr "Select domain"
 
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-select.tsx
@@ -2560,7 +2561,7 @@ msgstr "选择职位"
 
 #: src/components/position/position-combobox.tsx
 msgid "Select positions"
-msgstr ""
+msgstr "Select positions"
 
 #: src/components/project/project-combobox.tsx
 msgid "Select project"
@@ -2568,7 +2569,7 @@ msgstr "选择项目"
 
 #: src/components/skill/skill-combobox.tsx
 msgid "Select skill"
-msgstr ""
+msgstr "Select skill"
 
 #: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
@@ -2667,7 +2668,7 @@ msgstr "显示"
 #: src/dialogs/resume/sections/reference.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
 msgid "Show link in title"
-msgstr ""
+msgstr "Show link in title"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Sidebar"
@@ -2739,28 +2740,28 @@ msgstr "大小"
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Skill"
-msgstr ""
+msgstr "Skill"
 
 #: src/dialogs/skill/index.tsx
 msgid "Skill created."
-msgstr ""
+msgstr "Skill created."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Skill deleted."
-msgstr ""
+msgstr "Skill deleted."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Skill name"
-msgstr ""
+msgstr "Skill name"
 
 #: src/dialogs/skill/index.tsx
 msgid "Skill updated."
-msgstr ""
+msgstr "Skill updated."
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Skill: {label}"
-msgstr ""
+msgstr "Skill: {label}"
 
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/import.tsx
@@ -2798,12 +2799,12 @@ msgstr "短链接"
 #: src/dialogs/position/index.tsx
 #: src/dialogs/skill/index.tsx
 msgid "Slug is auto-generated and cannot be edited."
-msgstr ""
+msgstr "Slug is auto-generated and cannot be edited."
 
 #: src/dialogs/position/index.tsx
 #: src/dialogs/skill/index.tsx
 msgid "Slug is auto-generated from the name and cannot be edited."
-msgstr ""
+msgstr "Slug is auto-generated from the name and cannot be edited."
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Something went wrong."
@@ -2877,7 +2878,7 @@ msgstr "统计数据"
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Stay"
-msgstr ""
+msgstr "Stay"
 
 #: src/components/input/rich-input.tsx
 msgid "Strike"
@@ -3006,7 +3007,7 @@ msgstr "生成 PDF 时出现问题，请稍后重试。"
 
 #: src/components/ai/chat.tsx
 msgid "Thinking..."
-msgstr ""
+msgstr "Thinking..."
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
@@ -3063,11 +3064,11 @@ msgstr "这将从所有项目中移除该域名。"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "This will remove the position from all resumes and projects."
-msgstr ""
+msgstr "This will remove the position from all resumes and projects."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "This will remove the skill from all resumes and projects."
-msgstr ""
+msgstr "This will remove the skill from all resumes and projects."
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with Reactive Resume"
@@ -3225,7 +3226,7 @@ msgstr "更新现有证书"
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Update an existing cover letter"
-msgstr ""
+msgstr "Update an existing cover letter"
 
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Update an existing custom section"
@@ -3269,7 +3270,7 @@ msgstr "更新现有技能"
 
 #: src/dialogs/resume/sections/summary-item.tsx
 msgid "Update an existing summary item"
-msgstr ""
+msgstr "Update an existing summary item"
 
 #: src/dialogs/resume/sections/volunteer.tsx
 msgid "Update an existing volunteer experience"
@@ -3286,7 +3287,7 @@ msgstr "更新密码"
 
 #: src/dialogs/position/index.tsx
 msgid "Update position"
-msgstr ""
+msgstr "Update position"
 
 #: src/dialogs/project/index.tsx
 #: src/dialogs/project/index.tsx
@@ -3300,7 +3301,7 @@ msgstr "更新简历"
 
 #: src/dialogs/skill/index.tsx
 msgid "Update skill"
-msgstr ""
+msgstr "Update skill"
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Update your password"
@@ -3310,7 +3311,7 @@ msgstr "更新你的密码"
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Updated"
-msgstr ""
+msgstr "Updated"
 
 #: src/dialogs/domain/index.tsx
 msgid "Updating domain..."
@@ -3318,7 +3319,7 @@ msgstr "正在更新域名..."
 
 #: src/dialogs/position/index.tsx
 msgid "Updating position..."
-msgstr ""
+msgstr "Updating position..."
 
 #: src/dialogs/project/index.tsx
 msgid "Updating project..."
@@ -3326,7 +3327,7 @@ msgstr "正在更新项目..."
 
 #: src/dialogs/skill/index.tsx
 msgid "Updating skill..."
-msgstr ""
+msgstr "Updating skill..."
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Updating your password..."
@@ -3338,7 +3339,7 @@ msgstr "正在更新你的简历…"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Updating..."
-msgstr ""
+msgstr "Updating..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Uploading picture..."
@@ -3474,7 +3475,7 @@ msgstr "你可以通过唯一的公共 URL 分享你的简历，用密码保护�
 
 #: src/hooks/use-form-blocker.tsx
 msgid "You have unsaved changes that will be lost."
-msgstr ""
+msgstr "You have unsaved changes that will be lost."
 
 #: src/routes/auth/forgot-password.tsx
 #: src/routes/auth/register.tsx

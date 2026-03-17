@@ -18,6 +18,7 @@ msgstr ""
 "X-Crowdin-File: /main/locales/en-US.po\n"
 "X-Crowdin-File-ID: 518\n"
 
+
 #. js-lingui-explicit-id
 #: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
@@ -44,7 +45,7 @@ msgstr "{0, plural, one {# Element} other {# Elemente}}"
 #. placeholder {0}: item.roles.length
 #: src/routes/builder/$resumeId/-sidebar/left/sections/experience.tsx
 msgid "{0, plural, one {# role} other {# roles}}"
-msgstr ""
+msgstr "{0, plural, one {# role} other {# roles}}"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
@@ -53,7 +54,7 @@ msgstr "{column, plural, one {# Spalte} other {# Spalten}}"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "<0>Finally,</0><1>A resume builder</1>"
-msgstr ""
+msgstr "<0>Finally,</0><1>A resume builder</1>"
 
 #: src/routes/_home/-sections/faq.tsx
 msgctxt "Every word needs to be wrapped in a tag"
@@ -236,7 +237,7 @@ msgstr "Spalte davor einfügen"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Add multiple roles to show career progression at the same company."
-msgstr ""
+msgstr "Add multiple roles to show career progression at the same company."
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Add name, description and customer"
@@ -248,7 +249,7 @@ msgstr "Seite hinzufügen"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Add Role"
-msgstr ""
+msgstr "Add Role"
 
 #: src/components/input/rich-input.tsx
 msgid "Add Row After"
@@ -281,7 +282,7 @@ msgstr "Albanisch"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Download"
-msgstr ""
+msgstr "Allow Download"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
@@ -318,7 +319,7 @@ msgstr "Jeder mit der öffentlichen URL des Lebenslaufs kann Ihren Lebenslauf oh
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone with the link can view the resume."
-msgstr ""
+msgstr "Anyone with the link can view the resume."
 
 #: src/routes/_home/-sections/features.tsx
 msgid "API Access"
@@ -705,7 +706,7 @@ msgstr "Beiträge finanzieren Fehlerbehebungen, Sicherheitsupdates und kontinuie
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Control whether visitors can download the resume as PDF."
-msgstr ""
+msgstr "Control whether visitors can download the resume as PDF."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Copy"
@@ -867,7 +868,7 @@ msgstr "Fähigkeit erstellen"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Created"
-msgstr ""
+msgstr "Created"
 
 #: src/dialogs/domain/index.tsx
 msgid "Creating domain..."
@@ -920,7 +921,7 @@ msgstr "Kundenname"
 #. placeholder {0}: appliedFilters.customerName
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Customer: {0}"
-msgstr ""
+msgstr "Customer: {0}"
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -1083,7 +1084,7 @@ msgstr "Dokumentation"
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Domain"
-msgstr ""
+msgstr "Domain"
 
 #: src/dialogs/domain/index.tsx
 msgid "Domain created."
@@ -1099,7 +1100,7 @@ msgstr "Domäne aktualisiert."
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Domain: {label}"
-msgstr ""
+msgstr "Domain: {label}"
 
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -1185,11 +1186,11 @@ msgstr "z.B. Gesundheitswesen, Finanzen"
 
 #: src/dialogs/skill/index.tsx
 msgid "e.g. React, TypeScript"
-msgstr ""
+msgstr "e.g. React, TypeScript"
 
 #: src/dialogs/position/index.tsx
 msgid "e.g. Senior Engineer, Manager"
-msgstr ""
+msgstr "e.g. Senior Engineer, Manager"
 
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1344,7 +1345,7 @@ msgstr "Die Einrichtung der Zwei-Faktor-Authentifizierung ist fehlgeschlagen."
 
 #: src/routes/auth/login.tsx
 msgid "Failed to sign in. Please try again."
-msgstr ""
+msgstr "Failed to sign in. Please try again."
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Features"
@@ -1352,7 +1353,7 @@ msgstr "Funktionen"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "File size must be less than 5MB"
-msgstr ""
+msgstr "File size must be less than 5MB"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1698,7 +1699,7 @@ msgstr "Zuletzt heruntergeladen am {0}"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Last Updated"
-msgstr ""
+msgstr "Last Updated"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
@@ -1887,7 +1888,7 @@ msgstr "Name"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Name: {appliedQuery}"
-msgstr ""
+msgstr "Name: {appliedQuery}"
 
 #: src/utils/locale.ts
 msgid "Nepali"
@@ -2026,11 +2027,11 @@ msgstr "Gesamt"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Overall Period"
-msgstr ""
+msgstr "Overall Period"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Overall Title (optional)"
-msgstr ""
+msgstr "Overall Title (optional)"
 
 #: src/utils/resume/section.tsx
 msgid "Page"
@@ -2179,7 +2180,7 @@ msgstr "Position aktualisiert."
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Position: {0}"
-msgstr ""
+msgstr "Position: {0}"
 
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -2253,7 +2254,7 @@ msgstr "Projektname"
 #. placeholder {0}: appliedFilters.name
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Project name: {0}"
-msgstr ""
+msgstr "Project name: {0}"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Project restored."
@@ -2268,7 +2269,7 @@ msgstr "Projekt erfolgreich aktualisiert."
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Project: {0}"
-msgstr ""
+msgstr "Project: {0}"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -2350,7 +2351,7 @@ msgstr "Sie erinnern sich wieder an Ihr Passwort? <0><1>Jetzt anmelden <2/></1><
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Remove Password"
@@ -2370,7 +2371,7 @@ msgstr "Umbenennen"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Reorder"
-msgstr ""
+msgstr "Reorder"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Report a Bug"
@@ -2418,11 +2419,11 @@ msgstr "Projekt wird wiederhergestellt..."
 
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Resume"
-msgstr ""
+msgstr "Resume"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Resume builder that simplifies the process of creating, updating, and sharing your resume."
-msgstr ""
+msgstr "Resume builder that simplifies the process of creating, updating, and sharing your resume."
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
@@ -2441,7 +2442,7 @@ msgstr "Rechtsbündig"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Role Progression"
-msgstr ""
+msgstr "Role Progression"
 
 #: src/utils/locale.ts
 msgid "Romanian"
@@ -2545,7 +2546,7 @@ msgstr "Wählen Sie mindestens einen Benutzer aus."
 
 #: src/components/domain/domain-combobox.tsx
 msgid "Select domain"
-msgstr ""
+msgstr "Select domain"
 
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-select.tsx
@@ -2560,7 +2561,7 @@ msgstr "Position auswählen"
 
 #: src/components/position/position-combobox.tsx
 msgid "Select positions"
-msgstr ""
+msgstr "Select positions"
 
 #: src/components/project/project-combobox.tsx
 msgid "Select project"
@@ -2568,7 +2569,7 @@ msgstr "Projekt auswählen"
 
 #: src/components/skill/skill-combobox.tsx
 msgid "Select skill"
-msgstr ""
+msgstr "Select skill"
 
 #: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
@@ -2739,7 +2740,7 @@ msgstr "Größe"
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Skill"
-msgstr ""
+msgstr "Skill"
 
 #: src/dialogs/skill/index.tsx
 msgid "Skill created."
@@ -2760,7 +2761,7 @@ msgstr "Fähigkeit aktualisiert."
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Skill: {label}"
-msgstr ""
+msgstr "Skill: {label}"
 
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/import.tsx
@@ -3338,7 +3339,7 @@ msgstr "Ihr Lebenslauf wird aktualisiert..."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Updating..."
-msgstr ""
+msgstr "Updating..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Uploading picture..."

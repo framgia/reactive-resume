@@ -18,6 +18,7 @@ msgstr ""
 "X-Crowdin-File: /main/locales/en-US.po\n"
 "X-Crowdin-File-ID: 518\n"
 
+
 #. js-lingui-explicit-id
 #: src/routes/dashboard/projects/index.tsx
 #: src/routes/dashboard/resumes/index.tsx
@@ -44,7 +45,7 @@ msgstr "{0, plural, one {# элемент} few {# элемента} many {# эл
 #. placeholder {0}: item.roles.length
 #: src/routes/builder/$resumeId/-sidebar/left/sections/experience.tsx
 msgid "{0, plural, one {# role} other {# roles}}"
-msgstr ""
+msgstr "{0, plural, one {# role} other {# roles}}"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
@@ -53,7 +54,7 @@ msgstr "{column, plural, one {# столбец} few {# столбца} many {# �
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "<0>Finally,</0><1>A resume builder</1>"
-msgstr ""
+msgstr "<0>Finally,</0><1>A resume builder</1>"
 
 #: src/routes/_home/-sections/faq.tsx
 msgctxt "Every word needs to be wrapped in a tag"
@@ -90,7 +91,7 @@ msgstr "Ссылка для подтверждения отправлена на
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "A copy was shared with {count} user(s)."
-msgstr ""
+msgstr "A copy was shared with {count} user(s)."
 
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/domain/index.tsx
@@ -121,7 +122,7 @@ msgstr "Проект <0>Амрута Пиллая</0>."
 #: src/dialogs/position/index.tsx
 #: src/dialogs/position/index.tsx
 msgid "A position with this name already exists."
-msgstr ""
+msgstr "A position with this name already exists."
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
@@ -131,7 +132,7 @@ msgstr "Резюме с таким URL уже существует."
 #: src/dialogs/skill/index.tsx
 #: src/dialogs/skill/index.tsx
 msgid "A skill with this name already exists."
-msgstr ""
+msgstr "A skill with this name already exists."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/page.tsx
 msgid "A4"
@@ -151,7 +152,7 @@ msgstr "Добавьте настраиваемое поле"
 
 #: src/dialogs/domain/index.tsx
 msgid "Add a domain name to use when assigning projects."
-msgstr ""
+msgstr "Add a domain name to use when assigning projects."
 
 #: src/components/input/url-input.tsx
 msgid "Add a label to the URL"
@@ -216,15 +217,15 @@ msgstr "Добавить новый волонтерский опыт"
 
 #: src/dialogs/position/index.tsx
 msgid "Add a position/level (e.g. Senior Engineer, Manager) for use in resumes and projects."
-msgstr ""
+msgstr "Add a position/level (e.g. Senior Engineer, Manager) for use in resumes and projects."
 
 #: src/dialogs/project/index.tsx
 msgid "Add a project with name, description, and customer."
-msgstr ""
+msgstr "Add a project with name, description, and customer."
 
 #: src/dialogs/skill/index.tsx
 msgid "Add a skill highlight for use in resumes and projects."
-msgstr ""
+msgstr "Add a skill highlight for use in resumes and projects."
 
 #: src/components/input/rich-input.tsx
 msgid "Add Column After"
@@ -236,11 +237,11 @@ msgstr "Добавить столбец до"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Add multiple roles to show career progression at the same company."
-msgstr ""
+msgstr "Add multiple roles to show career progression at the same company."
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Add name, description and customer"
-msgstr ""
+msgstr "Add name, description and customer"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Add Page"
@@ -248,7 +249,7 @@ msgstr "Добавить страницу"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Add Role"
-msgstr ""
+msgstr "Add Role"
 
 #: src/components/input/rich-input.tsx
 msgid "Add Row After"
@@ -260,7 +261,7 @@ msgstr "Добавить строку до"
 
 #: src/components/ai/chat.tsx
 msgid "Added"
-msgstr ""
+msgstr "Added"
 
 #: src/utils/locale.ts
 msgid "Afrikaans"
@@ -273,7 +274,7 @@ msgstr "ИИ"
 
 #: src/components/ai/chat.tsx
 msgid "AI Chat"
-msgstr ""
+msgstr "AI Chat"
 
 #: src/utils/locale.ts
 msgid "Albanian"
@@ -281,7 +282,7 @@ msgstr "Албанский"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Download"
-msgstr ""
+msgstr "Allow Download"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
@@ -318,7 +319,7 @@ msgstr "Любой, у кого есть публичный URL этого ре�
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone with the link can view the resume."
-msgstr ""
+msgstr "Anyone with the link can view the resume."
 
 #: src/routes/_home/-sections/features.tsx
 msgid "API Access"
@@ -352,7 +353,7 @@ msgstr "Статистика приложения"
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Apply"
-msgstr ""
+msgstr "Apply"
 
 #: src/utils/locale.ts
 msgid "Arabic"
@@ -360,13 +361,13 @@ msgstr "Арабский"
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Are you sure you want to close this dialog?"
-msgstr ""
+msgstr "Are you sure you want to close this dialog?"
 
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Are you sure you want to delete \"{name}\"?"
-msgstr ""
+msgstr "Are you sure you want to delete \"{name}\"?"
 
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "Are you sure you want to delete this API key?"
@@ -374,7 +375,7 @@ msgstr "Вы уверены, что хотите удалить этот API-к�
 
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 msgid "Are you sure you want to delete this project?"
-msgstr ""
+msgstr "Are you sure you want to delete this project?"
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
@@ -409,7 +410,7 @@ msgstr "Искусственный интеллект"
 
 #: src/components/ai/chat.tsx
 msgid "Ask me to update your resume..."
-msgstr ""
+msgstr "Ask me to update your resume..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Aspect Ratio"
@@ -425,7 +426,7 @@ msgstr "Аутентификация"
 #: src/dialogs/position/index.tsx
 #: src/dialogs/skill/index.tsx
 msgid "Auto-generated from name"
-msgstr ""
+msgstr "Auto-generated from name"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Available in multiple languages. If you would like to contribute, check out Crowdin."
@@ -615,12 +616,12 @@ msgstr "Китайский (традиционный)"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Choose users and send a copy of your resume to their dashboard."
-msgstr ""
+msgstr "Choose users and send a copy of your resume to their dashboard."
 
 #: src/dialogs/resume/share-copy.tsx
 #: src/dialogs/resume/share-copy.tsx
 msgid "Choose users..."
-msgstr ""
+msgstr "Choose users..."
 
 #: src/components/level/combobox.tsx
 msgid "Circle"
@@ -632,11 +633,11 @@ msgstr "Круг"
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Clear"
-msgstr ""
+msgstr "Clear"
 
 #: src/components/ai/chat.tsx
 msgid "Clear chat history"
-msgstr ""
+msgstr "Clear chat history"
 
 #: src/components/ui/multiple-combobox.tsx
 msgid "Clear selection"
@@ -681,7 +682,7 @@ msgstr "Подключить"
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/dialogs/resume/sections/summary-item.tsx
 msgid "Content"
-msgstr ""
+msgstr "Content"
 
 #: src/dialogs/auth/enable-two-factor.tsx
 #: src/dialogs/auth/enable-two-factor.tsx
@@ -705,7 +706,7 @@ msgstr "Ваши взносы финансируют исправление ош
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Control whether visitors can download the resume as PDF."
-msgstr ""
+msgstr "Control whether visitors can download the resume as PDF."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Copy"
@@ -730,7 +731,7 @@ msgstr "Скопировать URL"
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
 msgid "Cover Letter"
-msgstr ""
+msgstr "Cover Letter"
 
 #: src/dialogs/api-key/create.tsx
 #: src/dialogs/domain/index.tsx
@@ -775,7 +776,7 @@ msgstr "Создать новый сертификат"
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Create a new cover letter"
-msgstr ""
+msgstr "Create a new cover letter"
 
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Create a new custom section"
@@ -783,7 +784,7 @@ msgstr "Создать новый пользовательский раздел"
 
 #: src/routes/dashboard/domains/index.tsx
 msgid "Create a new domain"
-msgstr ""
+msgstr "Create a new domain"
 
 #: src/dialogs/resume/sections/education.tsx
 msgid "Create a new education"
@@ -803,7 +804,7 @@ msgstr "Создать новый язык"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Create a new position"
-msgstr ""
+msgstr "Create a new position"
 
 #: src/dialogs/resume/sections/profile.tsx
 msgid "Create a new profile"
@@ -837,7 +838,7 @@ msgstr "Создать новый навык"
 
 #: src/dialogs/resume/sections/summary-item.tsx
 msgid "Create a new summary item"
-msgstr ""
+msgstr "Create a new summary item"
 
 #: src/dialogs/resume/sections/volunteer.tsx
 msgid "Create a new volunteer experience"
@@ -853,37 +854,37 @@ msgstr "Создавайте столько резюме, сколько зах�
 
 #: src/dialogs/domain/index.tsx
 msgid "Create domain"
-msgstr ""
+msgstr "Create domain"
 
 #: src/dialogs/position/index.tsx
 msgid "Create position"
-msgstr ""
+msgstr "Create position"
 
 #: src/dialogs/skill/index.tsx
 msgid "Create skill"
-msgstr ""
+msgstr "Create skill"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Created"
-msgstr ""
+msgstr "Created"
 
 #: src/dialogs/domain/index.tsx
 msgid "Creating domain..."
-msgstr ""
+msgstr "Creating domain..."
 
 #: src/dialogs/position/index.tsx
 msgid "Creating position..."
-msgstr ""
+msgstr "Creating position..."
 
 #: src/dialogs/project/index.tsx
 msgid "Creating project..."
-msgstr ""
+msgstr "Creating project..."
 
 #: src/dialogs/skill/index.tsx
 msgid "Creating skill..."
-msgstr ""
+msgstr "Creating skill..."
 
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
@@ -911,16 +912,16 @@ msgstr "Пользовательские разделы"
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Customer"
-msgstr ""
+msgstr "Customer"
 
 #: src/dialogs/project/index.tsx
 msgid "Customer name"
-msgstr ""
+msgstr "Customer name"
 
 #. placeholder {0}: appliedFilters.customerName
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Customer: {0}"
-msgstr ""
+msgstr "Customer: {0}"
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -998,27 +999,27 @@ msgstr "Удалить таблицу"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Deleted"
-msgstr ""
+msgstr "Deleted"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Deleted on {deletedAt}"
-msgstr ""
+msgstr "Deleted on {deletedAt}"
 
 #: src/routes/dashboard/domains/index.tsx
 msgid "Deleting domain..."
-msgstr ""
+msgstr "Deleting domain..."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Deleting position..."
-msgstr ""
+msgstr "Deleting position..."
 
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 msgid "Deleting project..."
-msgstr ""
+msgstr "Deleting project..."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Deleting skill..."
-msgstr ""
+msgstr "Deleting skill..."
 
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "Deleting your account..."
@@ -1083,23 +1084,23 @@ msgstr "Документация"
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Domain"
-msgstr ""
+msgstr "Domain"
 
 #: src/dialogs/domain/index.tsx
 msgid "Domain created."
-msgstr ""
+msgstr "Domain created."
 
 #: src/routes/dashboard/domains/index.tsx
 msgid "Domain deleted."
-msgstr ""
+msgstr "Domain deleted."
 
 #: src/dialogs/domain/index.tsx
 msgid "Domain updated."
-msgstr ""
+msgstr "Domain updated."
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Domain: {label}"
-msgstr ""
+msgstr "Domain: {label}"
 
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -1107,7 +1108,7 @@ msgstr ""
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Domains"
-msgstr ""
+msgstr "Domains"
 
 #: src/routes/auth/login.tsx
 msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
@@ -1177,42 +1178,42 @@ msgstr "Нидерландский"
 
 #: src/components/ai/chat.tsx
 msgid "e.g. Change my name to..."
-msgstr ""
+msgstr "e.g. Change my name to..."
 
 #: src/dialogs/domain/index.tsx
 msgid "e.g. Healthcare, Finance"
-msgstr ""
+msgstr "e.g. Healthcare, Finance"
 
 #: src/dialogs/skill/index.tsx
 msgid "e.g. React, TypeScript"
-msgstr ""
+msgstr "e.g. React, TypeScript"
 
 #: src/dialogs/position/index.tsx
 msgid "e.g. Senior Engineer, Manager"
-msgstr ""
+msgstr "e.g. Senior Engineer, Manager"
 
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: src/dialogs/project/index.tsx
 msgid "Edit project details."
-msgstr ""
+msgstr "Edit project details."
 
 #: src/dialogs/domain/index.tsx
 msgid "Edit the domain name."
-msgstr ""
+msgstr "Edit the domain name."
 
 #: src/dialogs/position/index.tsx
 msgid "Edit the position name. Slug will be auto-generated from the new name."
-msgstr ""
+msgstr "Edit the position name. Slug will be auto-generated from the new name."
 
 #: src/dialogs/skill/index.tsx
 msgid "Edit the skill name. Slug will be auto-generated from the new name."
-msgstr ""
+msgstr "Edit the skill name. Slug will be auto-generated from the new name."
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
@@ -1286,7 +1287,7 @@ msgstr "Введите текущий пароль и новый пароль, �
 
 #: src/routes/auth/-components/social-auth.tsx
 msgid "Enter your email/username and password to continue."
-msgstr ""
+msgstr "Enter your email/username and password to continue."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Enter your password to confirm setting up two-factor authentication. When enabled, you'll need to enter a code from your authenticator app every time you log in."
@@ -1310,7 +1311,7 @@ msgstr "Все, что нужно для создания, настройки и
 
 #: src/components/input/rich-input.tsx
 msgid "Exit Fullscreen"
-msgstr ""
+msgstr "Exit Fullscreen"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
@@ -1344,7 +1345,7 @@ msgstr "Не удалось настроить двухфакторную аут
 
 #: src/routes/auth/login.tsx
 msgid "Failed to sign in. Please try again."
-msgstr ""
+msgstr "Failed to sign in. Please try again."
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Features"
@@ -1352,24 +1353,24 @@ msgstr "Возможности"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "File size must be less than 5MB"
-msgstr ""
+msgstr "File size must be less than 5MB"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Filter by customer"
-msgstr ""
+msgstr "Filter by customer"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Filter by name"
-msgstr ""
+msgstr "Filter by name"
 
 #: src/utils/locale.ts
 msgid "Finnish"
@@ -1444,7 +1445,7 @@ msgstr "На всю ширину"
 
 #: src/components/input/rich-input.tsx
 msgid "Fullscreen"
-msgstr ""
+msgstr "Fullscreen"
 
 #: src/dialogs/resume/index.tsx
 msgid "Generate a random name"
@@ -1698,7 +1699,7 @@ msgstr "Последнее скачивание: {0}"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Last Updated"
-msgstr ""
+msgstr "Last Updated"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
@@ -1725,7 +1726,7 @@ msgstr "Узнайте больше о том, как разместить ко�
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Leave"
-msgstr ""
+msgstr "Leave"
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "Leave empty to reset the title to the original."
@@ -1887,7 +1888,7 @@ msgstr "Название"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Name: {appliedQuery}"
-msgstr ""
+msgstr "Name: {appliedQuery}"
 
 #: src/utils/locale.ts
 msgid "Nepali"
@@ -1926,24 +1927,24 @@ msgstr "Без рекламы и отслеживания"
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-select.tsx
 msgid "No domains found."
-msgstr ""
+msgstr "No domains found."
 
 #: src/components/input/chip-input-autocomplete.tsx
 msgid "No matches. Type to search or press Enter to add."
-msgstr ""
+msgstr "No matches. Type to search or press Enter to add."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "No options"
-msgstr ""
+msgstr "No options"
 
 #: src/components/position/position-combobox.tsx
 #: src/components/position/position-combobox.tsx
 msgid "No positions found."
-msgstr ""
+msgstr "No positions found."
 
 #: src/components/project/project-combobox.tsx
 msgid "No projects found."
-msgstr ""
+msgstr "No projects found."
 
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
@@ -1953,11 +1954,11 @@ msgstr "Результатов не найдено."
 #: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "No skills found."
-msgstr ""
+msgstr "No skills found."
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "No users found. Type to search."
-msgstr ""
+msgstr "No users found. Type to search."
 
 #: src/utils/locale.ts
 msgid "Norwegian"
@@ -1981,7 +1982,7 @@ msgstr "Текущее сопровождение"
 
 #: src/dialogs/resume/template/gallery.tsx
 msgid "Only the Chikorita template is available. Template selection is disabled."
-msgstr ""
+msgstr "Only the Chikorita template is available. Template selection is disabled."
 
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
 #: src/routes/dashboard/resumes/-components/menus/dropdown-menu.tsx
@@ -2022,15 +2023,15 @@ msgstr "Организация"
 
 #: src/utils/resume/section.tsx
 msgid "Overall"
-msgstr ""
+msgstr "Overall"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Overall Period"
-msgstr ""
+msgstr "Overall Period"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Overall Title (optional)"
-msgstr ""
+msgstr "Overall Title (optional)"
 
 #: src/utils/resume/section.tsx
 msgid "Page"
@@ -2158,19 +2159,19 @@ msgstr "Должность"
 
 #: src/dialogs/position/index.tsx
 msgid "Position created."
-msgstr ""
+msgstr "Position created."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Position deleted."
-msgstr ""
+msgstr "Position deleted."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Position name"
-msgstr ""
+msgstr "Position name"
 
 #: src/dialogs/position/index.tsx
 msgid "Position updated."
-msgstr ""
+msgstr "Position updated."
 
 #. placeholder {0}: appliedFilters.positionName
 #. placeholder {0}: appliedFilters.positionName || appliedFilters.positionId
@@ -2179,17 +2180,17 @@ msgstr ""
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Position: {0}"
-msgstr ""
+msgstr "Position: {0}"
 
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Positions"
-msgstr ""
+msgstr "Positions"
 
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Positions & Skills"
-msgstr ""
+msgstr "Positions & Skills"
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
@@ -2236,39 +2237,39 @@ msgstr "Индикатор прогресса"
 #: src/routes/dashboard/resumes/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Project"
-msgstr ""
+msgstr "Project"
 
 #: src/dialogs/project/index.tsx
 msgid "Project created successfully."
-msgstr ""
+msgstr "Project created successfully."
 
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 msgid "Project deleted successfully."
-msgstr ""
+msgstr "Project deleted successfully."
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Project name"
-msgstr ""
+msgstr "Project name"
 
 #. placeholder {0}: appliedFilters.name
 #: src/routes/dashboard/projects/-components/filter.tsx
 msgid "Project name: {0}"
-msgstr ""
+msgstr "Project name: {0}"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Project restored."
-msgstr ""
+msgstr "Project restored."
 
 #: src/dialogs/project/index.tsx
 msgid "Project updated successfully."
-msgstr ""
+msgstr "Project updated successfully."
 
 #. placeholder {0}: appliedFilters.projectName || appliedFilters.projectId
 #. placeholder {0}: resume.projectName
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Project: {0}"
-msgstr ""
+msgstr "Project: {0}"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -2320,7 +2321,7 @@ msgstr "Reactive Resume — это проект с открытым исходн
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Recipient"
-msgstr ""
+msgstr "Recipient"
 
 #: src/components/level/combobox.tsx
 msgid "Rectangle"
@@ -2350,7 +2351,7 @@ msgstr "Вспомнили пароль? <0><1>Войдите сейчас <2/><
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Remove Password"
@@ -2358,7 +2359,7 @@ msgstr "Удалить пароль"
 
 #: src/components/ai/chat.tsx
 msgid "Removed"
-msgstr ""
+msgstr "Removed"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Removing password protection..."
@@ -2370,7 +2371,7 @@ msgstr "Переименовать"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Reorder"
-msgstr ""
+msgstr "Reorder"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Report a Bug"
@@ -2410,19 +2411,19 @@ msgstr "Ресурсы"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restore project"
-msgstr ""
+msgstr "Restore project"
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restoring project..."
-msgstr ""
+msgstr "Restoring project..."
 
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Resume"
-msgstr ""
+msgstr "Resume"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Resume builder that simplifies the process of creating, updating, and sharing your resume."
-msgstr ""
+msgstr "Resume builder that simplifies the process of creating, updating, and sharing your resume."
 
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
@@ -2441,7 +2442,7 @@ msgstr "Выровнять по правому краю"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Role Progression"
-msgstr ""
+msgstr "Role Progression"
 
 #: src/utils/locale.ts
 msgid "Romanian"
@@ -2460,7 +2461,7 @@ msgstr "Русский"
 #: src/dialogs/project/index.tsx
 #: src/dialogs/skill/index.tsx
 msgid "Save changes"
-msgstr ""
+msgstr "Save changes"
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
@@ -2492,16 +2493,16 @@ msgstr "Учебное заведение"
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Search and select users to send a copy. They will receive the resume in their dashboard."
-msgstr ""
+msgstr "Search and select users to send a copy. They will receive the resume in their dashboard."
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Search by name or username..."
-msgstr ""
+msgstr "Search by name or username..."
 
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-combobox.tsx
 msgid "Search domains..."
-msgstr ""
+msgstr "Search domains..."
 
 #: src/components/input/icon-picker.tsx
 #: src/components/input/icon-picker.tsx
@@ -2515,12 +2516,12 @@ msgstr "Поиск..."
 #: src/components/position/position-combobox.tsx
 #: src/components/position/position-combobox.tsx
 msgid "Search positions..."
-msgstr ""
+msgstr "Search positions..."
 
 #: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "Search skills..."
-msgstr ""
+msgstr "Search skills..."
 
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
@@ -2529,7 +2530,7 @@ msgstr "Поиск..."
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Searching..."
-msgstr ""
+msgstr "Searching..."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Secret copied to clipboard."
@@ -2541,43 +2542,43 @@ msgstr "Тип раздела"
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Select at least one user."
-msgstr ""
+msgstr "Select at least one user."
 
 #: src/components/domain/domain-combobox.tsx
 msgid "Select domain"
-msgstr ""
+msgstr "Select domain"
 
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-select.tsx
 #: src/components/domain/domain-select.tsx
 msgid "Select domains"
-msgstr ""
+msgstr "Select domains"
 
 #: src/components/position/position-combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "Select position"
-msgstr ""
+msgstr "Select position"
 
 #: src/components/position/position-combobox.tsx
 msgid "Select positions"
-msgstr ""
+msgstr "Select positions"
 
 #: src/components/project/project-combobox.tsx
 msgid "Select project"
-msgstr ""
+msgstr "Select project"
 
 #: src/components/skill/skill-combobox.tsx
 msgid "Select skill"
-msgstr ""
+msgstr "Select skill"
 
 #: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "Select skills"
-msgstr ""
+msgstr "Select skills"
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Select users"
-msgstr ""
+msgstr "Select users"
 
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
@@ -2628,12 +2629,12 @@ msgstr "Ширина тени"
 #: src/dialogs/resume/share-copy.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Share copy to users"
-msgstr ""
+msgstr "Share copy to users"
 
 #. placeholder {0}: selectedIds.length
 #: src/dialogs/resume/share-copy.tsx
 msgid "Share to {0} user(s)"
-msgstr ""
+msgstr "Share to {0} user(s)"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Share your resume with a public URL, and let others view it."
@@ -2649,7 +2650,7 @@ msgstr "Общий доступ"
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Sharing copy to selected users..."
-msgstr ""
+msgstr "Sharing copy to selected users..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
@@ -2667,7 +2668,7 @@ msgstr "Показать"
 #: src/dialogs/resume/sections/reference.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
 msgid "Show link in title"
-msgstr ""
+msgstr "Show link in title"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Sidebar"
@@ -2692,7 +2693,7 @@ msgstr "Войдите с GitHub, Google или собственным пров�
 
 #: src/routes/auth/-components/social-auth.tsx
 msgid "Sign in with Packtech"
-msgstr ""
+msgstr "Sign in with Packtech"
 
 #: src/routes/auth/register.tsx
 msgid "Sign up"
@@ -2700,7 +2701,7 @@ msgstr "Зарегистрироваться"
 
 #: src/routes/auth/-components/social-auth.tsx
 msgid "Signing in with Packtech..."
-msgstr ""
+msgstr "Signing in with Packtech..."
 
 #: src/routes/auth/-components/social-auth.tsx
 #: src/routes/auth/-components/social-auth.tsx
@@ -2739,28 +2740,28 @@ msgstr "Размер"
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Skill"
-msgstr ""
+msgstr "Skill"
 
 #: src/dialogs/skill/index.tsx
 msgid "Skill created."
-msgstr ""
+msgstr "Skill created."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Skill deleted."
-msgstr ""
+msgstr "Skill deleted."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Skill name"
-msgstr ""
+msgstr "Skill name"
 
 #: src/dialogs/skill/index.tsx
 msgid "Skill updated."
-msgstr ""
+msgstr "Skill updated."
 
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Skill: {label}"
-msgstr ""
+msgstr "Skill: {label}"
 
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/import.tsx
@@ -2775,7 +2776,7 @@ msgstr "Навыки"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 msgid "Skills Highlights"
-msgstr ""
+msgstr "Skills Highlights"
 
 #: src/routes/_home/route.tsx
 msgid "Skip to main content"
@@ -2798,16 +2799,16 @@ msgstr "URL"
 #: src/dialogs/position/index.tsx
 #: src/dialogs/skill/index.tsx
 msgid "Slug is auto-generated and cannot be edited."
-msgstr ""
+msgstr "Slug is auto-generated and cannot be edited."
 
 #: src/dialogs/position/index.tsx
 #: src/dialogs/skill/index.tsx
 msgid "Slug is auto-generated from the name and cannot be edited."
-msgstr ""
+msgstr "Slug is auto-generated from the name and cannot be edited."
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Something went wrong."
-msgstr ""
+msgstr "Something went wrong."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
@@ -2877,7 +2878,7 @@ msgstr "Статистика"
 
 #: src/hooks/use-form-blocker.tsx
 msgid "Stay"
-msgstr ""
+msgstr "Stay"
 
 #: src/components/input/rich-input.tsx
 msgid "Strike"
@@ -3006,7 +3007,7 @@ msgstr "Возникла проблема при генерации PDF, пож�
 
 #: src/components/ai/chat.tsx
 msgid "Thinking..."
-msgstr ""
+msgstr "Thinking..."
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
@@ -3043,7 +3044,7 @@ msgstr "Это резюме заблокировано и не может быт
 
 #: src/dialogs/resume/template/gallery.tsx
 msgid "This resume uses the Chikorita template. Template selection is disabled."
-msgstr ""
+msgstr "This resume uses the Chikorita template. Template selection is disabled."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/notes.tsx
 msgid "This section is reserved for your personal notes specific to this resume. The content here remains private and is not shared with anyone else."
@@ -3059,15 +3060,15 @@ msgstr "Будет сгенерирован новый API-ключ для до�
 
 #: src/routes/dashboard/domains/index.tsx
 msgid "This will remove the domain from all projects."
-msgstr ""
+msgstr "This will remove the domain from all projects."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "This will remove the position from all resumes and projects."
-msgstr ""
+msgstr "This will remove the position from all resumes and projects."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "This will remove the skill from all resumes and projects."
-msgstr ""
+msgstr "This will remove the skill from all resumes and projects."
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with Reactive Resume"
@@ -3225,7 +3226,7 @@ msgstr "Обновить существующий сертификат"
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Update an existing cover letter"
-msgstr ""
+msgstr "Update an existing cover letter"
 
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Update an existing custom section"
@@ -3269,7 +3270,7 @@ msgstr "Обновить существующий навык"
 
 #: src/dialogs/resume/sections/summary-item.tsx
 msgid "Update an existing summary item"
-msgstr ""
+msgstr "Update an existing summary item"
 
 #: src/dialogs/resume/sections/volunteer.tsx
 msgid "Update an existing volunteer experience"
@@ -3277,7 +3278,7 @@ msgstr "Обновить существующий волонтерский оп�
 
 #: src/dialogs/domain/index.tsx
 msgid "Update domain"
-msgstr ""
+msgstr "Update domain"
 
 #: src/dialogs/auth/change-password.tsx
 #: src/routes/dashboard/settings/authentication/-components/password.tsx
@@ -3286,12 +3287,12 @@ msgstr "Изменить пароль"
 
 #: src/dialogs/position/index.tsx
 msgid "Update position"
-msgstr ""
+msgstr "Update position"
 
 #: src/dialogs/project/index.tsx
 #: src/dialogs/project/index.tsx
 msgid "Update project"
-msgstr ""
+msgstr "Update project"
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx
@@ -3300,7 +3301,7 @@ msgstr "Обновить резюме"
 
 #: src/dialogs/skill/index.tsx
 msgid "Update skill"
-msgstr ""
+msgstr "Update skill"
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Update your password"
@@ -3310,23 +3311,23 @@ msgstr "Обновите пароль"
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Updated"
-msgstr ""
+msgstr "Updated"
 
 #: src/dialogs/domain/index.tsx
 msgid "Updating domain..."
-msgstr ""
+msgstr "Updating domain..."
 
 #: src/dialogs/position/index.tsx
 msgid "Updating position..."
-msgstr ""
+msgstr "Updating position..."
 
 #: src/dialogs/project/index.tsx
 msgid "Updating project..."
-msgstr ""
+msgstr "Updating project..."
 
 #: src/dialogs/skill/index.tsx
 msgid "Updating skill..."
-msgstr ""
+msgstr "Updating skill..."
 
 #: src/dialogs/auth/change-password.tsx
 msgid "Updating your password..."
@@ -3338,7 +3339,7 @@ msgstr "Обновление вашего резюме..."
 
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Updating..."
-msgstr ""
+msgstr "Updating..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Uploading picture..."
@@ -3402,7 +3403,7 @@ msgstr "Вьетнамский"
 
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
 msgid "View Resumes"
-msgstr ""
+msgstr "View Resumes"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
@@ -3474,7 +3475,7 @@ msgstr "Вы можете поделиться резюме по уникаль�
 
 #: src/hooks/use-form-blocker.tsx
 msgid "You have unsaved changes that will be lost."
-msgstr ""
+msgstr "You have unsaved changes that will be lost."
 
 #: src/routes/auth/forgot-password.tsx
 #: src/routes/auth/register.tsx
