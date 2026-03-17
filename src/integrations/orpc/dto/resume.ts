@@ -3,6 +3,7 @@ import z from "zod";
 import { schema } from "@/integrations/drizzle";
 import { resumeDataSchema } from "@/schema/resume/data";
 import { jsonPatchOperationSchema } from "@/utils/resume/patch";
+import { skillSchema } from "./skill";
 
 const resumeSchema = createSelectSchema(schema.resume, {
 	id: z.string().describe("The ID of the resume."),
@@ -61,7 +62,7 @@ export const resumeDto = {
 			.extend({
 				hasPassword: z.boolean(),
 				skills: z
-					.array(z.object({ id: z.string(), name: z.string() }))
+					.array(skillSchema.pick({ id: true, name: true }))
 					.describe("Selected skills from the project (id and display name)."),
 				position: z.string().nullable().describe("Display name of the selected position."),
 			}),

@@ -1,4 +1,14 @@
+import { createSelectSchema } from "drizzle-zod";
 import z from "zod";
+import { schema } from "@/integrations/drizzle";
+
+export const skillSchema = createSelectSchema(schema.skill, {
+	id: z.string().describe("The ID of the skill."),
+	name: z.string().min(1).describe("The name of the skill."),
+	slug: z.string().min(1).describe("The slug of the skill."),
+	createdAt: z.date().describe("The date and time the skill was created."),
+	updatedAt: z.date().describe("The date and time the skill was last updated."),
+});
 
 export const skillDto = {
 	list: {
@@ -27,14 +37,7 @@ export const skillDto = {
 			.optional()
 			.default({ sort: "name", page: 1, pageSize: 10 }),
 		output: z.object({
-			items: z.array(
-				z.object({
-					id: z.string(),
-					name: z.string(),
-					slug: z.string(),
-					createdAt: z.date(),
-				}),
-			),
+			items: z.array(skillSchema),
 			total: z.number().int().min(0).describe("Total number of skills matching the filter."),
 		}),
 	},
@@ -47,16 +50,11 @@ export const skillDto = {
 	},
 
 	update: {
-		input: z.object({
-			id: z.string(),
-			name: z.string().min(1),
+		input: skillSchema.pick({
+			id: true,
+			name: true,
 		}),
-		output: z.object({
-			id: z.string(),
-			name: z.string(),
-			slug: z.string(),
-			createdAt: z.date(),
-		}),
+		output: skillSchema,
 	},
 
 	delete: {
