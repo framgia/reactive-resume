@@ -280,6 +280,10 @@ msgid "Albanian"
 msgstr "Албанский"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Allow Download"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
 msgstr "Разрешить публичный доступ"
 
@@ -313,8 +317,8 @@ msgid "Anyone who has the resume's public URL will be able to view and download 
 msgstr "Любой, у кого есть публичный URL этого резюме, сможет просматривать и скачивать ваше резюме без ввода пароля."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
-msgid "Anyone with the link can view and download the resume."
-msgstr "Любой человек, получивший ссылку, может просмотреть и скачать резюме."
+msgid "Anyone with the link can view the resume."
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "API Access"
@@ -346,7 +350,7 @@ msgstr "Статистика приложения"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Apply"
 msgstr ""
 
@@ -626,7 +630,7 @@ msgstr "Круг"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Clear"
 msgstr ""
 
@@ -698,6 +702,10 @@ msgstr "Продолжите с того места, где остановили
 #: src/routes/_home/-sections/donate.tsx
 msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
 msgstr "Ваши взносы финансируют исправление ошибок, обновления безопасности и постоянные улучшения, чтобы приложение работало стабильно."
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Control whether visitors can download the resume as PDF."
+msgstr ""
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Copy"
@@ -900,12 +908,18 @@ msgid "Custom Sections"
 msgstr "Пользовательские разделы"
 
 #: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Customer"
 msgstr ""
 
 #: src/dialogs/project/index.tsx
 msgid "Customer name"
+msgstr ""
+
+#. placeholder {0}: appliedFilters.customerName
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Customer: {0}"
 msgstr ""
 
 #: src/utils/locale.ts
@@ -1067,6 +1081,10 @@ msgstr "Discord"
 msgid "Documentation"
 msgstr "Документация"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Domain"
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 msgid "Domain created."
 msgstr ""
@@ -1077,6 +1095,10 @@ msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Domain updated."
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Domain: {label}"
 msgstr ""
 
 #: src/dialogs/project/index.tsx
@@ -1335,7 +1357,7 @@ msgstr ""
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Filter"
 msgstr ""
 
@@ -1674,6 +1696,10 @@ msgstr "Языки"
 msgid "Last downloaded on {0}"
 msgstr "Последнее скачивание: {0}"
 
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Last Updated"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
@@ -1851,9 +1877,17 @@ msgstr "Многоязычность"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "Название"
+
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Name: {appliedQuery}"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Nepali"
@@ -2108,13 +2142,17 @@ msgstr "Португальский (Бразилия)"
 msgid "Portuguese (Portugal)"
 msgstr "Португальский (Португалия)"
 
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Position"
 msgstr "Должность"
 
@@ -2132,6 +2170,15 @@ msgstr ""
 
 #: src/dialogs/position/index.tsx
 msgid "Position updated."
+msgstr ""
+
+#. placeholder {0}: appliedFilters.positionName
+#. placeholder {0}: appliedFilters.positionName || appliedFilters.positionId
+#. placeholder {0}: resume.position
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Position: {0}"
 msgstr ""
 
 #: src/dialogs/project/index.tsx
@@ -2181,10 +2228,13 @@ msgstr "Профили"
 msgid "Progress Bar"
 msgstr "Индикатор прогресса"
 
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Project"
 msgstr ""
 
@@ -2200,12 +2250,24 @@ msgstr ""
 msgid "Project name"
 msgstr ""
 
+#. placeholder {0}: appliedFilters.name
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Project name: {0}"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Project restored."
 msgstr ""
 
 #: src/dialogs/project/index.tsx
 msgid "Project updated successfully."
+msgstr ""
+
+#. placeholder {0}: appliedFilters.projectName || appliedFilters.projectId
+#. placeholder {0}: resume.projectName
+#: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Project: {0}"
 msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
@@ -2352,6 +2414,10 @@ msgstr ""
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restoring project..."
+msgstr ""
+
+#: src/routes/dashboard/resumes/-components/list-view.tsx
+msgid "Resume"
 msgstr ""
 
 #: src/routes/_home/-sections/hero.tsx
@@ -2504,6 +2570,7 @@ msgstr ""
 msgid "Select skill"
 msgstr ""
 
+#: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "Select skills"
 msgstr ""
@@ -2669,6 +2736,11 @@ msgstr "Одноколоночный макет; строгий и солидн�
 msgid "Size"
 msgstr "Размер"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Skill"
+msgstr ""
+
 #: src/dialogs/skill/index.tsx
 msgid "Skill created."
 msgstr ""
@@ -2685,12 +2757,18 @@ msgstr ""
 msgid "Skill updated."
 msgstr ""
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Skill: {label}"
+msgstr ""
+
 #: src/dialogs/project/index.tsx
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 #: src/utils/resume/section.tsx
 msgid "Skills"
 msgstr "Навыки"
@@ -2731,6 +2809,7 @@ msgstr ""
 msgid "Something went wrong."
 msgstr ""
 
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
@@ -3229,6 +3308,7 @@ msgstr "Обновите пароль"
 
 #: src/components/ai/chat.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Updated"
 msgstr ""
 

@@ -280,6 +280,10 @@ msgid "Albanian"
 msgstr "Tiếng Albania"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Allow Download"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
 msgstr "Cho phép truy cập công khai"
 
@@ -313,8 +317,8 @@ msgid "Anyone who has the resume's public URL will be able to view and download 
 msgstr "Bất kỳ ai có URL công khai của sơ yếu lý lịch sẽ có thể xem và tải về sơ yếu lý lịch của bạn mà không cần nhập mật khẩu."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
-msgid "Anyone with the link can view and download the resume."
-msgstr "Bất kỳ ai có liên kết đều có thể xem và tải xuống sơ yếu lý lịch."
+msgid "Anyone with the link can view the resume."
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "API Access"
@@ -346,7 +350,7 @@ msgstr "Thống kê ứng dụng"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Apply"
 msgstr "Áp dụng"
 
@@ -626,7 +630,7 @@ msgstr "Vòng tròn"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Clear"
 msgstr "Xóa"
 
@@ -698,6 +702,10 @@ msgstr "Tiếp tục từ nơi bạn đã dừng lại bằng cách nhập khẩ
 #: src/routes/_home/-sections/donate.tsx
 msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
 msgstr "Đóng góp giúp sửa lỗi, cập nhật bảo mật và cải tiến liên tục để ứng dụng chạy mượt mà."
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Control whether visitors can download the resume as PDF."
+msgstr ""
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Copy"
@@ -900,6 +908,7 @@ msgid "Custom Sections"
 msgstr "Các mục tùy chỉnh"
 
 #: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Customer"
 msgstr "Khách hàng"
@@ -907,6 +916,11 @@ msgstr "Khách hàng"
 #: src/dialogs/project/index.tsx
 msgid "Customer name"
 msgstr "Tên khách hàng"
+
+#. placeholder {0}: appliedFilters.customerName
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Customer: {0}"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -1067,6 +1081,10 @@ msgstr "Discord"
 msgid "Documentation"
 msgstr "Tài liệu"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Domain"
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 msgid "Domain created."
 msgstr "Đã tạo miền."
@@ -1078,6 +1096,10 @@ msgstr "Đã xóa miền."
 #: src/dialogs/domain/index.tsx
 msgid "Domain updated."
 msgstr "Đã cập nhật miền."
+
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Domain: {label}"
+msgstr ""
 
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -1335,7 +1357,7 @@ msgstr ""
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Filter"
 msgstr "Lọc"
 
@@ -1674,6 +1696,10 @@ msgstr "Ngôn ngữ"
 msgid "Last downloaded on {0}"
 msgstr "Tải xuống lần cuối vào {0}"
 
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Last Updated"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
@@ -1851,9 +1877,17 @@ msgstr "Đa ngôn ngữ"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "Tên"
+
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Name: {appliedQuery}"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Nepali"
@@ -2108,13 +2142,17 @@ msgstr "Bồ Đào Nha (Brazil)"
 msgid "Portuguese (Portugal)"
 msgstr "Bồ Đào Nha (Bồ Đào Nha)"
 
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Position"
 msgstr "Vị trí"
 
@@ -2133,6 +2171,15 @@ msgstr "Tên vị trí"
 #: src/dialogs/position/index.tsx
 msgid "Position updated."
 msgstr "Đã cập nhật vị trí."
+
+#. placeholder {0}: appliedFilters.positionName
+#. placeholder {0}: appliedFilters.positionName || appliedFilters.positionId
+#. placeholder {0}: resume.position
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Position: {0}"
+msgstr ""
 
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -2181,10 +2228,13 @@ msgstr "Hồ sơ"
 msgid "Progress Bar"
 msgstr "Thanh tiến trình"
 
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Project"
 msgstr "Dự án"
 
@@ -2200,6 +2250,11 @@ msgstr "Đã xóa dự án thành công."
 msgid "Project name"
 msgstr "Tên dự án"
 
+#. placeholder {0}: appliedFilters.name
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Project name: {0}"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Project restored."
 msgstr "Đã khôi phục dự án."
@@ -2207,6 +2262,13 @@ msgstr "Đã khôi phục dự án."
 #: src/dialogs/project/index.tsx
 msgid "Project updated successfully."
 msgstr "Đã cập nhật dự án thành công."
+
+#. placeholder {0}: appliedFilters.projectName || appliedFilters.projectId
+#. placeholder {0}: resume.projectName
+#: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Project: {0}"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -2353,6 +2415,10 @@ msgstr "Khôi phục dự án"
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restoring project..."
 msgstr "Đang khôi phục dự án..."
+
+#: src/routes/dashboard/resumes/-components/list-view.tsx
+msgid "Resume"
+msgstr ""
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Resume builder that simplifies the process of creating, updating, and sharing your resume."
@@ -2504,6 +2570,7 @@ msgstr "Chọn dự án"
 msgid "Select skill"
 msgstr ""
 
+#: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "Select skills"
 msgstr "Chọn kỹ năng"
@@ -2669,6 +2736,11 @@ msgstr "Một cột; chỉnh chu và nghiêm túc cho vị trí cấp cao hoặc
 msgid "Size"
 msgstr "Kích thước"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Skill"
+msgstr ""
+
 #: src/dialogs/skill/index.tsx
 msgid "Skill created."
 msgstr "Đã tạo kỹ năng."
@@ -2685,12 +2757,18 @@ msgstr "Tên kỹ năng"
 msgid "Skill updated."
 msgstr "Đã cập nhật kỹ năng."
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Skill: {label}"
+msgstr ""
+
 #: src/dialogs/project/index.tsx
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 #: src/utils/resume/section.tsx
 msgid "Skills"
 msgstr "Kỹ năng"
@@ -2731,6 +2809,7 @@ msgstr "Slug được tạo tự động từ tên và không thể chỉnh sử
 msgid "Something went wrong."
 msgstr "Đã xảy ra lỗi."
 
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
@@ -3229,6 +3308,7 @@ msgstr "Cập nhật mật khẩu của bạn"
 
 #: src/components/ai/chat.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Updated"
 msgstr ""
 

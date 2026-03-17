@@ -1,10 +1,11 @@
 import { t } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { FunnelSimpleIcon } from '@phosphor-icons/react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { DomainCombobox } from '@/components/domain/domain-combobox';
 import { PositionCombobox } from '@/components/position/position-combobox';
 import { SkillCombobox } from '@/components/skill/skill-combobox';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -36,6 +37,32 @@ const emptyFilters: ProjectFiltersApplied = {
   skillNames: []
 };
 
+/** Single option with id + label; one source of truth for combobox selections. */
+type SelectionOption = { id: string; label: string };
+
+function toDomainSelection(filters: ProjectFiltersApplied): SelectionOption | null {
+  const id = filters.domainIds[0] ?? null;
+  const label = filters.domainNames[0]?.trim();
+  if (!id) return null;
+  return { id, label: label || id };
+}
+
+function toSkillSelections(filters: ProjectFiltersApplied): SelectionOption[] {
+  return filters.skillIds.map((id, i) => ({
+    id,
+    label: (filters.skillNames[i] ?? id).trim() || id
+  }));
+}
+
+function toPositionSelection(
+  filters: ProjectFiltersApplied
+): SelectionOption | null {
+  const id = filters.positionId;
+  const label = filters.positionName?.trim();
+  if (!id) return null;
+  return { id, label: label || id };
+}
+
 type ProjectFilterPopoverProps = {
   appliedFilters: ProjectFiltersApplied;
   onFiltersChange: (filters: ProjectFiltersApplied) => void;
@@ -49,17 +76,12 @@ export function ProjectFilterPopover({
   const [filterComboboxKey, setFilterComboboxKey] = useState(0);
   const [nameInput, setNameInput] = useState('');
   const [customerInput, setCustomerInput] = useState('');
-  const [domainInput, setDomainInput] = useState<string | null>(null);
-  const [skillInput, setSkillInput] = useState<string[]>([]);
-  const [positionInput, setPositionInput] = useState<string | null>(null);
-  const [positionNameInput, setPositionNameInput] = useState('');
-
-  const getDomainLabelRef = useRef<((id: string) => string) | undefined>(
-    undefined
+  const [domainSelection, setDomainSelection] = useState<SelectionOption | null>(
+    null
   );
-  const getSkillLabelRef = useRef<((id: string) => string) | undefined>(
-    undefined
-  );
+  const [skillSelections, setSkillSelections] = useState<SelectionOption[]>([]);
+  const [positionSelection, setPositionSelection] =
+    useState<SelectionOption | null>(null);
 
   const hasActiveFilters = Boolean(
     appliedFilters.name.trim() ||
@@ -70,19 +92,15 @@ export function ProjectFilterPopover({
   );
 
   const handleApplyFilter = () => {
-    const domainIds = domainInput ? [domainInput] : [];
-    const domainNames = domainInput
-      ? [getDomainLabelRef.current?.(domainInput) ?? domainInput]
-      : [];
     onFiltersChange({
       name: nameInput,
       customerName: customerInput,
-      domainIds,
-      skillIds: skillInput,
-      positionId: positionInput,
-      positionName: positionNameInput.trim(),
-      domainNames,
-      skillNames: skillInput.map((id) => getSkillLabelRef.current?.(id) ?? id)
+      domainIds: domainSelection ? [domainSelection.id] : [],
+      domainNames: domainSelection ? [domainSelection.label] : [],
+      skillIds: skillSelections.map((s) => s.id),
+      skillNames: skillSelections.map((s) => s.label),
+      positionId: positionSelection?.id ?? null,
+      positionName: positionSelection?.label ?? ''
     });
     setFilterOpen(false);
   };
@@ -90,10 +108,9 @@ export function ProjectFilterPopover({
   const handleClearFilter = () => {
     setNameInput('');
     setCustomerInput('');
-    setDomainInput(null);
-    setSkillInput([]);
-    setPositionInput(null);
-    setPositionNameInput('');
+    setDomainSelection(null);
+    setSkillSelections([]);
+    setPositionSelection(null);
     onFiltersChange(emptyFilters);
     setFilterOpen(false);
   };
@@ -103,17 +120,40 @@ export function ProjectFilterPopover({
     if (open) {
       setNameInput(appliedFilters.name);
       setCustomerInput(appliedFilters.customerName);
-      setDomainInput(appliedFilters.domainIds[0] ?? null);
-      setSkillInput(appliedFilters.skillIds);
-      setPositionInput(appliedFilters.positionId);
-      setPositionNameInput(appliedFilters.positionName);
+      setDomainSelection(toDomainSelection(appliedFilters));
+      setSkillSelections(toSkillSelections(appliedFilters));
+      setPositionSelection(toPositionSelection(appliedFilters));
     } else {
       setFilterComboboxKey((k) => k + 1);
     }
   };
 
+  const clearName = () =>
+    onFiltersChange({ ...appliedFilters, name: '' });
+  const clearCustomer = () =>
+    onFiltersChange({ ...appliedFilters, customerName: '' });
+  const clearDomain = (index: number) =>
+    onFiltersChange({
+      ...appliedFilters,
+      domainIds: appliedFilters.domainIds.filter((_, i) => i !== index),
+      domainNames: appliedFilters.domainNames.filter((_, i) => i !== index),
+    });
+  const clearSkill = (index: number) =>
+    onFiltersChange({
+      ...appliedFilters,
+      skillIds: appliedFilters.skillIds.filter((_, i) => i !== index),
+      skillNames: appliedFilters.skillNames.filter((_, i) => i !== index),
+    });
+  const clearPosition = () =>
+    onFiltersChange({
+      ...appliedFilters,
+      positionId: null,
+      positionName: '',
+    });
+
   return (
-    <Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
+    <div className="flex flex-wrap items-center gap-x-2">
+      <Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
       <PopoverTrigger asChild>
         <Button variant="ghost" size="sm" className="gap-x-2">
           <FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? 'fill' : 'regular'} />
@@ -154,7 +194,14 @@ export function ProjectFilterPopover({
             <Label>
               <Trans>Domains</Trans>
             </Label>
-            <DomainCombobox value={domainInput} onValueChange={setDomainInput} />
+            <DomainCombobox
+              value={domainSelection?.id ?? null}
+              onValueChange={(_, option) =>
+                setDomainSelection(
+                  option ? { id: option.value, label: option.label } : null
+                )
+              }
+            />
           </div>
           <div
             key={`skill-${filterComboboxKey}`}
@@ -162,7 +209,15 @@ export function ProjectFilterPopover({
             <Label>
               <Trans>Skills</Trans>
             </Label>
-            <SkillCombobox multiple value={skillInput} onChange={setSkillInput} />
+            <SkillCombobox
+              multiple
+              value={skillSelections.map((s) => s.id)}
+              onChange={(_, options) =>
+                setSkillSelections(
+                  options?.map((o) => ({ id: o.value, label: o.label })) ?? []
+                )
+              }
+            />
           </div>
           <div
             key={`position-${filterComboboxKey}`}
@@ -171,11 +226,14 @@ export function ProjectFilterPopover({
               <Trans>Position</Trans>
             </Label>
             <PositionCombobox
-              value={positionInput}
-              onChange={(value, label) => {
-                setPositionInput(value);
-                setPositionNameInput(label ?? '');
-              }}
+              value={positionSelection?.id ?? null}
+              onChange={(value, label) =>
+                setPositionSelection(
+                  value != null && label != null
+                    ? { id: value, label }
+                    : null
+                )
+              }
             />
           </div>
           <div className="flex gap-x-2">
@@ -195,5 +253,58 @@ export function ProjectFilterPopover({
         </div>
       </PopoverContent>
     </Popover>
+      {appliedFilters.name.trim() && (
+        <Badge
+          variant="outline"
+          className="max-w-48 cursor-pointer truncate"
+          onClick={clearName}
+          title={t`Project name: ${appliedFilters.name}`}
+        >
+          <Trans>Name</Trans>: {appliedFilters.name}
+        </Badge>
+      )}
+      {appliedFilters.customerName.trim() && (
+        <Badge
+          variant="outline"
+          className="max-w-48 cursor-pointer truncate"
+          onClick={clearCustomer}
+          title={t`Customer: ${appliedFilters.customerName}`}
+        >
+          <Trans>Customer</Trans>: {appliedFilters.customerName}
+        </Badge>
+      )}
+      {appliedFilters.domainNames.map((label, i) => (
+        <Badge
+          key={`domain-${appliedFilters.domainIds[i] ?? i}`}
+          variant="outline"
+          className="max-w-48 cursor-pointer truncate"
+          onClick={() => clearDomain(i)}
+          title={t`Domain: ${label}`}
+        >
+          <Trans>Domain</Trans>: {label}
+        </Badge>
+      ))}
+      {appliedFilters.skillNames.map((label, i) => (
+        <Badge
+          key={`skill-${appliedFilters.skillIds[i] ?? i}`}
+          variant="outline"
+          className="max-w-48 cursor-pointer truncate"
+          onClick={() => clearSkill(i)}
+          title={t`Skill: ${label}`}
+        >
+          <Trans>Skill</Trans>: {label}
+        </Badge>
+      ))}
+      {appliedFilters.positionName.trim() && (
+        <Badge
+          variant="outline"
+          className="max-w-48 cursor-pointer truncate"
+          onClick={clearPosition}
+          title={t`Position: ${appliedFilters.positionName}`}
+        >
+          <Trans>Position</Trans>: {appliedFilters.positionName}
+        </Badge>
+      )}
+    </div>
   );
 }

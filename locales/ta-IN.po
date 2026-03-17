@@ -280,6 +280,10 @@ msgid "Albanian"
 msgstr "அல்பேனியன்"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Allow Download"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
 msgstr "பொது அணுகலை அனுமதிக்கவும்"
 
@@ -313,8 +317,8 @@ msgid "Anyone who has the resume's public URL will be able to view and download 
 msgstr "ரெஸ்யூமியின் பொது URL-ஐ பெற்றிருப்பவர்கள் யாராக இருந்தாலும், எந்தக் கடவுச்சொல்லையும் உள்ளிடாமல் உங்கள் ரெஸ்யூமியைப் பார்க்கவும் பதிவிறக்கவும் முடியும்."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
-msgid "Anyone with the link can view and download the resume."
-msgstr "இந்த இணைப்பு இருக்கும் அனைவரும் உங்கள் ரெஸ்யூமியை பார்க்கவும் பதிவிறக்கவும் முடியும்."
+msgid "Anyone with the link can view the resume."
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "API Access"
@@ -346,7 +350,7 @@ msgstr "செயலி புள்ளிவிபரங்கள்"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Apply"
 msgstr ""
 
@@ -626,7 +630,7 @@ msgstr "வட்டம்"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Clear"
 msgstr ""
 
@@ -698,6 +702,10 @@ msgstr "Reactive Resume அல்லது வேறு எந்த ரெஸ�
 #: src/routes/_home/-sections/donate.tsx
 msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
 msgstr "பங்களிப்புகள் பிழை திருத்தங்கள், பாதுகாப்பு புதுப்பிப்புகள் மற்றும் செயலியை சீராக இயங்க தொடர்ந்து மேம்படுத்த உதவுகின்றன."
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Control whether visitors can download the resume as PDF."
+msgstr ""
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Copy"
@@ -900,12 +908,18 @@ msgid "Custom Sections"
 msgstr "தனிப்பயன் பகுதிகள்"
 
 #: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Customer"
 msgstr ""
 
 #: src/dialogs/project/index.tsx
 msgid "Customer name"
+msgstr ""
+
+#. placeholder {0}: appliedFilters.customerName
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Customer: {0}"
 msgstr ""
 
 #: src/utils/locale.ts
@@ -1067,6 +1081,10 @@ msgstr "டிஸ்கார்ட்"
 msgid "Documentation"
 msgstr "ஆவணங்கள்"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Domain"
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 msgid "Domain created."
 msgstr ""
@@ -1077,6 +1095,10 @@ msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Domain updated."
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Domain: {label}"
 msgstr ""
 
 #: src/dialogs/project/index.tsx
@@ -1335,7 +1357,7 @@ msgstr ""
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Filter"
 msgstr ""
 
@@ -1674,6 +1696,10 @@ msgstr "மொழிகள்"
 msgid "Last downloaded on {0}"
 msgstr "கடைசியாக {0} அன்று பதிவிறக்கப்பட்டது"
 
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Last Updated"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
@@ -1851,9 +1877,17 @@ msgstr "பல்மொழி"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "பெயர்"
+
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Name: {appliedQuery}"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Nepali"
@@ -2108,13 +2142,17 @@ msgstr "போர்ச்சுகீஸ் (பிரேஸில்)"
 msgid "Portuguese (Portugal)"
 msgstr "போர்ச்சுகீஸ் (போர்ச்சுகல்)"
 
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Position"
 msgstr "பதவி"
 
@@ -2132,6 +2170,15 @@ msgstr ""
 
 #: src/dialogs/position/index.tsx
 msgid "Position updated."
+msgstr ""
+
+#. placeholder {0}: appliedFilters.positionName
+#. placeholder {0}: appliedFilters.positionName || appliedFilters.positionId
+#. placeholder {0}: resume.position
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Position: {0}"
 msgstr ""
 
 #: src/dialogs/project/index.tsx
@@ -2181,10 +2228,13 @@ msgstr "சுயவிவரங்கள்"
 msgid "Progress Bar"
 msgstr "முன்னேற்ற பட்டை"
 
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Project"
 msgstr ""
 
@@ -2200,12 +2250,24 @@ msgstr ""
 msgid "Project name"
 msgstr ""
 
+#. placeholder {0}: appliedFilters.name
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Project name: {0}"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Project restored."
 msgstr ""
 
 #: src/dialogs/project/index.tsx
 msgid "Project updated successfully."
+msgstr ""
+
+#. placeholder {0}: appliedFilters.projectName || appliedFilters.projectId
+#. placeholder {0}: resume.projectName
+#: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Project: {0}"
 msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
@@ -2352,6 +2414,10 @@ msgstr ""
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restoring project..."
+msgstr ""
+
+#: src/routes/dashboard/resumes/-components/list-view.tsx
+msgid "Resume"
 msgstr ""
 
 #: src/routes/_home/-sections/hero.tsx
@@ -2504,6 +2570,7 @@ msgstr ""
 msgid "Select skill"
 msgstr ""
 
+#: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "Select skills"
 msgstr ""
@@ -2669,6 +2736,11 @@ msgstr "ஒற்றை நெடுவரிசை; மெத்தனமாக
 msgid "Size"
 msgstr "அளவு"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Skill"
+msgstr ""
+
 #: src/dialogs/skill/index.tsx
 msgid "Skill created."
 msgstr ""
@@ -2685,12 +2757,18 @@ msgstr ""
 msgid "Skill updated."
 msgstr ""
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Skill: {label}"
+msgstr ""
+
 #: src/dialogs/project/index.tsx
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 #: src/utils/resume/section.tsx
 msgid "Skills"
 msgstr "திறன்கள்"
@@ -2731,6 +2809,7 @@ msgstr ""
 msgid "Something went wrong."
 msgstr ""
 
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
@@ -3229,6 +3308,7 @@ msgstr "உங்கள் கடவுச்சொல்லை புதுப�
 
 #: src/components/ai/chat.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Updated"
 msgstr ""
 

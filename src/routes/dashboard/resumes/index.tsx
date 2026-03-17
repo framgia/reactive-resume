@@ -1,26 +1,24 @@
 import { t } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
-import { FunnelSimpleIcon, GridFourIcon, ListIcon, ReadCvLogoIcon, SortAscendingIcon } from "@phosphor-icons/react";
+import { GridFourIcon, ListIcon, ReadCvLogoIcon, SortAscendingIcon } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, stripSearchParams, useNavigate, useRouter } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { getCookie, setCookie } from "@tanstack/react-start/server";
 import { zodValidator } from "@tanstack/zod-adapter";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import z from "zod";
-import { PositionCombobox } from "@/components/position/position-combobox";
-import { ProjectCombobox } from "@/components/project/project-combobox";
-import { SkillCombobox } from "@/components/skill/skill-combobox";
-import { Button } from "@/components/ui/button";
 import { Combobox } from "@/components/ui/combobox";
-import { Label } from "@/components/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 import { DashboardHeader } from "../-components/header";
 import { GridView } from "./-components/grid-view";
+import {
+	type ResumeFiltersApplied,
+	ResumeFilterPopover,
+} from "./-components/filter";
 import { ListView } from "./-components/list-view";
 
 type SortOption = "lastUpdatedAt" | "createdAt" | "name";
@@ -51,11 +49,35 @@ function RouteComponent() {
 	const { sort, projectId, skillIds, positionId } = Route.useSearch();
 	const navigate = useNavigate({ from: Route.fullPath });
 
-	const [filterOpen, setFilterOpen] = useState(false);
-	const [filterComboboxKey, setFilterComboboxKey] = useState(0);
-	const [projectInput, setProjectInput] = useState<string | undefined>(undefined);
-	const [skillInput, setSkillInput] = useState<string[]>([]);
-	const [positionInput, setPositionInput] = useState<string | null>(null);
+	const [appliedFilters, setAppliedFilters] = useState<ResumeFiltersApplied>(
+		() => ({
+			projectId,
+			projectName: "",
+			skillIds,
+			skillNames: [],
+			positionId,
+			positionName: "",
+		}),
+	);
+
+	useEffect(() => {
+		setAppliedFilters((prev) => ({
+			...prev,
+			projectId,
+			skillIds,
+			positionId,
+			// Keep names when ids still match
+			projectName:
+				prev.projectId === projectId ? prev.projectName : "",
+			skillNames:
+				prev.skillIds.length === skillIds.length &&
+				prev.skillIds.every((id, i) => id === skillIds[i])
+					? prev.skillNames
+					: [],
+			positionName:
+				prev.positionId === positionId ? prev.positionName : "",
+		}));
+	}, [projectId, skillIds, positionId]);
 
 	const { data: resumes } = useQuery(
 		orpc.resume.list.queryOptions({
@@ -85,38 +107,13 @@ function RouteComponent() {
 		navigate({ search: { sort, projectId, skillIds, positionId, ...updates } });
 	};
 
-	const hasActiveFilters = projectId !== undefined || skillIds.length > 0 || positionId !== undefined;
-
-	const handleApplyFilter = () => {
+	const handleFiltersChange = (filters: ResumeFiltersApplied) => {
+		setAppliedFilters(filters);
 		updateSearch({
-			projectId: projectInput,
-			skillIds: skillInput,
-			positionId: positionInput ?? undefined,
+			projectId: filters.projectId,
+			skillIds: filters.skillIds,
+			positionId: filters.positionId,
 		});
-		setFilterOpen(false);
-	};
-
-	const handleClearFilter = () => {
-		updateSearch({
-			projectId: undefined,
-			skillIds: [],
-			positionId: undefined,
-		});
-		setProjectInput(undefined);
-		setSkillInput([]);
-		setPositionInput(null);
-		setFilterOpen(false);
-	};
-
-	const handleFilterOpenChange = (open: boolean) => {
-		setFilterOpen(open);
-		if (open) {
-			setProjectInput(projectId);
-			setSkillInput(skillIds);
-			setPositionInput(positionId ?? null);
-		} else {
-			setFilterComboboxKey((k) => k + 1);
-		}
 	};
 
 	return (
@@ -126,50 +123,11 @@ function RouteComponent() {
 			<Separator />
 
 			<div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-				<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
-					<PopoverTrigger asChild>
-						<Button variant="ghost" size="sm" className="gap-x-2">
-							<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
-							<Trans>Filter</Trans>
-						</Button>
-					</PopoverTrigger>
-					<PopoverContent align="start" className="w-72">
-						<div className="flex flex-col gap-y-3">
-							<div key={`project-${filterComboboxKey}`} className="flex flex-col gap-y-2">
-								<Label>
-									<Trans>Project</Trans>
-								</Label>
-								<ProjectCombobox value={projectInput} onValueChange={(next) => setProjectInput(next ?? undefined)} />
-							</div>
-							<div key={`skill-${filterComboboxKey}`} className="flex flex-col gap-y-2">
-								<Label>
-									<Trans>Skills</Trans>
-								</Label>
-								<SkillCombobox multiple value={skillInput} onChange={setSkillInput} projectId={projectId} />
-							</div>
-							<div key={`position-${filterComboboxKey}`} className="flex flex-col gap-y-2">
-								<Label>
-									<Trans>Position</Trans>
-								</Label>
-								<PositionCombobox
-									value={positionInput}
-									onChange={(value) => setPositionInput(value)}
-									projectId={projectId}
-								/>
-							</div>
-							<div className="flex gap-x-2">
-								{hasActiveFilters && (
-									<Button variant="ghost" size="sm" className="flex-1" onClick={handleClearFilter}>
-										<Trans>Clear</Trans>
-									</Button>
-								)}
-								<Button size="sm" className="flex-1" onClick={handleApplyFilter}>
-									<Trans>Apply</Trans>
-								</Button>
-							</div>
-						</div>
-					</PopoverContent>
-				</Popover>
+				<ResumeFilterPopover
+					appliedFilters={appliedFilters}
+					onFiltersChange={handleFiltersChange}
+					projectIdFromUrl={projectId}
+				/>
 
 				<Combobox
 					value={sort}

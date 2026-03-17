@@ -18,6 +18,7 @@ import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import z from "zod";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Combobox } from "@/components/ui/combobox";
 import {
 	DropdownMenu,
@@ -153,41 +154,53 @@ function PositionsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOp
 
 	return (
 		<>
-			<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
-				<PopoverTrigger asChild>
-					<Button variant="ghost" size="sm" className="gap-x-2">
-						<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
-						<Trans>Filter</Trans>
-					</Button>
-				</PopoverTrigger>
-				<PopoverContent align="start" className="w-72">
-					<div className="flex flex-col gap-y-3">
-						<div className="space-y-2">
-							<Label htmlFor="filter-position-name">
-								<Trans>Position name</Trans>
-							</Label>
-							<Input
-								id="filter-position-name"
-								type="text"
-								placeholder={t`Filter by name`}
-								value={nameInput}
-								onChange={(e) => setNameInput(e.target.value)}
-								className="h-9"
-							/>
-						</div>
-						<div className="flex gap-x-2">
-							{hasActiveFilters && (
-								<Button variant="ghost" size="sm" className="flex-1" onClick={handleClearFilter}>
-									<Trans>Clear</Trans>
+			<div className="flex items-center gap-x-2">
+				<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
+					<PopoverTrigger asChild>
+						<Button variant="ghost" size="sm" className="gap-x-2">
+							<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
+							<Trans>Filter</Trans>
+						</Button>
+					</PopoverTrigger>
+					<PopoverContent align="start" className="w-72">
+						<div className="flex flex-col gap-y-3">
+							<div className="space-y-2">
+								<Label htmlFor="filter-position-name">
+									<Trans>Position name</Trans>
+								</Label>
+								<Input
+									id="filter-position-name"
+									type="text"
+									placeholder={t`Filter by name`}
+									value={nameInput}
+									onChange={(e) => setNameInput(e.target.value)}
+									className="h-9"
+								/>
+							</div>
+							<div className="flex gap-x-2">
+								{hasActiveFilters && (
+									<Button variant="ghost" size="sm" className="flex-1" onClick={handleClearFilter}>
+										<Trans>Clear</Trans>
+									</Button>
+								)}
+								<Button size="sm" className="flex-1" onClick={handleApplyFilter}>
+									<Trans>Apply</Trans>
 								</Button>
-							)}
-							<Button size="sm" className="flex-1" onClick={handleApplyFilter}>
-								<Trans>Apply</Trans>
-							</Button>
+							</div>
 						</div>
-					</div>
-				</PopoverContent>
-			</Popover>
+					</PopoverContent>
+				</Popover>
+				{hasActiveFilters && (
+					<Badge
+						variant="outline"
+						className="max-w-xs cursor-pointer truncate"
+						onClick={handleClearFilter}
+						title={t`Name: ${appliedQuery}`}
+					>
+						<Trans>Name</Trans>: {appliedQuery}
+					</Badge>
+				)}
+			</div>
 			<Combobox
 				value={sort}
 				options={sortOptions}
@@ -232,41 +245,53 @@ function SkillsFilterPanel({ sort, query, onSortChange, onQueryChange, sortOptio
 
 	return (
 		<>
-			<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
-				<PopoverTrigger asChild>
-					<Button variant="ghost" size="sm" className="gap-x-2">
-						<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
-						<Trans>Filter</Trans>
-					</Button>
-				</PopoverTrigger>
-				<PopoverContent align="start" className="w-72">
-					<div className="flex flex-col gap-y-3">
-						<div className="space-y-2">
-							<Label htmlFor="filter-skill-name">
-								<Trans>Skill name</Trans>
-							</Label>
-							<Input
-								id="filter-skill-name"
-								type="text"
-								placeholder={t`Filter by name`}
-								value={nameInput}
-								onChange={(e) => setNameInput(e.target.value)}
-								className="h-9"
-							/>
-						</div>
-						<div className="flex gap-x-2">
-							{hasActiveFilters && (
-								<Button variant="ghost" size="sm" className="flex-1" onClick={handleClearFilter}>
-									<Trans>Clear</Trans>
+			<div className="flex items-center gap-x-2">
+				<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
+					<PopoverTrigger asChild>
+						<Button variant="ghost" size="sm" className="gap-x-2">
+							<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
+							<Trans>Filter</Trans>
+						</Button>
+					</PopoverTrigger>
+					<PopoverContent align="start" className="w-72">
+						<div className="flex flex-col gap-y-3">
+							<div className="space-y-2">
+								<Label htmlFor="filter-skill-name">
+									<Trans>Skill name</Trans>
+								</Label>
+								<Input
+									id="filter-skill-name"
+									type="text"
+									placeholder={t`Filter by name`}
+									value={nameInput}
+									onChange={(e) => setNameInput(e.target.value)}
+									className="h-9"
+								/>
+							</div>
+							<div className="flex gap-x-2">
+								{hasActiveFilters && (
+									<Button variant="ghost" size="sm" className="flex-1" onClick={handleClearFilter}>
+										<Trans>Clear</Trans>
+									</Button>
+								)}
+								<Button size="sm" className="flex-1" onClick={handleApplyFilter}>
+									<Trans>Apply</Trans>
 								</Button>
-							)}
-							<Button size="sm" className="flex-1" onClick={handleApplyFilter}>
-								<Trans>Apply</Trans>
-							</Button>
+							</div>
 						</div>
-					</div>
-				</PopoverContent>
-			</Popover>
+					</PopoverContent>
+				</Popover>
+				{hasActiveFilters && (
+					<Badge
+						variant="outline"
+						className="max-w-xs cursor-pointer truncate"
+						onClick={handleClearFilter}
+						title={t`Name: ${appliedQuery}`}
+					>
+						<Trans>Name</Trans>: {appliedQuery}
+					</Badge>
+				)}
+			</div>
 			<Combobox
 				value={sort}
 				options={sortOptions}

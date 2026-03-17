@@ -280,6 +280,10 @@ msgid "Albanian"
 msgstr "알바니아어"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Allow Download"
+msgstr ""
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Allow Public Access"
 msgstr "공개 액세스 허용"
 
@@ -313,8 +317,8 @@ msgid "Anyone who has the resume's public URL will be able to view and download 
 msgstr "이력서의 공개 URL을 가진 사람은 누구나 비밀번호를 입력하지 않고 이력서를 보고 다운로드할 수 있습니다."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
-msgid "Anyone with the link can view and download the resume."
-msgstr "링크가 있는 사람은 누구나 이력서를 보고 다운로드할 수 있습니다."
+msgid "Anyone with the link can view the resume."
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "API Access"
@@ -346,7 +350,7 @@ msgstr "애플리케이션 통계"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Apply"
 msgstr "적용"
 
@@ -626,7 +630,7 @@ msgstr "원"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Clear"
 msgstr "지우기"
 
@@ -698,6 +702,10 @@ msgstr "Reactive Resume나 다른 이력서 작성 도구로 이미 만든 이�
 #: src/routes/_home/-sections/donate.tsx
 msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
 msgstr "기여금은 버그 수정, 보안 업데이트 및 지속적인 개선에 사용되어 앱이 원활하게 동작하도록 돕습니다."
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+msgid "Control whether visitors can download the resume as PDF."
+msgstr ""
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Copy"
@@ -900,6 +908,7 @@ msgid "Custom Sections"
 msgstr "사용자 지정 섹션"
 
 #: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Customer"
 msgstr "고객"
@@ -907,6 +916,11 @@ msgstr "고객"
 #: src/dialogs/project/index.tsx
 msgid "Customer name"
 msgstr "고객 이름"
+
+#. placeholder {0}: appliedFilters.customerName
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Customer: {0}"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -1067,6 +1081,10 @@ msgstr "디스코드"
 msgid "Documentation"
 msgstr "문서"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Domain"
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 msgid "Domain created."
 msgstr "도메인이 생성되었습니다."
@@ -1078,6 +1096,10 @@ msgstr "도메인이 삭제되었습니다."
 #: src/dialogs/domain/index.tsx
 msgid "Domain updated."
 msgstr "도메인이 업데이트되었습니다."
+
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Domain: {label}"
+msgstr ""
 
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -1335,7 +1357,7 @@ msgstr ""
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Filter"
 msgstr "필터"
 
@@ -1674,6 +1696,10 @@ msgstr "언어"
 msgid "Last downloaded on {0}"
 msgstr "마지막 다운로드: {0}"
 
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Last Updated"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
@@ -1851,9 +1877,17 @@ msgstr "다국어 지원"
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Name"
 msgstr "이름"
+
+#: src/routes/dashboard/positions-skills/index.tsx
+#: src/routes/dashboard/positions-skills/index.tsx
+msgid "Name: {appliedQuery}"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Nepali"
@@ -2108,13 +2142,17 @@ msgstr "포르투갈어(브라질)"
 msgid "Portuguese (Portugal)"
 msgstr "포르투갈어(포르투갈)"
 
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/experience.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Position"
 msgstr "직책"
 
@@ -2132,6 +2170,15 @@ msgstr ""
 
 #: src/dialogs/position/index.tsx
 msgid "Position updated."
+msgstr ""
+
+#. placeholder {0}: appliedFilters.positionName
+#. placeholder {0}: appliedFilters.positionName || appliedFilters.positionId
+#. placeholder {0}: resume.position
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Position: {0}"
 msgstr ""
 
 #: src/dialogs/project/index.tsx
@@ -2181,10 +2228,13 @@ msgstr "프로필"
 msgid "Progress Bar"
 msgstr "진행률 바"
 
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/overall.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Project"
 msgstr "프로젝트"
 
@@ -2200,6 +2250,11 @@ msgstr "프로젝트가 성공적으로 삭제되었습니다."
 msgid "Project name"
 msgstr "프로젝트 이름"
 
+#. placeholder {0}: appliedFilters.name
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Project name: {0}"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Project restored."
 msgstr "프로젝트가 복원되었습니다."
@@ -2207,6 +2262,13 @@ msgstr "프로젝트가 복원되었습니다."
 #: src/dialogs/project/index.tsx
 msgid "Project updated successfully."
 msgstr "프로젝트가 성공적으로 업데이트되었습니다."
+
+#. placeholder {0}: appliedFilters.projectName || appliedFilters.projectId
+#. placeholder {0}: resume.projectName
+#: src/routes/dashboard/resumes/-components/cards/resume-card.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Project: {0}"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -2353,6 +2415,10 @@ msgstr "프로젝트 복원"
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restoring project..."
 msgstr "프로젝트 복원 중..."
+
+#: src/routes/dashboard/resumes/-components/list-view.tsx
+msgid "Resume"
+msgstr ""
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "Resume builder that simplifies the process of creating, updating, and sharing your resume."
@@ -2504,6 +2570,7 @@ msgstr "프로젝트 선택"
 msgid "Select skill"
 msgstr ""
 
+#: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
 msgid "Select skills"
 msgstr "스킬 선택"
@@ -2669,6 +2736,11 @@ msgstr "단일 열 구성에 세련되고 진중한 느낌을 더한 템플릿�
 msgid "Size"
 msgstr "크기"
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Skill"
+msgstr ""
+
 #: src/dialogs/skill/index.tsx
 msgid "Skill created."
 msgstr ""
@@ -2685,12 +2757,18 @@ msgstr ""
 msgid "Skill updated."
 msgstr ""
 
+#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Skill: {label}"
+msgstr ""
+
 #: src/dialogs/project/index.tsx
+#: src/dialogs/resume/import.tsx
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/custom.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
-#: src/routes/dashboard/resumes/index.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 #: src/utils/resume/section.tsx
 msgid "Skills"
 msgstr "기술"
@@ -2731,6 +2809,7 @@ msgstr ""
 msgid "Something went wrong."
 msgstr "문제가 발생했습니다."
 
+#: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
@@ -3229,6 +3308,7 @@ msgstr "비밀번호 업데이트"
 
 #: src/components/ai/chat.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Updated"
 msgstr ""
 

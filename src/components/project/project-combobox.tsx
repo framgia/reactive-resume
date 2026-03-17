@@ -9,9 +9,11 @@ import { orpc } from "@/integrations/orpc/client";
 const SEARCH_DEBOUNCE_MS = 300;
 const LIST_LIMIT = 50;
 
+type ProjectOption = { value: string; label: string };
+
 type ProjectSelectProps = {
 	value?: string | null;
-	onValueChange: (value: string | undefined) => void;
+	onValueChange: (value: string | undefined, option?: ProjectOption | null) => void;
 	disabled?: boolean;
 	className?: string;
 }
@@ -67,8 +69,11 @@ export function ProjectCombobox({
 	}, [activeProjects, selectedProject, value]);
 
 	const handleValueChange = React.useCallback(
-		(next: string | null, _option: ComboboxOption<string> | null) => {
-			onValueChange(next || undefined);
+		(next: string | null, option: ComboboxOption<string> | null) => {
+			onValueChange(
+				next || undefined,
+				option ? { value: option.value, label: String(option.label) } : null,
+			);
 		},
 		[onValueChange],
 	);

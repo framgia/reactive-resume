@@ -10,10 +10,12 @@ type DomainComboboxPropsBase = {
   multiple?: boolean;
 };
 
+type DomainOption = { value: string; label: string };
+
 type DomainComboboxPropsSingle = DomainComboboxPropsBase & {
   multiple?: false;
   value: string | null;
-  onValueChange: (value: string | null) => void;
+  onValueChange: (value: string | null, option?: DomainOption | null) => void;
 };
 
 type DomainComboboxPropsMultiple = DomainComboboxPropsBase & {
@@ -62,7 +64,9 @@ export function DomainCombobox(props: DomainComboboxProps) {
     <Combobox
       options={domainOptions}
       value={value}
-      onValueChange={onValueChange}
+      onValueChange={(v, option) =>
+        onValueChange(v, option ? { value: option.value, label: String(option.label) } : null)
+      }
       onSearchChange={setSearchInput}
       placeholder={t`Select domain`}
       searchPlaceholder={t`Search domains...`}
