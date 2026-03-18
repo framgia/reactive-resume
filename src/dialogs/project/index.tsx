@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import { useForm, useFormContext } from "react-hook-form";
 import { toast } from "sonner";
 import { useDebounceValue } from "usehooks-ts";
-import z from "zod";
+import type z from "zod";
+import { CustomerCombobox } from "@/components/customer/customer-combobox";
 import { DomainSelect } from "@/components/domain/domain-select";
 import { ChipInputAutocomplete } from "@/components/input/chip-input-autocomplete";
 import { Button } from "@/components/ui/button";
@@ -17,17 +18,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useFormBlocker } from "@/hooks/use-form-blocker";
 import { orpc } from "@/integrations/orpc/client";
+import { projectDto } from "@/integrations/orpc/dto/project";
 import { type DialogProps, useDialogStore } from "../store";
 
-const formSchema = z.object({
-	name: z.string().min(1, "Project name is required"),
-	description: z.string().optional(),
-	customerName: z.string().optional(),
-	skills: z.array(z.string()),
-	position: z.array(z.string()),
-	domainIds: z.array(z.string()),
-});
-
+// Reuse API DTO create input as the form schema
+const formSchema = projectDto.create.input;
 type FormValues = z.infer<typeof formSchema>;
 
 const SUGGESTION_DEBOUNCE_MS = 150;
@@ -85,14 +80,14 @@ function ProjectForm() {
 
 			<FormField
 				control={control}
-				name="customerName"
+				name="customerId"
 				render={({ field }) => (
 					<FormItem>
 						<FormLabel>
-							<Trans>Customer name</Trans>
+							<Trans>Customer</Trans>
 						</FormLabel>
 						<FormControl>
-							<Input {...field} value={field.value ?? ""} />
+							<CustomerCombobox value={field.value} onChange={field.onChange} />
 						</FormControl>
 						<FormMessage />
 					</FormItem>
@@ -169,7 +164,7 @@ export function CreateProjectDialog(_: DialogProps<"project.create">) {
 		defaultValues: {
 			name: "",
 			description: "",
-			customerName: "",
+			customerId: null,
 			skills: [],
 			position: [],
 			domainIds: [],
@@ -185,7 +180,7 @@ export function CreateProjectDialog(_: DialogProps<"project.create">) {
 			{
 				name: data.name,
 				description: data.description || undefined,
-				customerName: data.customerName || undefined,
+				customerId: data.customerId || undefined,
 				skills: data.skills?.length ? data.skills : undefined,
 				position: data.position?.length ? data.position : undefined,
 				domainIds: data.domainIds?.length ? data.domainIds : undefined,
@@ -242,7 +237,7 @@ export function UpdateProjectDialog({ data }: DialogProps<"project.update">) {
 		defaultValues: {
 			name: data.name,
 			description: data.description ?? "",
-			customerName: data.customerName ?? "",
+			customerId: data.customerId ?? null,
 			skills: [],
 			position: [],
 			domainIds: [],
@@ -254,7 +249,7 @@ export function UpdateProjectDialog({ data }: DialogProps<"project.update">) {
 		form.reset({
 			name: project.name,
 			description: project.description ?? "",
-			customerName: project.customerName ?? "",
+			customerId: project.customerId ?? null,
 			skills: project.skills?.map((s) => s.name) ?? [],
 			position: project.position?.map((p) => p.name) ?? [],
 			domainIds: project.domainIds,
@@ -271,7 +266,7 @@ export function UpdateProjectDialog({ data }: DialogProps<"project.update">) {
 				id: data.id,
 				name: values.name,
 				description: values.description || null,
-				customerName: values.customerName || null,
+				customerId: values.customerId || null,
 				skills: values.skills,
 				position: values.position,
 				domainIds: values.domainIds,

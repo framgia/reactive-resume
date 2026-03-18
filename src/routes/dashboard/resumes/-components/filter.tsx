@@ -2,21 +2,20 @@ import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { FunnelSimpleIcon } from "@phosphor-icons/react";
 import { useState } from "react";
+import { CustomerCombobox } from "@/components/customer/customer-combobox";
 import { PositionCombobox } from "@/components/position/position-combobox";
 import { ProjectCombobox } from "@/components/project/project-combobox";
 import { SkillCombobox } from "@/components/skill/skill-combobox";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 export type ResumeFiltersApplied = {
 	projectId: string | undefined;
 	projectName: string;
+	customerId: string | undefined;
+	customerName: string;
 	skillIds: string[];
 	skillNames: string[];
 	positionId: string | undefined;
@@ -26,9 +25,7 @@ export type ResumeFiltersApplied = {
 /** Single option with id + label; one source of truth for combobox selections. */
 type SelectionOption = { id: string; label: string };
 
-function toProjectSelection(
-	filters: ResumeFiltersApplied,
-): SelectionOption | null {
+function toProjectSelection(filters: ResumeFiltersApplied): SelectionOption | null {
 	const id = filters.projectId;
 	const label = filters.projectName?.trim();
 	if (!id) return null;
@@ -42,9 +39,7 @@ function toSkillSelections(filters: ResumeFiltersApplied): SelectionOption[] {
 	}));
 }
 
-function toPositionSelection(
-	filters: ResumeFiltersApplied,
-): SelectionOption | null {
+function toPositionSelection(filters: ResumeFiltersApplied): SelectionOption | null {
 	const id = filters.positionId;
 	const label = filters.positionName?.trim();
 	if (!id) return null;
@@ -58,21 +53,17 @@ type ResumeFilterPopoverProps = {
 	projectIdFromUrl: string | undefined;
 };
 
-export function ResumeFilterPopover({
-	appliedFilters,
-	onFiltersChange,
-	projectIdFromUrl,
-}: ResumeFilterPopoverProps) {
+export function ResumeFilterPopover({ appliedFilters, onFiltersChange, projectIdFromUrl }: ResumeFilterPopoverProps) {
 	const [filterOpen, setFilterOpen] = useState(false);
 	const [filterComboboxKey, setFilterComboboxKey] = useState(0);
-	const [projectSelection, setProjectSelection] =
-		useState<SelectionOption | null>(null);
+	const [projectSelection, setProjectSelection] = useState<SelectionOption | null>(null);
+	const [customerSelection, setCustomerSelection] = useState<SelectionOption | null>(null);
 	const [skillSelections, setSkillSelections] = useState<SelectionOption[]>([]);
-	const [positionSelection, setPositionSelection] =
-		useState<SelectionOption | null>(null);
+	const [positionSelection, setPositionSelection] = useState<SelectionOption | null>(null);
 
 	const hasActiveFilters =
 		appliedFilters.projectId !== undefined ||
+		appliedFilters.customerId !== undefined ||
 		appliedFilters.skillIds.length > 0 ||
 		appliedFilters.positionId !== undefined;
 
@@ -80,6 +71,8 @@ export function ResumeFilterPopover({
 		onFiltersChange({
 			projectId: projectSelection?.id,
 			projectName: projectSelection?.label ?? "",
+			customerId: customerSelection?.id,
+			customerName: customerSelection?.label ?? "",
 			skillIds: skillSelections.map((s) => s.id),
 			skillNames: skillSelections.map((s) => s.label),
 			positionId: positionSelection?.id,
@@ -90,11 +83,14 @@ export function ResumeFilterPopover({
 
 	const handleClearFilter = () => {
 		setProjectSelection(null);
+		setCustomerSelection(null);
 		setSkillSelections([]);
 		setPositionSelection(null);
 		onFiltersChange({
 			projectId: undefined,
 			projectName: "",
+			customerId: undefined,
+			customerName: "",
 			skillIds: [],
 			skillNames: [],
 			positionId: undefined,
@@ -107,6 +103,14 @@ export function ResumeFilterPopover({
 		setFilterOpen(open);
 		if (open) {
 			setProjectSelection(toProjectSelection(appliedFilters));
+			setCustomerSelection(
+				appliedFilters.customerId
+					? {
+							id: appliedFilters.customerId,
+							label: appliedFilters.customerName || appliedFilters.customerId,
+						}
+					: null,
+			);
 			setSkillSelections(toSkillSelections(appliedFilters));
 			setPositionSelection(toPositionSelection(appliedFilters));
 		} else {
@@ -119,6 +123,11 @@ export function ResumeFilterPopover({
 			...appliedFilters,
 			projectId: undefined,
 			projectName: "",
+		});
+	const clearCustomer = () =>
+		onFiltersChange({
+			...appliedFilters,
+			customerName: "",
 		});
 	const clearSkill = (index: number) =>
 		onFiltersChange({
@@ -138,37 +147,33 @@ export function ResumeFilterPopover({
 			<Popover open={filterOpen} onOpenChange={handleFilterOpenChange}>
 				<PopoverTrigger asChild>
 					<Button variant="ghost" size="sm" className="gap-x-2">
-						<FunnelSimpleIcon
-							className="size-4"
-							weight={hasActiveFilters ? "fill" : "regular"}
-						/>
+						<FunnelSimpleIcon className="size-4" weight={hasActiveFilters ? "fill" : "regular"} />
 						<Trans>Filter</Trans>
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent align="start" className="w-72">
+					<div className="flex flex-col gap-y-2">
+						<Label>
+							<Trans>Customer</Trans>
+						</Label>
+						<CustomerCombobox
+							value={customerSelection?.id ?? null}
+							onChange={(value, label) => setCustomerSelection(value && label ? { id: value, label } : null)}
+						/>
+					</div>
 					<div className="flex flex-col gap-y-3">
-						<div
-							key={`project-${filterComboboxKey}`}
-							className="flex flex-col gap-y-2"
-						>
+						<div key={`project-${filterComboboxKey}`} className="flex flex-col gap-y-2">
 							<Label>
 								<Trans>Project</Trans>
 							</Label>
 							<ProjectCombobox
 								value={projectSelection?.id ?? undefined}
 								onValueChange={(_value, option) =>
-									setProjectSelection(
-										option
-											? { id: option.value, label: option.label }
-											: null,
-									)
+									setProjectSelection(option ? { id: option.value, label: option.label } : null)
 								}
 							/>
 						</div>
-						<div
-							key={`skill-${filterComboboxKey}`}
-							className="flex flex-col gap-y-2"
-						>
+						<div key={`skill-${filterComboboxKey}`} className="flex flex-col gap-y-2">
 							<Label>
 								<Trans>Skills</Trans>
 							</Label>
@@ -186,33 +191,21 @@ export function ResumeFilterPopover({
 								projectId={projectIdFromUrl}
 							/>
 						</div>
-						<div
-							key={`position-${filterComboboxKey}`}
-							className="flex flex-col gap-y-2"
-						>
+						<div key={`position-${filterComboboxKey}`} className="flex flex-col gap-y-2">
 							<Label>
 								<Trans>Position</Trans>
 							</Label>
 							<PositionCombobox
 								value={positionSelection?.id ?? null}
 								onChange={(value, label) =>
-									setPositionSelection(
-										value != null && label != null
-											? { id: value, label }
-											: null,
-									)
+									setPositionSelection(value != null && label != null ? { id: value, label } : null)
 								}
 								projectId={projectIdFromUrl}
 							/>
 						</div>
 						<div className="flex gap-x-2">
 							{hasActiveFilters && (
-								<Button
-									variant="ghost"
-									size="sm"
-									className="flex-1"
-									onClick={handleClearFilter}
-								>
+								<Button variant="ghost" size="sm" className="flex-1" onClick={handleClearFilter}>
 									<Trans>Clear</Trans>
 								</Button>
 							)}
@@ -230,8 +223,17 @@ export function ResumeFilterPopover({
 					onClick={clearProject}
 					title={t`Project: ${appliedFilters.projectName || appliedFilters.projectId}`}
 				>
-					<Trans>Project</Trans>:{" "}
-					{appliedFilters.projectName.trim() || appliedFilters.projectId}
+					<Trans>Project</Trans>: {appliedFilters.projectName.trim() || appliedFilters.projectId}
+				</Badge>
+			)}
+			{appliedFilters.customerId != null && (
+				<Badge
+					variant="outline"
+					className="max-w-48 cursor-pointer truncate"
+					onClick={clearCustomer}
+					title={t`Customer: ${appliedFilters.customerName}`}
+				>
+					<Trans>Customer</Trans>: {appliedFilters.customerName}
 				</Badge>
 			)}
 			{appliedFilters.skillNames.map((label, i) => (
@@ -252,8 +254,7 @@ export function ResumeFilterPopover({
 					onClick={clearPosition}
 					title={t`Position: ${appliedFilters.positionName || appliedFilters.positionId}`}
 				>
-					<Trans>Position</Trans>:{" "}
-					{appliedFilters.positionName.trim() || appliedFilters.positionId}
+					<Trans>Position</Trans>: {appliedFilters.positionName.trim() || appliedFilters.positionId}
 				</Badge>
 			)}
 		</div>

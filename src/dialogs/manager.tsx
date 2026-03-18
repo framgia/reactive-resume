@@ -33,6 +33,7 @@ import {
 	CreateSkillDialog as CreateSkillDictionaryDialog,
 	UpdateSkillDialog as UpdateSkillDictionaryDialog,
 } from "./skill";
+import { CreateCustomerDialog, UpdateCustomerDialog } from "./customer";
 import { useDialogStore } from "./store";
 
 export function DialogManager() {
@@ -45,6 +46,8 @@ export function DialogManager() {
 		.with({ type: "api-key.create" }, () => <CreateApiKeyDialog />)
 		.with({ type: "domain.create" }, () => <CreateDomainDialog />)
 		.with({ type: "domain.update" }, ({ data }) => <UpdateDomainDialog data={data} />)
+		.with({ type: "customer.create" }, () => <CreateCustomerDialog />)
+		.with({ type: "customer.update" }, ({ data }) => <UpdateCustomerDialog data={data} />)
 		.with({ type: "position.create" }, () => <CreatePositionDialog />)
 		.with({ type: "position.update" }, ({ data }) => <UpdatePositionDialog data={data} />)
 		.with({ type: "skill.create" }, () => <CreateSkillDictionaryDialog />)

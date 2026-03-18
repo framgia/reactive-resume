@@ -53,7 +53,7 @@ function RouteComponent() {
 
 	const [appliedFilters, setAppliedFilters] = useState<ProjectFiltersApplied>({
 		name: "",
-		customerName: "",
+		customerId: null,
 		domainIds: [],
 		skillIds: [],
 		positionId: null,
@@ -71,7 +71,7 @@ function RouteComponent() {
 				page,
 				pageSize,
 				name: appliedFilters.name?.trim() || undefined,
-				customerName: appliedFilters.customerName?.trim() || undefined,
+				customerId: appliedFilters.customerId ?? undefined,
 				domainIds: appliedFilters.domainIds.length > 0 ? appliedFilters.domainIds : undefined,
 				skillIds: appliedFilters.skillIds.length > 0 ? appliedFilters.skillIds : undefined,
 				positionId: appliedFilters.positionId ?? undefined,

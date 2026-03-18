@@ -14,11 +14,8 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 import { DashboardHeader } from "../-components/header";
+import { ResumeFilterPopover, type ResumeFiltersApplied } from "./-components/filter";
 import { GridView } from "./-components/grid-view";
-import {
-	type ResumeFiltersApplied,
-	ResumeFilterPopover,
-} from "./-components/filter";
 import { ListView } from "./-components/list-view";
 
 type SortOption = "lastUpdatedAt" | "createdAt" | "name";
@@ -26,6 +23,7 @@ type SortOption = "lastUpdatedAt" | "createdAt" | "name";
 const searchSchema = z.object({
 	sort: z.enum(["lastUpdatedAt", "createdAt", "name"]).default("lastUpdatedAt"),
 	projectId: z.uuid().optional(),
+	customerId: z.uuid().optional(),
 	skillIds: z.array(z.uuid()).default([]),
 	positionId: z.uuid().optional(),
 });
@@ -46,44 +44,43 @@ function RouteComponent() {
 	const router = useRouter();
 	const { i18n } = useLingui();
 	const { view } = Route.useLoaderData();
-	const { sort, projectId, skillIds, positionId } = Route.useSearch();
+	const { sort, projectId, customerId, skillIds, positionId } = Route.useSearch();
 	const navigate = useNavigate({ from: Route.fullPath });
 
-	const [appliedFilters, setAppliedFilters] = useState<ResumeFiltersApplied>(
-		() => ({
-			projectId,
-			projectName: "",
-			skillIds,
-			skillNames: [],
-			positionId,
-			positionName: "",
-		}),
-	);
+	const [appliedFilters, setAppliedFilters] = useState<ResumeFiltersApplied>(() => ({
+		projectId,
+		projectName: "",
+		customerId,
+		customerName: "",
+		skillIds,
+		skillNames: [],
+		positionId,
+		positionName: "",
+	}));
 
 	useEffect(() => {
 		setAppliedFilters((prev) => ({
 			...prev,
 			projectId,
+			customerId,
 			skillIds,
 			positionId,
 			// Keep names when ids still match
-			projectName:
-				prev.projectId === projectId ? prev.projectName : "",
+			projectName: prev.projectId === projectId ? prev.projectName : "",
 			skillNames:
-				prev.skillIds.length === skillIds.length &&
-				prev.skillIds.every((id, i) => id === skillIds[i])
+				prev.skillIds.length === skillIds.length && prev.skillIds.every((id, i) => id === skillIds[i])
 					? prev.skillNames
 					: [],
-			positionName:
-				prev.positionId === positionId ? prev.positionName : "",
+			positionName: prev.positionId === positionId ? prev.positionName : "",
 		}));
-	}, [projectId, skillIds, positionId]);
+	}, [projectId, customerId, skillIds, positionId]);
 
 	const { data: resumes } = useQuery(
 		orpc.resume.list.queryOptions({
 			input: {
 				sort,
 				projectId,
+				customerId,
 				skillIds,
 				positionId,
 			},
@@ -104,13 +101,14 @@ function RouteComponent() {
 	};
 
 	const updateSearch = (updates: Partial<z.infer<typeof searchSchema>>) => {
-		navigate({ search: { sort, projectId, skillIds, positionId, ...updates } });
+		navigate({ search: { sort, projectId, customerId, skillIds, positionId, ...updates } });
 	};
 
 	const handleFiltersChange = (filters: ResumeFiltersApplied) => {
 		setAppliedFilters(filters);
 		updateSearch({
 			projectId: filters.projectId,
+			customerId: filters.customerId,
 			skillIds: filters.skillIds,
 			positionId: filters.positionId,
 		});
@@ -141,7 +139,7 @@ function RouteComponent() {
 						variant: "ghost",
 						children: (_, option) => (
 							<>
-								<SortAscendingIcon className="size-4 shrink-0 opacity-50" />
+								<SortAscendingIcon />
 								{option?.label}
 							</>
 						),

@@ -16,10 +16,10 @@ export const projectRouter = {
 		.input(projectDto.list.input.optional().default({ sort: "lastUpdatedAt", page: 1, pageSize: 10 }))
 		.output(projectDto.list.output)
 		.handler(async ({ input }) => {
-			return await projectService.list({
+			const result = await projectService.list({
 				sort: input.sort,
 				name: input.name,
-				customerName: input.customerName,
+				customerId: input.customerId,
 				domainIds: input.domainIds,
 				skillIds: input.skillIds,
 				positionId: input.positionId,
@@ -28,6 +28,7 @@ export const projectRouter = {
 				page: input.page,
 				pageSize: input.pageSize ?? input.limit,
 			});
+			return result;
 		}),
 
 	getById: protectedProcedure
@@ -62,8 +63,8 @@ export const projectRouter = {
 		.handler(async ({ input }) => {
 			return await projectService.create({
 				name: input.name,
-				description: input.description,
-				customerName: input.customerName,
+				description: input.description ?? undefined,
+				customerId: input.customerId ?? undefined,
 				skills: input.skills,
 				position: input.position,
 				domainIds: input.domainIds,
@@ -85,9 +86,9 @@ export const projectRouter = {
 		.handler(async ({ input }) => {
 			return await projectService.update({
 				id: input.id,
-				name: input.name,
-				description: input.description,
-				customerName: input.customerName,
+				name: input.name ?? undefined,
+				description: input.description ?? undefined,
+				customerId: input.customerId ?? undefined,
 				skills: input.skills,
 				position: input.position,
 				domainIds: input.domainIds,
@@ -139,23 +140,5 @@ export const projectRouter = {
 		.output(projectDto.getDomains.output)
 		.handler(async ({ input }) => {
 			return await projectService.getDomains({ id: input.id });
-		}),
-
-	setDomains: protectedProcedure
-		.route({
-			method: "PUT",
-			path: "/projects/{id}/domains",
-			tags: ["Projects"],
-			operationId: "setProjectDomains",
-			summary: "Set domains for a project (replaces existing)",
-			successDescription: "Domains updated.",
-		})
-		.input(projectDto.setDomains.input)
-		.output(projectDto.setDomains.output)
-		.handler(async ({ input }) => {
-			return await projectService.setDomains({
-				id: input.id,
-				domainIds: input.domainIds,
-			});
 		}),
 };

@@ -59,6 +59,12 @@ const appSidebarItems = [
 		label: msg`Domains`,
 		href: "/dashboard/domains",
 	},
+	// Customers are managed alongside projects & domains.
+	{
+		icon: <UserCircleIcon />,
+		label: msg`Customers`,
+		href: "/dashboard/customers",
+	},
 	{
 		icon: <BriefcaseIcon />,
 		label: msg`Positions & Skills`,

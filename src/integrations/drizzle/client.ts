@@ -21,7 +21,7 @@ function getPool() {
 
 function makeDrizzleClient() {
 	const pool = getPool();
-	return drizzle({ client: pool, schema });
+	return drizzle({ client: pool, schema, logger: true });
 }
 
 const getDatabaseServerFn = createServerOnlyFn(() => {

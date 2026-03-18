@@ -294,6 +294,22 @@ export const position = pg.pgTable("position", {
 		.$onUpdate(() => /* @__PURE__ */ new Date()),
 });
 
+export const customer = pg.pgTable("customer", {
+	id: pg
+		.uuid("id")
+		.notNull()
+		.primaryKey()
+		.$defaultFn(() => generateId()),
+	name: pg.text("name").notNull().unique(),
+	createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	updatedAt: pg
+		.timestamp("updated_at", { withTimezone: true })
+		.notNull()
+		.defaultNow()
+		.$onUpdate(() => /* @__PURE__ */ new Date()),
+	deletedAt: pg.timestamp("deleted_at", { withTimezone: true }),
+});
+
 export const project = pg.pgTable(
 	"project",
 	{
@@ -304,7 +320,7 @@ export const project = pg.pgTable(
 			.$defaultFn(() => generateId()),
 		name: pg.text("name").notNull(),
 		description: pg.text("description"),
-		customerName: pg.text("customer_name"),
+		customerId: pg.uuid("customer_id").references(() => customer.id, { onDelete: "set null" }),
 		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 		updatedAt: pg
 			.timestamp("updated_at", { withTimezone: true })
@@ -313,7 +329,7 @@ export const project = pg.pgTable(
 			.$onUpdate(() => /* @__PURE__ */ new Date()),
 		deletedAt: pg.timestamp("deleted_at", { withTimezone: true }),
 	},
-	(t) => [pg.index().on(t.createdAt.asc()), pg.index().on(t.deletedAt)],
+	(t) => [pg.index().on(t.createdAt.asc()), pg.index().on(t.deletedAt), pg.index().on(t.customerId)],
 );
 
 export const projectSkill = pg.pgTable(
@@ -398,4 +414,24 @@ export const projectDomain = pg.pgTable(
 		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 	},
 	(t) => [pg.primaryKey({ columns: [t.projectId, t.domainId] }), pg.index().on(t.projectId), pg.index().on(t.domainId)],
+);
+
+export const customerDomain = pg.pgTable(
+	"customer_domain",
+	{
+		customerId: pg
+			.uuid("customer_id")
+			.notNull()
+			.references(() => customer.id, { onDelete: "cascade" }),
+		domainId: pg
+			.uuid("domain_id")
+			.notNull()
+			.references(() => domain.id, { onDelete: "cascade" }),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	},
+	(t) => [
+		pg.primaryKey({ columns: [t.customerId, t.domainId] }),
+		pg.index().on(t.customerId),
+		pg.index().on(t.domainId),
+	],
 );

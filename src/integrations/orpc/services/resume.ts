@@ -100,6 +100,7 @@ export const resumeService = {
 		userId: string;
 		sort: "lastUpdatedAt" | "createdAt" | "name";
 		projectId?: string | null;
+		customerId?: string;
 		skillIds?: string[];
 		positionId?: string | null;
 	}) => {
@@ -115,6 +116,8 @@ export const resumeService = {
 				: input.projectId === null
 					? isNull(schema.resume.projectId)
 					: and(eq(schema.resume.projectId, input.projectId), isNotNull(schema.project.id));
+		const customerCondition =
+			input.customerId !== undefined ? eq(schema.project.customerId, input.customerId) : undefined;
 		const positionCondition =
 			input.positionId !== undefined
 				? input.positionId === null
@@ -139,6 +142,7 @@ export const resumeService = {
 		const conditions = [
 			eq(schema.resume.userId, input.userId),
 			projectCondition,
+			customerCondition,
 			positionCondition,
 			skillCondition,
 		].filter(Boolean);

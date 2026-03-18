@@ -35,10 +35,13 @@ export const resumeDto = {
 			.object({
 				sort: z.enum(["lastUpdatedAt", "createdAt", "name"]).optional().default("lastUpdatedAt"),
 				projectId: z.string().nullable().optional().describe("Filter by project ID; omit for all."),
+				customerId: z
+					.uuid()
+					.optional()
+					.describe("Filter by customer via linked project."),
 				skillIds: z.array(z.string().uuid()).optional().default([]).describe("Filter by skills (resume has any)."),
 				positionId: z
 					.string()
-					.uuid()
 					.nullable()
 					.optional()
 					.describe("Filter by overall position/level; null = no position."),

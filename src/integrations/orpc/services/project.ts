@@ -11,10 +11,10 @@ export const projectService = {
 	list: async (input: {
 		sort: "lastUpdatedAt" | "createdAt" | "name";
 		name?: string;
-		customerName?: string;
+		customerId?: string;
 		domainIds?: string[];
 		skillIds?: string[];
-		positionId?: string | null;
+		positionId?: string;
 		query?: string;
 		limit?: number;
 		page?: number;
@@ -22,22 +22,18 @@ export const projectService = {
 	}) => {
 		const conditions: ReturnType<typeof eq>[] = [];
 		const nameTrimmed = input.name?.trim();
-		const customerNameTrimmed = input.customerName?.trim();
 		const queryTrimmed = input.query?.trim();
 		const domainIdsFilter = input.domainIds?.map((id) => id.trim()).filter(Boolean);
 		const hasDomainFilter = (domainIdsFilter?.length ?? 0) > 0;
 		if (nameTrimmed) {
 			conditions.push(ilike(schema.project.name, `%${nameTrimmed}%`));
 		}
-		if (customerNameTrimmed) {
-			conditions.push(ilike(schema.project.customerName, `%${customerNameTrimmed}%`));
-		}
 		if (queryTrimmed) {
-			const queryCondition = or(
-				ilike(schema.project.name, `%${queryTrimmed}%`),
-				ilike(schema.project.customerName, `%${queryTrimmed}%`),
-			);
+			const queryCondition = or(ilike(schema.project.name, `%${queryTrimmed}%`));
 			if (queryCondition) conditions.push(queryCondition);
+		}
+		if (input.customerId) {
+			conditions.push(eq(schema.project.customerId, input.customerId));
 		}
 		if (hasDomainFilter && domainIdsFilter) {
 			conditions.push(
@@ -90,10 +86,11 @@ export const projectService = {
 				id: schema.project.id,
 				name: schema.project.name,
 				description: schema.project.description,
-				customerName: schema.project.customerName,
+				customerId: schema.project.customerId,
 				createdAt: schema.project.createdAt,
 				updatedAt: schema.project.updatedAt,
 				deletedAt: schema.project.deletedAt,
+				customerName: schema.customer.name,
 				domainNames:
 					sql<string>`COALESCE(string_agg(${schema.domain.name}, ', ' ORDER BY ${schema.domain.name}), '')`.as(
 						"domain_names",
@@ -102,15 +99,16 @@ export const projectService = {
 			.from(schema.project)
 			.leftJoin(schema.projectDomain, eq(schema.project.id, schema.projectDomain.projectId))
 			.leftJoin(schema.domain, eq(schema.projectDomain.domainId, schema.domain.id))
+			.leftJoin(schema.customer, eq(schema.project.customerId, schema.customer.id))
 			.where(whereClause)
 			.groupBy(
 				schema.project.id,
 				schema.project.name,
 				schema.project.description,
-				schema.project.customerName,
 				schema.project.createdAt,
 				schema.project.updatedAt,
 				schema.project.deletedAt,
+				schema.customer.id,
 			)
 			.orderBy(
 				match(input.sort)
@@ -166,8 +164,8 @@ export const projectService = {
 
 	create: async (input: {
 		name: string;
-		description?: string | null;
-		customerName?: string | null;
+		description?: string;
+		customerId?: string;
 		skills?: string[];
 		position?: string[];
 		domainIds?: string[];
@@ -180,8 +178,8 @@ export const projectService = {
 			await tx.insert(schema.project).values({
 				id,
 				name: input.name,
-				description: input.description ?? null,
-				customerName: input.customerName ?? null,
+				description: input.description,
+				customerId: input.customerId,
 			});
 
 			const skillIds = await skillService.getOrCreateSkillIds(skillNames, tx);
@@ -210,8 +208,8 @@ export const projectService = {
 	update: async (input: {
 		id: string;
 		name?: string;
-		description?: string | null;
-		customerName?: string | null;
+		description?: string;
+		customerId?: string;
 		skills?: string[];
 		position?: string[];
 		domainIds?: string[];
@@ -221,7 +219,7 @@ export const projectService = {
 		const updateData: Partial<typeof schema.project.$inferSelect> = {
 			name: input.name,
 			description: input.description,
-			customerName: input.customerName,
+			customerId: input.customerId,
 		};
 
 		const runUpdate = async (tx: Parameters<Parameters<typeof db.transaction>[0]>[0]) => {
@@ -318,25 +316,5 @@ export const projectService = {
 			.from(schema.projectDomain)
 			.where(eq(schema.projectDomain.projectId, input.id));
 		return links.map((l) => l.domainId);
-	},
-
-	setDomains: async (input: { id: string; domainIds: string[] }) => {
-		const [project] = await db
-			.select({ id: schema.project.id })
-			.from(schema.project)
-			.where(and(eq(schema.project.id, input.id), isNull(schema.project.deletedAt)));
-		if (!project) throw new ORPCError("NOT_FOUND");
-
-		await db.transaction(async (tx) => {
-			await tx.delete(schema.projectDomain).where(eq(schema.projectDomain.projectId, input.id));
-			if (input.domainIds.length > 0) {
-				await tx.insert(schema.projectDomain).values(
-					input.domainIds.map((domainId) => ({
-						projectId: input.id,
-						domainId,
-					})),
-				);
-			}
-		});
 	},
 };

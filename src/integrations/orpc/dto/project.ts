@@ -6,13 +6,14 @@ const projectSchema = createSelectSchema(schema.project, {
 	id: z.string().describe("The ID of the project."),
 	name: z.string().min(1).describe("The name of the project."),
 	description: z.string().nullable().describe("Project description."),
-	customerName: z.string().nullable().describe("Customer or client name."),
 	createdAt: z.date().describe("When the project was created."),
 	updatedAt: z.date().describe("When the project was last updated."),
 	deletedAt: z.date().nullable().describe("When the project was soft-deleted."),
+	customerId: z.uuid().nullable().describe("The ID of the customer linked to the project."),
 });
 
 const projectListItemSchema = projectSchema.extend({
+	customerName: z.string().nullable().describe("The name of the customer linked to the project."),
 	domainNames: z.string().describe("Comma-separated domain names linked to the project."),
 });
 
@@ -22,7 +23,7 @@ export const projectDto = {
 			.object({
 				sort: z.enum(["lastUpdatedAt", "createdAt", "name"]).optional().default("lastUpdatedAt"),
 				name: z.string().optional(),
-				customerName: z.string().optional(),
+				customerId: z.uuid().optional(),
 				domainIds: z
 					.array(z.string())
 					.optional()
@@ -33,7 +34,6 @@ export const projectDto = {
 					.describe("Filter by skill IDs; only projects linked to at least one of these skills."),
 				positionId: z
 					.string()
-					.nullable()
 					.optional()
 					.describe("Filter by position ID; only projects linked to this position."),
 				query: z.string().optional().describe("Search by project name or customer name (partial match)."),
@@ -82,14 +82,17 @@ export const projectDto = {
 	},
 
 	create: {
-		input: z.object({
-			name: z.string().min(1),
-			description: z.string().optional(),
-			customerName: z.string().optional(),
-			skills: z.array(z.string()).optional().default([]),
-			position: z.array(z.string()).optional().default([]),
-			domainIds: z.array(z.string()).optional(),
-		}),
+		input: projectSchema
+			.pick({
+				name: true,
+				description: true,
+				customerId: true,
+			})
+			.extend({
+				skills: z.array(z.string()).optional().default([]),
+				position: z.array(z.string()).optional().default([]),
+				domainIds: z.array(z.string()).optional(),
+			}),
 		output: z.string().describe("The ID of the created project."),
 	},
 
@@ -98,11 +101,11 @@ export const projectDto = {
 			.pick({
 				name: true,
 				description: true,
-				customerName: true,
+				customerId: true,
 			})
 			.partial()
 			.extend({
-				id: z.string(),
+				id: z.uuid().describe("The ID of the project to update."),
 				skills: z.array(z.string()).optional().describe("If provided, replaces project skills (names; upsert)."),
 				position: z.array(z.string()).optional().describe("If provided, replaces project positions (names; upsert)."),
 				domainIds: z.array(z.string()).optional().describe("If provided, replaces project domains."),
