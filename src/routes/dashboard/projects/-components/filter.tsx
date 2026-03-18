@@ -15,6 +15,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 export type ProjectFiltersApplied = {
 	name: string;
 	customerId: string | null;
+	customerName: string;
 	domainIds: string[];
 	skillIds: string[];
 	positionId: string | null;
@@ -26,6 +27,7 @@ export type ProjectFiltersApplied = {
 const emptyFilters: ProjectFiltersApplied = {
 	name: "",
 	customerId: null,
+	customerName: "",
 	domainIds: [],
 	skillIds: [],
 	positionId: null,
@@ -84,6 +86,7 @@ export function ProjectFilterPopover({ appliedFilters, onFiltersChange }: Projec
 		onFiltersChange({
 			name: nameInput,
 			customerId: customerSelection?.id ?? null,
+			customerName: customerSelection?.label ?? "",
 			domainIds: domainSelection ? [domainSelection.id] : [],
 			domainNames: domainSelection ? [domainSelection.label] : [],
 			skillIds: skillSelections.map((s) => s.id),
@@ -244,7 +247,7 @@ export function ProjectFilterPopover({ appliedFilters, onFiltersChange }: Projec
 					onClick={clearCustomer}
 					title={t`Customer filter applied`}
 				>
-					<Trans>Customer</Trans>
+					<Trans>Customer</Trans>: {appliedFilters.customerName}
 				</Badge>
 			)}
 			{appliedFilters.domainNames.map((label, i) => (

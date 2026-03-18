@@ -92,6 +92,11 @@ msgstr "Ein Bestätigungslink wurde an Ihre aktuelle E-Mail-Adresse gesendet. Bi
 msgid "A copy was shared with {count} user(s)."
 msgstr "Eine Kopie wurde mit {count} Benutzer(n) geteilt."
 
+#: src/dialogs/customer/index.tsx
+#: src/dialogs/customer/index.tsx
+msgid "A customer with this name already exists."
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/domain/index.tsx
 msgid "A domain with this name already exists."
@@ -148,6 +153,10 @@ msgstr "Greife mit der API programmgesteuert auf deine Lebensläufe und Daten zu
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
 msgstr "Ein benutzerdefiniertes Feld hinzufügen"
+
+#: src/dialogs/customer/index.tsx
+msgid "Add a customer to assign projects and domains."
+msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Add a domain name to use when assigning projects."
@@ -362,6 +371,7 @@ msgstr "Arabisch"
 msgid "Are you sure you want to close this dialog?"
 msgstr "Sind Sie sicher, dass Sie dieses Dialogfenster schließen wollen?"
 
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -551,6 +561,7 @@ msgstr "Kann ich meinen Lebenslauf als PDF exportieren?"
 #: src/hooks/use-prompt.tsx
 #: src/routes/auth/-components/social-auth.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -733,6 +744,7 @@ msgid "Cover Letter"
 msgstr "Anschreiben"
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/customer/index.tsx
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/position/index.tsx
 #: src/dialogs/project/index.tsx
@@ -780,6 +792,10 @@ msgstr "Neues Anschreiben erstellen"
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Create a new custom section"
 msgstr "Einen neuen benutzerdefinierten Abschnitt erstellen"
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Create a new customer"
+msgstr ""
 
 #: src/routes/dashboard/domains/index.tsx
 msgid "Create a new domain"
@@ -851,6 +867,10 @@ msgstr "Beispiel-Lebenslauf erstellen"
 msgid "Create as many resumes as you want, without limits."
 msgstr "Erstelle so viele Lebensläufe, wie du möchtest – ohne Begrenzung."
 
+#: src/dialogs/customer/index.tsx
+msgid "Create customer"
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 msgid "Create domain"
 msgstr "Domäne erstellen"
@@ -868,6 +888,10 @@ msgstr "Fähigkeit erstellen"
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Created"
 msgstr "Created"
+
+#: src/dialogs/customer/index.tsx
+msgid "Creating customer..."
+msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Creating domain..."
@@ -907,20 +931,44 @@ msgstr "Benutzerdefiniertes CSS"
 msgid "Custom Sections"
 msgstr "Benutzerdefinierte Abschnitte"
 
+#: src/dialogs/project/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Customer"
 msgstr "Kunde"
 
-#: src/dialogs/project/index.tsx
-msgid "Customer name"
-msgstr "Kundenname"
+#: src/dialogs/customer/index.tsx
+msgid "Customer created."
+msgstr ""
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Customer deleted."
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Customer filter applied"
+msgstr ""
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Customer restored."
+msgstr ""
+
+#: src/dialogs/customer/index.tsx
+msgid "Customer updated."
+msgstr ""
 
 #. placeholder {0}: appliedFilters.customerName
-#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Customer: {0}"
 msgstr "Customer: {0}"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/customers/index.tsx
+msgid "Customers"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -963,6 +1011,8 @@ msgstr "Abschluss"
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
+#: src/routes/dashboard/customers/index.tsx
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1003,6 +1053,10 @@ msgstr "Gelöscht"
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Deleted on {deletedAt}"
 msgstr "Gelöscht am {deletedAt}"
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Deleting customer..."
+msgstr ""
 
 #: src/routes/dashboard/domains/index.tsx
 msgid "Deleting domain..."
@@ -1101,6 +1155,8 @@ msgstr "Domäne aktualisiert."
 msgid "Domain: {label}"
 msgstr "Domain: {label}"
 
+#: src/dialogs/customer/index.tsx
+#: src/dialogs/customer/index.tsx
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/domains/index.tsx
@@ -1175,6 +1231,10 @@ msgstr "Ihr Lebenslauf wird dupliziert..."
 msgid "Dutch"
 msgstr "Niederländisch"
 
+#: src/dialogs/customer/index.tsx
+msgid "e.g. ACME Corp"
+msgstr ""
+
 #: src/components/ai/chat.tsx
 msgid "e.g. Change my name to..."
 msgstr "z. B. meinen Namen ändern zu..."
@@ -1191,6 +1251,7 @@ msgstr "e.g. React, TypeScript"
 msgid "e.g. Senior Engineer, Manager"
 msgstr "e.g. Senior Engineer, Manager"
 
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1201,6 +1262,10 @@ msgstr "Bearbeiten"
 #: src/dialogs/project/index.tsx
 msgid "Edit project details."
 msgstr "Projektdetails bearbeiten."
+
+#: src/dialogs/customer/index.tsx
+msgid "Edit the customer name."
+msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Edit the domain name."
@@ -1360,10 +1425,6 @@ msgstr "File size must be less than 5MB"
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Filter"
 msgstr "Filter"
-
-#: src/routes/dashboard/projects/-components/filter.tsx
-msgid "Filter by customer"
-msgstr "Nach Kunde filtern"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1711,6 +1772,10 @@ msgstr "Zuletzt aktualisiert am {updatedAt}"
 msgid "Last viewed on {0}"
 msgstr "Zuletzt angesehen am {0}"
 
+#: src/routes/dashboard/customers/index.tsx
+msgid "Latest update"
+msgstr ""
+
 #: src/utils/locale.ts
 msgid "Latvian"
 msgstr "Lettisch"
@@ -1786,6 +1851,7 @@ msgstr "Lebensläufe werden geladen..."
 #: src/components/layout/loading-screen.tsx
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1859,6 +1925,8 @@ msgid "Multilingual"
 msgstr "Mehrsprachig"
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/customer/index.tsx
+#: src/dialogs/customer/index.tsx
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/position/index.tsx
@@ -1873,6 +1941,8 @@ msgstr "Mehrsprachig"
 #: src/dialogs/skill/index.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/dashboard/customers/index.tsx
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1921,6 +1991,10 @@ msgstr "Neuer Abschnitt"
 #: src/routes/_home/-sections/features.tsx
 msgid "No Advertising, No Tracking"
 msgstr "Keine Werbung, kein Tracking"
+
+#: src/components/customer/customer-combobox.tsx
+msgid "No customers found."
+msgstr ""
 
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-combobox.tsx
@@ -2408,9 +2482,17 @@ msgstr "Ihr Passwort wird zurückgesetzt..."
 msgid "Resources"
 msgstr "Ressourcen"
 
+#: src/routes/dashboard/customers/index.tsx
+msgid "Restore"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restore project"
 msgstr "Projekt wiederherstellen"
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Restoring customer..."
+msgstr ""
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restoring project..."
@@ -2455,6 +2537,7 @@ msgstr "Drehung"
 msgid "Russian"
 msgstr "Russisch"
 
+#: src/dialogs/customer/index.tsx
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/position/index.tsx
 #: src/dialogs/project/index.tsx
@@ -2490,6 +2573,11 @@ msgstr "Scannen Sie den QR-Code unten mit Ihrer bevorzugten Authenticator-App. S
 msgid "School"
 msgstr "Schule"
 
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Search"
+msgstr ""
+
 #: src/dialogs/resume/share-copy.tsx
 msgid "Search and select users to send a copy. They will receive the resume in their dashboard."
 msgstr "Suchen und wählen Sie Benutzer aus, um eine Kopie zu senden. Sie erhalten den Lebenslauf in ihrem Dashboard."
@@ -2497,6 +2585,14 @@ msgstr "Suchen und wählen Sie Benutzer aus, um eine Kopie zu senden. Sie erhalt
 #: src/dialogs/resume/share-copy.tsx
 msgid "Search by name or username..."
 msgstr "Nach Name oder Benutzername suchen..."
+
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Search by resume name"
+msgstr ""
+
+#: src/components/customer/customer-combobox.tsx
+msgid "Search customers..."
+msgstr ""
 
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-combobox.tsx
@@ -2522,6 +2618,11 @@ msgstr "Positionen suchen..."
 msgid "Search skills..."
 msgstr "Fähigkeiten suchen..."
 
+#. placeholder {0}: appliedFilters.query
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Search: {0}"
+msgstr ""
+
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
@@ -2542,6 +2643,10 @@ msgstr "Abschnittstyp"
 #: src/dialogs/resume/share-copy.tsx
 msgid "Select at least one user."
 msgstr "Wählen Sie mindestens einen Benutzer aus."
+
+#: src/components/customer/customer-combobox.tsx
+msgid "Select customer"
+msgstr ""
 
 #: src/components/domain/domain-combobox.tsx
 msgid "Select domain"
@@ -2816,6 +2921,7 @@ msgstr "Etwas ist schiefgelaufen."
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
 
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
@@ -3069,6 +3175,10 @@ msgstr "Dies entfernt die Position aus allen Lebensläufen und Projekten."
 msgid "This will remove the skill from all resumes and projects."
 msgstr "Dies entfernt die Fähigkeit aus allen Lebensläufen und Projekten."
 
+#: src/routes/dashboard/customers/index.tsx
+msgid "This will unlink the customer from related records."
+msgstr ""
+
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with Reactive Resume"
 msgstr "Zeitraffer-Demonstration zum Erstellen eines Lebenslaufs mit Reactive Resume"
@@ -3275,6 +3385,10 @@ msgstr "Ein existierendes Zusammenfassung-Element aktualisieren"
 msgid "Update an existing volunteer experience"
 msgstr "Eine bestehende Freiwilligenerfahrung aktualisieren"
 
+#: src/dialogs/customer/index.tsx
+msgid "Update customer"
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 msgid "Update domain"
 msgstr "Domäne aktualisieren"
@@ -3311,6 +3425,10 @@ msgstr "Aktualisieren Sie Ihr Passwort"
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Updated"
 msgstr "Aktualisiert"
+
+#: src/dialogs/customer/index.tsx
+msgid "Updating customer..."
+msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Updating domain..."

@@ -92,6 +92,11 @@ msgstr "ወደ አሁን የምትጠቀሙበት ኢሜል አድራሻዎ የ�
 msgid "A copy was shared with {count} user(s)."
 msgstr "A copy was shared with {count} user(s)."
 
+#: src/dialogs/customer/index.tsx
+#: src/dialogs/customer/index.tsx
+msgid "A customer with this name already exists."
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/domain/index.tsx
 msgid "A domain with this name already exists."
@@ -148,6 +153,10 @@ msgstr "በ API በመጠቀም የየታሪኮችዎን እና መረጃዎን 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Add a custom field"
 msgstr "ብጁ መስክ ያክሉ"
+
+#: src/dialogs/customer/index.tsx
+msgid "Add a customer to assign projects and domains."
+msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Add a domain name to use when assigning projects."
@@ -362,6 +371,7 @@ msgstr "ዓረብኛ"
 msgid "Are you sure you want to close this dialog?"
 msgstr "Are you sure you want to close this dialog?"
 
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -551,6 +561,7 @@ msgstr "የየታሪክዬን ወደ PDF ልላክ እችላለሁ?"
 #: src/hooks/use-prompt.tsx
 #: src/routes/auth/-components/social-auth.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -733,6 +744,7 @@ msgid "Cover Letter"
 msgstr "Cover Letter"
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/customer/index.tsx
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/position/index.tsx
 #: src/dialogs/project/index.tsx
@@ -780,6 +792,10 @@ msgstr "Create a new cover letter"
 #: src/dialogs/resume/sections/custom.tsx
 msgid "Create a new custom section"
 msgstr "አዲስ ብጁ ክፍል ፍጠር"
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Create a new customer"
+msgstr ""
 
 #: src/routes/dashboard/domains/index.tsx
 msgid "Create a new domain"
@@ -851,6 +867,10 @@ msgstr "የናሙና የየታሪክ ማቅረቢያ ፍጠር"
 msgid "Create as many resumes as you want, without limits."
 msgstr "እርስዎ የሚፈልጉትን ብዙ የየታሪክ ማቅረቢያዎች ያበጁ፣ ምንም ገደብ የለም።"
 
+#: src/dialogs/customer/index.tsx
+msgid "Create customer"
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 msgid "Create domain"
 msgstr "Create domain"
@@ -868,6 +888,10 @@ msgstr "Create skill"
 #: src/routes/dashboard/positions-skills/index.tsx
 msgid "Created"
 msgstr "Created"
+
+#: src/dialogs/customer/index.tsx
+msgid "Creating customer..."
+msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Creating domain..."
@@ -907,20 +931,44 @@ msgstr "ብጁ CSS"
 msgid "Custom Sections"
 msgstr "ብጁ ክፍሎች"
 
+#: src/dialogs/project/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Customer"
 msgstr "Customer"
 
-#: src/dialogs/project/index.tsx
-msgid "Customer name"
-msgstr "Customer name"
+#: src/dialogs/customer/index.tsx
+msgid "Customer created."
+msgstr ""
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Customer deleted."
+msgstr ""
+
+#: src/routes/dashboard/projects/-components/filter.tsx
+msgid "Customer filter applied"
+msgstr ""
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Customer restored."
+msgstr ""
+
+#: src/dialogs/customer/index.tsx
+msgid "Customer updated."
+msgstr ""
 
 #. placeholder {0}: appliedFilters.customerName
-#: src/routes/dashboard/projects/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Customer: {0}"
 msgstr "Customer: {0}"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/customers/index.tsx
+msgid "Customers"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Czech"
@@ -963,6 +1011,8 @@ msgstr "ዲግሪ"
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
+#: src/routes/dashboard/customers/index.tsx
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1003,6 +1053,10 @@ msgstr "Deleted"
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Deleted on {deletedAt}"
 msgstr "Deleted on {deletedAt}"
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Deleting customer..."
+msgstr ""
 
 #: src/routes/dashboard/domains/index.tsx
 msgid "Deleting domain..."
@@ -1101,6 +1155,8 @@ msgstr "Domain updated."
 msgid "Domain: {label}"
 msgstr "Domain: {label}"
 
+#: src/dialogs/customer/index.tsx
+#: src/dialogs/customer/index.tsx
 #: src/dialogs/project/index.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/domains/index.tsx
@@ -1175,6 +1231,10 @@ msgstr "የየታሪክዎን ቅጂ በመፍጠር ላይ…"
 msgid "Dutch"
 msgstr "ደች"
 
+#: src/dialogs/customer/index.tsx
+msgid "e.g. ACME Corp"
+msgstr ""
+
 #: src/components/ai/chat.tsx
 msgid "e.g. Change my name to..."
 msgstr "e.g. Change my name to..."
@@ -1191,6 +1251,7 @@ msgstr "e.g. React, TypeScript"
 msgid "e.g. Senior Engineer, Manager"
 msgstr "e.g. Senior Engineer, Manager"
 
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1201,6 +1262,10 @@ msgstr "Edit"
 #: src/dialogs/project/index.tsx
 msgid "Edit project details."
 msgstr "Edit project details."
+
+#: src/dialogs/customer/index.tsx
+msgid "Edit the customer name."
+msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Edit the domain name."
@@ -1360,10 +1425,6 @@ msgstr "File size must be less than 5MB"
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Filter"
 msgstr "Filter"
-
-#: src/routes/dashboard/projects/-components/filter.tsx
-msgid "Filter by customer"
-msgstr "Filter by customer"
 
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1711,6 +1772,10 @@ msgstr "መጨረሻ በ{updatedAt} ዘመነ"
 msgid "Last viewed on {0}"
 msgstr "መጨረሻ በ{0} ታይቷል"
 
+#: src/routes/dashboard/customers/index.tsx
+msgid "Latest update"
+msgstr ""
+
 #: src/utils/locale.ts
 msgid "Latvian"
 msgstr "ላትቪያንኛ"
@@ -1786,6 +1851,7 @@ msgstr "የየታሪክ ማቅረቢያዎችን በመጫን ላይ…"
 #: src/components/layout/loading-screen.tsx
 #: src/dialogs/project/index.tsx
 #: src/dialogs/resume/index.tsx
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1859,6 +1925,8 @@ msgid "Multilingual"
 msgstr "በብዙ ቋንቋዎች"
 
 #: src/dialogs/api-key/create.tsx
+#: src/dialogs/customer/index.tsx
+#: src/dialogs/customer/index.tsx
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/position/index.tsx
@@ -1873,6 +1941,8 @@ msgstr "በብዙ ቋንቋዎች"
 #: src/dialogs/skill/index.tsx
 #: src/routes/auth/register.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/basics.tsx
+#: src/routes/dashboard/customers/index.tsx
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
@@ -1921,6 +1991,10 @@ msgstr "አዲስ ክፍል"
 #: src/routes/_home/-sections/features.tsx
 msgid "No Advertising, No Tracking"
 msgstr "ምንም ማስታወቂያ የለም፣ ምንም መከታተያ የለም"
+
+#: src/components/customer/customer-combobox.tsx
+msgid "No customers found."
+msgstr ""
 
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-combobox.tsx
@@ -2408,9 +2482,17 @@ msgstr "የይለፍ ቃልዎን በመዳግም ላይ…"
 msgid "Resources"
 msgstr "ሀብቶች"
 
+#: src/routes/dashboard/customers/index.tsx
+msgid "Restore"
+msgstr ""
+
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restore project"
 msgstr "Restore project"
+
+#: src/routes/dashboard/customers/index.tsx
+msgid "Restoring customer..."
+msgstr ""
 
 #: src/routes/dashboard/projects/-components/list-view.tsx
 msgid "Restoring project..."
@@ -2455,6 +2537,7 @@ msgstr "ማሽከርከር"
 msgid "Russian"
 msgstr "ሩስኛ"
 
+#: src/dialogs/customer/index.tsx
 #: src/dialogs/domain/index.tsx
 #: src/dialogs/position/index.tsx
 #: src/dialogs/project/index.tsx
@@ -2490,6 +2573,11 @@ msgstr "በታች ያለውን QR ኮድ በሚፈልጉት የማረጋገጫ �
 msgid "School"
 msgstr "ት/ቤት"
 
+#: src/routes/dashboard/resumes/-components/filter.tsx
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Search"
+msgstr ""
+
 #: src/dialogs/resume/share-copy.tsx
 msgid "Search and select users to send a copy. They will receive the resume in their dashboard."
 msgstr "Search and select users to send a copy. They will receive the resume in their dashboard."
@@ -2497,6 +2585,14 @@ msgstr "Search and select users to send a copy. They will receive the resume in 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Search by name or username..."
 msgstr "Search by name or username..."
+
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Search by resume name"
+msgstr ""
+
+#: src/components/customer/customer-combobox.tsx
+msgid "Search customers..."
+msgstr ""
 
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-combobox.tsx
@@ -2522,6 +2618,11 @@ msgstr "Search positions..."
 msgid "Search skills..."
 msgstr "Search skills..."
 
+#. placeholder {0}: appliedFilters.query
+#: src/routes/dashboard/resumes/-components/filter.tsx
+msgid "Search: {0}"
+msgstr ""
+
 #: src/components/ui/combobox.tsx
 #: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
@@ -2542,6 +2643,10 @@ msgstr "የክፍል ዓይነት"
 #: src/dialogs/resume/share-copy.tsx
 msgid "Select at least one user."
 msgstr "Select at least one user."
+
+#: src/components/customer/customer-combobox.tsx
+msgid "Select customer"
+msgstr ""
 
 #: src/components/domain/domain-combobox.tsx
 msgid "Select domain"
@@ -2816,6 +2921,7 @@ msgstr "Something went wrong."
 msgid "Something went wrong. Please try again."
 msgstr "የተሳሳተ ነገር ተፈጥሯል። እባክዎን ደግመው ይሞክሩ።"
 
+#: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/index.tsx
@@ -3069,6 +3175,10 @@ msgstr "This will remove the position from all resumes and projects."
 msgid "This will remove the skill from all resumes and projects."
 msgstr "This will remove the skill from all resumes and projects."
 
+#: src/routes/dashboard/customers/index.tsx
+msgid "This will unlink the customer from related records."
+msgstr ""
+
 #: src/routes/_home/-sections/hero.tsx
 msgid "Timelapse demonstration of building a resume with Reactive Resume"
 msgstr "በ Reactive Resume የታሪክ ማቅረቢያ መገንባትን የሚያሳይ የጊዜ መጠን ማሳያ ቪዲዮ"
@@ -3275,6 +3385,10 @@ msgstr "Update an existing summary item"
 msgid "Update an existing volunteer experience"
 msgstr "ያለ የቀድሞ የበኩል መደገፍ ልምድን አዘምን"
 
+#: src/dialogs/customer/index.tsx
+msgid "Update customer"
+msgstr ""
+
 #: src/dialogs/domain/index.tsx
 msgid "Update domain"
 msgstr "Update domain"
@@ -3311,6 +3425,10 @@ msgstr "የይለፍ ቃልዎን አዘምኑ"
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Updated"
 msgstr "Updated"
+
+#: src/dialogs/customer/index.tsx
+msgid "Updating customer..."
+msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "Updating domain..."

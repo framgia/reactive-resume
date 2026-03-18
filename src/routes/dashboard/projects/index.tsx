@@ -54,6 +54,7 @@ function RouteComponent() {
 	const [appliedFilters, setAppliedFilters] = useState<ProjectFiltersApplied>({
 		name: "",
 		customerId: null,
+		customerName: "",
 		domainIds: [],
 		skillIds: [],
 		positionId: null,

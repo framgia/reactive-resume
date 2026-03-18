@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/client";
-import { and, asc, desc, eq, exists, inArray, isNotNull, isNull, like, or, sql } from "drizzle-orm";
+import { and, asc, desc, eq, exists, ilike, inArray, isNotNull, isNull, like, or, sql } from "drizzle-orm";
 import { get } from "es-toolkit/compat";
 import type { Operation } from "fast-json-patch";
 import { match } from "ts-pattern";
@@ -99,12 +99,14 @@ export const resumeService = {
 	list: async (input: {
 		userId: string;
 		sort: "lastUpdatedAt" | "createdAt" | "name";
+		query?: string;
 		projectId?: string | null;
 		customerId?: string;
 		skillIds?: string[];
 		positionId?: string | null;
 	}) => {
 		const skillIds = input.skillIds?.length ? input.skillIds : undefined;
+		const queryTrimmed = input.query?.trim();
 		// Only join non-deleted projects so project.name is null for deleted projects
 		const projectJoin = and(
 			eq(schema.resume.projectId, schema.project.id),
@@ -138,9 +140,11 @@ export const resumeService = {
 							),
 					)
 				: undefined;
+		const queryCondition = queryTrimmed ? ilike(schema.resume.name, `%${queryTrimmed}%`) : undefined;
 
 		const conditions = [
 			eq(schema.resume.userId, input.userId),
+			queryCondition,
 			projectCondition,
 			customerCondition,
 			positionCondition,

@@ -85,6 +85,7 @@ export const resumeRouter = {
 			return await resumeService.list({
 				userId: context.user.id,
 				sort: input.sort,
+				query: input.query,
 				customerId: input.customerId,
 				projectId: input.projectId,
 				skillIds: input.skillIds,

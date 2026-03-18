@@ -27,7 +27,10 @@ export function ProjectDropdownMenu({ project, children, ...props }: Props) {
 	const { mutate: deleteProject } = useMutation(orpc.project.delete.mutationOptions());
 
 	const handleViewResumes = () => {
-		navigate({ to: "/dashboard/resumes", search: { projectId: project.id } });
+		navigate({
+			to: "/dashboard/resumes",
+			search: { projectId: project.id, projectName: project.name },
+		} as never);
 	};
 
 	const handleUpdate = () => {

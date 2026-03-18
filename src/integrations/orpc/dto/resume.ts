@@ -34,6 +34,7 @@ export const resumeDto = {
 		input: z
 			.object({
 				sort: z.enum(["lastUpdatedAt", "createdAt", "name"]).optional().default("lastUpdatedAt"),
+				query: z.string().optional().describe("Filter by resume name (case-insensitive)."),
 				projectId: z.string().nullable().optional().describe("Filter by project ID; omit for all."),
 				customerId: z
 					.uuid()
