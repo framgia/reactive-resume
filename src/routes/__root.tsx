@@ -31,11 +31,11 @@ type RouterContext = {
 	flags: FeatureFlags;
 };
 
-const appName = "Reactive Resume";
-const tagline = "A free and open-source resume builder";
+const appName = "Sun* CV";
+const tagline = "Sun* CV";
 const title = `${appName} — ${tagline}`;
 const description =
-	"Reactive Resume is a free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume.";
+	"Sun Asterisk Global CV Builder";
 
 await loadLocale(await getLocale());
 

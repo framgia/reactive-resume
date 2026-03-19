@@ -8,7 +8,7 @@ import { registerTools } from "./-helpers/tools";
 
 function createMcpServer() {
 	const server = new McpServer({
-		name: "reactive-resume",
+		name: "sun-asterisk-cv",
 		version: "1.0.0",
 		title: "Reactive Resume",
 		websiteUrl: "https://rxresu.me",

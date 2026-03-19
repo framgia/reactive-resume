@@ -160,7 +160,7 @@ export const DonationBanner = () => (
 					<Trans>Support Reactive Resume</Trans>
 				</motion.h2>
 
-				<motion.p
+				{/* <motion.p
 					className="max-w-3xl text-base text-muted-foreground leading-relaxed"
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
@@ -171,7 +171,7 @@ export const DonationBanner = () => (
 						Reactive Resume is a free and open-source project, built with love and maintained by me and a community of
 						contributors. Your donations help keep the lights on and the code flowing.
 					</Trans>
-				</motion.p>
+				</motion.p> */}
 			</motion.div>
 
 			{/* Feature cards */}
