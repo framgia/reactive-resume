@@ -87,7 +87,10 @@ function ProjectForm() {
 							<Trans>Customer</Trans>
 						</FormLabel>
 						<FormControl>
-							<CustomerCombobox value={field.value} onChange={field.onChange} />
+							<CustomerCombobox
+								value={field.value ?? null}
+								onChange={(value) => field.onChange(value ?? undefined)}
+							/>
 						</FormControl>
 						<FormMessage />
 					</FormItem>
@@ -164,7 +167,7 @@ export function CreateProjectDialog(_: DialogProps<"project.create">) {
 		defaultValues: {
 			name: "",
 			description: "",
-			customerId: null,
+			customerId: undefined,
 			skills: [],
 			position: [],
 			domainIds: [],
@@ -237,7 +240,7 @@ export function UpdateProjectDialog({ data }: DialogProps<"project.update">) {
 		defaultValues: {
 			name: data.name,
 			description: data.description ?? "",
-			customerId: data.customerId ?? null,
+				customerId: data.customerId ?? undefined,
 			skills: [],
 			position: [],
 			domainIds: [],
@@ -249,7 +252,7 @@ export function UpdateProjectDialog({ data }: DialogProps<"project.update">) {
 		form.reset({
 			name: project.name,
 			description: project.description ?? "",
-			customerId: project.customerId ?? null,
+			customerId: project.customerId ?? undefined,
 			skills: project.skills?.map((s) => s.name) ?? [],
 			position: project.position?.map((p) => p.name) ?? [],
 			domainIds: project.domainIds,
@@ -265,8 +268,8 @@ export function UpdateProjectDialog({ data }: DialogProps<"project.update">) {
 			{
 				id: data.id,
 				name: values.name,
-				description: values.description || null,
-				customerId: values.customerId || null,
+				description: values.description || undefined,
+				customerId: values.customerId || undefined,
 				skills: values.skills,
 				position: values.position,
 				domainIds: values.domainIds,

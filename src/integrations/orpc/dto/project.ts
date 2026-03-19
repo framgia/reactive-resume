@@ -89,6 +89,8 @@ export const projectDto = {
 				customerId: true,
 			})
 			.extend({
+				description: z.string().optional().describe("Optional project description."),
+				customerId: z.uuid().optional().describe("Optional customer ID linked to the project."),
 				skills: z.array(z.string()).optional().default([]),
 				position: z.array(z.string()).optional().default([]),
 				domainIds: z.array(z.string()).optional(),
@@ -106,6 +108,8 @@ export const projectDto = {
 			.partial()
 			.extend({
 				id: z.uuid().describe("The ID of the project to update."),
+				description: z.string().optional().describe("Optional project description."),
+				customerId: z.uuid().optional().describe("Optional customer ID linked to the project."),
 				skills: z.array(z.string()).optional().describe("If provided, replaces project skills (names; upsert)."),
 				position: z.array(z.string()).optional().describe("If provided, replaces project positions (names; upsert)."),
 				domainIds: z.array(z.string()).optional().describe("If provided, replaces project domains."),
