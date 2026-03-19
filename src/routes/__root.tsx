@@ -32,7 +32,7 @@ type RouterContext = {
 };
 
 const appName = "Sun* CV";
-const tagline = "Sun* CV";
+const tagline = "Sun Asterisk Global CV";
 const title = `${appName} — ${tagline}`;
 const description =
 	"Sun Asterisk Global CV Builder";
@@ -59,13 +59,13 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 				{ charSet: "UTF-8" },
 				{ name: "description", content: description },
 				{ name: "viewport", content: "width=device-width, initial-scale=1" },
-				// Twitter Tags
-				{ property: "twitter:image", content: `${appUrl}/opengraph/banner.jpg` },
-				{ property: "twitter:card", content: "summary_large_image" },
-				{ property: "twitter:title", content: title },
-				{ property: "twitter:description", content: description },
+				// // Twitter Tags
+				// { property: "twitter:image", content: `${appUrl}/opengraph/banner.jpg` },
+				// { property: "twitter:card", content: "summary_large_image" },
+				// { property: "twitter:title", content: title },
+				// { property: "twitter:description", content: description },
 				// OpenGraph Tags
-				{ property: "og:image", content: `${appUrl}/opengraph/banner.jpg` },
+				{ property: "og:image", content: `${appUrl}/sun-asterisk.png` },
 				{ property: "og:site_name", content: appName },
 				{ property: "og:title", content: title },
 				{ property: "og:description", content: description },

@@ -1,9 +1,9 @@
 {
 	"$schema": "https://mintlify.com/docs.json",
 	"theme": "mint",
-	"name": "Reactive Resume",
+	"name": "Sun* Global CV",
 	"favicon": "/favicon.svg",
-	"description": "A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!",
+	"description": "Sun* Global CV Builder",
 	"seo": {
 		"indexing": "all",
 		"metatags": {
