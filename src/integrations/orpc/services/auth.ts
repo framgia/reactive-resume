@@ -1,5 +1,5 @@
 import { ORPCError } from "@orpc/client";
-import { eq } from "drizzle-orm";
+import { and, eq, isNotNull } from "drizzle-orm";
 import type { AuthProvider } from "@/integrations/auth/types";
 import { schema } from "@/integrations/drizzle";
 import { db } from "@/integrations/drizzle/client";
@@ -22,8 +22,25 @@ const providers = {
 	},
 };
 
+async function getGoogleRefreshTokenForUser(userId: string): Promise<string | null> {
+	const [googleAccount] = await db
+		.select({ refreshToken: schema.account.refreshToken })
+		.from(schema.account)
+		.where(
+			and(
+				eq(schema.account.userId, userId),
+				eq(schema.account.providerId, "google"),
+				isNotNull(schema.account.refreshToken),
+			),
+		)
+		.limit(1);
+
+	return googleAccount?.refreshToken ?? null;
+}
+
 export const authService = {
 	providers,
+	getGoogleRefreshTokenForUser,
 
 	deleteAccount: async (input: { userId: string }): Promise<void> => {
 		if (!input.userId || input.userId.length === 0) return;

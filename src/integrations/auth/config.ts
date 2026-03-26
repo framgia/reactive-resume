@@ -159,6 +159,14 @@ const getAuthConfig = () => {
 				clientId: env.GOOGLE_CLIENT_ID!,
 				// biome-ignore lint/style/noNonNullAssertion: enabled check ensures these are not null
 				clientSecret: env.GOOGLE_CLIENT_SECRET!,
+				scope: [
+					"openid",
+					"profile",
+					"email",
+					"https://www.googleapis.com/auth/drive.file",
+				],
+				accessType: "offline",
+				prompt: "consent",
 				mapProfileToUser: async (profile) => {
 					const name = profile.name ?? profile.email.split("@")[0];
 

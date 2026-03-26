@@ -1,12 +1,13 @@
 import { ORPCError } from "@orpc/server";
-import type { InferSelectModel } from "drizzle-orm";
 import puppeteer, { type Browser, type ConnectOptions, type Page } from "puppeteer-core";
+import type { InferSelectModel } from "drizzle-orm";
 import type { schema } from "@/integrations/drizzle";
 import { pageDimensionsAsPixels } from "@/schema/page";
 import { printMarginTemplates } from "@/schema/templates";
 import { env } from "@/utils/env";
 import { generatePrinterToken } from "@/utils/printer-token";
 import { getStorageService, uploadFile } from "./storage";
+import { googleDriveService } from "./google-drive";
 
 const SCREENSHOT_TTL = 1000 * 60 * 60 * 6; // 6 hours
 
@@ -125,7 +126,8 @@ export const printerService = {
 			// Wait for the page to fully load (network idle + custom loaded attribute)
 			await page.emulateMediaType("print");
 			await page.setViewport(pageDimensionsAsPixels[format]);
-			await page.goto(url, { waitUntil: "networkidle0" });
+			// `networkidle0` is fragile in dev because Vite/HMR keeps network activity alive.
+			await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60_000 });
 			await page.waitForFunction(() => document.body.getAttribute("data-wf-loaded") === "true", { timeout: 5_000 });
 
 			// Step 5: Adjust the DOM for proper PDF pagination
@@ -174,7 +176,7 @@ export const printerService = {
 							pageContent.style.boxSizing = "border-box";
 							// Ensure padding is repeated on every printed fragment when content
 							// flows across physical PDF pages (not just the first fragment).
-							pageContent.style.boxDecorationBreak = "clone";
+							pageContent.style.setProperty("box-decoration-break", "clone");
 							pageContent.style.setProperty("-webkit-box-decoration-break", "clone");
 							if (pagePaddingX > 0) {
 								pageContent.style.paddingLeft = `${pagePaddingX}pt`;
@@ -280,6 +282,28 @@ export const printerService = {
 		}
 	},
 
+	uploadResumePDFToGoogleDrive: async (
+		input: Pick<InferSelectModel<typeof schema.resume>, "id" | "data" | "userId"> & {
+			fileName: string;
+			folderPath?: string;
+			refreshToken: string;
+		},
+	): Promise<{ fileId: string; webViewLink: string | null }> => {
+		const { fileName, folderPath, refreshToken, ...resumeInput } = input;
+
+		const pdfUrl = await printerService.printResumeAsPDF(resumeInput);
+		const pdfResponse = await fetch(pdfUrl);
+		if (!pdfResponse.ok) throw new ORPCError("INTERNAL_SERVER_ERROR");
+
+		const pdfBuffer = Buffer.from(await pdfResponse.arrayBuffer());
+		return await googleDriveService.uploadPdfToGoogleDrive({
+			fileName,
+			folderPath,
+			refreshToken,
+			pdfBuffer,
+		});
+	},
+
 	getResumeScreenshot: async (
 		input: Pick<InferSelectModel<typeof schema.resume>, "userId" | "id" | "data" | "updatedAt">,
 	): Promise<string> => {
@@ -338,7 +362,8 @@ export const printerService = {
 			page = await browser.newPage();
 
 			await page.setViewport(pageDimensionsAsPixels.a4);
-			await page.goto(url, { waitUntil: "networkidle0" });
+			// `networkidle0` is fragile in dev because Vite/HMR keeps network activity alive.
+			await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60_000 });
 			await page.waitForFunction(() => document.body.getAttribute("data-wf-loaded") === "true", { timeout: 5_000 });
 
 			const screenshotBuffer = await page.screenshot({ type: "webp", quality: 80 });

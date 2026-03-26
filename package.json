@@ -130,6 +130,7 @@
 		"@vitejs/plugin-react": "^5.1.4",
 		"babel-plugin-macros": "^3.1.0",
 		"drizzle-kit": "1.0.0-beta.16-ea816b6",
+		"googleapis": "^171.4.0",
 		"knip": "^5.85.0",
 		"nitro": "3.0.1-alpha.2",
 		"node-addon-api": "^8.6.0",
