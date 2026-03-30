@@ -215,7 +215,7 @@ export function DialogManager() {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      {DialogContent}
+      {dialogContent}
     </Dialog>
   );
 }

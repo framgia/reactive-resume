@@ -1,4 +1,4 @@
-import type * as React from "react";
+import * as React from "react";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
 
@@ -9,7 +9,25 @@ function Popover({ ...props }: PopoverPrimitive.Root.Props) {
 }
 
 function PopoverTrigger({ ...props }: PopoverPrimitive.Trigger.Props) {
-  return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />;
+  // Base UI's Popover.Trigger does not support the shadcn-style `asChild` prop.
+  // We translate `asChild` into Base UI's supported `render` prop so the trigger
+  // uses the provided element instead of rendering its own <button>.
+  const { asChild, children, ...rest } = props as PopoverPrimitive.Trigger.Props & {
+    asChild?: boolean;
+  };
+
+  if (asChild && React.isValidElement(children)) {
+    return (
+      <PopoverPrimitive.Trigger
+        data-slot="popover-trigger"
+        {...rest}
+        // Clone the provided element and attach trigger props to it.
+        render={children}
+      />
+    );
+  }
+
+  return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...(rest as PopoverPrimitive.Trigger.Props)}>{children}</PopoverPrimitive.Trigger>;
 }
 
 function PopoverContent({

@@ -24,7 +24,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - postgres_data:/var/lib/postgresql
+      - postgres_reactive_resume_data:/var/lib/postgresql
     ports:
       - "5432:5432"
     healthcheck:
@@ -45,7 +45,8 @@ services:
       - CONCURRENT=5
       - TOKEN=1234567890
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/pressure?token=1234567890"]
+      test:
+        ["CMD", "curl", "-f", "http://localhost:3000/pressure?token=1234567890"]
       interval: 10s
       timeout: 5s
       retries: 10

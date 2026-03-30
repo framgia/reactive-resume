@@ -1,14 +1,12 @@
 import { t } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import {
-  CaretRightIcon,
-  CaretUpDownIcon} from '@phosphor-icons/react';
+import { CaretDownIcon, CaretUpDownIcon } from '@phosphor-icons/react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useParams } from '@tanstack/react-router';
 import * as React from 'react';
 import { ProjectCombobox } from '@/components/project/project-combobox';
-import { SkillCombobox } from '@/components/skill/skill-combobox';
 import { useResumeStore } from '@/components/resume/store/resume';
+import { SkillCombobox } from '@/components/skill/skill-combobox';
 import {
   Accordion,
   AccordionContent,
@@ -99,21 +97,20 @@ export function OverallSectionBuilder() {
 
   return (
     <Accordion
-      collapsible
-      type="single"
       id="sidebar-overall"
-      value={collapsed ? '' : 'overall'}
+      value={collapsed ? [] : ['overall']}
       onValueChange={() => toggleCollapsed('overall')}
       className="space-y-4">
-      <AccordionItem value="overall" className="group/accordion space-y-4">
+      <AccordionItem value="overall" className="group/accordion-item space-y-4">
         <div className="flex items-center">
           <AccordionTrigger
-            asChild
-            className="me-2 items-center justify-center">
-            <Button size="icon" variant="ghost">
-              <CaretRightIcon />
-            </Button>
-          </AccordionTrigger>
+            className="me-2 items-center justify-center"
+            render={
+              <Button size="icon" variant="ghost">
+                <CaretDownIcon className="transition-transform duration-200 group-data-closed/accordion-item:-rotate-90" />
+              </Button>
+            }
+          />
 
           <div className="flex flex-1 items-center gap-x-4">
             {getSectionIcon('overall')}

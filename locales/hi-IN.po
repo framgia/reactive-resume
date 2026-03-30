@@ -46,6 +46,22 @@ msgstr "{0, plural, one {# आइटम} other {# आइटम}}"
 msgid "{0, plural, one {# role} other {# roles}}"
 msgstr "{0, plural, one {# role} other {# roles}}"
 
+#. placeholder {0}: quota.used
+#. placeholder {1}: quota.limit
+#: src/routes/dashboard/job-search/index.tsx
+msgid "{0} / {1} requests used"
+msgstr ""
+
+#. placeholder {0}: Math.floor(diffDays / 30)
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "{0} months ago"
+msgstr ""
+
+#. placeholder {0}: Math.floor(diffDays / 7)
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "{0} weeks ago"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "{column, plural, one {# Column} other {# Columns}}"
@@ -275,9 +291,14 @@ msgstr "इसके बाद पंक्ति जोड़ें"
 msgid "Add Row Before"
 msgstr "इसके पहले पंक्ति जोड़ें"
 
-#: src/components/ai/chat.tsx
-msgid "Added"
-msgstr "Added"
+#. placeholder {0}: skillsToSync.length
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Added {0} new skills to your original resume"
+msgstr ""
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Advanced Filters"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Afrikaans"
@@ -288,9 +309,9 @@ msgstr "अफ्रीकान्स"
 msgid "AI"
 msgstr "AI"
 
-#: src/components/ai/chat.tsx
-msgid "AI Chat"
-msgstr "AI Chat"
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "AI returned some invalid references"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Albanian"
@@ -381,12 +402,21 @@ msgstr "ऐप"
 msgid "Application Statistics"
 msgstr "ऐप आँकड़े"
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/projects/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Apply"
 msgstr "Apply"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Apply Link"
+msgstr ""
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Apply Via"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Arabic"
@@ -441,10 +471,6 @@ msgstr "अध्ययन का क्षेत्र"
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Artificial Intelligence"
 msgstr "कृत्रिम बुद्धिमत्ता"
-
-#: src/components/ai/chat.tsx
-msgid "Ask me to update your resume..."
-msgstr "Ask me to update your resume..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Aspect Ratio"
@@ -592,6 +618,7 @@ msgstr "क्या मैं अपना रेज़्यूमे PDF म�
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 #: src/routes/dashboard/customers/index.tsx
 #: src/routes/dashboard/domains/index.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/positions-skills/index.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
@@ -674,9 +701,9 @@ msgstr "गोला"
 msgid "Clear"
 msgstr "Clear"
 
-#: src/components/ai/chat.tsx
-msgid "Clear chat history"
-msgstr "Clear chat history"
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Clear all"
+msgstr ""
 
 #: src/components/ui/multiple-combobox.tsx
 msgid "Clear selection"
@@ -1306,13 +1333,21 @@ msgstr "आपका रेज़्यूमे डुप्लिकेट क
 msgid "Dutch"
 msgstr "डच"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "e.g. 150000"
+msgstr ""
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "e.g. 50000"
+msgstr ""
+
 #: src/dialogs/customer/index.tsx
 msgid "e.g. ACME Corp"
 msgstr ""
 
-#: src/components/ai/chat.tsx
-msgid "e.g. Change my name to..."
-msgstr "e.g. Change my name to..."
+#: src/routes/dashboard/job-search/index.tsx
+msgid "e.g. frontend developer jobs in Berlin"
+msgstr ""
 
 #: src/dialogs/domain/index.tsx
 msgid "e.g. Healthcare, Finance"
@@ -1510,6 +1545,10 @@ msgstr "दो‑कारक प्रमाणीकरण सेटअप क
 #: src/routes/auth/login.tsx
 msgid "Failed to sign in. Please try again."
 msgstr "Failed to sign in. Please try again."
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Failed to sync skills"
+msgstr ""
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Features"
@@ -1830,7 +1869,6 @@ msgstr "इटैलिक"
 msgid "Japanese"
 msgstr "जापानी"
 
-#: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/job-search/index.tsx
 msgid "Job Search"
 msgstr "नौकरी खोज"
@@ -2158,11 +2196,23 @@ msgstr "कोई विज्ञापन नहीं, कोई ट्रै�
 msgid "No customers found."
 msgstr ""
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "No degree required"
+msgstr ""
+
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-combobox.tsx
 #: src/components/domain/domain-select.tsx
 msgid "No domains found."
 msgstr "No domains found."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "No experience"
+msgstr ""
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "No jobs found. Try a different search query."
+msgstr ""
 
 #: src/components/input/chip-input-autocomplete.tsx
 msgid "No matches. Type to search or press Enter to add."
@@ -2182,8 +2232,13 @@ msgid "No projects found."
 msgstr "No projects found."
 
 #: src/components/ui/combobox.tsx
+#: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "कोई परिणाम नहीं मिला।"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "No resumes found. Create a resume first."
+msgstr ""
 
 #: src/components/skill/skill-combobox.tsx
 #: src/components/skill/skill-combobox.tsx
@@ -2567,10 +2622,6 @@ msgstr "Reactive Resume - होमपेज पर जाएँ"
 msgid "Reactive Resume continues to grow thanks to its vibrant community. This project owes its progress to numerous individuals who've dedicated their time and skills to make it better. We celebrate the coders who've enhanced its features on GitHub, the linguists whose translations on Crowdin have made it accessible to a broader audience, and the people who've donated to support its continued development."
 msgstr "Reactive Resume अपने जीवंत समुदाय की बदौलत लगातार बढ़ रहा है। यह प्रोजेक्ट अपनी प्रगति के लिए उन असंख्य लोगों का आभारी है जिन्होंने इसे बेहतर बनाने के लिए अपना समय और कौशल समर्पित किया है। हम GitHub पर इसकी विशेषताओं को बेहतर बनाने वाले कोडर्स, Crowdin पर अनुवादों के माध्यम से इसे व्यापक दर्शकों तक पहुँचाने वाले भाषाविदों और इसके निरंतर विकास का समर्थन करने के लिए दान करने वाले लोगों का उत्सव मनाते हैं।"
 
-#: src/routes/_home/-sections/donate.tsx
-msgid "Reactive Resume is a free and open-source project, built with love and maintained by me and a community of contributors. Your donations help keep the lights on and the code flowing."
-msgstr "Reactive Resume एक मुफ़्त और ओपन‑सोर्स प्रोजेक्ट है, जिसे प्यार से बनाया गया है और जिसे मैं और योगदानकर्ताओं का एक समुदाय मिलकर मेंटेन करते हैं। आपके दान से यह प्रोजेक्ट चलता रहता है और कोड आगे बढ़ता रहता है।"
-
 #: src/routes/_home/-sections/product-hunt-banner.tsx
 msgid "Reactive Resume is launching on Product Hunt today, head over to show some love!"
 msgstr "Reactive Resume आज Product Hunt पर लॉन्च हो रहा है, प्यार दिखाने के लिए वहाँ जाएँ!"
@@ -2626,10 +2677,6 @@ msgstr "Remove"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Remove Password"
 msgstr "पासवर्ड हटाएँ"
-
-#: src/components/ai/chat.tsx
-msgid "Removed"
-msgstr "Removed"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Removing password protection..."
@@ -2708,6 +2755,12 @@ msgstr "Resume"
 msgid "Resume builder that simplifies the process of creating, updating, and sharing your resume."
 msgstr "Resume builder that simplifies the process of creating, updating, and sharing your resume."
 
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Resume tailored successfully"
+msgstr ""
+
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/resumes.tsx
@@ -2742,6 +2795,11 @@ msgstr "रोटेशन"
 #: src/utils/locale.ts
 msgid "Russian"
 msgstr "रूसी"
+
+#. placeholder {0}: selectedSkills.size
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Save {0} Skills"
+msgstr ""
 
 #: src/dialogs/customer/index.tsx
 #: src/dialogs/domain/index.tsx
@@ -2779,6 +2837,8 @@ msgstr "अपने पसंदीदा ऑथेंटिकेटर ऐप
 msgid "School"
 msgstr "स्कूल"
 
+#: src/routes/dashboard/job-search/index.tsx
+#: src/routes/dashboard/job-search/index.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Search"
@@ -2794,6 +2854,10 @@ msgstr "Search by name or username..."
 
 #: src/routes/dashboard/resumes/-components/filter.tsx
 msgid "Search by resume name"
+msgstr ""
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Search countries"
 msgstr ""
 
 #: src/components/customer/customer-combobox.tsx
@@ -2830,6 +2894,7 @@ msgid "Search: {0}"
 msgstr ""
 
 #: src/components/ui/combobox.tsx
+#: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
 msgstr "खोजें..."
 
@@ -2845,9 +2910,20 @@ msgstr "सीक्रेट क्लिपबोर्ड में कॉप
 msgid "Section Type"
 msgstr "अनुभाग प्रकार"
 
+#. placeholder {0}: job.job_title
+#. placeholder {1}: job.employer_name
+#. placeholder {2}: aiEnabled ? " and the AI will optimize it for this position." : "."
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Select a resume to tailor for \"{0}\" at {1}. A copy will be created{2}"
+msgstr ""
+
 #: src/dialogs/resume/share-copy.tsx
 msgid "Select at least one user."
 msgstr "Select at least one user."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Select country"
+msgstr ""
 
 #: src/components/customer/customer-combobox.tsx
 msgid "Select customer"
@@ -2890,6 +2966,7 @@ msgid "Select users"
 msgstr "Select users"
 
 #: src/components/ui/combobox.tsx
+#: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
 msgstr "चुनें..."
 
@@ -3086,6 +3163,10 @@ msgstr "कौशल"
 msgid "Skills Highlights"
 msgstr "Skills Highlights"
 
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Skip"
+msgstr ""
+
 #: src/routes/_home/route.tsx
 msgid "Skip to main content"
 msgstr "मुख्य सामग्री पर जाएँ"
@@ -3093,6 +3174,10 @@ msgstr "मुख्य सामग्री पर जाएँ"
 #: src/utils/locale.ts
 msgid "Slovak"
 msgstr "स्लोवाक"
+
+#: src/utils/locale.ts
+msgid "Slovenian"
+msgstr ""
 
 #: src/dialogs/position/index.tsx
 #: src/dialogs/position/index.tsx
@@ -3336,10 +3421,6 @@ msgstr "DOCX उत्पन्न करते समय एक समस्य
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "There was a problem while generating the PDF, please try again in some time."
 msgstr "PDF जेनरेट करते समय कोई समस्या आई, कृपया कुछ समय बाद फिर से प्रयास करें।"
-
-#: src/components/ai/chat.tsx
-msgid "Thinking..."
-msgstr "Thinking..."
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/projects/-components/menus/dropdown-menu.tsx
@@ -3669,7 +3750,6 @@ msgstr "Update skill"
 msgid "Update your password"
 msgstr "अपना पासवर्ड अपडेट करें"
 
-#: src/components/ai/chat.tsx
 #: src/routes/dashboard/projects/-components/list-view.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
 msgid "Updated"

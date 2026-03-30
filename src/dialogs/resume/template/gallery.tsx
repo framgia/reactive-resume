@@ -29,22 +29,6 @@ export function TemplateGalleryDialog(_: DialogProps<"resume.template.gallery">)
     closeDialog();
   }
 
-  return (
-    <DialogContent className="lg:max-w-5xl">
-      <DialogHeader className="gap-2">
-        <DialogTitle className="flex items-center gap-3 text-xl">
-          <SlideshowIcon size={20} />
-          <Trans>Template Gallery</Trans>
-        </DialogTitle>
-        <DialogDescription className="leading-relaxed">
-          <Trans>
-            Here's a range of resume templates for different professions and personalities. Whether you prefer modern or
-            classic, bold or simple, there is a design to match you. Look through the options below and choose a
-            template that fits your style.
-          </Trans>
-        </DialogDescription>
-      </DialogHeader>
-
 	if (!TEMPLATE_SELECTION_ENABLED) {
 		return (
 			<DialogContent className="lg:max-w-5xl">
@@ -115,6 +99,7 @@ function TemplateCard({ id, metadata, isActive, onSelect }: TemplateCardProps) {
         <HoverCardTrigger
           render={
             <button
+              type="button"
               tabIndex={-1}
               onClick={() => onSelect(id)}
               className={cn(
