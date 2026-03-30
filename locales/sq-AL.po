@@ -8,7 +8,7 @@ msgstr ""
 "Language: sq\n"
 "Project-Id-Version: reactive-resume\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-03-05 10:46\n"
+"PO-Revision-Date: 2026-03-29 21:05\n"
 "Last-Translator: \n"
 "Language-Team: Albanian\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -50,6 +50,14 @@ msgstr "{0, plural, one {# role} other {# roles}}"
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "{column, plural, one {# Column} other {# Columns}}"
 msgstr "{column, plural, one {# kolonë} other {# kolona}}"
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "{diffDays} days ago"
+msgstr "{diffDays} disa ditë më parë"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "{used} of {limit} requests used ({remaining} remaining)"
+msgstr "{used} Kërkesat e përdorura të {limit} ({remaining} të mbetura)"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "<0>Finally,</0><1>A resume builder</1>"
@@ -297,8 +305,8 @@ msgid "Allow Public Access"
 msgstr "Lejo akses publik"
 
 #: src/routes/auth/register.tsx
-msgid "Already have an account? <0><1>Sign in now <2/></1></0>"
-msgstr "Keni tashmë një llogari? <0><1>Hyni tani <2/></1></0>"
+msgid "Already have an account? <0/>"
+msgstr "Keni tashmë një llogari? <0/>"
 
 #: src/utils/locale.ts
 msgid "Amharic"
@@ -316,6 +324,19 @@ msgstr "Ndodhi një gabim i panjohur gjatë importimit të CV-së tuaj."
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "Dhe shumë të tjera..."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any level"
+msgstr "Çdo nivel"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any time"
+msgstr "Çdo kohë"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any type"
+msgstr "Çdo lloj"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -347,6 +368,10 @@ msgstr "API Keys"
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "API Reference"
 msgstr "Referencë API"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "API Usage"
+msgstr "Përdorimi i API-së"
 
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "App"
@@ -478,6 +503,10 @@ msgstr "Bazat"
 #: src/routes/_home/-sections/features.tsx
 msgid "Beautiful templates to choose from, with more on the way."
 msgstr "Shabllone të bukura për të zgjedhur, me më shumë që po vijnë."
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Benefits"
+msgstr "Përfitimet"
 
 #: src/utils/locale.ts
 msgid "Bengali"
@@ -657,6 +686,11 @@ msgstr "Pastro përzgjedhjen"
 msgid "Click here to select a file to import"
 msgstr "Klikoni këtu për të zgjedhur një skedar për importim"
 
+#: src/components/ui/dialog.tsx
+#: src/components/ui/sheet.tsx
+msgid "Close"
+msgstr "Mbyll"
+
 #: src/components/input/rich-input.tsx
 msgid "Code Block"
 msgstr "Bllok kodi"
@@ -677,6 +711,10 @@ msgstr "Kompania"
 #: src/routes/_home/-sections/features.tsx
 msgid "Completely free, forever, no hidden costs."
 msgstr "Krejtësisht falas, përgjithmonë, pa kosto të fshehura."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Configure Job Search"
+msgstr "Konfiguro kërkimin e punës"
 
 #: src/dialogs/api-key/create.tsx
 #: src/hooks/use-prompt.tsx
@@ -710,6 +748,10 @@ msgstr "Vazhdo aty ku e keni lënë"
 msgid "Continue where you left off by importing an existing resume you created using Reactive Resume or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume."
 msgstr "Vazhdo aty ku e keni lënë duke importuar një CV ekzistuese që keni krijuar me Reactive Resume ose ndonjë ndërtues tjetër CV-sh. Formatet e mbështetura përfshijnë PDF, Microsoft Word, si dhe skedarë JSON nga Reactive Resume."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Contractor"
+msgstr "Kontraktori"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
 msgstr "Kontributet financojnë rregullimet e gabimeve, përditësimet e sigurisë dhe përmirësimet e vazhdueshme për ta mbajtur aplikacionin duke funksionuar pa probleme."
@@ -737,6 +779,14 @@ msgstr "Kopjoni këtë çelës sekret dhe përdoreni në aplikacionet tuaja për
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Copy URL"
 msgstr "Kopjo URL-në"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Could not fetch jobs"
+msgstr "Nuk mund të merren punët"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Country"
+msgstr "Vend"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
@@ -1004,6 +1054,10 @@ msgstr "Siguria e të dhënave"
 msgid "Date"
 msgstr "Data"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Date Posted"
+msgstr "Data e postimit"
+
 #: src/dialogs/resume/sections/education.tsx
 msgid "Degree"
 msgstr "Diploma"
@@ -1098,12 +1152,25 @@ msgstr "Po fshihet CV-ja juaj..."
 #: src/dialogs/resume/sections/publication.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
 msgid "Description"
 msgstr "Përshkrimi"
 
 #: src/utils/resume/section.tsx
 msgid "Design"
 msgstr "Dizajni"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Direct"
+msgstr "Direkt"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Direct Apply"
+msgstr "Aplikim i drejtpërdrejtë"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Direct apply only"
+msgstr "Aplikoni vetëm drejtpërdrejt"
 
 #: src/dialogs/auth/disable-two-factor.tsx
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
@@ -1166,8 +1233,8 @@ msgid "Domains"
 msgstr "Domains"
 
 #: src/routes/auth/login.tsx
-msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
-msgstr "Nuk keni një llogari? <0><1>Krijoni një tani <2/></1></0>"
+msgid "Don't have an account? <0/>"
+msgstr "Nuk keni llogari? <0/>"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Donate to Reactive Resume"
@@ -1179,12 +1246,20 @@ msgid "Download"
 msgstr "Shkarko"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "Download a copy of your resume as a Word document. Use this file to further customize your resume in Microsoft Word or Google Docs."
+msgstr "Shkarkoni një kopje të CV-së suaj si dokument Word. Përdorni këtë skedar për të personalizuar më tej CV-në tuaj në Microsoft Word ose Google Docs."
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in JSON format. Use this file for backup or to import your resume into other applications, including AI assistants."
 msgstr "Shkarkoni një kopje të CV-së suaj në format JSON. Përdorni këtë skedar për kopje rezervë ose për të importuar CV-në tuaj në aplikacione të tjera, përfshirë asistentët AI."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in PDF format. Use this file for printing or to easily share your resume with recruiters."
 msgstr "Shkarkoni një kopje të CV-së suaj në format PDF. Përdorni këtë skedar për printim ose për ta ndarë lehtësisht CV-në tuaj me rekrutuesit."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+msgid "Download DOCX"
+msgstr "Shkarko DOCX"
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download JSON"
@@ -1329,6 +1404,10 @@ msgstr "Po aktivizohet vërtetimi me dy faktorë..."
 msgid "English"
 msgstr "Anglisht"
 
+#: src/utils/locale.ts
+msgid "English (United Kingdom)"
+msgstr "Anglisht (Mbretëria e Bashkuar)"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Enhance the security of your account with additional layers of protection."
 msgstr "Forconi sigurinë e llogarisë suaj me shtresa shtesë mbrojtjeje."
@@ -1361,6 +1440,10 @@ msgstr "Shkruani fjalëkalimin tuaj për të konfirmuar konfigurimin e vërtetim
 msgid "Enter your password to disable two-factor authentication. Your account will be less secure without 2FA enabled."
 msgstr "Shkruani fjalëkalimin tuaj për të çaktivizuar vërtetimin me dy faktorë. Llogaria juaj do të jetë më pak e sigurt pa 2FA të aktivizuar."
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Enter your RapidAPI key"
+msgstr "Futni çelësin tuaj të RapidAPI"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Every contribution, big or small, makes a huge difference to the project.<0/>Thank you for your support!"
 msgstr "Çdo kontribut, i madh apo i vogël, bën një ndryshim të madh për projektin.<0/>Faleminderit për mbështetjen tuaj!"
@@ -1373,11 +1456,24 @@ msgstr "Gjithçka që shkruhet këtu ruhet lokalisht në shfletuesin tuaj. Të d
 msgid "Everything you need to create, customize, and share professional resumes. Built with privacy in mind, powered by open source, and completely free forever."
 msgstr "Gjithçka që ju nevojitet për të krijuar, personalizuar dhe shpërndarë CV profesionale. Ndërtuar me fokus privatësinë, i fuqizuar nga burimi i hapur dhe krejtësisht falas përgjithmonë."
 
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Exclude {value}"
+msgstr "Përjashto {value}"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Companies"
+msgstr "Përjashto kompanitë"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Keywords"
+msgstr "Përjashto fjalët kyçe"
+
 #: src/components/input/rich-input.tsx
 msgid "Exit Fullscreen"
 msgstr "Exit Fullscreen"
 
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 #: src/utils/resume/section.tsx
 msgid "Experience"
 msgstr "Eksperienca"
@@ -1402,6 +1498,10 @@ msgstr "Eksploroni dokumentacionin e API-së për të mësuar si të integroni R
 #: src/utils/resume/section.tsx
 msgid "Export"
 msgstr "Exporto"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Failed to duplicate resume"
+msgstr "Dështoi të kopjojë vazhdimin"
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Failed to setup two-factor authentication."
@@ -1503,6 +1603,10 @@ msgstr "Frëngjisht"
 msgid "Full Width"
 msgstr "Gjerësi e plotë"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Full-time"
+msgstr "Punë me kohë të plotë"
+
 #: src/components/input/rich-input.tsx
 msgid "Fullscreen"
 msgstr "Fullscreen"
@@ -1519,6 +1623,10 @@ msgstr "Gjermanisht"
 msgid "Get Started"
 msgstr "Le të fillojmë"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Get your API key from RapidAPI by subscribing to the JSearch API."
+msgstr "Merrni çelësin tuaj të API-së nga RapidAPI duke u abonuar në JSearch API."
+
 #: src/components/layout/not-found-screen.tsx
 #: src/routes/auth/verify-2fa-backup.tsx
 msgid "Go Back"
@@ -1527,6 +1635,10 @@ msgstr "Kthehu mbrapa"
 #: src/routes/_home/-sections/header.tsx
 msgid "Go to dashboard"
 msgstr "Shko te paneli kryesor"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Go to Settings"
+msgstr "Shko te Cilësimet"
 
 #: src/components/command-palette/pages/navigation.tsx
 msgid "Go to..."
@@ -1669,6 +1781,10 @@ msgstr "Po importohet CV-ja juaj..."
 msgid "Importing..."
 msgstr "Po importohet..."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Include Keywords"
+msgstr "Përfshini fjalë kyçe"
+
 #: src/utils/locale.ts
 msgid "Indonesian"
 msgstr "Indonezisht"
@@ -1685,6 +1801,10 @@ msgstr "Shto tabelë"
 #: src/utils/resume/section.tsx
 msgid "Interests"
 msgstr "Interesa"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Intern"
+msgstr "Intern"
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Is Reactive Resume available in multiple languages?"
@@ -1709,6 +1829,24 @@ msgstr "Të pjerrëta"
 #: src/utils/locale.ts
 msgid "Japanese"
 msgstr "Japonisht"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Job Search"
+msgstr "Kërkimi i punës"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Job Search API"
+msgstr "API për kërkimin e punës"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch aggregates job listings from multiple job boards using Google for Jobs. You can filter by country (ISO alpha-2 code), date posted, job type, remote options, and experience level."
+msgstr "JSearch grumbullon njoftime pune nga shumë faqe të punësimit duke përdorur Google for Jobs. Ju mund të filtroni sipas vendit (kodi ISO alfa-2), datës së publikimit, llojit të punës, mundësive për punë në distancë dhe nivelit të përvojës."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch API Documentation"
+msgstr "Dokumentacioni i API-së JSearch"
 
 #: src/components/input/rich-input.tsx
 msgid "Justify Align"
@@ -1751,6 +1889,10 @@ msgstr "Gjuha"
 #: src/utils/resume/section.tsx
 msgid "Languages"
 msgstr "Gjuhët"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Last 3 days"
+msgstr "3 ditët e fundit"
 
 #. placeholder {0}: statistics.lastDownloadedAt.toDateString()
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
@@ -1912,9 +2054,21 @@ msgstr "Margarina (Horizontale)"
 msgid "Margin (Vertical)"
 msgstr "Margarina (Vertikale)"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Maximum Salary"
+msgstr "Paga maksimale"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Minimum Salary"
+msgstr "Paga minimale"
+
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Model"
 msgstr "Modeli"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "More than 3 years"
+msgstr "Më shumë se 3 vjet"
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
 msgid "Move to"
@@ -1988,6 +2142,14 @@ msgstr "Fjalëkalim i ri"
 msgid "New Section"
 msgstr "Seksion i ri"
 
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "New Skills Detected"
+msgstr "U zbuluan aftësi të reja"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Next"
+msgstr "Më tej"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "No Advertising, No Tracking"
 msgstr "Pa reklama, pa gjurmim"
@@ -2020,7 +2182,6 @@ msgid "No projects found."
 msgstr "No projects found."
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "Nuk u gjetën rezultate."
 
@@ -2077,6 +2238,11 @@ msgstr "Open Source"
 msgid "opens in new tab"
 msgstr "hapet në skedë të re"
 
+#. placeholder {0}: job.job_title
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Optimizing summary, experience, and skills for {0}"
+msgstr "Optimizimi i përmbledhjes, përvojës dhe aftësive për {0}"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Optionally, set a password so that only people with the password can view your resume through the link."
 msgstr "Opsionalisht, vendosni një fjalëkalim në mënyrë që vetëm personat me fjalëkalim të mund ta shikojnë CV-në tuaj përmes linkut."
@@ -2116,6 +2282,10 @@ msgstr "Faqja"
 msgid "Page {0}"
 msgstr "Faqja {0}"
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Page {currentPage}"
+msgstr "Faqe {currentPage}"
+
 #: src/components/resume/preview.tsx
 msgid "Page {pageNumber} of {totalNumberOfPages}"
 msgstr "Faqja {pageNumber} nga {totalNumberOfPages}"
@@ -2123,6 +2293,10 @@ msgstr "Faqja {pageNumber} nga {totalNumberOfPages}"
 #: src/components/input/rich-input.tsx
 msgid "Paragraph"
 msgstr "Paragraf"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Part-time"
+msgstr "Pjesë-kohë"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Passkeys & 2FA"
@@ -2278,6 +2452,10 @@ msgstr "Preferenca"
 msgid "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the current keyword."
 msgstr "Shtyp <0>{RETURN_KEY}</0> ose <1>{COMMA_KEY}</1> për të shtuar ose ruajtur fjalën kyçe aktuale."
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Previous"
+msgstr "Më parë"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Ngjyra kryesore"
@@ -2372,6 +2550,15 @@ msgstr "Publikime"
 msgid "Publisher"
 msgstr "Botues"
 
+#. placeholder {0}: quota.remaining
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Quota: {0} remaining"
+msgstr "Kuota: {0} të mbetura"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "RapidAPI Key"
+msgstr "Çelësi i RapidAPI-së"
+
 #: src/routes/_home/-sections/header.tsx
 msgid "Reactive Resume - Go to homepage"
 msgstr "Reactive Resume - Shko në faqen kryesore"
@@ -2419,8 +2606,18 @@ msgid "Refresh"
 msgstr "Rifresko"
 
 #: src/routes/auth/forgot-password.tsx
-msgid "Remember your password? <0><1>Sign in now <2/></1></0>"
-msgstr "E kujtuat fjalëkalimin? <0><1>Hyni tani <2/></1></0>"
+msgid "Remember your password? <0/>"
+msgstr "Ju kujtohet fjalëkalimi? <0/>"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Remote"
+msgstr "Në distancë"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Remote only"
+msgstr "Vetëm në distancë"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Remove"
@@ -2454,6 +2651,10 @@ msgstr "Raporto një gabim"
 msgid "Report an issue"
 msgstr "Raporto një problem"
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Required Skills"
+msgstr "Aftësitë e kërkuara"
+
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Resend verification email"
 msgstr "Ridërgo emailin e verifikimit"
@@ -2463,6 +2664,7 @@ msgid "Resending verification email..."
 msgstr "Po ridërgohet emaili i verifikimit..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Reset"
 msgstr "Rivendos"
 
@@ -2516,6 +2718,10 @@ msgstr "Resume builder that simplifies the process of creating, updating, and sh
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Resumes"
 msgstr "CV-të"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Retry"
+msgstr "Përsërit"
 
 #: src/components/input/rich-input.tsx
 msgid "Right Align"
@@ -2624,7 +2830,6 @@ msgid "Search: {0}"
 msgstr ""
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
 msgstr "Kërko..."
 
@@ -2685,7 +2890,6 @@ msgid "Select users"
 msgstr "Select users"
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
 msgstr "Zgjidh..."
 
@@ -3030,6 +3234,19 @@ msgstr "Etiketa"
 msgid "Tags can be used to categorize your resume by keywords."
 msgstr "Etiketat mund të përdoren për të kategorizuar CV-në tuaj sipas fjalëve kyçe."
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailor Resume"
+msgstr "CV e Përshtatur"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring failed"
+msgstr "Përshtatja dështoi"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring your resume..."
+msgstr "Përshtatja e CV-së suaj..."
+
 #: src/utils/locale.ts
 msgid "Tamil"
 msgstr "Tamile"
@@ -3052,6 +3269,7 @@ msgid "Templates"
 msgstr "Shabllonet"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/job-search.tsx
 msgid "Test Connection"
 msgstr "Testo lidhjen"
 
@@ -3066,6 +3284,10 @@ msgstr "Ngjyra e tekstit"
 #: src/utils/locale.ts
 msgid "Thai"
 msgstr "Tajlandisht"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "The AI identified new skills from your experience that match this job. Select which ones to save back to your original resume for future applications. This will permanently modify your original resume and cannot be undone."
+msgstr "Inteligjenca artificiale identifikoi aftësi të reja nga përvoja juaj që përputhen me këtë punë. Zgjidhni cilat prej tyre dëshironi t'i ruani në rezumën tuaj origjinale për aplikime të ardhshme. Kjo do të modifikojë në mënyrë të përhershme rezumën tuaj origjinale dhe nuk mund të kthehet mbrapsht."
 
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "The API key has been deleted successfully."
@@ -3107,6 +3329,11 @@ msgstr "Më pas, futni kodin 6-shifror që jep aplikacioni për të vazhduar."
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "There was a problem while generating the DOCX, please try again."
+msgstr "Ndodhi një problem gjatë gjenerimit të DOCX-it, ju lutemi provoni përsëri."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "There was a problem while generating the PDF, please try again in some time."
 msgstr "Pati një problem gjatë gjenerimit të PDF-së, ju lutemi provoni përsëri pas pak."
 
@@ -3143,6 +3370,10 @@ msgstr "Kjo mund të zgjasë disa minuta, në varësi të përgjigjes së ofrues
 msgid "This may take a while depending on the server capacity. Please do not close the window or refresh the page."
 msgstr "Kjo mund të zgjasë pak, në varësi të kapacitetit të serverit. Ju lutemi mos e mbyllni dritaren ose rifreskoni faqen."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This month"
+msgstr "Ky muaj"
+
 #: src/components/resume/store/resume.ts
 msgid "This resume is locked and cannot be updated."
 msgstr "Kjo CV është e kyçur dhe nuk mund të përditësohet."
@@ -3158,6 +3389,10 @@ msgstr "Ky seksion është i rezervuar për shënimet tuaja personale specifike 
 #: src/routes/auth/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Ky hap është opsional, por i rekomanduar."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This week"
+msgstr "Këtë javë"
 
 #: src/dialogs/api-key/create.tsx
 msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
@@ -3201,6 +3436,15 @@ msgstr "Titulli"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "Për të fshirë llogarinë tuaj, duhet të shkruani tekstin e konfirmimit dhe të klikoni butonin më poshtë."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "To search for job listings, you need to configure your RapidAPI key in settings."
+msgstr "Për të kërkuar shpalljet e punës, duhet të konfiguroni çelësin tuaj RapidAPI në cilësimet."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Today"
+msgstr "Sot"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Track your resume's views and downloads"
@@ -3270,6 +3514,7 @@ msgstr "Vërtetimi me dy faktorë u konfigurua me sukses."
 
 #: src/dialogs/resume/import.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Type"
 msgstr "Lloji"
 
@@ -3288,6 +3533,10 @@ msgstr "Tipografia"
 #: src/utils/locale.ts
 msgid "Ukrainian"
 msgstr "Ukrainisht"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Under 3 years"
+msgstr "Nën 3 vjeç"
 
 #: src/components/input/rich-input.tsx
 msgid "Underline"
@@ -3548,6 +3797,10 @@ msgstr "Faqja e internetit"
 msgid "What do you want to rename this section to?"
 msgstr "Në çfarë doni ta riemërtoni këtë seksion?"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "What is JSearch API?"
+msgstr "Çfarë është JSearch API?"
+
 #: src/routes/_home/-sections/faq.tsx
 msgid "What makes Reactive Resume different from other resume builders?"
 msgstr "Çfarë e bën Reactive Resume ndryshe nga ndërtuesit e tjerë të CV-ve?"
@@ -3577,6 +3830,10 @@ msgstr "Po! Çdo shabllon është plotësisht i personalizueshëm. Mund të ndry
 #: src/routes/_home/-sections/faq.tsx
 msgid "Yes! Reactive Resume is completely free to use, with no hidden costs, premium tiers, or subscription fees. It's open-source and will always remain free."
 msgstr "Po! Reactive Resume është krejtësisht falas për t’u përdorur, pa kosto të fshehura, nivele premium ose tarifa abonimi. Është me burim të hapur dhe do të mbetet gjithmonë falas."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "Yesterday"
+msgstr "Dje"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "You also have the option to deploy on your own servers using the Docker image."
@@ -3634,6 +3891,10 @@ msgstr "Fjalëkalimi juaj u përditësua."
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Your profile has been updated successfully."
 msgstr "Profili juaj u përditësua me sukses."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Your RapidAPI key is stored locally on your browser. It is only sent to the server when making a request to search for jobs, and is never stored or logged on our servers."
+msgstr "Çelësi juaj i RapidAPI-së ruhet lokalisht në shfletuesin tuaj. Ai dërgohet në server vetëm kur bëni një kërkesë për të kërkuar vende pune, dhe kurrë nuk ruhet apo regjistrohet në serverët tanë."
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx

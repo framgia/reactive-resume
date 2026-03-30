@@ -355,6 +355,7 @@ All `id` fields require valid UUIDs version 7. If available, use 'v7()' from the
 ## HTML Content
 
 Fields marked as "HTML-formatted string" accept basic HTML:
+
 - `<p>` for paragraphs
 - `<ul><li>` for bullet lists
 - `<ol><li>` for numbered lists

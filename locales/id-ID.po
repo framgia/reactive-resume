@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: reactive-resume\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-03-05 10:46\n"
+"PO-Revision-Date: 2026-03-29 21:05\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -50,6 +50,14 @@ msgstr "{0, plural, one {# role} other {# roles}}"
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "{column, plural, one {# Column} other {# Columns}}"
 msgstr "{column, plural, other {# Kolom}}"
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "{diffDays} days ago"
+msgstr "{diffDays} beberapa hari yang lalu"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "{used} of {limit} requests used ({remaining} remaining)"
+msgstr "{used} dari {limit} permintaan yang digunakan ({remaining} tersisa)"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "<0>Finally,</0><1>A resume builder</1>"
@@ -267,9 +275,14 @@ msgstr "Tambah Baris Setelah"
 msgid "Add Row Before"
 msgstr "Tambah Baris Sebelum"
 
-#: src/components/ai/chat.tsx
-msgid "Added"
-msgstr "Ditambahkan"
+#. placeholder {0}: skillsToSync.length
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Added {0} new skills to your original resume"
+msgstr "Menambahkan {0} keterampilan baru ke resume asli Anda"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Advanced Filters"
+msgstr "Filter Tingkat Lanjut"
 
 #: src/utils/locale.ts
 msgid "Afrikaans"
@@ -280,9 +293,9 @@ msgstr "Afrikaans"
 msgid "AI"
 msgstr "Kecerdasan Buatan"
 
-#: src/components/ai/chat.tsx
-msgid "AI Chat"
-msgstr "Chat AI"
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "AI returned some invalid references"
+msgstr "AI mengembalikan beberapa referensi yang tidak valid"
 
 #: src/utils/locale.ts
 msgid "Albanian"
@@ -297,8 +310,8 @@ msgid "Allow Public Access"
 msgstr "Izinkan Akses Publik"
 
 #: src/routes/auth/register.tsx
-msgid "Already have an account? <0><1>Sign in now <2/></1></0>"
-msgstr "Sudah punya akun? <0><1>Masuk sekarang <2/></1></0>"
+msgid "Already have an account? <0/>"
+msgstr "Sudah punya akun? <0/>"
 
 #: src/utils/locale.ts
 msgid "Amharic"
@@ -316,6 +329,19 @@ msgstr "Terjadi kesalahan yang tidak diketahui saat mengimpor resume Anda."
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "Dan masih banyak lagi..."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any level"
+msgstr "Tingkat apa pun"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any time"
+msgstr "Kapan saja"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any type"
+msgstr "Jenis apa saja"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -347,6 +373,10 @@ msgstr "API Key"
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "API Reference"
 msgstr "Referensi API"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "API Usage"
+msgstr "Penggunaan API"
 
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "App"
@@ -478,6 +508,10 @@ msgstr "Dasar"
 #: src/routes/_home/-sections/features.tsx
 msgid "Beautiful templates to choose from, with more on the way."
 msgstr "Template indah untuk dipilih, dengan lebih banyak lagi yang akan datang."
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Benefits"
+msgstr "Manfaat"
 
 #: src/utils/locale.ts
 msgid "Bengali"
@@ -657,6 +691,11 @@ msgstr "Hapus pilihan"
 msgid "Click here to select a file to import"
 msgstr "Klik di sini untuk memilih file yang akan diimpor"
 
+#: src/components/ui/dialog.tsx
+#: src/components/ui/sheet.tsx
+msgid "Close"
+msgstr "Tutup"
+
 #: src/components/input/rich-input.tsx
 msgid "Code Block"
 msgstr "Blok Kode"
@@ -677,6 +716,10 @@ msgstr "Perusahaan"
 #: src/routes/_home/-sections/features.tsx
 msgid "Completely free, forever, no hidden costs."
 msgstr "Sepenuhnya gratis, selamanya, tanpa biaya tersembunyi."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Configure Job Search"
+msgstr "Mengonfigurasi Pencarian Pekerjaan"
 
 #: src/dialogs/api-key/create.tsx
 #: src/hooks/use-prompt.tsx
@@ -710,6 +753,10 @@ msgstr "Lanjutkan dari tempat terakhir Anda berhenti"
 msgid "Continue where you left off by importing an existing resume you created using Reactive Resume or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume."
 msgstr "Lanjutkan dari tempat terakhir Anda berhenti dengan mengimpor resume yang sudah ada yang Anda buat menggunakan Reactive Resume atau pembuat resume lainnya. Format yang didukung termasuk PDF, Microsoft Word, serta file JSON dari Reactive Resume."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Contractor"
+msgstr "Kontraktor"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
 msgstr "Kontribusi mendanai perbaikan bug, pembaruan keamanan, dan peningkatan berkelanjutan agar aplikasi tetap berjalan dengan lancar."
@@ -737,6 +784,14 @@ msgstr "Salin kunci rahasia ini dan gunakan di aplikasi Anda untuk mengakses dat
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Copy URL"
 msgstr "Salin URL"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Could not fetch jobs"
+msgstr "Tidak dapat mengambil pekerjaan"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Country"
+msgstr "Negara"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
@@ -1004,6 +1059,10 @@ msgstr "Keamanan Data"
 msgid "Date"
 msgstr "Tanggal"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Date Posted"
+msgstr "Tanggal Diposting"
+
 #: src/dialogs/resume/sections/education.tsx
 msgid "Degree"
 msgstr "Gelar"
@@ -1098,12 +1157,25 @@ msgstr "Menghapus resume Anda..."
 #: src/dialogs/resume/sections/publication.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
 msgid "Description"
 msgstr "Deskripsi"
 
 #: src/utils/resume/section.tsx
 msgid "Design"
 msgstr "Desain"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Direct"
+msgstr "Langsung"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Direct Apply"
+msgstr "Terapkan Langsung"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Direct apply only"
+msgstr "Hanya berlaku langsung"
 
 #: src/dialogs/auth/disable-two-factor.tsx
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
@@ -1166,8 +1238,8 @@ msgid "Domains"
 msgstr "Domains"
 
 #: src/routes/auth/login.tsx
-msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
-msgstr "Tidak punya akun? <0><1>Buat sekarang <2/></1></0>"
+msgid "Don't have an account? <0/>"
+msgstr "Belum punya akun? <0/>"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Donate to Reactive Resume"
@@ -1179,12 +1251,20 @@ msgid "Download"
 msgstr "Unduh"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "Download a copy of your resume as a Word document. Use this file to further customize your resume in Microsoft Word or Google Docs."
+msgstr "Unduh salinan resume Anda sebagai dokumen Word. Gunakan file ini untuk menyesuaikan resume Anda lebih lanjut di Microsoft Word atau Google Documents."
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in JSON format. Use this file for backup or to import your resume into other applications, including AI assistants."
 msgstr "Unduh salinan resume Anda dalam format JSON. Gunakan file ini untuk cadangan atau untuk mengimpor resume Anda ke aplikasi lain, termasuk asisten AI."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in PDF format. Use this file for printing or to easily share your resume with recruiters."
 msgstr "Unduh salinan resume Anda dalam format PDF. Gunakan file ini untuk mencetak atau dengan mudah membagikan resume Anda kepada perekrut."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+msgid "Download DOCX"
+msgstr "Unduh DOCX"
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download JSON"
@@ -1329,6 +1409,10 @@ msgstr "Mengaktifkan autentikasi dua faktor..."
 msgid "English"
 msgstr "Inggris"
 
+#: src/utils/locale.ts
+msgid "English (United Kingdom)"
+msgstr "Inggris (Britania Raya)"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Enhance the security of your account with additional layers of protection."
 msgstr "Tingkatkan keamanan akun Anda dengan lapisan perlindungan tambahan."
@@ -1361,6 +1445,10 @@ msgstr "Masukkan kata sandi Anda untuk mengonfirmasi penyiapan autentikasi dua f
 msgid "Enter your password to disable two-factor authentication. Your account will be less secure without 2FA enabled."
 msgstr "Masukkan kata sandi Anda untuk menonaktifkan autentikasi dua faktor. Akun Anda akan menjadi kurang aman tanpa 2FA diaktifkan."
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Enter your RapidAPI key"
+msgstr "Masukkan kunci RapidAPI Anda"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Every contribution, big or small, makes a huge difference to the project.<0/>Thank you for your support!"
 msgstr "Setiap kontribusi, besar atau kecil, membuat perbedaan besar bagi proyek ini.<0/>Terima kasih atas dukungan Anda!"
@@ -1373,11 +1461,24 @@ msgstr "Semua yang dimasukkan di sini disimpan secara lokal di browser Anda. Dat
 msgid "Everything you need to create, customize, and share professional resumes. Built with privacy in mind, powered by open source, and completely free forever."
 msgstr "Segala yang Anda butuhkan untuk membuat, menyesuaikan, dan membagikan resume profesional. Dibangun dengan mengutamakan privasi, didukung oleh sumber terbuka, dan sepenuhnya gratis selamanya."
 
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Exclude {value}"
+msgstr "Kecualikan {value}"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Companies"
+msgstr "Mengecualikan Perusahaan"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Keywords"
+msgstr "Kecualikan Kata Kunci"
+
 #: src/components/input/rich-input.tsx
 msgid "Exit Fullscreen"
 msgstr "Exit Fullscreen"
 
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 #: src/utils/resume/section.tsx
 msgid "Experience"
 msgstr "Pengalaman"
@@ -1402,6 +1503,10 @@ msgstr "Jelajahi dokumentasi API untuk mempelajari cara mengintegrasikan Reactiv
 #: src/utils/resume/section.tsx
 msgid "Export"
 msgstr "Ekspor"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Failed to duplicate resume"
+msgstr "Gagal menduplikasi resume"
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Failed to setup two-factor authentication."
@@ -1503,6 +1608,10 @@ msgstr "Prancis"
 msgid "Full Width"
 msgstr "Lebar Penuh"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Full-time"
+msgstr "Penuh waktu"
+
 #: src/components/input/rich-input.tsx
 msgid "Fullscreen"
 msgstr "Fullscreen"
@@ -1519,6 +1628,10 @@ msgstr "Jerman"
 msgid "Get Started"
 msgstr "Mulai"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Get your API key from RapidAPI by subscribing to the JSearch API."
+msgstr "Dapatkan kunci API Anda dari RapidAPI dengan berlangganan API JSearch."
+
 #: src/components/layout/not-found-screen.tsx
 #: src/routes/auth/verify-2fa-backup.tsx
 msgid "Go Back"
@@ -1527,6 +1640,10 @@ msgstr "Kembali"
 #: src/routes/_home/-sections/header.tsx
 msgid "Go to dashboard"
 msgstr "Pergi ke dasbor"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Go to Settings"
+msgstr "Buka Pengaturan"
 
 #: src/components/command-palette/pages/navigation.tsx
 msgid "Go to..."
@@ -1669,6 +1786,10 @@ msgstr "Mengimpor resume Anda..."
 msgid "Importing..."
 msgstr "Mengimpor..."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Include Keywords"
+msgstr "Sertakan Kata Kunci"
+
 #: src/utils/locale.ts
 msgid "Indonesian"
 msgstr "Indonesia"
@@ -1685,6 +1806,10 @@ msgstr "Sisipkan Tabel"
 #: src/utils/resume/section.tsx
 msgid "Interests"
 msgstr "Minat"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Intern"
+msgstr "Magang"
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Is Reactive Resume available in multiple languages?"
@@ -1709,6 +1834,24 @@ msgstr "Miring"
 #: src/utils/locale.ts
 msgid "Japanese"
 msgstr "Jepang"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Job Search"
+msgstr "Pencarian Pekerjaan"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Job Search API"
+msgstr "API Pencarian Pekerjaan"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch aggregates job listings from multiple job boards using Google for Jobs. You can filter by country (ISO alpha-2 code), date posted, job type, remote options, and experience level."
+msgstr "JSearch mengumpulkan daftar lowongan kerja dari berbagai papan lowongan kerja menggunakan Google for Jobs. Anda dapat memfilter berdasarkan negara (kode ISO alpha-2), tanggal diposting, jenis pekerjaan, opsi jarak jauh, dan tingkat pengalaman."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch API Documentation"
+msgstr "Dokumentasi API JSearch"
 
 #: src/components/input/rich-input.tsx
 msgid "Justify Align"
@@ -1751,6 +1894,10 @@ msgstr "Bahasa"
 #: src/utils/resume/section.tsx
 msgid "Languages"
 msgstr "Bahasa"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Last 3 days"
+msgstr "3 hari terakhir"
 
 #. placeholder {0}: statistics.lastDownloadedAt.toDateString()
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
@@ -1912,9 +2059,21 @@ msgstr "Margin (Horizontal)"
 msgid "Margin (Vertical)"
 msgstr "Margin (Vertikal)"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Maximum Salary"
+msgstr "Gaji Maksimum"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Minimum Salary"
+msgstr "Gaji Minimum"
+
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Model"
 msgstr "Model"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "More than 3 years"
+msgstr "Lebih dari 3 tahun"
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
 msgid "Move to"
@@ -1988,6 +2147,14 @@ msgstr "Kata Sandi Baru"
 msgid "New Section"
 msgstr "Bagian Baru"
 
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "New Skills Detected"
+msgstr "Keterampilan Baru Terdeteksi"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Next"
+msgstr "Berikutnya"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "No Advertising, No Tracking"
 msgstr "Tanpa Iklan, Tanpa Pelacakan"
@@ -2020,7 +2187,6 @@ msgid "No projects found."
 msgstr "No projects found."
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "Tidak ada hasil."
 
@@ -2077,6 +2243,11 @@ msgstr "Sumber Terbuka"
 msgid "opens in new tab"
 msgstr "terbuka di tab baru"
 
+#. placeholder {0}: job.job_title
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Optimizing summary, experience, and skills for {0}"
+msgstr "Mengoptimalkan ringkasan, pengalaman, dan keterampilan untuk {0}"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Optionally, set a password so that only people with the password can view your resume through the link."
 msgstr "Secara opsional, atur kata sandi sehingga hanya orang yang memiliki kata sandi yang dapat melihat resume Anda melalui tautan."
@@ -2116,6 +2287,10 @@ msgstr "Halaman"
 msgid "Page {0}"
 msgstr "Halaman {0}"
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Page {currentPage}"
+msgstr "Halaman {currentPage}"
+
 #: src/components/resume/preview.tsx
 msgid "Page {pageNumber} of {totalNumberOfPages}"
 msgstr "Halaman {pageNumber} dari {totalNumberOfPages}"
@@ -2123,6 +2298,10 @@ msgstr "Halaman {pageNumber} dari {totalNumberOfPages}"
 #: src/components/input/rich-input.tsx
 msgid "Paragraph"
 msgstr "Paragraf"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Part-time"
+msgstr "Paruh waktu"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Passkeys & 2FA"
@@ -2278,6 +2457,10 @@ msgstr "Preferensi"
 msgid "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the current keyword."
 msgstr "Tekan <0>{RETURN_KEY}</0> atau <1>{COMMA_KEY}</1> untuk menambah atau menyimpan kata kunci saat ini."
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Previous"
+msgstr "Sebelumnya"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Warna Utama"
@@ -2372,6 +2555,15 @@ msgstr "Publikasi"
 msgid "Publisher"
 msgstr "Penerbit"
 
+#. placeholder {0}: quota.remaining
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Quota: {0} remaining"
+msgstr "Sisa kuota: {0}"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "RapidAPI Key"
+msgstr "Kunci RapidAPI"
+
 #: src/routes/_home/-sections/header.tsx
 msgid "Reactive Resume - Go to homepage"
 msgstr "Reactive Resume - Pergi ke beranda"
@@ -2419,8 +2611,18 @@ msgid "Refresh"
 msgstr "Muat Ulang"
 
 #: src/routes/auth/forgot-password.tsx
-msgid "Remember your password? <0><1>Sign in now <2/></1></0>"
-msgstr "Ingat kata sandi Anda? <0><1>Masuk sekarang <2/></1></0>"
+msgid "Remember your password? <0/>"
+msgstr "Ingat kata sandi Anda? <0/>"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Remote"
+msgstr "Jarak jauh"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Remote only"
+msgstr "Hanya untuk jarak jauh"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Remove"
@@ -2454,6 +2656,10 @@ msgstr "Laporkan Bug"
 msgid "Report an issue"
 msgstr "Laporkan masalah"
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Required Skills"
+msgstr "Keahlian yang dibutuhkan"
+
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Resend verification email"
 msgstr "Kirim ulang email verifikasi"
@@ -2463,6 +2669,7 @@ msgid "Resending verification email..."
 msgstr "Mengirim ulang email verifikasi..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Reset"
 msgstr "Atur Ulang"
 
@@ -2516,6 +2723,10 @@ msgstr "Resume builder that simplifies the process of creating, updating, and sh
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Resumes"
 msgstr "Resume"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Retry"
+msgstr "Coba lagi."
 
 #: src/components/input/rich-input.tsx
 msgid "Right Align"
@@ -2624,7 +2835,6 @@ msgid "Search: {0}"
 msgstr ""
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
 msgstr "Cari..."
 
@@ -2685,7 +2895,6 @@ msgid "Select users"
 msgstr "Select users"
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
 msgstr "Pilih..."
 
@@ -3030,6 +3239,19 @@ msgstr "Tag"
 msgid "Tags can be used to categorize your resume by keywords."
 msgstr "Tag dapat digunakan untuk mengkategorikan resume Anda dengan kata kunci."
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailor Resume"
+msgstr "Resume Penjahit"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring failed"
+msgstr "Menjahit gagal"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring your resume..."
+msgstr "Menyesuaikan resume Anda..."
+
 #: src/utils/locale.ts
 msgid "Tamil"
 msgstr "Tamil"
@@ -3052,6 +3274,7 @@ msgid "Templates"
 msgstr "Template"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/job-search.tsx
 msgid "Test Connection"
 msgstr "Uji Koneksi"
 
@@ -3066,6 +3289,10 @@ msgstr "Warna Teks"
 #: src/utils/locale.ts
 msgid "Thai"
 msgstr "Thai"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "The AI identified new skills from your experience that match this job. Select which ones to save back to your original resume for future applications. This will permanently modify your original resume and cannot be undone."
+msgstr "AI mengidentifikasi keterampilan baru dari pengalaman Anda yang sesuai dengan pekerjaan ini. Pilih yang mana yang akan disimpan kembali ke resume asli Anda untuk lamaran di masa mendatang. Ini akan mengubah resume asli Anda secara permanen dan tidak dapat dibatalkan."
 
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "The API key has been deleted successfully."
@@ -3107,6 +3334,11 @@ msgstr "Lalu, masukkan kode 6 digit yang diberikan aplikasi untuk melanjutkan."
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "There was a problem while generating the DOCX, please try again."
+msgstr "Ada masalah saat membuat DOCX, silakan coba lagi."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "There was a problem while generating the PDF, please try again in some time."
 msgstr "Terjadi masalah saat membuat PDF, silakan coba lagi nanti."
 
@@ -3143,6 +3375,10 @@ msgstr "Ini mungkin memakan waktu beberapa menit, tergantung respons penyedia AI
 msgid "This may take a while depending on the server capacity. Please do not close the window or refresh the page."
 msgstr "Ini mungkin memakan waktu tergantung kapasitas server. Harap jangan menutup jendela atau memuat ulang halaman."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This month"
+msgstr "Bulan ini"
+
 #: src/components/resume/store/resume.ts
 msgid "This resume is locked and cannot be updated."
 msgstr "Resume ini dikunci dan tidak dapat diperbarui."
@@ -3158,6 +3394,10 @@ msgstr "Bagian ini disediakan untuk catatan pribadi Anda yang khusus untuk resum
 #: src/routes/auth/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Langkah ini opsional, tetapi direkomendasikan."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This week"
+msgstr "Minggu ini"
 
 #: src/dialogs/api-key/create.tsx
 msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
@@ -3201,6 +3441,15 @@ msgstr "Judul"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "Untuk menghapus akun Anda, Anda perlu memasukkan teks konfirmasi dan klik tombol di bawah."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "To search for job listings, you need to configure your RapidAPI key in settings."
+msgstr "Untuk mencari daftar pekerjaan, Anda perlu mengonfigurasi kunci RapidAPI Anda dalam pengaturan."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Today"
+msgstr "Hari ini"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Track your resume's views and downloads"
@@ -3270,6 +3519,7 @@ msgstr "Autentikasi dua faktor telah berhasil disiapkan."
 
 #: src/dialogs/resume/import.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Type"
 msgstr "Tipe"
 
@@ -3288,6 +3538,10 @@ msgstr "Tipografi"
 #: src/utils/locale.ts
 msgid "Ukrainian"
 msgstr "Ukraina"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Under 3 years"
+msgstr "Di bawah 3 tahun"
 
 #: src/components/input/rich-input.tsx
 msgid "Underline"
@@ -3548,6 +3802,10 @@ msgstr "Situs Web"
 msgid "What do you want to rename this section to?"
 msgstr "Apa yang ingin Anda ganti nama bagian ini menjadi?"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "What is JSearch API?"
+msgstr "Apa yang dimaksud dengan JSearch API?"
+
 #: src/routes/_home/-sections/faq.tsx
 msgid "What makes Reactive Resume different from other resume builders?"
 msgstr "Apa yang membuat Reactive Resume berbeda dari pembuat resume lainnya?"
@@ -3577,6 +3835,10 @@ msgstr "Ya! Setiap template sepenuhnya dapat disesuaikan. Anda dapat mengubah wa
 #: src/routes/_home/-sections/faq.tsx
 msgid "Yes! Reactive Resume is completely free to use, with no hidden costs, premium tiers, or subscription fees. It's open-source and will always remain free."
 msgstr "Ya! Reactive Resume sepenuhnya gratis digunakan, tanpa biaya tersembunyi, tingkat premium, atau biaya langganan. Ini bersumber terbuka dan akan selalu tetap gratis."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "Yesterday"
+msgstr "Kemarin"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "You also have the option to deploy on your own servers using the Docker image."
@@ -3634,6 +3896,10 @@ msgstr "Kata sandi Anda telah berhasil diperbarui."
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Your profile has been updated successfully."
 msgstr "Profil Anda telah berhasil diperbarui."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Your RapidAPI key is stored locally on your browser. It is only sent to the server when making a request to search for jobs, and is never stored or logged on our servers."
+msgstr "Kunci RapidAPI Anda disimpan secara lokal di browser Anda. Kunci ini hanya dikirim ke server ketika membuat permintaan untuk mencari pekerjaan, dan tidak pernah disimpan atau dicatat di server kami."
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx

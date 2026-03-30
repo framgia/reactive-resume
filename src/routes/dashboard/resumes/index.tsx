@@ -69,25 +69,33 @@ function RouteComponent() {
   const initialFiltersFromNav = router.state.location.state as
     | undefined
     | {
-        resumeFilters?: Partial<Pick<ResumeFiltersApplied, 'projectId' | 'projectName'>>;
+        resumeFilters?: Partial<
+          Pick<ResumeFiltersApplied, 'projectId' | 'projectName'>
+        >;
       };
 
-  const [appliedFilters, setAppliedFilters] = useState<ResumeFiltersApplied>(() => ({
-    query: '',
-    projectId: projectId ?? initialFiltersFromNav?.resumeFilters?.projectId,
-    projectName: projectName ?? '',
-    customerId: undefined,
-    customerName: '',
-    skillIds: [],
-    skillNames: [],
-    positionId: undefined,
-    positionName: ''
-  }));
+  const [appliedFilters, setAppliedFilters] = useState<ResumeFiltersApplied>(
+    () => ({
+      query: '',
+      projectId: projectId ?? initialFiltersFromNav?.resumeFilters?.projectId,
+      projectName: projectName ?? '',
+      customerId: undefined,
+      customerName: '',
+      skillIds: [],
+      skillNames: [],
+      positionId: undefined,
+      positionName: ''
+    })
+  );
 
   useEffect(() => {
     // Keep UI in sync with URL when user deep-links or changes query params manually.
     setAppliedFilters((prev) => {
-      if (prev.projectId === projectId && prev.projectName === (projectName ?? '')) return prev;
+      if (
+        prev.projectId === projectId &&
+        prev.projectName === (projectName ?? '')
+      )
+        return prev;
       return {
         ...prev,
         projectId,
@@ -103,7 +111,10 @@ function RouteComponent() {
         query: appliedFilters.query?.trim() || undefined,
         projectId: appliedFilters.projectId,
         customerId: appliedFilters.customerId,
-        skillIds: appliedFilters.skillIds.length > 0 ? appliedFilters.skillIds : undefined,
+        skillIds:
+          appliedFilters.skillIds.length > 0
+            ? appliedFilters.skillIds
+            : undefined,
         positionId: appliedFilters.positionId
       }
     })

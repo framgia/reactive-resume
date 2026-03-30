@@ -8,7 +8,7 @@ msgstr ""
 "Language: tr\n"
 "Project-Id-Version: reactive-resume\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-03-05 10:46\n"
+"PO-Revision-Date: 2026-03-29 21:05\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -50,6 +50,14 @@ msgstr "{0, plural, one {# role} other {# roles}}"
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "{column, plural, one {# Column} other {# Columns}}"
 msgstr "{column, plural, one {# Sütun} other {# Sütunlar}}"
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "{diffDays} days ago"
+msgstr "{diffDays} günler önce"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "{used} of {limit} requests used ({remaining} remaining)"
+msgstr "{used} kullanılan {limit} talepleri ({remaining} kalan)"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "<0>Finally,</0><1>A resume builder</1>"
@@ -297,8 +305,8 @@ msgid "Allow Public Access"
 msgstr "Herkese Açık Erişime İzin Ver"
 
 #: src/routes/auth/register.tsx
-msgid "Already have an account? <0><1>Sign in now <2/></1></0>"
-msgstr "Zaten bir hesabınız var mı? <0><1>Şimdi giriş yapın <2/></1></0>"
+msgid "Already have an account? <0/>"
+msgstr "Zaten hesabınız var mı? <0/>"
 
 #: src/utils/locale.ts
 msgid "Amharic"
@@ -316,6 +324,19 @@ msgstr "Özgeçmişiniz içe aktarılırken bilinmeyen bir hata oluştu."
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "Ve daha fazlası..."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any level"
+msgstr "Herhangi bir seviye"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any time"
+msgstr "Her zaman"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any type"
+msgstr "Herhangi bir tür"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -347,6 +368,10 @@ msgstr "API Anahtarları"
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "API Reference"
 msgstr "API Referansı"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "API Usage"
+msgstr "API Kullanımı"
 
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "App"
@@ -478,6 +503,10 @@ msgstr "Temel Bilgiler"
 #: src/routes/_home/-sections/features.tsx
 msgid "Beautiful templates to choose from, with more on the way."
 msgstr "Seçebileceğiniz güzel şablonlar, daha fazlası yolda."
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Benefits"
+msgstr "Avantajlar"
 
 #: src/utils/locale.ts
 msgid "Bengali"
@@ -657,6 +686,11 @@ msgstr "Seçimi temizle"
 msgid "Click here to select a file to import"
 msgstr "İçe aktarmak için bir dosya seçmek üzere buraya tıklayın"
 
+#: src/components/ui/dialog.tsx
+#: src/components/ui/sheet.tsx
+msgid "Close"
+msgstr "Kapat"
+
 #: src/components/input/rich-input.tsx
 msgid "Code Block"
 msgstr "Kod Bloğu"
@@ -677,6 +711,10 @@ msgstr "Şirket"
 #: src/routes/_home/-sections/features.tsx
 msgid "Completely free, forever, no hidden costs."
 msgstr "Tamamen ücretsiz, sonsuza kadar, gizli maliyetler yok."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Configure Job Search"
+msgstr "İş Aramayı Yapılandırma"
 
 #: src/dialogs/api-key/create.tsx
 #: src/hooks/use-prompt.tsx
@@ -710,6 +748,10 @@ msgstr "Kaldığın yerden devam et"
 msgid "Continue where you left off by importing an existing resume you created using Reactive Resume or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume."
 msgstr "Kaldığınız yerden devam edin, Reactive Resume veya başka bir özgeçmiş oluşturucu ile oluşturduğunuz mevcut bir özgeçmişi içe aktararak. Desteklenen formatlar arasında PDF, Microsoft Word ve Reactive Resume'den alınan JSON dosyaları bulunur."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Contractor"
+msgstr "Yüklenici"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
 msgstr "Katkılar, hata düzeltmelerini, güvenlik güncellemelerini ve uygulamanın sorunsuz çalışmasını sağlamak için sürekli iyileştirmeleri finanse eder."
@@ -737,6 +779,14 @@ msgstr "Bu gizli anahtarı kopyalayıp uygulamalarınızda verilerinize erişmek
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Copy URL"
 msgstr "URL'yi Kopyala"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Could not fetch jobs"
+msgstr "İşler getirilemedi"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Country"
+msgstr "Ülke"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
@@ -1004,6 +1054,10 @@ msgstr "Veri Güvenliği"
 msgid "Date"
 msgstr "Tarih"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Date Posted"
+msgstr "Gönderildiği Tarih"
+
 #: src/dialogs/resume/sections/education.tsx
 msgid "Degree"
 msgstr "Derece"
@@ -1098,12 +1152,25 @@ msgstr "Özgeçmişiniz siliniyor..."
 #: src/dialogs/resume/sections/publication.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
 msgid "Description"
 msgstr "Açıklama"
 
 #: src/utils/resume/section.tsx
 msgid "Design"
 msgstr "Tasarım"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Direct"
+msgstr "Doğrudan"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Direct Apply"
+msgstr "Doğrudan Başvuru"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Direct apply only"
+msgstr "Sadece doğrudan başvuru"
 
 #: src/dialogs/auth/disable-two-factor.tsx
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
@@ -1166,8 +1233,8 @@ msgid "Domains"
 msgstr "Domains"
 
 #: src/routes/auth/login.tsx
-msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
-msgstr "Hesabınız yok mu? <0><1>Şimdi oluşturun <2/></1></0>"
+msgid "Don't have an account? <0/>"
+msgstr "Hesabınız yok mu? <0/>"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Donate to Reactive Resume"
@@ -1179,12 +1246,20 @@ msgid "Download"
 msgstr "İndir"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "Download a copy of your resume as a Word document. Use this file to further customize your resume in Microsoft Word or Google Docs."
+msgstr "Özgeçmişinizin bir kopyasını Word belgesi olarak indirin. Özgeçmişinizi Microsoft Word veya Google Docs'ta daha da özelleştirmek için bu dosyayı kullanın."
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in JSON format. Use this file for backup or to import your resume into other applications, including AI assistants."
 msgstr "Özgeçmişinizin bir kopyasını JSON formatında indirin. Bu dosyayı yedeklemek veya özgeçmişinizi diğer uygulamalara, AI asistanları dahil olmak üzere, aktarmak için kullanabilirsiniz."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in PDF format. Use this file for printing or to easily share your resume with recruiters."
 msgstr "Özgeçmişinizin bir kopyasını PDF formatında indirin. Bu dosyayı yazdırmak veya özgeçmişinizi işverenlerle kolayca paylaşmak için kullanın."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+msgid "Download DOCX"
+msgstr "İndir DOCX"
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download JSON"
@@ -1329,6 +1404,10 @@ msgstr "İki faktörlü kimlik doğrulama etkinleştiriliyor..."
 msgid "English"
 msgstr "İngilizce"
 
+#: src/utils/locale.ts
+msgid "English (United Kingdom)"
+msgstr "İngilizce (Birleşik Krallık)"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Enhance the security of your account with additional layers of protection."
 msgstr "Hesabınızın güvenliğini ek koruma katmanlarıyla artırın."
@@ -1361,6 +1440,10 @@ msgstr "İki faktörlü kimlik doğrulamayı kurmayı onaylamak için şifrenizi
 msgid "Enter your password to disable two-factor authentication. Your account will be less secure without 2FA enabled."
 msgstr "İki faktörlü kimlik doğrulamayı devre dışı bırakmak için şifrenizi girin. 2FA etkin olmadığında hesabınız daha az güvenli olur."
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Enter your RapidAPI key"
+msgstr "RapidAPI anahtarınızı girin"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Every contribution, big or small, makes a huge difference to the project.<0/>Thank you for your support!"
 msgstr "Her katkı, büyük ya da küçük, projeye önemli bir katkı sağlar.<0/>Desteğiniz için teşekkürler!"
@@ -1373,11 +1456,24 @@ msgstr "Buraya girilen her şey tarayıcınıza yerel olarak kaydedilir. Veriler
 msgid "Everything you need to create, customize, and share professional resumes. Built with privacy in mind, powered by open source, and completely free forever."
 msgstr "Profesyonel özgeçmişler oluşturmak, özelleştirmek ve paylaşmak için ihtiyacınız olan her şey. Gizlilik odaklı, açık kaynaklı ve sonsuza dek tamamen ücretsiz."
 
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Exclude {value}"
+msgstr "Hariç tut {value}"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Companies"
+msgstr "Şirketleri Hariç Tutun"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Keywords"
+msgstr "Anahtar Kelimeleri Hariç Tut"
+
 #: src/components/input/rich-input.tsx
 msgid "Exit Fullscreen"
 msgstr "Exit Fullscreen"
 
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 #: src/utils/resume/section.tsx
 msgid "Experience"
 msgstr "Deneyim"
@@ -1402,6 +1498,10 @@ msgstr "Uygulamalarınızla Reaktif Özgeçmiş'i entegre etmeyi öğrenmek içi
 #: src/utils/resume/section.tsx
 msgid "Export"
 msgstr "Dışa aktar"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Failed to duplicate resume"
+msgstr "Özgeçmiş çoğaltılamadı"
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Failed to setup two-factor authentication."
@@ -1503,6 +1603,10 @@ msgstr "Fransızca"
 msgid "Full Width"
 msgstr "Tam Genişlik"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Full-time"
+msgstr "Tam zamanlı"
+
 #: src/components/input/rich-input.tsx
 msgid "Fullscreen"
 msgstr "Fullscreen"
@@ -1519,6 +1623,10 @@ msgstr "Almanca"
 msgid "Get Started"
 msgstr "Başlayın"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Get your API key from RapidAPI by subscribing to the JSearch API."
+msgstr "JSearch API'ye abone olarak RapidAPI'den API anahtarınızı alın."
+
 #: src/components/layout/not-found-screen.tsx
 #: src/routes/auth/verify-2fa-backup.tsx
 msgid "Go Back"
@@ -1527,6 +1635,10 @@ msgstr "Geri Dön"
 #: src/routes/_home/-sections/header.tsx
 msgid "Go to dashboard"
 msgstr "Gösterge Paneline Git"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Go to Settings"
+msgstr "Ayarlar'a gidin"
 
 #: src/components/command-palette/pages/navigation.tsx
 msgid "Go to..."
@@ -1669,6 +1781,10 @@ msgstr "Özgeçmişiniz içe aktarılıyor..."
 msgid "Importing..."
 msgstr "İçe Aktar..."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Include Keywords"
+msgstr "Anahtar Kelimeleri Dahil Edin"
+
 #: src/utils/locale.ts
 msgid "Indonesian"
 msgstr "Endonezce"
@@ -1685,6 +1801,10 @@ msgstr "Tablo Ekle"
 #: src/utils/resume/section.tsx
 msgid "Interests"
 msgstr "İlgi Alanları"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Intern"
+msgstr "Stajyer"
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Is Reactive Resume available in multiple languages?"
@@ -1709,6 +1829,24 @@ msgstr "İtalik"
 #: src/utils/locale.ts
 msgid "Japanese"
 msgstr "Japonca"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Job Search"
+msgstr "İş Arama"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Job Search API"
+msgstr "İş Arama API'si"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch aggregates job listings from multiple job boards using Google for Jobs. You can filter by country (ISO alpha-2 code), date posted, job type, remote options, and experience level."
+msgstr "JSearch, Google for Jobs'u kullanarak birden fazla iş panosundaki iş ilanlarını bir araya getirir. Ülkeye (ISO alfa-2 kodu), yayınlanma tarihine, iş türüne, uzaktan çalışma seçeneklerine ve deneyim düzeyine göre filtreleme yapabilirsiniz."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch API Documentation"
+msgstr "JSearch API Dokümantasyonu"
 
 #: src/components/input/rich-input.tsx
 msgid "Justify Align"
@@ -1751,6 +1889,10 @@ msgstr "Dil"
 #: src/utils/resume/section.tsx
 msgid "Languages"
 msgstr "Diller"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Last 3 days"
+msgstr "Son 3 gün"
 
 #. placeholder {0}: statistics.lastDownloadedAt.toDateString()
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
@@ -1912,9 +2054,21 @@ msgstr "Kenar Boşluğu (Yatay)"
 msgid "Margin (Vertical)"
 msgstr "Kenar Boşluğu (Dikey)"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Maximum Salary"
+msgstr "Maksimum Maaş"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Minimum Salary"
+msgstr "Asgari Ücret"
+
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Model"
 msgstr "Model"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "More than 3 years"
+msgstr "3 yıldan fazla"
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
 msgid "Move to"
@@ -1988,6 +2142,14 @@ msgstr "Yeni Şifre"
 msgid "New Section"
 msgstr "Yeni Bölüm"
 
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "New Skills Detected"
+msgstr "Yeni Beceriler Tespit Edildi"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Next"
+msgstr "Sonraki"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "No Advertising, No Tracking"
 msgstr "Reklam Yok, Takip Yok"
@@ -2020,7 +2182,6 @@ msgid "No projects found."
 msgstr "No projects found."
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "Hiçbir sonuç bulunamadı."
 
@@ -2077,6 +2238,11 @@ msgstr "Açık Kaynak"
 msgid "opens in new tab"
 msgstr "yeni sekmede açılır"
 
+#. placeholder {0}: job.job_title
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Optimizing summary, experience, and skills for {0}"
+msgstr "{0} için özet, deneyim ve becerileri optimize etme"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Optionally, set a password so that only people with the password can view your resume through the link."
 msgstr "İsterseniz bir şifre belirleyin, böylece yalnızca şifreye sahip olanlar bağlantı üzerinden özgeçmişinizi görüntüleyebilir."
@@ -2116,6 +2282,10 @@ msgstr "Sayfa"
 msgid "Page {0}"
 msgstr "Sayfa {0}"
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Page {currentPage}"
+msgstr "Sayfa {currentPage}"
+
 #: src/components/resume/preview.tsx
 msgid "Page {pageNumber} of {totalNumberOfPages}"
 msgstr "{totalNumberOfPages} sayfanın {pageNumber}. sayfası"
@@ -2123,6 +2293,10 @@ msgstr "{totalNumberOfPages} sayfanın {pageNumber}. sayfası"
 #: src/components/input/rich-input.tsx
 msgid "Paragraph"
 msgstr "Paragraf"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Part-time"
+msgstr "Yarı zamanlı"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Passkeys & 2FA"
@@ -2278,6 +2452,10 @@ msgstr "Tercihler"
 msgid "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the current keyword."
 msgstr "Mevcut anahtar kelimeyi eklemek veya kaydetmek için <0>{RETURN_KEY}</0> veya <1>{COMMA_KEY}</1> tuşuna basın."
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Previous"
+msgstr "Önceki"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Birincil Renk"
@@ -2372,6 +2550,15 @@ msgstr "Yayınlar"
 msgid "Publisher"
 msgstr "Yayınlayıcı"
 
+#. placeholder {0}: quota.remaining
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Quota: {0} remaining"
+msgstr "Kota: {0} kalan"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "RapidAPI Key"
+msgstr "RapidAPI Anahtarı"
+
 #: src/routes/_home/-sections/header.tsx
 msgid "Reactive Resume - Go to homepage"
 msgstr "Reactive Özgeçmiş - Ana sayfaya git"
@@ -2419,8 +2606,18 @@ msgid "Refresh"
 msgstr "Yenile"
 
 #: src/routes/auth/forgot-password.tsx
-msgid "Remember your password? <0><1>Sign in now <2/></1></0>"
-msgstr "Şifrenizi hatırlıyor musunuz? <0><1>Şimdi giriş yapın <2/></1></0>"
+msgid "Remember your password? <0/>"
+msgstr "Şifrenizi hatırladınız mı? <0/>"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Remote"
+msgstr "Uzaktan Kumanda"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Remote only"
+msgstr "Sadece uzaktan kumanda"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Remove"
@@ -2454,6 +2651,10 @@ msgstr "Bir Hata Bildir"
 msgid "Report an issue"
 msgstr "Bir sorunu bildirin"
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Required Skills"
+msgstr "Gerekli Beceriler"
+
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Resend verification email"
 msgstr "Doğrulama e-postasını tekrar gönder"
@@ -2463,6 +2664,7 @@ msgid "Resending verification email..."
 msgstr "Doğrulama e-postası tekrar gönderiliyor..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Reset"
 msgstr "Sıfırla"
 
@@ -2516,6 +2718,10 @@ msgstr "Resume builder that simplifies the process of creating, updating, and sh
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Resumes"
 msgstr "Özgeçmişler"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Retry"
+msgstr "Yeniden Dene"
 
 #: src/components/input/rich-input.tsx
 msgid "Right Align"
@@ -2624,7 +2830,6 @@ msgid "Search: {0}"
 msgstr ""
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
 msgstr "Ara..."
 
@@ -2685,7 +2890,6 @@ msgid "Select users"
 msgstr "Select users"
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
 msgstr "Seç..."
 
@@ -3030,6 +3234,19 @@ msgstr "Etiketler"
 msgid "Tags can be used to categorize your resume by keywords."
 msgstr "Etiketler, özgeçmişinizi anahtar kelimelerle kategorize etmek için kullanılabilir."
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailor Resume"
+msgstr "Terzi Özgeçmişi"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring failed"
+msgstr "Terzilik başarısız oldu"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring your resume..."
+msgstr "Özgeçmişinizi uyarlamak..."
+
 #: src/utils/locale.ts
 msgid "Tamil"
 msgstr "Tamilce"
@@ -3052,6 +3269,7 @@ msgid "Templates"
 msgstr "Şablonlar"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/job-search.tsx
 msgid "Test Connection"
 msgstr "Bağlantıyı Test Et"
 
@@ -3066,6 +3284,10 @@ msgstr "Metin Rengi"
 #: src/utils/locale.ts
 msgid "Thai"
 msgstr "Tayca"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "The AI identified new skills from your experience that match this job. Select which ones to save back to your original resume for future applications. This will permanently modify your original resume and cannot be undone."
+msgstr "Yapay zeka, deneyimlerinizden bu işle eşleşen yeni beceriler belirledi. Gelecekteki başvurular için hangilerini orijinal özgeçmişinize geri kaydedeceğinizi seçin. Bu, orijinal özgeçmişinizi kalıcı olarak değiştirecektir ve geri alınamaz."
 
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "The API key has been deleted successfully."
@@ -3107,6 +3329,11 @@ msgstr "Daha sonra, devam etmek için uygulamanın verdiği 6 haneli kodu girin.
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "There was a problem while generating the DOCX, please try again."
+msgstr "DOCX oluşturulurken bir sorun oluştu, lütfen tekrar deneyin."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "There was a problem while generating the PDF, please try again in some time."
 msgstr "PDF oluşturulurken bir sorun oluştu, lütfen daha sonra tekrar deneyin."
 
@@ -3143,6 +3370,10 @@ msgstr "Bu, yapay zeka sağlayıcısının yanıtına bağlı olarak birkaç dak
 msgid "This may take a while depending on the server capacity. Please do not close the window or refresh the page."
 msgstr "Bu işlem sunucu kapasitesine bağlı olarak biraz zaman alabilir. Lütfen pencereyi kapatmayın veya sayfayı yenilemeyin."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This month"
+msgstr "Bu ay"
+
 #: src/components/resume/store/resume.ts
 msgid "This resume is locked and cannot be updated."
 msgstr "Bu özgeçmiş kilitli ve güncellenemez."
@@ -3158,6 +3389,10 @@ msgstr "Bu bölüm, bu özgeçmişe özel kişisel notlarınız için ayrılmı�
 #: src/routes/auth/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Bu adım isteğe bağlıdır, ancak önerilir."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This week"
+msgstr "Bu hafta"
 
 #: src/dialogs/api-key/create.tsx
 msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
@@ -3201,6 +3436,15 @@ msgstr "Başlık"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "Hesabınızı silmek için onay metnini girmeniz ve aşağıdaki butona tıklamanız gerekir."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "To search for job listings, you need to configure your RapidAPI key in settings."
+msgstr "İş ilanlarını aramak için RapidAPI anahtarınızı ayarlardan yapılandırmanız gerekir."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Today"
+msgstr "Bugün"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Track your resume's views and downloads"
@@ -3270,6 +3514,7 @@ msgstr "İki faktörlü kimlik doğrulama başarıyla kuruldu."
 
 #: src/dialogs/resume/import.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Type"
 msgstr "Tür"
 
@@ -3288,6 +3533,10 @@ msgstr "Tipografi"
 #: src/utils/locale.ts
 msgid "Ukrainian"
 msgstr "Ukraynaca"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Under 3 years"
+msgstr "3 yaş altı"
 
 #: src/components/input/rich-input.tsx
 msgid "Underline"
@@ -3548,6 +3797,10 @@ msgstr "İnternet sitesi"
 msgid "What do you want to rename this section to?"
 msgstr "Bu bölümü hangi isimle değiştirmek istiyorsunuz?"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "What is JSearch API?"
+msgstr "JSearch API nedir?"
+
 #: src/routes/_home/-sections/faq.tsx
 msgid "What makes Reactive Resume different from other resume builders?"
 msgstr "Reactive Resume'u diğer özgeçmiş oluşturuculardan farklı kılan nedir?"
@@ -3577,6 +3830,10 @@ msgstr "Evet! Her şablon tamamen özelleştirilebilir. Renkleri, yazı tiplerin
 #: src/routes/_home/-sections/faq.tsx
 msgid "Yes! Reactive Resume is completely free to use, with no hidden costs, premium tiers, or subscription fees. It's open-source and will always remain free."
 msgstr "Evet! Reactive Resume tamamen ücretsizdir, gizli maliyetler, premium katmanlar veya abonelik ücretleri yoktur. Açık kaynaklıdır ve her zaman ücretsiz kalacaktır."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "Yesterday"
+msgstr "Dün"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "You also have the option to deploy on your own servers using the Docker image."
@@ -3634,6 +3891,10 @@ msgstr "Şifreniz başarıyla güncellendi."
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Your profile has been updated successfully."
 msgstr "Profiliniz başarıyla güncellendi."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Your RapidAPI key is stored locally on your browser. It is only sent to the server when making a request to search for jobs, and is never stored or logged on our servers."
+msgstr "RapidAPI anahtarınız tarayıcınızda yerel olarak saklanır. Yalnızca iş aramak için bir istekte bulunurken sunucuya gönderilir ve asla sunucularımızda saklanmaz veya kaydedilmez."
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx

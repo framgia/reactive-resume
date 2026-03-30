@@ -1,10 +1,12 @@
 preserve_hierarchy: true
+api_token_env: CROWDIN_API_TOKEN
+project_id_env: CROWDIN_PROJECT_ID
 commit_message: "[ci skip]"
-
-pull_request_title: "Sync Translations from Crowdin"
-pull_request_labels: ["l10n"]
-pull_request_reviewers: ["amruthpillai"]
-
+pull_request_title: Sync Translations from Crowdin
+pull_request_labels:
+  - l10n
+pull_request_reviewers:
+  - amruthpillai
 files:
   - source: /locales/en-US.po
     translation: /locales/%locale%.%file_extension%

@@ -9,10 +9,13 @@ The **Custom CSS** panel lets you write your own CSS rules to change how your re
 
 - **Live updates**: your changes are applied immediately as you type.
 - **Auto-save**: there is no “Save” button—your CSS is saved automatically when it changes.
-- **Scoped styling (mostly)**: to avoid affecting the rest of the app, your CSS is *usually* scoped to the resume preview.
+- **Scoped styling (mostly)**: to avoid affecting the rest of the app, your CSS is _usually_ scoped to the resume preview.
 
 <Frame caption="Screenshot of the Custom CSS section in the right sidebar">
-  <img src="/images/guides/using-custom-css/screenshot-1.webp" alt="Screenshot of the Custom CSS section in the right sidebar" />
+  <img
+    src="/images/guides/using-custom-css/screenshot-1.webp"
+    alt="Screenshot of the Custom CSS section in the right sidebar"
+  />
 </Frame>
 
 ## Where to find it
@@ -61,7 +64,9 @@ Example:
 Keep each rule's selector on **one line**, for example:
 
 ```css
-.page-section-experience .section-item-title { font-weight: 700; }
+.page-section-experience .section-item-title {
+  font-weight: 700;
+}
 ```
 
 Avoid splitting a selector across multiple lines unless you've confirmed it behaves as expected.
@@ -266,4 +271,3 @@ Example (tighten spacing without changing your layout settings):
 ### My `@media` rules affect the whole app / don't apply
 
 At-rules aren't auto-scoped. Prefix selectors inside them with `.resume-preview-container` as shown above.
-

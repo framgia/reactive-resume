@@ -8,7 +8,7 @@ msgstr ""
 "Language: cs\n"
 "Project-Id-Version: reactive-resume\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-03-05 10:45\n"
+"PO-Revision-Date: 2026-03-29 21:05\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;\n"
@@ -50,6 +50,14 @@ msgstr "{0, plural, one {# role} other {# roles}}"
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "{column, plural, one {# Column} other {# Columns}}"
 msgstr "{column, plural, one {# sloupec} few {# sloupce} many {# sloupců} other {# sloupce}}"
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "{diffDays} days ago"
+msgstr "{diffDays} před několika dny"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "{used} of {limit} requests used ({remaining} remaining)"
+msgstr "{used} využitých požadavků na {limit} ({remaining} zbývá)"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "<0>Finally,</0><1>A resume builder</1>"
@@ -297,8 +305,8 @@ msgid "Allow Public Access"
 msgstr "Povolit veřejný přístup"
 
 #: src/routes/auth/register.tsx
-msgid "Already have an account? <0><1>Sign in now <2/></1></0>"
-msgstr "Máte už účet? <0><1>Přihlaste se nyní <2/></1></0>"
+msgid "Already have an account? <0/>"
+msgstr "Máte již účet? <0/>"
 
 #: src/utils/locale.ts
 msgid "Amharic"
@@ -316,6 +324,19 @@ msgstr "Při importu vašeho životopisu došlo k neznámé chybě."
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "A mnoho dalších…"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any level"
+msgstr "Jakákoli úroveň"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any time"
+msgstr "Kdykoli"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any type"
+msgstr "Jakýkoli typ"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -347,6 +368,10 @@ msgstr "API klíče"
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "API Reference"
 msgstr "API dokumentace"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "API Usage"
+msgstr "Používání rozhraní API"
 
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "App"
@@ -478,6 +503,10 @@ msgstr "Základy"
 #: src/routes/_home/-sections/features.tsx
 msgid "Beautiful templates to choose from, with more on the way."
 msgstr "Krásné šablony, ze kterých můžete vybírat, a další jsou na cestě."
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Benefits"
+msgstr "Výhody"
 
 #: src/utils/locale.ts
 msgid "Bengali"
@@ -657,6 +686,11 @@ msgstr "Zrušit výběr"
 msgid "Click here to select a file to import"
 msgstr "Kliknutím zde vyberte soubor k importu"
 
+#: src/components/ui/dialog.tsx
+#: src/components/ui/sheet.tsx
+msgid "Close"
+msgstr "Zavřít"
+
 #: src/components/input/rich-input.tsx
 msgid "Code Block"
 msgstr "Blok kódu"
@@ -677,6 +711,10 @@ msgstr "Společnost"
 #: src/routes/_home/-sections/features.tsx
 msgid "Completely free, forever, no hidden costs."
 msgstr "Zcela zdarma, navždy, bez skrytých poplatků."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Configure Job Search"
+msgstr "Konfigurace vyhledávání práce"
 
 #: src/dialogs/api-key/create.tsx
 #: src/hooks/use-prompt.tsx
@@ -710,6 +748,10 @@ msgstr "Pokračujte tam, kde jste skončili"
 msgid "Continue where you left off by importing an existing resume you created using Reactive Resume or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume."
 msgstr "Pokračujte tam, kde jste skončili, importováním existujícího životopisu, který jste vytvořili pomocí Reactive Resume nebo jiného nástroje pro tvorbu životopisů. Podporované formáty zahrnují PDF, Microsoft Word a také soubory JSON z Reactive Resume."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Contractor"
+msgstr "Zhotovitel"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
 msgstr "Příspěvky financují opravy chyb, bezpečnostní aktualizace a průběžná vylepšení, aby aplikace běžela hladce."
@@ -737,6 +779,14 @@ msgstr "Zkopírujte tento tajný klíč a použijte ho ve svých aplikacích pro
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Copy URL"
 msgstr "Kopírovat URL"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Could not fetch jobs"
+msgstr "Nelze načíst úlohy"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Country"
+msgstr "Země"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
@@ -1004,6 +1054,10 @@ msgstr "Zabezpečení dat"
 msgid "Date"
 msgstr "Datum"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Date Posted"
+msgstr "Datum zveřejnění"
+
 #: src/dialogs/resume/sections/education.tsx
 msgid "Degree"
 msgstr "Titul"
@@ -1098,12 +1152,25 @@ msgstr "Mazání životopisu…"
 #: src/dialogs/resume/sections/publication.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
 msgid "Description"
 msgstr "Popis"
 
 #: src/utils/resume/section.tsx
 msgid "Design"
 msgstr "Design"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Direct"
+msgstr "Přímý"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Direct Apply"
+msgstr "Přímá aplikace"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Direct apply only"
+msgstr "Pouze přímá žádost"
 
 #: src/dialogs/auth/disable-two-factor.tsx
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
@@ -1166,8 +1233,8 @@ msgid "Domains"
 msgstr "Domains"
 
 #: src/routes/auth/login.tsx
-msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
-msgstr "Nemáte účet? <0><1>Vytvořte si ho nyní <2/></1></0>"
+msgid "Don't have an account? <0/>"
+msgstr "Nemáte účet? <0/>"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Donate to Reactive Resume"
@@ -1179,12 +1246,20 @@ msgid "Download"
 msgstr "Stáhnout"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "Download a copy of your resume as a Word document. Use this file to further customize your resume in Microsoft Word or Google Docs."
+msgstr "Stáhněte si kopii svého životopisu jako dokument aplikace Word. Tento soubor použijte k dalším úpravám životopisu v aplikaci Microsoft Word nebo Google Docs."
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in JSON format. Use this file for backup or to import your resume into other applications, including AI assistants."
 msgstr "Stáhněte si kopii svého životopisu ve formátu JSON. Tento soubor použijte jako zálohu nebo pro import životopisu do jiných aplikací, včetně asistentů s umělou inteligencí."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in PDF format. Use this file for printing or to easily share your resume with recruiters."
 msgstr "Stáhněte si kopii svého životopisu ve formátu PDF. Tento soubor použijte k tisku nebo snadnému sdílení životopisu s náboráři."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+msgid "Download DOCX"
+msgstr "Stáhnout DOCX"
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download JSON"
@@ -1329,6 +1404,10 @@ msgstr "Aktivace dvoufázového ověření…"
 msgid "English"
 msgstr "Angličtina"
 
+#: src/utils/locale.ts
+msgid "English (United Kingdom)"
+msgstr "Angličtina (Spojené království)"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Enhance the security of your account with additional layers of protection."
 msgstr "Zvyšte zabezpečení svého účtu pomocí dalších vrstev ochrany."
@@ -1361,6 +1440,10 @@ msgstr "Zadejte své heslo pro potvrzení nastavení dvoufázového ověření. 
 msgid "Enter your password to disable two-factor authentication. Your account will be less secure without 2FA enabled."
 msgstr "Zadejte své heslo pro deaktivaci dvoufázového ověření. Bez aktivního 2FA bude váš účet méně zabezpečený."
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Enter your RapidAPI key"
+msgstr "Zadejte svůj klíč RapidAPI"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Every contribution, big or small, makes a huge difference to the project.<0/>Thank you for your support!"
 msgstr "Každý příspěvek, velký i malý, má pro projekt obrovský význam.<0/>Děkujeme za vaši podporu!"
@@ -1373,11 +1456,24 @@ msgstr "Vše, co zde zadáte, je ukládáno lokálně ve vašem prohlížeči. V
 msgid "Everything you need to create, customize, and share professional resumes. Built with privacy in mind, powered by open source, and completely free forever."
 msgstr "Vše, co potřebujete k vytvoření, přizpůsobení a sdílení profesionálních životopisů. Vytvořeno s ohledem na soukromí, poháněno open source a zcela zdarma, navždy."
 
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Exclude {value}"
+msgstr "Vyloučit {value}"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Companies"
+msgstr "Vyloučit společnosti"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Keywords"
+msgstr "Vyloučit klíčová slova"
+
 #: src/components/input/rich-input.tsx
 msgid "Exit Fullscreen"
 msgstr "Exit Fullscreen"
 
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 #: src/utils/resume/section.tsx
 msgid "Experience"
 msgstr "Zkušenosti"
@@ -1402,6 +1498,10 @@ msgstr "Prozkoumejte API dokumentaci a zjistěte, jak integrovat Reactive Resume
 #: src/utils/resume/section.tsx
 msgid "Export"
 msgstr "Export"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Failed to duplicate resume"
+msgstr "Nepodařilo se duplikovat životopis"
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Failed to setup two-factor authentication."
@@ -1503,6 +1603,10 @@ msgstr "Francouzština"
 msgid "Full Width"
 msgstr "Plná šířka"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Full-time"
+msgstr "Na plný úvazek"
+
 #: src/components/input/rich-input.tsx
 msgid "Fullscreen"
 msgstr "Fullscreen"
@@ -1519,6 +1623,10 @@ msgstr "Němčina"
 msgid "Get Started"
 msgstr "Začít"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Get your API key from RapidAPI by subscribing to the JSearch API."
+msgstr "Získejte klíč API od RapidAPI přihlášením se k rozhraní JSearch API."
+
 #: src/components/layout/not-found-screen.tsx
 #: src/routes/auth/verify-2fa-backup.tsx
 msgid "Go Back"
@@ -1527,6 +1635,10 @@ msgstr "Zpět"
 #: src/routes/_home/-sections/header.tsx
 msgid "Go to dashboard"
 msgstr "Přejít na nástěnku"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Go to Settings"
+msgstr "Přejděte do Nastavení"
 
 #: src/components/command-palette/pages/navigation.tsx
 msgid "Go to..."
@@ -1669,6 +1781,10 @@ msgstr "Importování životopisu…"
 msgid "Importing..."
 msgstr "Importování…"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Include Keywords"
+msgstr "Zahrnout klíčová slova"
+
 #: src/utils/locale.ts
 msgid "Indonesian"
 msgstr "Indonéština"
@@ -1685,6 +1801,10 @@ msgstr "Vložit tabulku"
 #: src/utils/resume/section.tsx
 msgid "Interests"
 msgstr "Zájmy"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Intern"
+msgstr "Stážista"
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Is Reactive Resume available in multiple languages?"
@@ -1709,6 +1829,24 @@ msgstr "Kurzíva"
 #: src/utils/locale.ts
 msgid "Japanese"
 msgstr "Japonština"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Job Search"
+msgstr "Hledání práce"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Job Search API"
+msgstr "Rozhraní API pro vyhledávání pracovních míst"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch aggregates job listings from multiple job boards using Google for Jobs. You can filter by country (ISO alpha-2 code), date posted, job type, remote options, and experience level."
+msgstr "Služba JSearch agreguje nabídky práce z různých pracovních nabídek pomocí služby Google for Jobs. Můžete filtrovat podle země (kód ISO alfa-2), data zveřejnění, typu práce, možností vzdáleného přístupu a úrovně zkušeností."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch API Documentation"
+msgstr "Dokumentace rozhraní JSearch API"
 
 #: src/components/input/rich-input.tsx
 msgid "Justify Align"
@@ -1751,6 +1889,10 @@ msgstr "Jazyk"
 #: src/utils/resume/section.tsx
 msgid "Languages"
 msgstr "Jazyky"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Last 3 days"
+msgstr "Poslední 3 dny"
 
 #. placeholder {0}: statistics.lastDownloadedAt.toDateString()
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
@@ -1912,9 +2054,21 @@ msgstr "Okraje (vodorovné)"
 msgid "Margin (Vertical)"
 msgstr "Okraje (svislé)"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Maximum Salary"
+msgstr "Maximální plat"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Minimum Salary"
+msgstr "Minimální plat"
+
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Model"
 msgstr "Model"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "More than 3 years"
+msgstr "Více než 3 roky"
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
 msgid "Move to"
@@ -1988,6 +2142,14 @@ msgstr "Nové heslo"
 msgid "New Section"
 msgstr "Nová sekce"
 
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "New Skills Detected"
+msgstr "Zjištěné nové dovednosti"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Next"
+msgstr "Další"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "No Advertising, No Tracking"
 msgstr "Bez reklam, bez sledování"
@@ -2020,7 +2182,6 @@ msgid "No projects found."
 msgstr "No projects found."
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "Nebyly nalezeny žádné výsledky."
 
@@ -2077,6 +2238,11 @@ msgstr "Open source"
 msgid "opens in new tab"
 msgstr "otevře se na nové kartě"
 
+#. placeholder {0}: job.job_title
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Optimizing summary, experience, and skills for {0}"
+msgstr "Optimalizace shrnutí, zkušeností a dovedností pro {0}"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Optionally, set a password so that only people with the password can view your resume through the link."
 msgstr "Volitelně můžete nastavit heslo, aby si váš životopis mohli přes odkaz prohlédnout jen lidé, kteří heslo znají."
@@ -2116,6 +2282,10 @@ msgstr "Stránka"
 msgid "Page {0}"
 msgstr "Stránka {0}"
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Page {currentPage}"
+msgstr "Stránka {currentPage}"
+
 #: src/components/resume/preview.tsx
 msgid "Page {pageNumber} of {totalNumberOfPages}"
 msgstr "Stránka {pageNumber} z {totalNumberOfPages}"
@@ -2123,6 +2293,10 @@ msgstr "Stránka {pageNumber} z {totalNumberOfPages}"
 #: src/components/input/rich-input.tsx
 msgid "Paragraph"
 msgstr "Odstavec"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Part-time"
+msgstr "Na částečný úvazek"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Passkeys & 2FA"
@@ -2278,6 +2452,10 @@ msgstr "Předvolby"
 msgid "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the current keyword."
 msgstr "Stiskněte <0>{RETURN_KEY}</0> nebo <1>{COMMA_KEY}</1> pro přidání nebo uložení aktuálního klíčového slova."
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Previous"
+msgstr "Předchozí"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Hlavní barva"
@@ -2372,6 +2550,15 @@ msgstr "Publikace"
 msgid "Publisher"
 msgstr "Vydavatel"
 
+#. placeholder {0}: quota.remaining
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Quota: {0} remaining"
+msgstr "Kvóta: {0} zbývá"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "RapidAPI Key"
+msgstr "RapidAPI Klíč"
+
 #: src/routes/_home/-sections/header.tsx
 msgid "Reactive Resume - Go to homepage"
 msgstr "Reactive Resume – přejít na domovskou stránku"
@@ -2419,8 +2606,18 @@ msgid "Refresh"
 msgstr "Obnovit"
 
 #: src/routes/auth/forgot-password.tsx
-msgid "Remember your password? <0><1>Sign in now <2/></1></0>"
-msgstr "Pamatujete si heslo? <0><1>Přihlaste se nyní <2/></1></0>"
+msgid "Remember your password? <0/>"
+msgstr "Vzpomínáte si na heslo? <0/>"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Remote"
+msgstr "Vzdálený"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Remote only"
+msgstr "Pouze na dálku"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Remove"
@@ -2454,6 +2651,10 @@ msgstr "Nahlásit chybu"
 msgid "Report an issue"
 msgstr "Nahlásit problém"
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Required Skills"
+msgstr "Požadované dovednosti"
+
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Resend verification email"
 msgstr "Znovu odeslat ověřovací e-mail"
@@ -2463,6 +2664,7 @@ msgid "Resending verification email..."
 msgstr "Opětovné odesílání ověřovacího e-mailu…"
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Reset"
 msgstr "Resetovat"
 
@@ -2516,6 +2718,10 @@ msgstr "Resume builder that simplifies the process of creating, updating, and sh
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Resumes"
 msgstr "Životopisy"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Retry"
+msgstr "Opakování"
 
 #: src/components/input/rich-input.tsx
 msgid "Right Align"
@@ -2624,9 +2830,8 @@ msgid "Search: {0}"
 msgstr ""
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
-msgstr "Hledat…"
+msgstr "Hledat..."
 
 #: src/dialogs/resume/share-copy.tsx
 msgid "Searching..."
@@ -2685,9 +2890,8 @@ msgid "Select users"
 msgstr "Select users"
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
-msgstr "Vybrat…"
+msgstr "Vybrat..."
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Self-Host with Docker"
@@ -3030,6 +3234,19 @@ msgstr "Tagy"
 msgid "Tags can be used to categorize your resume by keywords."
 msgstr "Tagy lze použít k kategorizaci životopisu podle klíčových slov."
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailor Resume"
+msgstr "Resumé na míru"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring failed"
+msgstr "Šití na míru se nezdařilo"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring your resume..."
+msgstr "Přizpůsobení životopisu..."
+
 #: src/utils/locale.ts
 msgid "Tamil"
 msgstr "Tamilština"
@@ -3052,6 +3269,7 @@ msgid "Templates"
 msgstr "Šablony"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/job-search.tsx
 msgid "Test Connection"
 msgstr "Otestovat připojení"
 
@@ -3066,6 +3284,10 @@ msgstr "Barva textu"
 #: src/utils/locale.ts
 msgid "Thai"
 msgstr "Thajština"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "The AI identified new skills from your experience that match this job. Select which ones to save back to your original resume for future applications. This will permanently modify your original resume and cannot be undone."
+msgstr "Umělá inteligence identifikovala nové dovednosti z vašich zkušeností, které odpovídají této práci. Vyberte, které z nich chcete uložit zpět do svého původního životopisu pro budoucí žádosti. Tím se váš původní životopis trvale změní a nelze jej vrátit zpět."
 
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "The API key has been deleted successfully."
@@ -3107,6 +3329,11 @@ msgstr "Poté zadejte šestimístný kód, který aplikace poskytne, abyste mohl
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "There was a problem while generating the DOCX, please try again."
+msgstr "Při generování DOCX došlo k problému, zkuste to prosím znovu."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "There was a problem while generating the PDF, please try again in some time."
 msgstr "Při generování PDF došlo k problému, zkuste to prosím znovu za chvíli."
 
@@ -3143,6 +3370,10 @@ msgstr "Může to trvat několik minut v závislosti na odezvě poskytovatele AI
 msgid "This may take a while depending on the server capacity. Please do not close the window or refresh the page."
 msgstr "Může to chvíli trvat v závislosti na vytížení serveru. Nezavírejte prosím okno ani neobnovujte stránku."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This month"
+msgstr "Tento měsíc"
+
 #: src/components/resume/store/resume.ts
 msgid "This resume is locked and cannot be updated."
 msgstr "Tento životopis je uzamčen a nelze ho aktualizovat."
@@ -3158,6 +3389,10 @@ msgstr "Tato sekce je vyhrazena pro vaše osobní poznámky k tomuto životopisu
 #: src/routes/auth/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Tento krok je volitelný, ale doporučený."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This week"
+msgstr "Tento týden"
 
 #: src/dialogs/api-key/create.tsx
 msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
@@ -3201,6 +3436,15 @@ msgstr "Název"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "Pro smazání účtu musíte zadat potvrzovací text a kliknout na tlačítko níže."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "To search for job listings, you need to configure your RapidAPI key in settings."
+msgstr "Chcete-li vyhledávat nabídky práce, musíte v nastavení nakonfigurovat klíč RapidAPI."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Today"
+msgstr "Dnes"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Track your resume's views and downloads"
@@ -3270,6 +3514,7 @@ msgstr "Dvoufázové ověření bylo úspěšně nastaveno."
 
 #: src/dialogs/resume/import.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Type"
 msgstr "Typ"
 
@@ -3288,6 +3533,10 @@ msgstr "Typografie"
 #: src/utils/locale.ts
 msgid "Ukrainian"
 msgstr "Ukrajinština"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Under 3 years"
+msgstr "Méně než 3 roky"
 
 #: src/components/input/rich-input.tsx
 msgid "Underline"
@@ -3548,6 +3797,10 @@ msgstr "Web"
 msgid "What do you want to rename this section to?"
 msgstr "Na jaký název chcete tuto sekci přejmenovat?"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "What is JSearch API?"
+msgstr "Co je rozhraní JSearch API?"
+
 #: src/routes/_home/-sections/faq.tsx
 msgid "What makes Reactive Resume different from other resume builders?"
 msgstr "Čím se Reactive Resume liší od ostatních nástrojů pro tvorbu životopisů?"
@@ -3577,6 +3830,10 @@ msgstr "Ano! Každá šablona je plně přizpůsobitelná. Můžete měnit barvy
 #: src/routes/_home/-sections/faq.tsx
 msgid "Yes! Reactive Resume is completely free to use, with no hidden costs, premium tiers, or subscription fees. It's open-source and will always remain free."
 msgstr "Ano! Reactive Resume je zcela zdarma k použití, bez skrytých poplatků, prémiových úrovní nebo předplatného. Je open source a vždy zdarma zůstane."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "Yesterday"
+msgstr "Včera"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "You also have the option to deploy on your own servers using the Docker image."
@@ -3634,6 +3891,10 @@ msgstr "Vaše heslo bylo úspěšně aktualizováno."
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Your profile has been updated successfully."
 msgstr "Váš profil byl úspěšně aktualizován."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Your RapidAPI key is stored locally on your browser. It is only sent to the server when making a request to search for jobs, and is never stored or logged on our servers."
+msgstr "Klíč RapidAPI je uložen lokálně v prohlížeči. Na server se odesílá pouze při požadavku na vyhledávání pracovních míst a nikdy se neukládá ani nezaznamenává na našich serverech."
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx

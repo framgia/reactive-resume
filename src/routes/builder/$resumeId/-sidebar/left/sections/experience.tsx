@@ -1,44 +1,48 @@
+import type z from "zod";
+
 import { plural } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import { AnimatePresence, Reorder } from "motion/react";
-import type z from "zod";
-import { useResumeStore } from "@/components/resume/store/resume";
+
 import type { experienceItemSchema } from "@/schema/resume/data";
+
+import { useResumeStore } from "@/components/resume/store/resume";
 import { cn } from "@/utils/style";
+
 import { SectionBase } from "../shared/section-base";
 import { SectionAddItemButton, SectionItem } from "../shared/section-item";
 
 export function ExperienceSectionBuilder() {
-	const section = useResumeStore((state) => state.resume.data.sections.experience);
-	const updateResumeData = useResumeStore((state) => state.updateResumeData);
+  const section = useResumeStore((state) => state.resume.data.sections.experience);
+  const updateResumeData = useResumeStore((state) => state.updateResumeData);
 
-	const handleReorder = (items: z.infer<typeof experienceItemSchema>[]) => {
-		updateResumeData((draft) => {
-			draft.sections.experience.items = items;
-		});
-	};
+  const handleReorder = (items: z.infer<typeof experienceItemSchema>[]) => {
+    updateResumeData((draft) => {
+      draft.sections.experience.items = items;
+    });
+  };
 
-	return (
-		<SectionBase type="experience" className={cn("rounded-md border", section.items.length === 0 && "border-dashed")}>
-			<Reorder.Group axis="y" values={section.items} onReorder={handleReorder}>
-				<AnimatePresence>
-					{section.items.map((item) => {
-						return (
-							<SectionItem
-								key={item.id}
-								type="experience"
-								item={item}
-								title={item.company}
-								subtitle={item.position || plural(item.roles.length, { one: "# role", other: "# roles" })}
-							/>
-						);
-					})}
-				</AnimatePresence>
-			</Reorder.Group>
+  return (
+    <SectionBase type="experience" className={cn("rounded-md border", section.items.length === 0 && "border-dashed")}>
+      <Reorder.Group axis="y" values={section.items} onReorder={handleReorder}>
+        <AnimatePresence initial={false} mode="popLayout">
+          {section.items.map((item) => {
+            return (
+              <SectionItem
+                key={item.id}
+                type="experience"
+                item={item}
+                title={item.company}
+                subtitle={item.position || plural(item.roles.length, { one: "# role", other: "# roles" })}
+              />
+            );
+          })}
+        </AnimatePresence>
+      </Reorder.Group>
 
-			<SectionAddItemButton type="experience">
-				<Trans>Add a new experience</Trans>
-			</SectionAddItemButton>
-		</SectionBase>
-	);
+      <SectionAddItemButton type="experience">
+        <Trans>Add a new experience</Trans>
+      </SectionAddItemButton>
+    </SectionBase>
+  );
 }

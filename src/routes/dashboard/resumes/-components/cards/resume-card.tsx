@@ -6,25 +6,27 @@ import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo } from "react";
 import { match, P } from "ts-pattern";
+
 import { orpc, type RouterOutput } from "@/integrations/orpc/client";
 import { cn } from "@/utils/style";
+
 import { ResumeContextMenu } from "../menus/context-menu";
 import { BaseCard } from "./base-card";
 
 type ResumeCardProps = {
-	resume: RouterOutput["resume"]["list"][number];
+  resume: RouterOutput["resume"]["list"][number];
 };
 
 export function ResumeCard({ resume }: ResumeCardProps) {
-	const { i18n } = useLingui();
+  const { i18n } = useLingui();
 
 	const { data: screenshotData, isLoading } = useQuery(
 		orpc.printer.getResumeScreenshot.queryOptions({ input: { id: resume.id } }),
 	) as { data: { url: string | null } | undefined; isLoading: boolean };
 
-	const updatedAt = useMemo(() => {
-		return Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(resume.updatedAt);
-	}, [i18n.locale, resume.updatedAt]);
+  const updatedAt = useMemo(() => {
+    return Intl.DateTimeFormat(i18n.locale, { dateStyle: "long", timeStyle: "short" }).format(resume.updatedAt);
+  }, [i18n.locale, resume.updatedAt]);
 
 	const description = useMemo(() => {
 		return t`Last updated on ${updatedAt}`;
@@ -58,29 +60,32 @@ export function ResumeCard({ resume }: ResumeCardProps) {
 						))
 						.otherwise(() => null)}
 
-					<ResumeLockOverlay isLocked={resume.isLocked} />
-				</BaseCard>
-			</Link>
-		</ResumeContextMenu>
-	);
+            <ResumeLockOverlay isLocked={resume.isLocked} />
+          </BaseCard>
+        </motion.div>
+      </Link>
+    </ResumeContextMenu>
+  );
 }
 
 function ResumeLockOverlay({ isLocked }: { isLocked: boolean }) {
-	return (
-		<AnimatePresence>
-			{isLocked && (
-				<motion.div
-					key="resume-lock-overlay"
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 0.6 }}
-					exit={{ opacity: 0 }}
-					className="absolute inset-0 flex items-center justify-center"
-				>
-					<div className="flex items-center justify-center rounded-full bg-popover p-6">
-						<LockSimpleIcon weight="thin" className="size-12 opacity-60" />
-					</div>
-				</motion.div>
-			)}
-		</AnimatePresence>
-	);
+  return (
+    <AnimatePresence>
+      {isLocked && (
+        <motion.div
+          key="resume-lock-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
+          style={{ willChange: "opacity" }}
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <div className="flex items-center justify-center rounded-full bg-popover p-6">
+            <LockSimpleIcon weight="thin" className="size-12 opacity-60" />
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 }

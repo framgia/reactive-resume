@@ -8,7 +8,7 @@ msgstr ""
 "Language: sl\n"
 "Project-Id-Version: reactive-resume\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-03-05 10:46\n"
+"PO-Revision-Date: 2026-03-29 21:05\n"
 "Last-Translator: \n"
 "Language-Team: Slovenian\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\n"
@@ -52,6 +52,14 @@ msgstr "{0, plural, one {# role} other {# roles}}"
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "{column, plural, one {# Column} other {# Columns}}"
 msgstr "{column, plural, one {# stolpec} two {# stolpca} few {# stolpci} other {# stolpcev}}"
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "{diffDays} days ago"
+msgstr "{diffDays} pred dnevi"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "{used} of {limit} requests used ({remaining} remaining)"
+msgstr "{used} uporabljenih zahtevkov {limit} ({remaining} preostalo)"
 
 #: src/routes/_home/-sections/hero.tsx
 msgid "<0>Finally,</0><1>A free and open-source resume builder</1>"
@@ -247,8 +255,8 @@ msgid "Allow Public Access"
 msgstr "Dovoli javni dostop"
 
 #: src/routes/auth/register.tsx
-msgid "Already have an account? <0><1>Sign in now <2/></1></0>"
-msgstr "Že imate račun? <0><1>Prijavite se zdaj <2/></1></0>"
+msgid "Already have an account? <0/>"
+msgstr ""
 
 #: src/utils/locale.ts
 msgid "Amharic"
@@ -266,6 +274,19 @@ msgstr "Pri uvozu vašega življenjepisa je prišlo do neznane napake."
 #: src/routes/_home/-sections/features.tsx
 msgid "And many more..."
 msgstr "In še veliko več..."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any level"
+msgstr "Katera koli stopnja"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any time"
+msgstr "Kadar koli"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Any type"
+msgstr "Katera koli vrsta"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Anyone visiting the resume's public URL must enter this password to access it."
@@ -298,6 +319,10 @@ msgstr "API ključi"
 msgid "API Reference"
 msgstr "API dokumentacija"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "API Usage"
+msgstr "Uporaba API"
+
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "App"
 msgstr "Aplikacija"
@@ -305,6 +330,18 @@ msgstr "Aplikacija"
 #: src/routes/_home/-sections/statistics.tsx
 msgid "Application Statistics"
 msgstr "Statistika aplikacije"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Apply"
+msgstr "Uporabi"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Apply Link"
+msgstr "Uporabi povezavo"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Apply Via"
+msgstr "Prijavite se prek"
 
 #: src/utils/locale.ts
 msgid "Arabic"
@@ -406,6 +443,10 @@ msgstr "Osnove"
 msgid "Beautiful templates to choose from, with more on the way."
 msgstr "Čudovite predloge na izbiro, dodatne prihajajo."
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Benefits"
+msgstr "Prednosti"
+
 #: src/utils/locale.ts
 msgid "Bengali"
 msgstr "Bengalščina"
@@ -486,6 +527,7 @@ msgstr "Ali lahko izvozite svoj življenjepis v PDF?"
 #: src/dialogs/resume/sections/volunteer.tsx
 #: src/hooks/use-prompt.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
 #: src/routes/dashboard/settings/api-keys.tsx
 #: src/routes/dashboard/settings/danger-zone.tsx
 #: src/routes/dashboard/settings/profile.tsx
@@ -561,6 +603,11 @@ msgstr "Počisti izbiro"
 msgid "Click here to select a file to import"
 msgstr "Kliknite tukaj za izbiro datoteke za uvoz"
 
+#: src/components/ui/dialog.tsx
+#: src/components/ui/sheet.tsx
+msgid "Close"
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Code Block"
 msgstr "Blok kode"
@@ -581,6 +628,10 @@ msgstr "Podjetje"
 #: src/routes/_home/-sections/features.tsx
 msgid "Completely free, forever, no hidden costs."
 msgstr "Popolnoma brezplačno, za vedno, brez skritih stroškov."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Configure Job Search"
+msgstr "Konfiguracija iskanja zaposlitve"
 
 #: src/dialogs/api-key/create.tsx
 #: src/hooks/use-prompt.tsx
@@ -614,6 +665,10 @@ msgstr "Nadaljujte tam, kjer ste ostali"
 msgid "Continue where you left off by importing an existing resume you created using Reactive Resume or any another resume builder. Supported formats include PDF, Microsoft Word, as well as JSON files from Reactive Resume."
 msgstr "Nadaljujte tam, kjer ste ostali, tako da uvozite že obstoječi življenjepis, ki ste ga ustvarili z aplikacijo Reactive Resume ali katerim koli drugim graditeljem življenjepisa. Podprte oblike vključujejo PDF, Microsoft Word, kot tudi JSON datoteke iz Reactive Resume."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Contractor"
+msgstr "Izvajalec"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Contributions fund bug fixes, security updates, and continuous improvements to keep the app running smoothly."
 msgstr "Prispevki financirajo popravke napak, varnostne posodobitve in stalne izboljšave za nemoteno delovanje aplikacije."
@@ -637,6 +692,14 @@ msgstr "Kopirajte to skrivno kodo in jo uporabite v svojih aplikacijah za dostop
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Copy URL"
 msgstr "Kopiraj URL"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Could not fetch jobs"
+msgstr "Ni bilo mogoče pridobiti delovnih mest"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Country"
+msgstr "Država"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/utils/resume/section.tsx
@@ -803,6 +866,10 @@ msgstr "Varnost podatkov"
 msgid "Date"
 msgstr "Datum"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Date Posted"
+msgstr "Datum objave"
+
 #: src/dialogs/resume/sections/education.tsx
 msgid "Degree"
 msgstr "Stopnja"
@@ -859,12 +926,25 @@ msgstr "Brišem vaš življenjepis..."
 #: src/dialogs/resume/sections/publication.tsx
 #: src/dialogs/resume/sections/reference.tsx
 #: src/dialogs/resume/sections/volunteer.tsx
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
 msgid "Description"
 msgstr "Opis"
 
 #: src/utils/resume/section.tsx
 msgid "Design"
 msgstr "Oblikovanje"
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Direct"
+msgstr "Neposredno"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Direct Apply"
+msgstr "Neposredna uporaba"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Direct apply only"
+msgstr "Samo neposredna uporaba"
 
 #: src/dialogs/auth/disable-two-factor.tsx
 #: src/routes/dashboard/settings/authentication/-components/two-factor.tsx
@@ -897,8 +977,8 @@ msgid "Documentation"
 msgstr "Dokumentacija"
 
 #: src/routes/auth/login.tsx
-msgid "Don't have an account? <0><1>Create one now <2/></1></0>"
-msgstr "Nimate računa? <0><1>Ustvarite ga zdaj <2/></1></0>"
+msgid "Don't have an account? <0/>"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
 msgid "Donate to Reactive Resume"
@@ -910,12 +990,20 @@ msgid "Download"
 msgstr "Prenesi"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "Download a copy of your resume as a Word document. Use this file to further customize your resume in Microsoft Word or Google Docs."
+msgstr "Prenesite kopijo svojega življenjepisa kot dokument programa Word. To datoteko uporabite za nadaljnje prilagajanje življenjepisa v programu Microsoft Word ali Google Docs."
+
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in JSON format. Use this file for backup or to import your resume into other applications, including AI assistants."
 msgstr "Prenesite kopijo svojega življenjepisa v formatu JSON. To datoteko uporabite za varnostno kopijo ali za uvoz življenjepisa v druge aplikacije, vključno z AI pomočniki."
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Download a copy of your resume in PDF format. Use this file for printing or to easily share your resume with recruiters."
 msgstr "Prenesite kopijo svojega življenjepisa v formatu PDF. To datoteko uporabite za tiskanje ali preprosto deljenje življenjepisa z delodajalci."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+msgid "Download DOCX"
+msgstr "Prenos DOCX"
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Download JSON"
@@ -1015,6 +1103,10 @@ msgstr "Omogočanje dvostopenjskega preverjanja pristnosti..."
 msgid "English"
 msgstr "Angleščina"
 
+#: src/utils/locale.ts
+msgid "English (United Kingdom)"
+msgstr ""
+
 #: src/routes/_home/-sections/features.tsx
 msgid "Enhance the security of your account with additional layers of protection."
 msgstr "Izboljšajte varnost svojega računa z dodatnimi plastmi zaščite."
@@ -1043,6 +1135,10 @@ msgstr "Vnesite svoje geslo, da potrdite nastavitev dvostopenjskega preverjanja 
 msgid "Enter your password to disable two-factor authentication. Your account will be less secure without 2FA enabled."
 msgstr "Vnesite svoje geslo za onemogočanje dvostopenjskega preverjanja pristnosti. Vaš račun bo brez omogočenega 2FA manj varen."
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Enter your RapidAPI key"
+msgstr "Vnesite svoj ključ RapidAPI"
+
 #: src/routes/_home/-sections/donate.tsx
 msgid "Every contribution, big or small, makes a huge difference to the project.<0/>Thank you for your support!"
 msgstr "Vsak prispevek, velik ali majhen, veliko pomeni projektu.<0/>Hvala za vašo podporo!"
@@ -1055,11 +1151,24 @@ msgstr "Vse, kar vnesete tukaj, je shranjeno lokalno v vašem brskalniku. Vaši 
 msgid "Everything you need to create, customize, and share professional resumes. Built with privacy in mind, powered by open source, and completely free forever."
 msgstr "Vse, kar potrebujete za ustvarjanje, prilagajanje in deljenje strokovnih življenjepisov. Zgrajeno z mislijo na zasebnost, temelji na odprti kodi in je popolnoma brezplačno za vedno."
 
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Exclude {value}"
+msgstr "Izključite {value}"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Companies"
+msgstr "Izključi podjetja"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Exclude Keywords"
+msgstr "Izključi ključne besede"
+
 #: src/components/input/rich-input.tsx
 msgid "Exit Fullscreen"
 msgstr "Exit Fullscreen"
 
 #: src/dialogs/resume/sections/custom.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 #: src/utils/resume/section.tsx
 msgid "Experience"
 msgstr "Izkušnje"
@@ -1084,6 +1193,10 @@ msgstr "Raziščite API dokumentacijo in izvedite, kako integrirati Reactive Res
 #: src/utils/resume/section.tsx
 msgid "Export"
 msgstr "Izvozi"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Failed to duplicate resume"
+msgstr "Ni uspelo podvojiti življenjepisa"
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Failed to setup two-factor authentication."
@@ -1172,6 +1285,10 @@ msgstr "Francoščina"
 msgid "Full Width"
 msgstr "Polna širina"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Full-time"
+msgstr "Polni delovni čas"
+
 #: src/components/input/rich-input.tsx
 msgid "Fullscreen"
 msgstr "Fullscreen"
@@ -1188,6 +1305,10 @@ msgstr "Nemščina"
 msgid "Get Started"
 msgstr "Začni"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Get your API key from RapidAPI by subscribing to the JSearch API."
+msgstr "Svoj ključ API dobite od RapidAPI tako, da se naročite na API JSearch."
+
 #: src/components/layout/not-found-screen.tsx
 #: src/routes/auth/verify-2fa-backup.tsx
 msgid "Go Back"
@@ -1196,6 +1317,10 @@ msgstr "Nazaj"
 #: src/routes/_home/-sections/header.tsx
 msgid "Go to dashboard"
 msgstr "Pojdi na nadzorno ploščo"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Go to Settings"
+msgstr "Pojdite v Nastavitve"
 
 #: src/components/command-palette/pages/navigation.tsx
 msgid "Go to..."
@@ -1338,6 +1463,10 @@ msgstr "Uvažanje vašega življenjepisa..."
 msgid "Importing..."
 msgstr "Uvažanje..."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Include Keywords"
+msgstr "Vključite ključne besede"
+
 #: src/utils/locale.ts
 msgid "Indonesian"
 msgstr "Indonezijščina"
@@ -1358,6 +1487,10 @@ msgstr "Vstavi tabelo"
 #: src/utils/resume/section.tsx
 msgid "Interests"
 msgstr "Interesi"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Intern"
+msgstr "Pripravnik"
 
 #: src/routes/_home/-sections/faq.tsx
 msgid "Is Reactive Resume available in multiple languages?"
@@ -1382,6 +1515,24 @@ msgstr "Ležeče"
 #: src/utils/locale.ts
 msgid "Japanese"
 msgstr "Japonščina"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Job Search"
+msgstr "Iskanje zaposlitve"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Job Search API"
+msgstr "API za iskanje delovnih mest"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch aggregates job listings from multiple job boards using Google for Jobs. You can filter by country (ISO alpha-2 code), date posted, job type, remote options, and experience level."
+msgstr "JSearch združuje oglase za delovna mesta iz več oglasnih desk z uporabo storitve Google za delovna mesta. Filtrirate lahko po državi (koda ISO alfa-2), datumu objave, vrsti delovnega mesta, možnostih oddaljenega dela in ravni izkušenj."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "JSearch API Documentation"
+msgstr "Dokumentacija API JSearch"
 
 #: src/components/input/rich-input.tsx
 msgid "Justify Align"
@@ -1424,6 +1575,10 @@ msgstr "Jezik"
 #: src/utils/resume/section.tsx
 msgid "Languages"
 msgstr "Jeziki"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Last 3 days"
+msgstr "Zadnje 3 dni"
 
 #. placeholder {0}: statistics.lastDownloadedAt.toDateString()
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
@@ -1573,9 +1728,21 @@ msgstr "Rob (vodoravno)"
 msgid "Margin (Vertical)"
 msgstr "Rob (navpično)"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Maximum Salary"
+msgstr "Najvišja plača"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Minimum Salary"
+msgstr "Najnižja plača"
+
 #: src/routes/dashboard/settings/ai.tsx
 msgid "Model"
 msgstr "Model"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "More than 3 years"
+msgstr "Več kot 3 leta"
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-item.tsx
 msgid "Move to"
@@ -1626,14 +1793,37 @@ msgstr "Novo geslo"
 msgid "New Section"
 msgstr "Nov razdelek"
 
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "New Skills Detected"
+msgstr "Odkrite nove spretnosti"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Next"
+msgstr "Naslednji"
+
 #: src/routes/_home/-sections/features.tsx
 msgid "No Advertising, No Tracking"
 msgstr "Brez oglaševanja, brez sledenja"
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "No degree required"
+msgstr "Stopnja izobrazbe ni potrebna"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "No experience"
+msgstr "Brez izkušenj"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "No jobs found. Try a different search query."
+msgstr "Ni bilo najdenih delovnih mest. Poskusite z drugo iskalno poizvedbo."
+
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "No results found."
 msgstr "Ni rezultatov."
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "No resumes found. Create a resume first."
+msgstr "Ni bilo najdenih nobenih življenjepisov. Najprej ustvarite življenjepis."
 
 #: src/utils/locale.ts
 msgid "Norwegian"
@@ -1675,6 +1865,11 @@ msgstr "Odprta koda"
 msgid "opens in new tab"
 msgstr "odpre se v novem zavihku"
 
+#. placeholder {0}: job.job_title
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Optimizing summary, experience, and skills for {0}"
+msgstr "Optimizacija povzetka, izkušenj in spretnosti za {0}"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Optionally, set a password so that only people with the password can view your resume through the link."
 msgstr "Po želji nastavite geslo, tako da si lahko vaš življenjepis preko povezave ogledajo le tisti, ki imajo geslo."
@@ -1710,6 +1905,10 @@ msgstr "Stran"
 msgid "Page {0}"
 msgstr "Stran {0}"
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Page {currentPage}"
+msgstr "Stran {currentPage}"
+
 #: src/components/resume/preview.tsx
 msgid "Page {pageNumber} of {totalNumberOfPages}"
 msgstr "Stran {pageNumber} od {totalNumberOfPages}"
@@ -1717,6 +1916,10 @@ msgstr "Stran {pageNumber} od {totalNumberOfPages}"
 #: src/components/input/rich-input.tsx
 msgid "Paragraph"
 msgstr "Odstavek"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Part-time"
+msgstr "Delni delovni čas"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "Passkeys & 2FA"
@@ -1823,6 +2026,10 @@ msgstr "Nastavitve"
 msgid "Press <0>{RETURN_KEY}</0> or <1>{COMMA_KEY}</1> to add or save the current keyword."
 msgstr "Pritisnite <0>{RETURN_KEY}</0> ali <1>{COMMA_KEY}</1> za dodajanje ali shranjevanje trenutne ključne besede."
 
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Previous"
+msgstr "Prejšnji"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Primarna barva"
@@ -1872,6 +2079,15 @@ msgstr "Publikacije"
 #: src/dialogs/resume/sections/publication.tsx
 msgid "Publisher"
 msgstr "Založnik"
+
+#. placeholder {0}: quota.remaining
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Quota: {0} remaining"
+msgstr "Kvota: {0} preostalo"
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "RapidAPI Key"
+msgstr "Ključ RapidAPI"
 
 #: src/routes/_home/-sections/header.tsx
 msgid "Reactive Resume - Go to homepage"
@@ -1924,8 +2140,18 @@ msgid "Refresh"
 msgstr "Osveži"
 
 #: src/routes/auth/forgot-password.tsx
-msgid "Remember your password? <0><1>Sign in now <2/></1></0>"
-msgstr "Se spomnite gesla? <0><1>Prijavite se zdaj <2/></1></0>"
+msgid "Remember your password? <0/>"
+msgstr ""
+
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Remote"
+msgstr "Oddaljena stran"
+
+#: src/routes/dashboard/job-search/-components/use-job-search.ts
+msgid "Remote only"
+msgstr "Samo daljinski upravljalnik"
 
 #: src/dialogs/resume/sections/experience.tsx
 msgid "Remove"
@@ -1959,6 +2185,10 @@ msgstr "Prijavite napako"
 msgid "Report an issue"
 msgstr "Prijavi težavo"
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+msgid "Required Skills"
+msgstr "Zahtevana znanja in spretnosti"
+
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Resend verification email"
 msgstr "Ponovno pošlji potrditveni e-mail"
@@ -1968,6 +2198,7 @@ msgid "Resending verification email..."
 msgstr "Pošiljanje potrditvenega e-maila ..."
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Reset"
 msgstr "Ponastavi"
 
@@ -1987,6 +2218,12 @@ msgstr "Ponastavljanje gesla..."
 msgid "Resources"
 msgstr "Viri"
 
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Resume tailored successfully"
+msgstr "Uspešno prilagojen življenjepis"
+
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/navigation.tsx
 #: src/components/command-palette/pages/resumes.tsx
@@ -1997,6 +2234,10 @@ msgstr "Viri"
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Resumes"
 msgstr "Življenjepisi"
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Retry"
+msgstr "Ponovitev"
 
 #: src/components/input/rich-input.tsx
 msgid "Right Align"
@@ -2017,6 +2258,11 @@ msgstr "Rotacija"
 #: src/utils/locale.ts
 msgid "Russian"
 msgstr "ruščina"
+
+#. placeholder {0}: selectedSkills.size
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Save {0} Skills"
+msgstr "Shrani {0} spretnosti"
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/sections/award.tsx
@@ -2046,6 +2292,15 @@ msgstr "Skenirajte spodnjo QR kodo z vašo izbrano aplikacijo za avtentikacijo. 
 msgid "School"
 msgstr "Šola"
 
+#: src/routes/dashboard/job-search/index.tsx
+#: src/routes/dashboard/job-search/index.tsx
+msgid "Search"
+msgstr "Iskanje"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Search countries"
+msgstr "Iskanje držav"
+
 #: src/components/input/icon-picker.tsx
 #: src/components/input/icon-picker.tsx
 msgid "Search for an icon"
@@ -2056,7 +2311,6 @@ msgid "Search for..."
 msgstr "Iskanje ..."
 
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Search..."
 msgstr "Iskanje ..."
 
@@ -2068,8 +2322,18 @@ msgstr "Skrivnost kopirana v odložišče."
 msgid "Section Type"
 msgstr "Vrsta razdelka"
 
+#. placeholder {0}: job.job_title
+#. placeholder {1}: job.employer_name
+#. placeholder {2}: aiEnabled ? " and the AI will optimize it for this position." : "."
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Select a resume to tailor for \"{0}\" at {1}. A copy will be created{2}"
+msgstr "Izberite življenjepis, ki ga želite prilagoditi za \"{0}\" na {1}. Ustvarjena bo kopija{2}"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Select country"
+msgstr "Izberite državo"
+
 #: src/components/ui/combobox.tsx
-#: src/components/ui/multiple-combobox.tsx
 msgid "Select..."
 msgstr "Izberi ..."
 
@@ -2207,6 +2471,10 @@ msgstr "Velikost"
 msgid "Skills"
 msgstr "Spretnosti"
 
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Skip"
+msgstr "Preskoči"
+
 #: src/routes/_home/route.tsx
 msgid "Skip to main content"
 msgstr "Preskoči na glavno vsebino"
@@ -2214,6 +2482,10 @@ msgstr "Preskoči na glavno vsebino"
 #: src/utils/locale.ts
 msgid "Slovak"
 msgstr "slovaščina"
+
+#: src/utils/locale.ts
+msgid "Slovenian"
+msgstr ""
 
 #: src/dialogs/resume/index.tsx
 msgid "Slug"
@@ -2330,6 +2602,19 @@ msgstr "Oznake"
 msgid "Tags can be used to categorize your resume by keywords."
 msgstr "Oznake lahko uporabite za kategorizacijo svojega življenjepisa po ključnih besedah."
 
+#: src/routes/dashboard/job-search/-components/job-detail.tsx
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailor Resume"
+msgstr "Tailor življenjepis"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring failed"
+msgstr "Krojenje ni uspelo"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "Tailoring your resume..."
+msgstr "Prilagajanje življenjepisa..."
+
 #: src/utils/locale.ts
 msgid "Tamil"
 msgstr "tamilščina"
@@ -2351,6 +2636,7 @@ msgid "Templates"
 msgstr "Predloge"
 
 #: src/routes/dashboard/settings/ai.tsx
+#: src/routes/dashboard/settings/job-search.tsx
 msgid "Test Connection"
 msgstr "Preizkusi povezavo"
 
@@ -2365,6 +2651,10 @@ msgstr "Barva besedila"
 #: src/utils/locale.ts
 msgid "Thai"
 msgstr "tajščina"
+
+#: src/routes/dashboard/job-search/-components/tailor-dialog.tsx
+msgid "The AI identified new skills from your experience that match this job. Select which ones to save back to your original resume for future applications. This will permanently modify your original resume and cannot be undone."
+msgstr "Umetna inteligenca je iz vaših izkušenj prepoznala nova znanja in spretnosti, ki ustrezajo temu delovnemu mestu. Izberite, katera želite shraniti nazaj v svoj prvotni življenjepis za prihodnje prijave. To bo trajno spremenilo vaš prvotni življenjepis in tega ni mogoče preklicati."
 
 #: src/routes/dashboard/settings/api-keys.tsx
 msgid "The API key has been deleted successfully."
@@ -2406,6 +2696,11 @@ msgstr "Nato vnesite 6-mestno kodo, ki jo aplikacija zagotovi za nadaljevanje."
 
 #: src/routes/builder/$resumeId/-components/dock.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
+msgid "There was a problem while generating the DOCX, please try again."
+msgstr "Pri ustvarjanju DOCX je prišlo do težave, poskusite znova."
+
+#: src/routes/builder/$resumeId/-components/dock.tsx
+#: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "There was a problem while generating the PDF, please try again in some time."
 msgstr "Prišlo je do težave pri ustvarjanju PDF-ja, poskusite znova čez nekaj časa."
 
@@ -2441,6 +2736,10 @@ msgstr "To lahko traja nekaj minut, odvisno od odziva AI ponudnika. Prosimo, ne 
 msgid "This may take a while depending on the server capacity. Please do not close the window or refresh the page."
 msgstr "To lahko traja nekaj časa, odvisno od zmogljivosti strežnika. Prosimo, ne zaprite okna ali osvežite strani."
 
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This month"
+msgstr "Ta mesec"
+
 #: src/components/resume/store/resume.ts
 msgid "This resume is locked and cannot be updated."
 msgstr "Ta življenjepis je zaklenjen in ga ni mogoče posodobiti."
@@ -2452,6 +2751,10 @@ msgstr "Ta razdelek je namenjen vašim osebnim opombam, ki se nanašajo na ta ž
 #: src/routes/auth/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Ta korak je neobvezen, vendar priporočen."
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "This week"
+msgstr "Ta teden"
 
 #: src/dialogs/api-key/create.tsx
 msgid "This will generate a new API key to access the Reactive Resume API to allow machines to interact with your resume data."
@@ -2479,6 +2782,15 @@ msgstr "Naziv"
 #: src/routes/dashboard/settings/danger-zone.tsx
 msgid "To delete your account, you need to enter the confirmation text and click the button below."
 msgstr "Za izbris računa morate vnesti potrditveno besedilo in klikniti spodnji gumb."
+
+#: src/routes/dashboard/job-search/index.tsx
+msgid "To search for job listings, you need to configure your RapidAPI key in settings."
+msgstr "Če želite poiskati ponudbe delovnih mest, morate v nastavitvah konfigurirati ključ RapidAPI."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Today"
+msgstr "Danes"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Track your resume's views and downloads"
@@ -2548,6 +2860,7 @@ msgstr "Dvostopenjska avtentikacija je bila uspešno nastavljena."
 
 #: src/dialogs/resume/import.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
 msgid "Type"
 msgstr "Vrsta"
 
@@ -2566,6 +2879,10 @@ msgstr "Tipografija"
 #: src/utils/locale.ts
 msgid "Ukrainian"
 msgstr "ukrajinščina"
+
+#: src/routes/dashboard/job-search/-components/search-filters.tsx
+msgid "Under 3 years"
+msgstr "Mlajši od 3 let"
 
 #: src/components/input/rich-input.tsx
 msgid "Underline"
@@ -2774,6 +3091,10 @@ msgstr "Spletna stran"
 msgid "What do you want to rename this section to?"
 msgstr "Kako želite preimenovati ta razdelek?"
 
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "What is JSearch API?"
+msgstr "Kaj je JSearch API?"
+
 #: src/routes/_home/-sections/faq.tsx
 msgid "What makes Reactive Resume different from other resume builders?"
 msgstr "Kaj naredi Reactive Življenjepis drugačen od drugih graditeljev življenjepisov?"
@@ -2803,6 +3124,10 @@ msgstr "Da! Vsaka predloga je popolnoma prilagodljiva. Lahko spremenite barve, p
 #: src/routes/_home/-sections/faq.tsx
 msgid "Yes! Reactive Resume is completely free to use, with no hidden costs, premium tiers, or subscription fees. It's open-source and will always remain free."
 msgstr "Da! Reactive Življenjepis je popolnoma brezplačen za uporabo, brez skritih stroškov, premium nivojev ali naročnin. Je odprtokoden in bo vedno ostal brezplačen."
+
+#: src/routes/dashboard/job-search/-components/job-utils.ts
+msgid "Yesterday"
+msgstr "Včeraj"
 
 #: src/routes/_home/-sections/features.tsx
 msgid "You also have the option to deploy on your own servers using the Docker image."
@@ -2860,6 +3185,10 @@ msgstr "Vaše geslo je bilo uspešno posodobljeno."
 #: src/routes/dashboard/settings/profile.tsx
 msgid "Your profile has been updated successfully."
 msgstr "Vaš profil je bil uspešno posodobljen."
+
+#: src/routes/dashboard/settings/job-search.tsx
+msgid "Your RapidAPI key is stored locally on your browser. It is only sent to the server when making a request to search for jobs, and is never stored or logged on our servers."
+msgstr "Ključ RapidAPI je shranjen lokalno v brskalniku. Na strežnik se pošlje le ob zahtevku za iskanje delovnih mest in se nikoli ne shranjuje ali beleži na naših strežnikih."
 
 #: src/dialogs/resume/index.tsx
 #: src/dialogs/resume/index.tsx

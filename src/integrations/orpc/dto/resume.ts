@@ -1,5 +1,6 @@
 import { createSelectSchema } from "drizzle-zod";
 import z from "zod";
+
 import { schema } from "@/integrations/drizzle";
 import { resumeDataSchema } from "@/schema/resume/data";
 import { jsonPatchOperationSchema } from "@/utils/resume/patch";
@@ -141,20 +142,20 @@ export const resumeDto = {
 			}),
 	},
 
-	setLocked: {
-		input: resumeSchema.pick({ id: true, isLocked: true }),
-		output: z.void(),
-	},
+  setLocked: {
+    input: resumeSchema.pick({ id: true, isLocked: true }),
+    output: z.void(),
+  },
 
-	setPassword: {
-		input: resumeSchema.pick({ id: true }).extend({ password: z.string().min(6).max(64) }),
-		output: z.void(),
-	},
+  setPassword: {
+    input: resumeSchema.pick({ id: true }).extend({ password: z.string().min(6).max(64) }),
+    output: z.void(),
+  },
 
-	removePassword: {
-		input: resumeSchema.pick({ id: true }),
-		output: z.void(),
-	},
+  removePassword: {
+    input: resumeSchema.pick({ id: true }),
+    output: z.void(),
+  },
 
 	patch: {
 		input: z.object({

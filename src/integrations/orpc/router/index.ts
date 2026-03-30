@@ -1,7 +1,7 @@
 import { aiRouter } from "./ai";
 import { authRouter } from "./auth";
-import { domainRouter } from "./domain";
 import { customerRouter } from "./customer";
+import { domainRouter } from "./domain";
 import { flagsRouter } from "./flags";
 import { positionRouter } from "./position";
 import { printerRouter } from "./printer";

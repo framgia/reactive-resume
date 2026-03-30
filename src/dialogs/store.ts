@@ -1,21 +1,22 @@
 import z from "zod";
 import { create } from "zustand/react";
+
 import {
-	awardItemSchema,
-	certificationItemSchema,
-	coverLetterItemSchema,
-	customSectionSchema,
-	educationItemSchema,
-	experienceItemSchema,
-	interestItemSchema,
-	languageItemSchema,
-	profileItemSchema,
-	projectItemSchema,
-	publicationItemSchema,
-	referenceItemSchema,
-	skillItemSchema,
-	summaryItemSchema,
-	volunteerItemSchema,
+  awardItemSchema,
+  certificationItemSchema,
+  coverLetterItemSchema,
+  customSectionSchema,
+  educationItemSchema,
+  experienceItemSchema,
+  interestItemSchema,
+  languageItemSchema,
+  profileItemSchema,
+  projectItemSchema,
+  publicationItemSchema,
+  referenceItemSchema,
+  skillItemSchema,
+  summaryItemSchema,
+  volunteerItemSchema,
 } from "@/schema/resume/data";
 
 const dialogTypeSchema = z.discriminatedUnion("type", [
@@ -195,45 +196,44 @@ type DialogType = DialogSchema["type"];
 
 type DialogData<T extends DialogType> = Extract<DialogSchema, { type: T }>["data"];
 
-// biome-ignore lint/complexity/noBannedTypes: {} is the appropriate type for this case
 type DialogPropsData<T extends DialogType> = DialogData<T> extends undefined ? {} : { data: DialogData<T> };
 
 export type DialogProps<T extends DialogType> = DialogPropsData<T>;
 
 interface DialogStoreState {
-	open: boolean;
-	activeDialog: DialogSchema | null;
+  open: boolean;
+  activeDialog: DialogSchema | null;
 }
 
 interface DialogStoreActions {
-	onOpenChange: (open: boolean) => void;
-	openDialog: <T extends DialogType>(type: T, data: DialogData<T>) => void;
-	closeDialog: () => void;
+  onOpenChange: (open: boolean) => void;
+  openDialog: <T extends DialogType>(type: T, data: DialogData<T>) => void;
+  closeDialog: () => void;
 }
 
 type DialogStore = DialogStoreState & DialogStoreActions;
 
 export const useDialogStore = create<DialogStore>((set) => ({
-	open: false,
-	activeDialog: null,
-	onOpenChange: (open) => {
-		set({ open });
+  open: false,
+  activeDialog: null,
+  onOpenChange: (open) => {
+    set({ open });
 
-		if (!open) {
-			setTimeout(() => {
-				set({ activeDialog: null });
-			}, 300);
-		}
-	},
-	openDialog: (type, data) =>
-		set({
-			open: true,
-			activeDialog: { type, data } as DialogSchema,
-		}),
-	closeDialog: () => {
-		set({ open: false });
-		setTimeout(() => {
-			set({ activeDialog: null });
-		}, 300);
-	},
+    if (!open) {
+      setTimeout(() => {
+        set({ activeDialog: null });
+      }, 300);
+    }
+  },
+  openDialog: (type, data) =>
+    set({
+      open: true,
+      activeDialog: { type, data } as DialogSchema,
+    }),
+  closeDialog: () => {
+    set({ open: false });
+    setTimeout(() => {
+      set({ activeDialog: null });
+    }, 300);
+  },
 }));
