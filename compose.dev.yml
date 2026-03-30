@@ -24,7 +24,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - postgres_reactive_resume_data:/var/lib/postgresql
+      - postgres_data:/var/lib/postgresql
     ports:
       - "5432:5432"
     healthcheck:
